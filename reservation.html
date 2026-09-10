@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réserver une prestation — CMAKEUP BEAUTY PROFESSIONAL</title>
+<meta name="description" content="Réservez votre prestation makeup CMAKEUP BEAUTY en quelques étapes : choix de la prestation, date, créneau et confirmation.">
+<link rel="canonical" href="https://www.cmakeupbeauty.com/reservation.html">
+<meta name="theme-color" content="#3D3733">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="site-header header--solid">
+  <div class="container site-header__bar">
+    <a href="index.html" class="site-logo" aria-label="CMAKEUP BEAUTY PROFESSIONAL — accueil">
+      <img src="assets/logo-cmakeup-transparent.png" alt="CMAKEUP BEAUTY PROFESSIONAL">
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="prestations.html">Prestations</a>
+      <a href="formations.html">Formations</a>
+    </nav>
+    <div class="header-actions">
+      <div class="header-icons">
+        <a href="https://www.instagram.com/c_makeup_?stkn=ZXN0ZXlvMHFxbGNn" target="_blank" rel="noopener" class="header-icon-link" aria-label="Instagram CMAKEUP BEAUTY"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="compte.html" class="header-icon-link" aria-label="Créer un compte ou se connecter"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></a>
+      </div>
+      <a href="reservation.html" class="btn btn--primary" aria-current="page">Réserver</a>
+      <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+  <a href="index.html">Accueil</a>
+  <a href="prestations.html">Prestations</a>
+  <a href="formations.html">Formations</a>
+  <a href="compte.html">Compte</a>
+  <a href="https://www.instagram.com/c_makeup_?stkn=ZXN0ZXlvMHFxbGNn" target="_blank" rel="noopener">Instagram</a>
+  <a href="reservation.html" class="btn btn--primary">Réserver</a>
+</nav>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Accueil</a> / Réservation</p>
+      <h1>Réserver une prestation</h1>
+      <p>Choisissez votre prestation, une date et un créneau en quelques clics.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container" style="max-width:840px;">
+
+      <div class="notice-banner">
+        Cette interface de réservation prépare votre demande. Aucun paiement ni créneau backend n'étant encore connecté, votre demande sera confirmée manuellement par notre équipe après réception.
+      </div>
+
+      <div class="booking-steps">
+        <div class="booking-step is-active" data-step="1"><span class="booking-step__num">1</span> Prestation</div>
+        <div class="booking-step" data-step="2"><span class="booking-step__num">2</span> Date</div>
+        <div class="booking-step" data-step="3"><span class="booking-step__num">3</span> Créneau</div>
+        <div class="booking-step" data-step="4"><span class="booking-step__num">4</span> Infos</div>
+        <div class="booking-step" data-step="5"><span class="booking-step__num">5</span> Récap</div>
+        <div class="booking-step" data-step="6"><span class="booking-step__num">6</span> Confirmation</div>
+      </div>
+
+      <form id="booking-form" novalidate>
+
+        <!-- Étape 1 : prestation -->
+        <div class="booking-panel is-active" data-panel="1">
+          <h2 class="section-heading" style="font-size:1.5rem;">Choisissez votre prestation</h2>
+          <div class="service-choice-grid">
+            <label class="service-choice">
+              <input type="radio" name="service" value="soft-glam">
+              <div class="service-choice__title">Makeup Soft Glam</div>
+              <div class="service-choice__price">100€</div>
+            </label>
+            <label class="service-choice">
+              <input type="radio" name="service" value="full-glam">
+              <div class="service-choice__title">Makeup Full Glam</div>
+              <div class="service-choice__price">150€</div>
+            </label>
+            <label class="service-choice">
+              <input type="radio" name="service" value="smokey-eyes">
+              <div class="service-choice__title">Makeup Smokey Eyes</div>
+              <div class="service-choice__price">90€</div>
+            </label>
+            <label class="service-choice">
+              <input type="radio" name="service" value="bridal">
+              <div class="service-choice__title">Bridal Makeup</div>
+              <div class="service-choice__price">Sur devis</div>
+            </label>
+          </div>
+          <div class="booking-nav">
+            <span></span>
+            <button type="button" class="btn btn--dark" data-next-step>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 2 : date -->
+        <div class="booking-panel" data-panel="2">
+          <h2 class="section-heading" style="font-size:1.5rem;">Choisissez une date</h2>
+          <div class="form-field" style="max-width:280px;">
+            <label for="booking-date">Date souhaitée</label>
+            <input type="date" id="booking-date" name="date" required>
+          </div>
+          <div class="booking-nav">
+            <button type="button" class="btn btn--outline-dark" data-prev-step>Retour</button>
+            <button type="button" class="btn btn--dark" data-next-step>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 3 : créneau -->
+        <div class="booking-panel" data-panel="3">
+          <h2 class="section-heading" style="font-size:1.5rem;">Choisissez un créneau</h2>
+          <div class="slot-grid">
+            <button type="button" class="slot-btn">09:00</button>
+            <button type="button" class="slot-btn">11:00</button>
+            <button type="button" class="slot-btn">14:00</button>
+            <button type="button" class="slot-btn">16:00</button>
+          </div>
+          <!-- À BRANCHER : créneaux réels via loadAvailableSlots() (reservation.js) -->
+          <div class="booking-nav">
+            <button type="button" class="btn btn--outline-dark" data-prev-step>Retour</button>
+            <button type="button" class="btn btn--dark" data-next-step>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 4 : informations cliente -->
+        <div class="booking-panel" data-panel="4" data-step-4>
+          <h2 class="section-heading" style="font-size:1.5rem;">Vos informations</h2>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="b-firstname">Prénom</label>
+              <input type="text" id="b-firstname" name="firstname" required>
+            </div>
+            <div class="form-field">
+              <label for="b-lastname">Nom</label>
+              <input type="text" id="b-lastname" name="lastname" required>
+            </div>
+            <div class="form-field">
+              <label for="b-email">Email</label>
+              <input type="email" id="b-email" name="email" required>
+            </div>
+            <div class="form-field">
+              <label for="b-phone">Téléphone</label>
+              <input type="tel" id="b-phone" name="phone" required>
+            </div>
+            <div class="form-field form-field--full">
+              <label for="b-notes">Notes éventuelles</label>
+              <textarea id="b-notes" name="notes" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="booking-nav">
+            <button type="button" class="btn btn--outline-dark" data-prev-step>Retour</button>
+            <button type="button" class="btn btn--dark" data-next-step>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 5 : récapitulatif -->
+        <div class="booking-panel" data-panel="5">
+          <h2 class="section-heading" style="font-size:1.5rem;">Récapitulatif</h2>
+          <div class="recap-list" id="booking-recap"></div>
+          <div class="booking-nav">
+            <button type="button" class="btn btn--outline-dark" data-prev-step>Retour</button>
+            <button type="submit" class="btn btn--dark">Confirmer la demande</button>
+          </div>
+        </div>
+
+        <!-- Étape 6 : confirmation -->
+        <div class="booking-panel" data-panel="6">
+          <div class="form-success-banner">
+            <h2 class="section-heading" style="font-size:1.5rem;">Demande envoyée !</h2>
+            <p>Merci, votre demande de réservation a bien été prise en compte. Notre équipe revient vers vous rapidement pour la confirmer.</p>
+            <a href="index.html" class="btn btn--dark" style="margin-top:1.25rem;">Retour à l'accueil</a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <img src="assets/logo-cmakeup-transparent.png" alt="CMAKEUP BEAUTY PROFESSIONAL">
+      <p>Maquillage sur-mesure et formations professionnelles pour révéler votre potentiel et votre beauté.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/c_makeup_?stkn=ZXN0ZXlvMHFxbGNn" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M16 3v10.5a3.5 3.5 0 11-3.5-3.5"/><path d="M16 3c.3 2.3 2 4 4 4"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 10l4 2-4 2z"/></svg></a>
+      </div>
+    </div>
+    <nav class="footer-col" aria-label="Navigation footer">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="prestations.html">Prestations</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="footer-col">
+      <h4>Infos pratiques</h4>
+      <ul>
+        <li><a href="contact.html#faq">FAQ</a></li>
+        <li><a href="mentions-legales.html#cgv">Conditions générales</a></li>
+        <li><a href="mentions-legales.html#mentions">Mentions légales</a></li>
+        <li><a href="mentions-legales.html#confidentialite">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <address>
+        <ul>
+          <li><a href="tel:+33754033266">07 54 03 32 66</a></li>
+          <li><a href="mailto:contact@cmakeupbeauty.com">contact@cmakeupbeauty.com</a></li>
+          <li>Argenteuil, France</li>
+        </ul>
+      </address>
+      <a href="reservation.html" class="btn btn--primary btn--sm" style="margin-top:1rem;">Réserver maintenant</a>
+    </div>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form" action="#" method="post">
+        <label for="newsletter-email" class="visually-hidden">Adresse email</label>
+        <input type="email" id="newsletter-email" name="email" placeholder="Votre email" required>
+        <button type="submit" class="btn btn--outline btn--sm">S'inscrire</button>
+        <p class="form-note">Recevez nos actualités et offres exclusives.</p>
+      </form>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span data-year>2026</span> CMAKEUP BEAUTY — Tous droits réservés.</p>
+    <p>Site réalisé avec passion by DamCompany</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/reservation.js"></script>
+</body>
+</html>
