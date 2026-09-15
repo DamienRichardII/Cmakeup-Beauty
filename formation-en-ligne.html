@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CMAKEUP BEAUTY — Formation en ligne Makeup Artist Soft Glam — Bientôt disponible</title>
+<meta name="description" content="La formation en ligne Makeup Artist Soft Glam de CMAKEUP BEAUTY arrive bientôt. Rejoignez la liste d'attente pour être informée du lancement.">
+<link rel="canonical" href="https://cmakeup-beauty.vercel.app/formation-en-ligne.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CMAKEUP BEAUTY — Formation en ligne Makeup Artist Soft Glam — Bientôt disponible">
+<meta property="og:description" content="La formation en ligne Makeup Artist Soft Glam de CMAKEUP BEAUTY arrive bientôt. Rejoignez la liste d'attente pour être informée du lancement.">
+<meta property="og:url" content="https://cmakeup-beauty.vercel.app/formation-en-ligne.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -176,6 +184,27 @@
     .teaser-grid{grid-template-columns:1fr;}
     section{padding:70px 0;}
   }
+
+  /* Menu mobile (hamburger) */
+  .nav-toggle{display:none;}
+  @media(max-width:860px){
+    header{position:relative;}
+    .nav-toggle{
+      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
+      width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; flex-shrink:0;
+    }
+    .nav-toggle span{display:block; width:18px; height:1px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
+    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+    .nav-toggle.is-open span:nth-child(2){opacity:0;}
+    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+    nav.nav-open{
+      display:flex; flex-direction:column; gap:0; width:100%;
+      position:absolute; top:100%; left:0; background:var(--white); border-top:1px solid var(--line);
+      box-shadow:0 14px 28px rgba(0,0,0,0.08); z-index:80; padding:6px 0;
+    }
+    nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
+    nav.nav-open a:last-child{border-bottom:none;}
+  }
 </style>
 </head>
 <body>
@@ -192,10 +221,11 @@
     <a href="contact.html">Contact</a>
   </nav>
   <a class="btn" href="#notify">Être prévenue</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 
 <section class="hero">
-  <img src="https://d1yei2z3i6k35z.cloudfront.net/14916518/6a7f7675bbb860.05368167_cMakeup4.jpeg" alt="Formation Makeup Artist Soft Glam CMAKEUP BEAUTY — bientôt disponible">
+  <img src="assets/formation-en-ligne-hero.webp" alt="Formation Makeup Artist Soft Glam CMAKEUP BEAUTY — bientôt disponible" width="998" height="1500" loading="eager">
   <div class="hero-content">
     <div class="hero-eyebrow">Formation en ligne — Bientôt disponible</div>
     <h1>Formation en ligne — Makeup Artist Soft Glam</h1>
@@ -211,11 +241,16 @@
     <div class="section-label">LISTE D'ATTENTE</div>
     <h2>Sois la première informée</h2>
     <p>Laisse ton email pour recevoir la date de lancement en priorité, avant tout le monde.</p>
-    <!-- Formulaire à connecter à l'outil d'emailing utilisé (ex : Mailchimp, Brevo, Systeme.io...) pour la liste d'attente du lancement. -->
-    <form class="notify-form" action="#" method="post">
-      <input type="email" name="email" placeholder="Ton adresse email" required>
+    <!-- DEV TODO : brancher ce formulaire à l'outil d'emailing choisi (ex : Mailchimp, Brevo,
+         Systeme.io, ou le backend/CRM déjà en place) pour la liste d'attente du lancement. Tant que
+         cette intégration n'est pas branchée, ne jamais afficher de confirmation d'inscription
+         fictive : le script ci-dessous informe honnêtement la visiteuse et propose un contact
+         direct pour ne pas perdre son adresse. -->
+    <form class="notify-form" id="notifyForm">
+      <input type="email" name="email" id="notifyEmail" placeholder="Ton adresse email" required>
       <button type="submit">Je m'inscris →</button>
     </form>
+    <p class="notify-status" role="status" aria-live="polite" style="margin-top:14px; font-size:12px;"></p>
     <div class="notify-note">Pas de spam, juste un email le jour du lancement.</div>
   </div>
 </section>
@@ -255,13 +290,67 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-note">© 2026 CMAKEUP BEAUTY ACADEMY — Exemple de direction artistique, à valider avant développement.</div>
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY ACADEMY — Tous droits réservés.</div>
     <div class="footer-social">
       <a href="https://www.instagram.com/c_makeup_">Instagram</a>
-      <a href="https://www.tiktok.com/@cmakeupbeauty">TikTok</a>
+      <!-- DEV TODO : ajouter le lien TikTok officiel une fois confirmé par la cliente (ne pas reconstruire une URL approximative) -->
     </div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var form = document.getElementById('notifyForm');
+  var status = document.querySelector('.notify-status');
+  if(!form || !status) return;
+  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button');
+    var email = document.getElementById('notifyEmail').value;
+    btn.disabled = true;
+    btn.textContent = 'Envoi...';
+    _sb.from('waitlist_formation_en_ligne').insert({ email: email }).then(function(res){
+      btn.disabled = false;
+      btn.textContent = "Je m'inscris →";
+      if(res.error){
+        status.style.color = '#B33A3A';
+        if(res.error.code === '23505'){
+          status.textContent = "Cette adresse est déjà inscrite sur la liste d'attente — merci !";
+          status.style.color = 'var(--ink-soft)';
+        } else {
+          status.innerHTML = "Un problème est survenu lors de l'inscription. Écris-nous directement à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline;\">academy@cmakeupbeauty.fr</a> en attendant.";
+        }
+      } else {
+        status.style.color = 'var(--ink-soft)';
+        status.textContent = "C'est noté ! Tu seras prévenue par email dès le lancement.";
+        form.reset();
+      }
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('header nav');
+  if(!toggle || !nav) return;
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.classList.toggle('is-open', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
 </body>
 </html>

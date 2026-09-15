@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CMAKEUP BEAUTY — Contact</title>
+<meta name="description" content="Contactez CMAKEUP BEAUTY à Persan (95) pour toute question sur nos prestations makeup ou nos formations.">
+<link rel="canonical" href="https://cmakeup-beauty.vercel.app/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CMAKEUP BEAUTY — Contact">
+<meta property="og:description" content="Contactez CMAKEUP BEAUTY à Persan (95) pour toute question sur nos prestations makeup ou nos formations.">
+<meta property="og:url" content="https://cmakeup-beauty.vercel.app/contact.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -75,6 +83,27 @@
     .contact-grid{grid-template-columns:1fr; gap:60px;}
     .form-row{grid-template-columns:1fr;}
   }
+
+  /* Menu mobile (hamburger) */
+  .nav-toggle{display:none;}
+  @media(max-width:900px){
+    header{position:relative;}
+    .nav-toggle{
+      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
+      width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; flex-shrink:0;
+    }
+    .nav-toggle span{display:block; width:18px; height:1px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
+    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+    .nav-toggle.is-open span:nth-child(2){opacity:0;}
+    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+    nav.nav-open{
+      display:flex; flex-direction:column; gap:0; width:100%;
+      position:absolute; top:100%; left:0; background:var(--white); border-top:1px solid var(--line);
+      box-shadow:0 14px 28px rgba(0,0,0,0.08); z-index:80; padding:6px 0;
+    }
+    nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
+    nav.nav-open a:last-child{border-bottom:none;}
+  }
 </style>
 </head>
 <body>
@@ -91,6 +120,7 @@
     <a href="contact.html" class="current">Contact</a>
   </nav>
   <a class="btn" href="prestations.html#reserver">Réserver</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 
 <section class="page-hero">
@@ -165,8 +195,16 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Dites-nous en plus sur votre demande..." required></textarea>
         </div>
+        <div class="field full" style="flex-direction:row; align-items:flex-start; gap:10px;">
+          <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:3px; width:auto;">
+          <label for="rgpd" style="text-transform:none; letter-spacing:normal; font-size:12px;">J'accepte que mes informations soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.</label>
+        </div>
         <button type="submit" class="btn form-submit">Envoyer le message</button>
+        <p class="form-status" role="status" aria-live="polite" style="margin-top:14px; font-size:12px; text-align:center;"></p>
       </form>
+      <!-- DEV TODO : brancher ce formulaire à l'outil d'envoi/CRM choisi (email automatique, CRM,
+           Airtable...). Champs disponibles via leurs attributs "name". Envoyer un email de
+           notification à l'équipe et un email de confirmation à l'expéditeur. -->
     </div>
 
   </div>
@@ -178,9 +216,65 @@
       <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
       <div class="footer-note">Persan, France (95) — 07 54 03 32 66</div>
     </div>
-    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Exemple de direction artistique, à valider avant développement.</div>
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var form = document.querySelector('.contact-form');
+  var status = document.querySelector('.form-status');
+  if(!form) return;
+  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+    status.style.color = 'var(--ink-soft)';
+    status.textContent = 'Envoi en cours...';
+    _sb.from('contacts').insert({
+      prenom: document.getElementById('prenom').value,
+      nom: document.getElementById('nom').value,
+      email: document.getElementById('email').value,
+      telephone: document.getElementById('telephone').value,
+      sujet: document.getElementById('sujet').value,
+      message: document.getElementById('message').value,
+      rgpd_consent: document.getElementById('rgpd').checked
+    }).then(function(res){
+      btn.disabled = false;
+      btn.textContent = 'Envoyer le message';
+      if(res.error){
+        status.innerHTML = "Un problème est survenu lors de l'envoi. Écrivez-nous directement à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline;\">Cmakeupbeauty95@gmail.com</a> ou appelez le <a href=\"tel:+33754033266\" style=\"text-decoration:underline;\">07 54 03 32 66</a>.";
+      } else {
+        status.textContent = 'Merci ! Votre message a bien été envoyé, nous vous répondons rapidement.';
+        form.reset();
+      }
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('header nav');
+  if(!toggle || !nav) return;
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.classList.toggle('is-open', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
 </body>
 </html>
