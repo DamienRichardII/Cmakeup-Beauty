@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Formation Makeup Artist Soft Glam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --off:#F4F4F2;
+    --paper:#D6D1C5;
+    --line:#D6D1C5;
+    --ink:#1A1A1A;
+    --ink-soft:#75736D;
+    --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'TT Interphase','Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  /* HEADER */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-size:22px;
+    letter-spacing:0.14em;
+  }
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
+  nav a:hover::after, nav a.active::after{width:100%;}
+  .btn{
+    border:1px solid var(--ink);
+    padding:12px 26px;
+    font-size:12px;
+    letter-spacing:0.08em;
+    background:var(--ink);
+    color:var(--white);
+    transition:background .25s ease,color .25s ease;
+    display:inline-block;
+  }
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .btn-outline{
+    border:1px solid var(--ink);
+    color:var(--ink);
+    background:transparent;
+  }
+  .btn-outline:hover{background:var(--ink); color:var(--white);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:640px;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    padding:0;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%; object-fit:cover;
+    object-position:50% 20%;
+    filter:grayscale(12%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.62) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding:0 40px 64px;
+    max-width:1200px;
+    margin:0 auto;
+    width:100%;
+    color:var(--white);
+  }
+  .hero-eyebrow{font-size:12px; letter-spacing:0.22em; color:rgba(255,255,255,0.8); margin-bottom:18px;}
+  .hero h1{
+    font-size:clamp(36px,6vw,68px);
+    line-height:1.05;
+    font-weight:400;
+    max-width:780px;
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:16px;
+    max-width:460px;
+    line-height:1.7;
+    color:rgba(255,255,255,0.85);
+  }
+  .hero-actions{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-white{
+    border:1px solid var(--white);
+    background:var(--white);
+    color:var(--ink);
+    padding:14px 30px;
+    font-size:12px;
+    letter-spacing:0.08em;
+  }
+  .btn-white:hover{background:transparent; color:var(--white);}
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,0.7);
+    color:var(--white);
+    padding:14px 30px;
+    font-size:12px;
+    letter-spacing:0.08em;
+  }
+  .btn-ghost:hover{background:var(--white); color:var(--ink);}
+
+  /* STATS STRIP */
+  .stats{
+    border-bottom:1px solid var(--line);
+    background:var(--off);
+  }
+  .stats-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    max-width:1200px; margin:0 auto;
+  }
+  .stat{
+    padding:38px 30px;
+    text-align:center;
+    border-left:1px solid var(--line);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:32px;}
+  .stat .label{font-size:11px; letter-spacing:0.1em; color:var(--gray); margin-top:6px;}
+
+  /* SECTION GENERIC */
+  section{padding:120px 0;}
+  .section-label{
+    font-size:12px; letter-spacing:0.2em; color:var(--gray); margin-bottom:18px;
+  }
+
+  /* ABOUT / PRESENTATION */
+  .about-text h2{
+    font-size:clamp(28px,3.2vw,42px);
+    line-height:1.15;
+    margin-bottom:26px;
+  }
+  .about-text p{
+    font-size:16px;
+    line-height:1.8;
+    color:var(--ink-soft);
+    max-width:520px;
+    margin-bottom:20px;
+  }
+  .check-list{margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:14px 32px;}
+  .check-list div{display:flex; gap:12px; font-size:14px; color:var(--ink-soft); line-height:1.6;}
+  .check-list .dash{color:var(--ink); flex-shrink:0;}
+  .subhead{font-size:18px; margin:34px 0 10px;}
+
+  /* PROGRAMME (modules) */
+  .programme{background:var(--off); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:60px; flex-wrap:wrap; gap:24px;
+  }
+  .section-head h2{font-size:clamp(28px,3.4vw,42px);}
+  .module-list{border-top:1px solid var(--line);}
+  .module{
+    padding:32px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .module-top{display:grid; grid-template-columns:70px 1fr; gap:24px;}
+  .module .num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:22px; color:var(--gray);}
+  .module h3{font-size:22px; margin-bottom:8px;}
+  .module p{font-size:14px; color:var(--ink-soft); line-height:1.6; max-width:600px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tag-row span{font-size:12px; color:var(--ink-soft); border:1px solid var(--line); background:var(--white); padding:6px 14px;}
+  .module.bonus .module-top{grid-template-columns:70px 1fr;}
+  .module.bonus .num{color:var(--ink);}
+
+  /* FORMATRICE */
+  .formatrice-inner{
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:80px;
+    align-items:center;
+  }
+  .formatrice-img{aspect-ratio:4/5; overflow:hidden; background:var(--paper);}
+  .formatrice-img img{width:100%; height:100%; object-fit:cover;}
+  .formatrice-text .role{font-size:12px; letter-spacing:0.1em; color:var(--gray); text-transform:uppercase; margin-bottom:14px;}
+  .formatrice-text h2{font-size:clamp(28px,3.2vw,40px); margin-bottom:20px;}
+  .formatrice-text p{font-size:16px; line-height:1.8; color:var(--ink-soft); max-width:500px; margin-bottom:16px;}
+
+  /* TEMOIGNAGES */
+  .testimonials{background:var(--off); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .testimonial-card{background:var(--white); padding:40px 36px;}
+  .testimonial-card p{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:18px; line-height:1.5; margin-bottom:18px;}
+  .testimonial-card .by{font-size:12px; letter-spacing:0.1em; color:var(--gray);}
+
+  /* PACKS */
+  .packs-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:60px;}
+  .pack-card{border:1px solid var(--line); padding:48px 40px; position:relative;}
+  .pack-card.featured{border-color:var(--ink);}
+  .badge-rec{position:absolute; top:-14px; left:40px; background:var(--ink); color:var(--white); font-size:11px; letter-spacing:0.1em; padding:6px 16px;}
+  .pack-card h3{font-size:22px; margin-bottom:16px;}
+  .pack-card .price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:38px; margin-bottom:4px;}
+  .pack-card .price span{font-size:14px; color:var(--ink-soft); font-family:'TT Interphase','Jost',sans-serif;}
+  .pack-card .sub{font-size:11px; letter-spacing:0.06em; color:var(--gray); margin-bottom:8px;}
+  .pack-card ul{list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:8px;}
+  .pack-card li{font-size:14px; color:var(--ink-soft); padding-left:18px; position:relative;}
+  .pack-card li::before{content:"—"; position:absolute; left:0; color:var(--ink);}
+  .pack-card .plus{font-size:11px; letter-spacing:0.08em; color:var(--gray); text-transform:uppercase; margin:22px 0 12px;}
+  .pack-card .btn{width:100%; text-align:center; display:block; margin-top:28px;}
+
+  /* FAQ */
+  .faq-list{border-top:1px solid var(--line); max-width:780px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding:26px 0;
+    font-size:17px;
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
+
+  /* FINAL CTA */
+  .final-cta{
+    background:var(--ink);
+    color:var(--white);
+    text-align:center;
+  }
+  .final-cta h2{color:var(--white); font-size:clamp(30px,3.6vw,48px); max-width:700px; margin:0 auto 20px;}
+  .final-cta p{color:rgba(255,255,255,0.7); font-size:16px; max-width:520px; margin:0 auto 36px;}
+  .final-cta .hero-actions{justify-content:center;}
+
+  /* FOOTER */
+  footer{
+    padding:60px 0 30px;
+    border-top:1px solid var(--line);
+  }
+  .footer-top{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px;
+    padding-bottom:32px;
+  }
+  .footer-about{font-size:13px; line-height:1.8; color:var(--ink-soft); max-width:640px; padding-bottom:32px; border-bottom:1px solid var(--line); margin-bottom:24px;}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
+  .footer-social{display:flex; gap:18px; margin-top:14px;}
+  .footer-social a{font-size:12px; letter-spacing:0.06em; border-bottom:1px solid var(--gray); padding-bottom:2px;}
+
+  @media(max-width:860px){
+    header{padding:20px;}
+    nav{display:none;}
+    .wrap, section .wrap{padding:0 20px;}
+    .hero-content{padding:0 20px 48px;}
+    .stats-inner{grid-template-columns:1fr 1fr;}
+    .stat{border-left:none; border-top:1px solid var(--line);}
+    .stat:nth-child(-n+2){border-top:none;}
+    .formatrice-inner{grid-template-columns:1fr; gap:40px;}
+    .check-list, .packs-grid, .testimonial-grid{grid-template-columns:1fr;}
+    section{padding:70px 0;}
+    .module-top{grid-template-columns:40px 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY ACADEMY</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="prestations.html">Prestations</a>
+    <a href="equipe.html">Équipe</a>
+    <a href="formation-en-ligne.html" class="active">Formations</a>
+    <a href="coaching-business-mua.html">Coaching</a>
+    <a href="ebook.html">Ebook</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn" href="#packs">S'inscrire</a>
+</header>
+
+<section class="hero">
+  <img src="https://d1yei2z3i6k35z.cloudfront.net/14916518/6a7f7675bbb860.05368167_cMakeup4.jpeg" alt="Formation Makeup Artist Soft Glam CMAKEUP BEAUTY">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Formation vidéo — 100% en ligne</div>
+    <h1>Révèle ta signature Soft Glam</h1>
+    <p class="hero-sub">La méthode de Colleen, 10 ans d'expérience et une expertise reconnue des peaux mélaninées, pour maîtriser un maquillage professionnel, lumineux et longue tenue — à ton rythme, depuis chez toi.</p>
+    <div class="hero-actions">
+      <a class="btn-white" href="#programme">Découvrir le programme</a>
+      <a class="btn-ghost" href="#packs">Je m'inscris à la formation</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="num">6</div>
+      <div class="label">MODULES VIDÉO</div>
+    </div>
+    <div class="stat">
+      <div class="num">HD</div>
+      <div class="label">VIDÉOS DÉTAILLÉES</div>
+    </div>
+    <div class="stat">
+      <div class="num">100%</div>
+      <div class="label">EN LIGNE, À TON RYTHME</div>
+    </div>
+    <div class="stat">
+      <div class="num">✓</div>
+      <div class="label">CERTIFICAT INCLUS</div>
+    </div>
+  </div>
+</div>
+
+<section class="about">
+  <div class="wrap">
+    <div class="about-text" style="max-width:760px;">
+      <div class="section-label">PRÉSENTATION DE LA FORMATION</div>
+      <h2>Une méthode signature, pensée pour chaque carnation</h2>
+      <p>CMAKEUP BEAUTY ACADEMY transmet en ligne la même exigence que ses prestations professionnelles : un maquillage Soft Glam propre, lumineux et durable, avec une expertise reconnue des peaux mélaninées.</p>
+      <p>Chaque geste est filmé en gros plan et décomposé pour être reproduit facilement, sans matériel professionnel superflu. Un module bonus dédié à la photo, à la vidéo et à la retouche t'aide en plus à sublimer et partager tes réalisations.</p>
+
+      <div class="subhead">Cette formation est faite pour toi si...</div>
+      <p style="margin-bottom:10px;">Accessible aux débutantes comme aux personnes souhaitant perfectionner leurs techniques — aucun niveau requis.</p>
+      <div class="check-list">
+        <div><span class="dash">—</span> Les débutants souhaitant apprendre le maquillage</div>
+        <div><span class="dash">—</span> Les passionnés de beauté désirant enrichir leurs compétences</div>
+        <div><span class="dash">—</span> Les maquilleurs souhaitant se perfectionner</div>
+        <div><span class="dash">—</span> Les personnes en reconversion professionnelle</div>
+        <div><span class="dash">—</span> Les futurs entrepreneurs du maquillage</div>
+      </div>
+
+      <div class="subhead">Tout ce qui est inclus</div>
+      <div class="check-list">
+        <div><span class="dash">—</span> Accès à la formation</div>
+        <div><span class="dash">—</span> Une progression à ton rythme, sans pression</div>
+        <div><span class="dash">—</span> Vidéos HD, filmées en gros plan</div>
+        <div><span class="dash">—</span> Guide PDF à garder et consulter</div>
+        <div><span class="dash">—</span> Liste des produits et outils envoyée après ta commande</div>
+        <div><span class="dash">—</span> Certificat de fin de formation</div>
+        <div><span class="dash">—</span> Module bonus Photo, Vidéo &amp; Retouche</div>
+        <div><span class="dash">—</span> Une expertise rare des peaux mélaninées</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="programme" id="programme">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">PROGRAMME</div>
+        <h2>6 modules, de la préparation de peau aux finitions</h2>
+      </div>
+      <a class="btn-outline btn" style="background:transparent;color:var(--ink);" href="#packs">Je réserve ma place</a>
+    </div>
+    <div class="module-list">
+      <div class="module">
+        <div class="module-top">
+          <div class="num">01</div>
+          <div>
+            <h3>Nettoyage de la peau</h3>
+            <p>Apprendre à nettoyer correctement la peau avant toute prestation de maquillage afin de créer une base propre et adaptée.</p>
+            <div class="tag-row">
+              <span>Nettoyage de la peau</span><span>Produits adaptés</span><span>Ordre d'utilisation</span><span>Préparation de la peau</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-top">
+          <div class="num">02</div>
+          <div>
+            <h3>Les sourcils</h3>
+            <p>Maîtriser la restructuration et la mise en beauté des sourcils pour harmoniser le visage.</p>
+            <div class="tag-row">
+              <span>Plaquage des sourcils</span><span>Remplissage</span><span>Traçage à l'anticernes</span><span>Estompage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-top">
+          <div class="num">03</div>
+          <div>
+            <h3>Les paupières</h3>
+            <p>Réaliser un maquillage des yeux Soft Glam avec des dégradés propres, harmonieux et adaptés à la morphologie des yeux.</p>
+            <div class="tag-row">
+              <span>Fard de transition</span><span>Paupière mobile</span><span>Coin externe</span><span>Eyeliner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-top">
+          <div class="num">04</div>
+          <div>
+            <h3>Diagnostic &amp; préparation de la peau</h3>
+            <p>Savoir analyser une peau afin d'adapter les produits et les techniques de préparation pour obtenir un maquillage uniforme et longue tenue.</p>
+            <div class="tag-row">
+              <span>Diagnostic de la peau</span><span>Préparation de la peau</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-top">
+          <div class="num">05</div>
+          <div>
+            <h3>Le teint</h3>
+            <p>Maîtriser les différentes étapes d'un teint Soft Glam professionnel, lumineux, travaillé et adapté à la carnation.</p>
+            <div class="tag-row">
+              <span>Fond de teint</span><span>Blush crème</span><span>Anticernes &amp; lumière</span><span>Contour crème</span><span>Poudre translucide</span><span>Bronzer</span><span>Blush poudre</span><span>Fixateur</span><span>Mascara &amp; faux cils</span><span>Highlighter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-top">
+          <div class="num">06</div>
+          <div>
+            <h3>Les lèvres</h3>
+            <p>Maîtriser la réalisation d'une bouche parfaitement définie et harmonieuse avec un maquillage Soft Glam.</p>
+            <div class="tag-row">
+              <span>Préparation des lèvres</span><span>Traçage au crayon</span><span>Application du rouge à lèvres</span><span>Gloss</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module bonus">
+        <div class="module-top">
+          <div class="num">＋</div>
+          <div>
+            <h3>Bonus — PDF téléchargeables</h3>
+            <p>Des supports à conserver et consulter tout au long de ta progression.</p>
+            <div class="tag-row">
+              <span>E-book Business (PDF)</span><span>Livret CMAKEUP (PDF)</span><span>Liste des produits &amp; outils (PDF — envoyée après ta commande)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="objectifs">
+  <div class="wrap">
+    <div class="section-label">OBJECTIFS DE LA FORMATION</div>
+    <h2 style="font-size:clamp(28px,3.2vw,42px); max-width:700px; margin-bottom:40px;">À l'issue de la formation, tu seras capable de :</h2>
+    <div class="check-list" style="grid-template-columns:1fr 1fr;">
+      <div><span class="dash">—</span> Maîtriser les étapes d'un maquillage Soft Glam professionnel</div>
+      <div><span class="dash">—</span> Préparer la peau pour un teint uniforme et longue tenue</div>
+      <div><span class="dash">—</span> Réaliser un teint travaillé et structuré</div>
+      <div><span class="dash">—</span> Maîtriser correction, contouring et mise en lumière</div>
+      <div><span class="dash">—</span> Structurer et mettre en valeur les sourcils</div>
+      <div><span class="dash">—</span> Réaliser un regard Soft Glam adapté à chaque œil</div>
+      <div><span class="dash">—</span> Maîtriser la pose et l'intensification des faux cils</div>
+      <div><span class="dash">—</span> Réaliser une bouche définie et harmonieuse</div>
+    </div>
+    <p style="font-size:14px; color:var(--ink-soft); margin-top:40px; max-width:600px;"><strong style="color:var(--ink); font-weight:400;">Prérequis :</strong> aucun. La formation est accessible aux débutant(e)s comme aux personnes souhaitant perfectionner leur technique.<br><strong style="color:var(--ink); font-weight:400;">Matériel :</strong> la liste des produits et outils utilisés dans les vidéos t'est envoyée séparément, juste après ta commande.</p>
+  </div>
+</section>
+
+<section class="formatrice">
+  <div class="wrap formatrice-inner">
+    <div class="formatrice-img">
+      <img src="https://cmakeup-beauty.vercel.app/assets/Makeup-artist-Lady.jpeg" alt="Colleen, fondatrice de CMAKEUP BEAUTY Academy">
+    </div>
+    <div class="formatrice-text">
+      <div class="section-label">TA FORMATRICE</div>
+      <div class="role">COLLEEN — FONDATRICE DE CMAKEUP BEAUTY ACADEMY</div>
+      <h2>10 ans d'expérience, une méthode pensée pour toi</h2>
+      <p>Je suis Colleen, fondatrice de CMAKEUP BEAUTY ACADEMY. Depuis plus de 10 ans, mon regard s'est aiguisé au contact de centaines de clientes et de nombreuses élèves — celles qui voulaient simplement mieux se maquiller, et celles qui en ont fait leur métier.</p>
+      <p>Cette formation en ligne, c'est cette même exigence, rendue accessible : une méthode moderne, sans détour, pensée pour que tu progresses vite et durablement.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-label">TÉMOIGNAGES</div>
+    <h2 style="font-size:clamp(28px,3.4vw,42px); margin-bottom:50px;">Elles se sont formées avec Colleen</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>Cette formation m'a permis de reprendre confiance en moi et en mon travail. Les explications sont claires, complètes et faciles à suivre. Merci Colleen !</p>
+        <div class="by">AÏCHA</div>
+      </div>
+      <div class="testimonial-card">
+        <p>Une formation très complète qui m'a permis de progresser rapidement. J'ai appris des techniques que je peux appliquer directement sur mes clientes.</p>
+        <div class="by">FATOU</div>
+      </div>
+      <div class="testimonial-card">
+        <p>Je suis tellement heureuse de m'être lancée ! Tout est expliqué étape par étape et je me sens beaucoup plus à l'aise dans mes maquillages.</p>
+        <div class="by">MÉLANIE</div>
+      </div>
+      <div class="testimonial-card">
+        <p>Le suivi est incroyable. On ne se sent jamais seule et les conseils de Colleen sont précieux. Je recommande à 100%.</p>
+        <div class="by">ANNE-SOPHIE</div>
+      </div>
+      <div class="testimonial-card">
+        <p>Enfin une formation qui explique vraiment les peaux mélaninées tout en restant adaptée à toutes les carnations. Une vraie pépite !</p>
+        <div class="by">KENZA</div>
+      </div>
+      <div class="testimonial-card">
+        <p>Grâce à cette formation, j'ai gagné en confiance et j'ai fait évoluer la qualité de mes prestations. Merci pour ton partage et ta bienveillance !</p>
+        <div class="by">SARAH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="packs" id="packs">
+  <div class="wrap">
+    <div class="section-label">INSCRIPTION</div>
+    <h2 style="font-size:clamp(28px,3.4vw,42px); max-width:700px;">Choisis ton pack et commence dès aujourd'hui</h2>
+    <p style="font-size:15px; color:var(--ink-soft); margin-top:16px; max-width:600px;">Visionnage illimité, accès immédiat après inscription, sur ordinateur, tablette et mobile. Deux formules pour avancer à ton niveau d'exigence.</p>
+    <div class="packs-grid">
+      <div class="pack-card">
+        <h3>Pack Essentiel</h3>
+        <div class="price">400€ <span>HT</span></div>
+        <div class="sub">ACCÈS 3 MOIS</div>
+        <p style="font-size:13px; color:var(--ink-soft); font-style:italic; margin-bottom:24px;">Pour apprendre en autonomie, à ton rythme.</p>
+        <ul>
+          <li>Formation complète 100% en ligne</li>
+          <li>Accès à la formation pendant 3 mois</li>
+          <li>Groupe WhatsApp privé pendant la durée de la formation</li>
+          <li>Participation aux webinaires</li>
+          <li>Certificat de fin de formation</li>
+        </ul>
+        <a class="btn btn-outline" style="background:transparent; color:var(--ink);" href="https://academy.cmakeupbeauty.fr/commander-soft-glam-premium">Je choisis ce pack</a>
+      </div>
+      <div class="pack-card featured">
+        <div class="badge-rec">Recommandé</div>
+        <h3>Pack Premium</h3>
+        <div class="price">700€ <span>HT</span></div>
+        <div class="sub">ACCÈS À VIE — LE PLUS COMPLET</div>
+        <p style="font-size:13px; color:var(--ink-soft); font-style:italic; margin-bottom:24px;">Pour un accompagnement complet et un retour personnalisé sur tes maquillages.</p>
+        <ul>
+          <li>Tout le contenu du Pack Essentiel</li>
+        </ul>
+        <div class="plus">Plus :</div>
+        <ul>
+          <li>Accès à vie à la formation</li>
+          <li>Accompagnement personnalisé pendant 3 mois</li>
+          <li>Corrections détaillées de vos maquillages pendant 3 mois</li>
+          <li>2 coachings individuels de 1h en visioconférence</li>
+          <li>Suivi prioritaire via WhatsApp pendant 3 mois</li>
+          <li>Module Photo, Vidéo &amp; Retouche</li>
+          <li>E-book Business</li>
+          <li>Certificat de fin de formation</li>
+        </ul>
+        <a class="btn" href="https://academy.cmakeupbeauty.fr/commander-soft-glam-premium">Je choisis ce pack</a>
+      </div>
+    </div>
+    <div class="tag-row" style="margin-top:40px;">
+      <span>Accès immédiat après inscription</span><span>Paiement sécurisé</span><span>Sans abonnement, paiement unique</span>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-label">FOIRE AUX QUESTIONS</div>
+    <h2 style="font-size:clamp(28px,3.4vw,42px); margin-bottom:50px;">Avant de t'inscrire</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>La formation est-elle accessible aux débutants ?</summary>
+        <p>Oui. La formation est conçue pour être accessible aussi bien aux débutants qu'aux Makeup Artists souhaitant perfectionner leurs techniques. Les notions sont expliquées étape par étape afin de progresser à son rythme.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Combien de temps ai-je accès à la formation ?</summary>
+        <p>Cela dépend du pack choisi. Pack Essentiel : 3 mois d'accès à l'intégralité de la formation. Pack Premium : accès à vie, avec la possibilité de revoir les modules à tout moment.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Un certificat est-il délivré ?</summary>
+        <p>Oui, un certificat de fin de formation est remis après validation de la formation.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quel matériel est nécessaire ?</summary>
+        <p>La liste des produits et outils utilisés dans les vidéos t'est envoyée par email juste après ta commande — indépendamment du Livret Makeup Artist, qui reste ton support théorique.</p>
+      </details>
+      <details class="faq-item">
+        <summary>La formation est-elle uniquement adaptée aux peaux noires ?</summary>
+        <p>Non. La formation est pensée pour comprendre les techniques de maquillage et les adapter aux différentes carnations et types de peau.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Y a-t-il un accompagnement ?</summary>
+        <p>Oui, selon le pack choisi. Le Pack Essentiel permet de suivre la formation en autonomie. Le Pack Premium comprend un accompagnement personnalisé, des corrections détaillées, un coaching individuel en visioconférence ainsi qu'un suivi prioritaire via WhatsApp.</p>
+      </details>
+      <details class="faq-item">
+        <summary>La formation comprend-elle un module sur les réseaux sociaux ?</summary>
+        <p>Oui. Le Pack Premium comprend un module dédié à la photo, à la vidéo et à la retouche afin de mieux mettre en valeur ton travail sur les réseaux sociaux.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quelle est la différence entre le Pack Essentiel et le Pack Premium ?</summary>
+        <p>Le Pack Premium à 700€ comprend tout le contenu du Pack Essentiel, avec en plus l'accès à vie, un accompagnement personnalisé, des corrections de maquillages, un coaching individuel, le suivi prioritaire via WhatsApp, le module Photo, Vidéo &amp; Retouche ainsi que l'e-book Business.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="section-label" style="color:rgba(255,255,255,0.5); text-align:center;">DERNIÈRE ÉTAPE</div>
+    <h2>Ton prochain coup de pinceau, c'est aujourd'hui</h2>
+    <p>Rejoins la formation Makeup Artist — Soft Glam et transforme ta pratique du maquillage, à ton rythme, avec l'accompagnement de Colleen.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#packs">Je choisis mon pack</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-about">CMAKEUP BEAUTY ACADEMY est une académie de formation spécialisée dans le maquillage Soft Glam et experte en peaux noires à métissées. Cette formation 100% en ligne permet d'apprendre les techniques de maquillage de manière progressive, à son rythme, grâce à des vidéos détaillées, des démonstrations, des supports pédagogiques et un accompagnement.</div>
+    <div class="footer-top">
+      <div class="logo">CMAKEUP<span>BEAUTY ACADEMY</span></div>
+      <div>
+        <div class="footer-note">Persan, France (95) — 07 54 03 32 66</div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/c_makeup_">Instagram</a>
+          <a href="https://www.tiktok.com/@cmakeupbeauty">TikTok</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY ACADEMY — Exemple de direction artistique, à valider avant développement.</div>
+  </div>
+</footer>
+
+</body>
+</html>

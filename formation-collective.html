@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Formation Débutantes/Intermédiaires 4 Jours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --off:#F4F4F2;
+    --paper:#D6D1C5;
+    --line:#D6D1C5;
+    --ink:#1A1A1A;
+    --ink-soft:#75736D;
+    --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'TT Interphase','Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
+  nav a:hover::after{width:100%;}
+  nav a.current::after{width:100%;}
+  .btn{
+    border:1px solid var(--ink); padding:12px 26px; font-size:12px; letter-spacing:0.08em;
+    background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;
+  }
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .back-link{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft);}
+  .back-link:hover{color:var(--ink);}
+
+  .page-hero{
+    padding:100px 0 70px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .page-hero .eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:18px;}
+  .page-hero h1{font-size:clamp(34px,4.6vw,54px); line-height:1.1;}
+  .page-hero p{max-width:560px; margin:24px auto 0; font-size:16px; line-height:1.8; color:var(--ink-soft);}
+  .page-hero .price-tag{margin-top:28px; font-size:14px; letter-spacing:0.06em; color:var(--ink);}
+
+  section{padding:90px 0; border-bottom:1px solid var(--line);}
+  .section-eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:16px; text-align:center;}
+  .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
+  .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
+
+  /* MODULES */
+  .modules-list{max-width:640px; margin:0 auto; list-style:none;}
+  .modules-list li{
+    display:flex; gap:16px; align-items:flex-start;
+    padding:18px 0; border-bottom:1px solid var(--line); font-size:16px; color:var(--ink);
+  }
+  .modules-list li:last-child{border-bottom:none;}
+  .modules-list .check{color:var(--ink-soft); font-size:16px; margin-top:2px;}
+
+  /* SESSIONS */
+  .provisional-badge{
+    display:block; text-align:center; font-size:12px; letter-spacing:0.06em;
+    color:#A8621F; background:#F7EDE3; border:1px solid #E7D3BC;
+    max-width:640px; margin:0 auto 40px; padding:14px 20px;
+  }
+  .sessions-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
+    max-width:920px; margin:0 auto;
+    border:1px solid var(--line);
+  }
+  .session-card{background:var(--white); padding:38px 30px; text-align:center;}
+  .session-card .s-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); margin-bottom:14px; text-transform:uppercase;}
+  .session-card .s-dates{font-size:20px; font-family:'The Silver Editorial','Cormorant Garamond',serif; margin-bottom:10px;}
+  .session-card .s-status{font-size:12px; color:var(--ink-soft);}
+
+  /* INFOS */
+  .infos-wrap{background:var(--ink); color:var(--white);}
+  .infos-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px 60px;
+    max-width:720px; margin:0 auto;
+    background:#242422; padding:44px 50px;
+  }
+  .infos-grid div{font-size:14px; letter-spacing:0.02em; line-height:1.8; color:#D8D6D0;}
+
+  /* FORM */
+  .form-note{max-width:560px; margin:0 auto 50px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+  form.inscription-form{max-width:640px; margin:0 auto;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase;}
+  .field input, .field select, .field textarea{
+    border:none; border-bottom:1px solid var(--line);
+    padding:12px 4px; font-family:'TT Interphase','Jost',sans-serif; font-size:15px; color:var(--ink);
+    background:transparent;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-bottom-color:var(--ink);}
+  .field textarea{resize:vertical; min-height:90px;}
+  .form-submit{width:100%; text-align:center; margin-top:16px; padding:16px; font-size:13px; letter-spacing:0.1em; border:none;}
+  .form-disclaimer{font-size:11px; color:var(--gray); text-align:center; margin-top:18px; line-height:1.6;}
+
+  footer{padding:40px 0; background:var(--white); border-bottom:none;}
+  .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
+
+  @media(max-width:900px){
+    nav{display:none;}
+    .wrap{padding:0 24px;}
+    section{padding:60px 0;}
+    .sessions-grid{grid-template-columns:1fr;}
+    .infos-grid{grid-template-columns:1fr; padding:34px 28px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="prestations.html">Prestations</a>
+    <a href="equipe.html">Équipe</a>
+    <a href="formations.html" class="current">Formations</a>
+    <a href="coaching-business-mua.html">Coaching</a>
+    <a href="ebook.html">Ebook</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="back-link" href="formations.html">← Retour aux formations</a>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">FORMATION COLLECTIVE — 4 JOURS</div>
+    <h1>Formation Débutantes<br>/ Intermédiaires</h1>
+    <p>Modules Soft Glam & Full Glam. Une formation en groupe, en présentiel, pour apprendre les techniques professionnelles pas à pas et repartir avec une vraie base solide.</p>
+    <div class="price-tag">Tarif : 800 € — Acompte de 100€ pour réserver sa place</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow">AU PROGRAMME</div>
+    <h2 class="section-title">Ce qui est inclus</h2>
+    <ul class="modules-list">
+      <li><span class="check">✓</span> Module Soft Glam — techniques, produits, application</li>
+      <li><span class="check">✓</span> Module Full Glam — sublimer et intensifier le regard</li>
+      <li><span class="check">✓</span> Adaptation à chaque type et carnation de peau</li>
+      <li><span class="check">✓</span> Formation collective à Saint-Denis (93)</li>
+      <li><span class="check">✓</span> Certificat de participation en fin de formation</li>
+      <li><span class="check">✓</span> E-book professionnel "Vivre du Maquillage" offert</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow">SESSIONS</div>
+    <h2 class="section-title">Prochaines dates</h2>
+    <div class="provisional-badge">⚠️ Dates provisoires, à confirmer prochainement — inscris-toi en liste d'attente pour être prévenue dès la validation.</div>
+    <div class="sessions-grid">
+      <div class="session-card">
+        <div class="s-label">Session 1</div>
+        <div class="s-dates">12 → 15 janvier</div>
+        <div class="s-status">Dates à valider</div>
+      </div>
+      <div class="session-card">
+        <div class="s-label">Session 2</div>
+        <div class="s-dates">9 → 12 mars</div>
+        <div class="s-status">Dates à valider</div>
+      </div>
+      <div class="session-card">
+        <div class="s-label">Session 3</div>
+        <div class="s-dates">Été (juin/juillet)</div>
+        <div class="s-status">Dates à valider</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="infos-wrap">
+  <div class="wrap">
+    <div class="section-eyebrow" style="color:var(--gray);">INFORMATIONS</div>
+    <h2 class="section-title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
+    <div class="infos-grid">
+      <div>— Formation collective – Saint-Denis (93)</div>
+      <div>— Non éligible CPF</div>
+      <div>— Acompte : 100 €</div>
+      <div>— Modèles non inclus</div>
+      <div>— Paiement jusqu'à 4x</div>
+      <div>— Option matériel : +100 €</div>
+      <div>— Certificat de participation</div>
+      <div>— Places limitées par session</div>
+    </div>
+  </div>
+</section>
+
+<section id="formulaire">
+  <div class="wrap">
+    <div class="section-eyebrow">INSCRIPTIONS</div>
+    <h2 class="section-title">Réserver ma place</h2>
+    <p class="form-note">Les dates n'étant pas encore confirmées, indique ta ou tes sessions préférées : nous te recontacterons dès leur validation pour finaliser ton inscription.</p>
+
+    <form class="inscription-form">
+      <div class="form-row">
+        <div class="field">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" required>
+        </div>
+        <div class="field">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="session">Session(s) qui t'intéresse(nt)</label>
+          <select id="session" name="session" required>
+            <option value="">Sélectionnez</option>
+            <option value="session1">Session 1 — 12 au 15 janvier (à valider)</option>
+            <option value="session2">Session 2 — 9 au 12 mars (à valider)</option>
+            <option value="session3">Session 3 — Été, juin/juillet (à valider)</option>
+            <option value="indifferent">Peu importe, je suis flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="niveau">Votre niveau actuel</label>
+          <select id="niveau" name="niveau">
+            <option value="">Sélectionnez</option>
+            <option value="debutante">Débutante</option>
+            <option value="intermediaire">Intermédiaire</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="materiel">Option matériel (+100€)</label>
+          <select id="materiel" name="materiel">
+            <option value="non">Non, j'ai mon matériel</option>
+            <option value="oui">Oui, je souhaite l'option</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="message">Votre motivation / message</label>
+          <textarea id="message" name="message" placeholder="Parlez-nous un peu de vous et de ce qui vous amène à cette formation..."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn form-submit">Envoyer ma demande d'inscription</button>
+      <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place, une fois les dates confirmées.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
+      <div class="footer-note">Persan, France (95) — 07 54 03 32 66</div>
+    </div>
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Exemple de direction artistique, à valider avant développement.</div>
+  </div>
+</footer>
+
+</body>
+</html>

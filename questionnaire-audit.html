@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Questionnaire préparatoire Pack Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --off:#F4F4F2;
+    --paper:#D6D1C5;
+    --line:#D6D1C5;
+    --ink:#1A1A1A;
+    --ink-soft:#75736D;
+    --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'TT Interphase','Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:840px; margin:0 auto; padding:0 40px;}
+
+  /* HEADER */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-size:22px;
+    letter-spacing:0.14em;
+  }
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
+  nav a:hover::after, nav a.active::after{width:100%;}
+  .btn{
+    border:1px solid var(--ink);
+    padding:12px 26px;
+    font-size:12px;
+    letter-spacing:0.08em;
+    background:var(--ink);
+    color:var(--white);
+    transition:background .25s ease,color .25s ease;
+    display:inline-block;
+    cursor:pointer;
+    font-family:'TT Interphase','Jost',sans-serif;
+  }
+  .btn:hover{background:var(--white); color:var(--ink);}
+
+  /* INTRO */
+  .intro{padding:80px 0 20px;}
+  .back-link{font-size:12px; letter-spacing:0.06em; color:var(--gray); border-bottom:1px solid var(--gray); padding-bottom:2px; display:inline-block; margin-bottom:34px;}
+  .section-label{font-size:12px; letter-spacing:0.2em; color:var(--gray); margin-bottom:18px;}
+  .intro h1{font-size:clamp(30px,4vw,44px); line-height:1.15; margin-bottom:22px; max-width:640px;}
+  .intro p{font-size:16px; line-height:1.8; color:var(--ink-soft); max-width:600px;}
+
+  /* FORM */
+  form{padding:50px 0 120px;}
+  fieldset{border:none; margin-bottom:60px;}
+  legend{
+    font-size:12px; letter-spacing:0.2em; color:var(--ink); text-transform:uppercase;
+    padding-bottom:16px; margin-bottom:34px; border-bottom:1px solid var(--line); width:100%;
+  }
+  .field{margin-bottom:32px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  label.field-label{display:block; font-size:14px; color:var(--ink); margin-bottom:10px; line-height:1.5;}
+  label.field-label .req{color:var(--gray);}
+  .hint{font-size:12px; color:var(--gray); margin-top:8px;}
+  input[type=text], input[type=email], input[type=tel], input[type=number], textarea{
+    width:100%; border:none; border-bottom:1px solid var(--line); background:transparent;
+    padding:10px 2px; font-family:'TT Interphase','Jost',sans-serif; font-size:15px; color:var(--ink);
+  }
+  input:focus, textarea:focus{outline:none; border-bottom-color:var(--ink);}
+  textarea{resize:vertical; min-height:90px; line-height:1.7; padding:10px 2px;}
+  .radio-group{display:flex; flex-wrap:wrap; gap:14px 28px; margin-top:4px;}
+  .radio-group label{display:flex; align-items:center; gap:9px; font-size:14px; color:var(--ink-soft); cursor:pointer;}
+  .radio-group input[type=radio]{accent-color:var(--ink); width:16px; height:16px; margin:0;}
+
+  .submit-row{margin-top:20px; padding-top:40px; border-top:1px solid var(--line);}
+  .submit-row p{font-size:13px; color:var(--gray); margin-bottom:24px; max-width:520px; line-height:1.7;}
+
+  /* FOOTER */
+  footer{padding:60px 0 30px; border-top:1px solid var(--line);}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em; text-align:center;}
+
+  @media(max-width:700px){
+    header{padding:20px;}
+    nav{display:none;}
+    .wrap{padding:0 22px;}
+    .field-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY ACADEMY</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="formation-en-ligne.html">Formations</a>
+    <a href="coaching-business-mua.html" class="active">Coaching</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="wrap intro">
+  <a class="back-link" href="coaching-business-mua.html">← Retour au Coaching Business MUA</a>
+  <div class="section-label">PACK AUDIT — QUESTIONNAIRE PRÉPARATOIRE</div>
+  <h1>Prépare ton coaching</h1>
+  <p>Merci pour ta confiance ! Ce questionnaire permet à Colleen de préparer ton analyse avant votre séance de 1h30. Prends le temps d'y répondre avec précision — plus tes réponses sont complètes, plus votre échange sera efficace.</p>
+</div>
+
+<!-- Formulaire à connecter à l'outil d'envoi / CRM utilisé (ex : email automatique, Notion, Airtable...). Champs requis marqués d'un astérisque. -->
+<form class="wrap" action="#" method="post">
+
+  <fieldset>
+    <legend>Tes informations</legend>
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="nom">Nom &amp; prénom <span class="req">*</span></label>
+        <input type="text" id="nom" name="nom_prenom" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="tel">Téléphone</label>
+        <input type="tel" id="tel" name="telephone">
+      </div>
+      <div class="field">
+        <label class="field-label" for="ville">Ville / zone d'intervention</label>
+        <input type="text" id="ville" name="ville">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ton activité</legend>
+    <div class="field">
+      <label class="field-label">Depuis combien de temps exerces-tu en tant que Makeup Artist ?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="anciennete" value="Pas encore lancée">Pas encore lancée</label>
+        <label><input type="radio" name="anciennete" value="Moins d'1 an">Moins d'1 an</label>
+        <label><input type="radio" name="anciennete" value="1 à 3 ans">1 à 3 ans</label>
+        <label><input type="radio" name="anciennete" value="Plus de 3 ans">Plus de 3 ans</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label">Quel est ton statut actuel ?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="statut" value="Pas encore de statut">Pas encore de statut</label>
+        <label><input type="radio" name="statut" value="Auto-entrepreneur">Auto-entrepreneur</label>
+        <label><input type="radio" name="statut" value="Société">Société</label>
+        <label><input type="radio" name="statut" value="Autre">Autre</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="prestations">Quelles prestations proposes-tu aujourd'hui ?</label>
+      <textarea id="prestations" name="prestations" placeholder="Mariage, événementiel, cours particuliers, formation..."></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tes tarifs</legend>
+    <div class="field">
+      <label class="field-label" for="tarifs">Quels sont tes tarifs actuels, prestation par prestation ?</label>
+      <textarea id="tarifs" name="tarifs" style="min-height:120px;"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Instagram</legend>
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="insta-nom">Nom du compte</label>
+        <input type="text" id="insta-nom" name="instagram_nom">
+      </div>
+      <div class="field">
+        <label class="field-label" for="insta-abo">Nombre d'abonnés (environ)</label>
+        <input type="text" id="insta-abo" name="instagram_abonnes">
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="insta-usage">Comment utilises-tu Instagram aujourd'hui ?</label>
+      <textarea id="insta-usage" name="instagram_usage" placeholder="Fréquence de publication, type de contenu..."></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tes objectifs</legend>
+    <div class="field">
+      <label class="field-label" for="objectifs">Qu'aimerais-tu atteindre grâce à ce coaching, dans les 3 à 6 prochains mois ?</label>
+      <textarea id="objectifs" name="objectifs" style="min-height:120px;"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tes difficultés</legend>
+    <div class="field">
+      <label class="field-label" for="difficultes">Quel est le principal frein dans ton activité aujourd'hui ?</label>
+      <textarea id="difficultes" name="difficultes" style="min-height:120px;"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tes disponibilités</legend>
+    <div class="field">
+      <label class="field-label" for="dispo">Quels jours et créneaux te conviennent pour la visioconférence de 1h30 ?</label>
+      <textarea id="dispo" name="disponibilites"></textarea>
+    </div>
+  </fieldset>
+
+  <div class="submit-row">
+    <p>Une fois envoyé, Colleen prépare ton analyse à partir de tes réponses avant votre séance. Tu recevras un lien de calendrier pour choisir ton créneau.</p>
+    <button type="submit" class="btn">Envoyer mon questionnaire</button>
+  </div>
+</form>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY ACADEMY — Exemple de direction artistique, à valider avant développement.</div>
+  </div>
+</footer>
+
+</body>
+</html>

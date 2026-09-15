@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Questionnaire complet Pack Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --off:#F4F4F2;
+    --paper:#D6D1C5;
+    --line:#D6D1C5;
+    --ink:#1A1A1A;
+    --ink-soft:#75736D;
+    --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'TT Interphase','Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:840px; margin:0 auto; padding:0 40px;}
+
+  /* HEADER */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-size:22px;
+    letter-spacing:0.14em;
+  }
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
+  nav a:hover::after, nav a.active::after{width:100%;}
+  .btn{
+    border:1px solid var(--ink);
+    padding:12px 26px;
+    font-size:12px;
+    letter-spacing:0.08em;
+    background:var(--ink);
+    color:var(--white);
+    transition:background .25s ease,color .25s ease;
+    display:inline-block;
+    cursor:pointer;
+    font-family:'TT Interphase','Jost',sans-serif;
+  }
+  .btn:hover{background:var(--white); color:var(--ink);}
+
+  /* INTRO */
+  .intro{padding:80px 0 20px;}
+  .back-link{font-size:12px; letter-spacing:0.06em; color:var(--gray); border-bottom:1px solid var(--gray); padding-bottom:2px; display:inline-block; margin-bottom:34px;}
+  .section-label{font-size:12px; letter-spacing:0.2em; color:var(--gray); margin-bottom:18px;}
+  .intro h1{font-size:clamp(30px,4vw,44px); line-height:1.15; margin-bottom:22px; max-width:640px;}
+  .intro p{font-size:16px; line-height:1.8; color:var(--ink-soft); max-width:600px;}
+  .confirm-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12px; letter-spacing:0.06em; color:var(--ink-soft);
+    border:1px solid var(--line); padding:10px 18px; margin-top:24px;
+  }
+  .confirm-badge strong{color:var(--ink); font-weight:400;}
+
+  /* FORM */
+  form{padding:50px 0 120px;}
+  fieldset{border:none; margin-bottom:60px;}
+  legend{
+    font-size:12px; letter-spacing:0.2em; color:var(--ink); text-transform:uppercase;
+    padding-bottom:16px; margin-bottom:34px; border-bottom:1px solid var(--line); width:100%;
+  }
+  .field{margin-bottom:32px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  label.field-label{display:block; font-size:14px; color:var(--ink); margin-bottom:10px; line-height:1.5;}
+  label.field-label .req{color:var(--gray);}
+  .hint{font-size:12px; color:var(--gray); margin-top:8px;}
+  input[type=text], input[type=email], input[type=tel], input[type=number], input[type=date], textarea{
+    width:100%; border:none; border-bottom:1px solid var(--line); background:transparent;
+    padding:10px 2px; font-family:'TT Interphase','Jost',sans-serif; font-size:15px; color:var(--ink);
+  }
+  input:focus, textarea:focus{outline:none; border-bottom-color:var(--ink);}
+  textarea{resize:vertical; min-height:90px; line-height:1.7; padding:10px 2px;}
+  .radio-group{display:flex; flex-wrap:wrap; gap:14px 28px; margin-top:4px;}
+  .radio-group label{display:flex; align-items:center; gap:9px; font-size:14px; color:var(--ink-soft); cursor:pointer;}
+  .radio-group input[type=radio], .radio-group input[type=checkbox]{accent-color:var(--ink); width:16px; height:16px; margin:0;}
+
+  .submit-row{margin-top:20px; padding-top:40px; border-top:1px solid var(--line);}
+  .submit-row p{font-size:13px; color:var(--gray); margin-bottom:24px; max-width:520px; line-height:1.7;}
+
+  /* FOOTER */
+  footer{padding:60px 0 30px; border-top:1px solid var(--line);}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em; text-align:center;}
+
+  @media(max-width:700px){
+    header{padding:20px;}
+    nav{display:none;}
+    .wrap{padding:0 22px;}
+    .field-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY ACADEMY</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="formation-en-ligne.html">Formations</a>
+    <a href="coaching-business-mua.html" class="active">Coaching</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="wrap intro">
+  <a class="back-link" href="coaching-business-mua.html">← Retour au Coaching Business MUA</a>
+  <div class="section-label">PACK BUSINESS — QUESTIONNAIRE COMPLET</div>
+  <h1>Préparons le démarrage de ton accompagnement</h1>
+  <p>Ta candidature est validée et ton paiement confirmé — bienvenue dans le Pack Business ! Ce questionnaire permet à Colleen de préparer tes 4 semaines d'accompagnement et de caler le planning de tes séances.</p>
+  <div class="confirm-badge">✓ &nbsp;<strong>Candidature validée</strong> &nbsp;—&nbsp; Paiement confirmé</div>
+</div>
+
+<!-- Formulaire à connecter à l'outil d'envoi / CRM. Cette page est envoyée uniquement après validation de la candidature ET paiement des 500€ (voir formulaire-candidature-business.html). Champs requis marqués d'un astérisque. -->
+<form class="wrap" action="#" method="post">
+
+  <fieldset>
+    <legend>Tes coordonnées</legend>
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="nom">Nom &amp; prénom <span class="req">*</span></label>
+        <input type="text" id="nom" name="nom_prenom" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="whatsapp">Numéro WhatsApp <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" required>
+        <div class="hint">Pour t'ajouter au suivi WhatsApp pendant les 4 semaines.</div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="adresse">Adresse de facturation</label>
+        <input type="text" id="adresse" name="adresse_facturation">
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="siret">N° SIRET (si tu es déjà immatriculée)</label>
+      <input type="text" id="siret" name="siret">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Planning des 4 séances</legend>
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="date-debut">Date de démarrage souhaitée</label>
+        <input type="date" id="date-debut" name="date_debut">
+      </div>
+      <div class="field">
+        <label class="field-label">Jour de la semaine que tu préfères</label>
+        <div class="radio-group">
+          <label><input type="radio" name="jour" value="Lundi">Lun</label>
+          <label><input type="radio" name="jour" value="Mardi">Mar</label>
+          <label><input type="radio" name="jour" value="Mercredi">Mer</label>
+          <label><input type="radio" name="jour" value="Jeudi">Jeu</label>
+          <label><input type="radio" name="jour" value="Vendredi">Ven</label>
+          <label><input type="radio" name="jour" value="Autre">Autre</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label">Créneau horaire préféré</label>
+      <div class="radio-group">
+        <label><input type="radio" name="creneau" value="Matin">Matin</label>
+        <label><input type="radio" name="creneau" value="Après-midi">Après-midi</label>
+        <label><input type="radio" name="creneau" value="Soir">Soir</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Visite sur place <span style="text-transform:none; letter-spacing:0.02em; color:var(--gray);">(uniquement si tu as choisi le Pack + Visite terrain)</span></legend>
+    <div class="field">
+      <label class="field-label" for="adresse-visite">Adresse où Colleen doit se rendre pour la visite</label>
+      <input type="text" id="adresse-visite" name="adresse_visite" placeholder="Adresse complète, Île-de-France uniquement">
+    </div>
+    <div class="field">
+      <label class="field-label" for="visite-contexte">Que veux-tu que Colleen observe pendant sa visite ? (une prestation en cours, ton espace de travail, ton organisation...)</label>
+      <textarea id="visite-contexte" name="visite_contexte"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ta situation actuelle, en détail</legend>
+    <div class="field">
+      <label class="field-label" for="prestations">Liste complète de tes prestations et tarifs actuels</label>
+      <textarea id="prestations" name="prestations_tarifs" style="min-height:120px;"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="clientes-mois">Nombre de clientes en moyenne par mois</label>
+        <input type="text" id="clientes-mois" name="clientes_par_mois">
+      </div>
+      <div class="field">
+        <label class="field-label" for="ca-mensuel">Chiffre d'affaires mensuel moyen (facultatif)</label>
+        <input type="text" id="ca-mensuel" name="ca_mensuel">
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="canaux">Par quels canaux trouves-tu principalement tes clientes aujourd'hui ?</label>
+      <textarea id="canaux" name="canaux_acquisition" placeholder="Bouche-à-oreille, Instagram, site web, plateformes de réservation..."></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label" for="outils">Quels outils utilises-tu déjà ? (site web, Calendly, logiciel de facturation, Canva...)</label>
+      <textarea id="outils" name="outils_actuels"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tes priorités pour les 4 semaines</legend>
+    <div class="field">
+      <label class="field-label">Sur quels sujets veux-tu avancer en priorité ? (plusieurs choix possibles)</label>
+      <div class="radio-group">
+        <label><input type="checkbox" name="priorites" value="Positionnement & tarifs">Positionnement &amp; tarifs</label>
+        <label><input type="checkbox" name="priorites" value="Stratégie Instagram & contenu">Stratégie Instagram &amp; contenu</label>
+        <label><input type="checkbox" name="priorites" value="Organisation & gestion du temps">Organisation &amp; gestion du temps</label>
+        <label><input type="checkbox" name="priorites" value="Développement de la clientèle">Développement de la clientèle</label>
+        <label><input type="checkbox" name="priorites" value="Autre">Autre</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="attentes">Y a-t-il un point précis que tu veux absolument aborder pendant l'accompagnement ?</label>
+      <textarea id="attentes" name="attentes_precises" style="min-height:120px;"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Un dernier mot</legend>
+    <div class="field">
+      <label class="field-label" for="complement">Tout ce que tu souhaites partager avec Colleen avant de démarrer (facultatif).</label>
+      <textarea id="complement" name="complement"></textarea>
+    </div>
+  </fieldset>
+
+  <div class="submit-row">
+    <p>Dès réception, Colleen planifie tes 4 séances selon tes disponibilités et te confirme les créneaux par email et WhatsApp.</p>
+    <button type="submit" class="btn">Envoyer mes informations</button>
+  </div>
+</form>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY ACADEMY — Exemple de direction artistique, à valider avant développement.</div>
+  </div>
+</footer>
+
+</body>
+</html>

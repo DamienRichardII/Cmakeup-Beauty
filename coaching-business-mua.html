@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Coaching Business MUA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --off:#F4F4F2;
+    --paper:#D6D1C5;
+    --line:#D6D1C5;
+    --ink:#1A1A1A;
+    --ink-soft:#75736D;
+    --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'TT Interphase','Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  /* HEADER */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-size:22px;
+    letter-spacing:0.14em;
+  }
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
+  nav a:hover::after, nav a.active::after{width:100%;}
+  .btn{
+    border:1px solid var(--ink);
+    padding:12px 26px;
+    font-size:12px;
+    letter-spacing:0.08em;
+    background:var(--ink);
+    color:var(--white);
+    transition:background .25s ease,color .25s ease;
+    display:inline-block;
+  }
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .btn-outline{
+    border:1px solid var(--ink);
+    color:var(--ink);
+    background:transparent;
+  }
+  .btn-outline:hover{background:var(--ink); color:var(--white);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:560px;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    padding:0;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%; object-fit:cover;
+    object-position:50% 20%;
+    filter:grayscale(12%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.62) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding:0 40px 64px;
+    max-width:1200px;
+    margin:0 auto;
+    width:100%;
+    color:var(--white);
+  }
+  .hero-eyebrow{font-size:12px; letter-spacing:0.22em; color:rgba(255,255,255,0.8); margin-bottom:18px;}
+  .hero h1{
+    font-size:clamp(34px,5.4vw,60px);
+    line-height:1.08;
+    font-weight:400;
+    max-width:780px;
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:16px;
+    max-width:480px;
+    line-height:1.7;
+    color:rgba(255,255,255,0.85);
+  }
+  .hero-actions{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-white{
+    border:1px solid var(--white);
+    background:var(--white);
+    color:var(--ink);
+    padding:14px 30px;
+    font-size:12px;
+    letter-spacing:0.08em;
+  }
+  .btn-white:hover{background:transparent; color:var(--white);}
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,0.7);
+    color:var(--white);
+    padding:14px 30px;
+    font-size:12px;
+    letter-spacing:0.08em;
+  }
+  .btn-ghost:hover{background:var(--white); color:var(--ink);}
+
+  /* STATS STRIP */
+  .stats{
+    border-bottom:1px solid var(--line);
+    background:var(--off);
+  }
+  .stats-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    max-width:1200px; margin:0 auto;
+  }
+  .stat{
+    padding:38px 30px;
+    text-align:center;
+    border-left:1px solid var(--line);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:30px;}
+  .stat .label{font-size:11px; letter-spacing:0.1em; color:var(--gray); margin-top:6px;}
+
+  /* SECTION GENERIC */
+  section{padding:120px 0;}
+  .section-label{
+    font-size:12px; letter-spacing:0.2em; color:var(--gray); margin-bottom:18px;
+  }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:60px; flex-wrap:wrap; gap:24px;
+  }
+  .section-head h2{font-size:clamp(28px,3.4vw,42px);}
+
+  /* PRESENTATION */
+  .about-text{max-width:760px;}
+  .about-text h2{font-size:clamp(28px,3.2vw,42px); line-height:1.15; margin-bottom:26px;}
+  .about-text p{font-size:16px; line-height:1.8; color:var(--ink-soft); max-width:600px; margin-bottom:20px;}
+  .check-list{margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:14px 32px;}
+  .check-list div{display:flex; gap:12px; font-size:14px; color:var(--ink-soft); line-height:1.6;}
+  .check-list .dash{color:var(--ink); flex-shrink:0;}
+  .subhead{font-size:18px; margin:34px 0 10px;}
+
+  /* PACKS */
+  .packs{background:var(--off); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .packs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:60px;}
+  .pack-card{border:1px solid var(--line); padding:40px 30px; background:var(--white); position:relative;}
+  .pack-card.featured{border-color:var(--ink);}
+  .badge-rec{position:absolute; top:-14px; left:30px; background:var(--ink); color:var(--white); font-size:10px; letter-spacing:0.08em; padding:6px 14px; white-space:nowrap;}
+  .pack-card h3{font-size:22px; margin-bottom:8px;}
+  .pack-card .price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:38px; margin-bottom:4px;}
+  .pack-card .sub{font-size:11px; letter-spacing:0.06em; color:var(--gray); margin-bottom:8px;}
+  .pack-card .fit{font-size:13px; color:var(--ink-soft); font-style:italic; margin-bottom:24px;}
+  .pack-card ul{list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:28px;}
+  .pack-card li{font-size:14px; color:var(--ink-soft); padding-left:18px; position:relative;}
+  .pack-card li::before{content:"—"; position:absolute; left:0; color:var(--ink);}
+  .pack-card .btn{width:100%; text-align:center; display:block;}
+
+  /* COMPARATIF */
+  .compare-table{width:100%; border-collapse:collapse; margin-top:20px;}
+  .compare-table th, .compare-table td{padding:18px 20px; text-align:left; border-bottom:1px solid var(--line); font-size:14px;}
+  .compare-table th{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--ink);}
+  .compare-table td{color:var(--ink-soft);}
+  .compare-table td:first-child, .compare-table th:first-child{color:var(--ink); font-size:13px; letter-spacing:0.04em;}
+
+  /* PARCOURS */
+  .parcours-block{margin-bottom:70px;}
+  .parcours-block:last-child{margin-bottom:0;}
+  .parcours-title{font-size:22px; margin-bottom:30px;}
+  .step-list{border-top:1px solid var(--line);}
+  .step{display:grid; grid-template-columns:70px 1fr; gap:24px; padding:26px 0; border-bottom:1px solid var(--line);}
+  .step .num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:20px; color:var(--gray);}
+  .step h4{font-size:16px; margin-bottom:4px; font-weight:400; font-family:'TT Interphase','Jost',sans-serif; letter-spacing:0.02em;}
+  .step p{font-size:14px; color:var(--ink-soft); line-height:1.6; max-width:560px;}
+
+  /* FAQ */
+  .faq-list{border-top:1px solid var(--line); max-width:780px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding:26px 0;
+    font-size:17px;
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
+
+  /* FINAL CTA */
+  .final-cta{background:var(--ink); color:var(--white); text-align:center;}
+  .final-cta h2{color:var(--white); font-size:clamp(30px,3.6vw,48px); max-width:700px; margin:0 auto 20px;}
+  .final-cta p{color:rgba(255,255,255,0.7); font-size:16px; max-width:520px; margin:0 auto 36px;}
+  .final-cta .hero-actions{justify-content:center;}
+
+  /* FOOTER */
+  footer{padding:60px 0 30px; border-top:1px solid var(--line);}
+  .footer-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; padding-bottom:32px;}
+  .footer-about{font-size:13px; line-height:1.8; color:var(--ink-soft); max-width:640px; padding-bottom:32px; border-bottom:1px solid var(--line); margin-bottom:24px;}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
+  .footer-social{display:flex; gap:18px; margin-top:14px;}
+  .footer-social a{font-size:12px; letter-spacing:0.06em; border-bottom:1px solid var(--gray); padding-bottom:2px;}
+
+  @media(max-width:860px){
+    header{padding:20px;}
+    nav{display:none;}
+    .wrap, section .wrap{padding:0 20px;}
+    .hero-content{padding:0 20px 48px;}
+    .stats-inner{grid-template-columns:1fr 1fr;}
+    .stat{border-left:none; border-top:1px solid var(--line);}
+    .stat:nth-child(-n+2){border-top:none;}
+    .check-list, .packs-grid{grid-template-columns:1fr;}
+    section{padding:70px 0;}
+    .step{grid-template-columns:40px 1fr;}
+    .compare-table{font-size:13px;}
+    .compare-table th, .compare-table td{padding:12px 10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY ACADEMY</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="prestations.html">Prestations</a>
+    <a href="equipe.html">Équipe</a>
+    <a href="formation-en-ligne.html">Formations</a>
+    <a href="coaching-business-mua.html" class="active">Coaching</a>
+    <a href="ebook.html">Ebook</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn" href="#packs">Réserver</a>
+</header>
+
+<section class="hero">
+  <img src="https://cmakeup-beauty.vercel.app/assets/IMG_0759.jpeg" alt="Coaching Business pour Makeup Artist — CMAKEUP BEAUTY">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Coaching individuel — Business MUA</div>
+    <h1>Structure et développe ton activité de Makeup Artist</h1>
+    <p class="hero-sub">Un accompagnement personnalisé avec Colleen pour clarifier ton positionnement, tes tarifs et ta stratégie — au-delà de la technique.</p>
+    <div class="hero-actions">
+      <a class="btn-white" href="#packs">Voir les offres</a>
+      <a class="btn-ghost" href="#parcours">Comprendre le déroulé</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="num">1h30</div>
+      <div class="label">SÉANCE AUDIT</div>
+    </div>
+    <div class="stat">
+      <div class="num">4 sem.</div>
+      <div class="label">ACCOMPAGNEMENT BUSINESS</div>
+    </div>
+    <div class="stat">
+      <div class="num">100%</div>
+      <div class="label">INDIVIDUEL, EN VISIO</div>
+    </div>
+    <div class="stat">
+      <div class="num">✓</div>
+      <div class="label">PLAN D'ACTION REMIS</div>
+    </div>
+  </div>
+</div>
+
+<section class="about">
+  <div class="wrap">
+    <div class="about-text">
+      <div class="section-label">POURQUOI CE COACHING</div>
+      <h2>La technique ne suffit pas pour faire vivre une activité</h2>
+      <p>Beaucoup de Makeup Artists maîtrisent leur geste mais butent sur le positionnement, les tarifs ou la visibilité. Ce coaching individuel s'adresse à celles qui ont déjà une activité ou un projet professionnel concret, et qui veulent y voir clair pour avancer.</p>
+      <p>Trois formats, selon le niveau d'accompagnement dont tu as besoin : un audit ponctuel pour faire le point, un accompagnement sur 4 semaines pour structurer et développer ton activité, ou ce même accompagnement complété d'une visite sur place.</p>
+
+      <div class="subhead">À savoir avant de réserver</div>
+      <div class="check-list" style="grid-template-columns:1fr;">
+        <div><span class="dash">—</span> Ce coaching s'adresse aux Makeup Artists ayant déjà une activité ou un projet professionnel concret</div>
+        <div><span class="dash">—</span> Il ne remplace pas une formation technique de maquillage</div>
+        <div><span class="dash">—</span> Le suivi WhatsApp du Pack Business est limité aux 4 semaines d'accompagnement</div>
+        <div><span class="dash">—</span> La visite sur place est réservée aux Makeup Artists basées en Île-de-France</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="packs" id="packs">
+  <div class="wrap">
+    <div class="section-label">LES OFFRES</div>
+    <h2 style="font-size:clamp(28px,3.4vw,42px); max-width:700px;">Choisis le format adapté à ton besoin</h2>
+    <div class="packs-grid">
+      <div class="pack-card">
+        <h3>Pack Audit</h3>
+        <div class="price">200€</div>
+        <div class="sub">1 SÉANCE DE 1H30</div>
+        <div class="fit">Pour faire le point et repartir avec des actions concrètes.</div>
+        <ul>
+          <li>Analyse de l'activité, des tarifs et du positionnement</li>
+          <li>Analyse Instagram</li>
+          <li>1 coaching individuel de 1h30 en visioconférence</li>
+          <li>Conseils personnalisés</li>
+          <li>Plan d'action sur 30 jours</li>
+          <li>Compte rendu personnalisé</li>
+        </ul>
+        <!-- Ce bouton doit mener au paiement (200€). Le questionnaire-audit.html est la page à envoyer/rediriger juste après le paiement. -->
+        <a class="btn btn-outline" style="background:transparent; color:var(--ink);" href="#">Réserver mon coaching</a>
+      </div>
+      <div class="pack-card featured">
+        <div class="badge-rec">Le plus choisi</div>
+        <h3>Pack Business</h3>
+        <div class="price">500€</div>
+        <div class="sub">4 SEMAINES D'ACCOMPAGNEMENT</div>
+        <div class="fit">Pour structurer et développer ton activité en profondeur.</div>
+        <ul>
+          <li>4 semaines d'accompagnement</li>
+          <li>4 coachings individuels de 1h en visioconférence</li>
+          <li>Travail sur le positionnement et les tarifs</li>
+          <li>Stratégie Instagram &amp; contenu</li>
+          <li>Organisation &amp; développement</li>
+          <li>Suivi WhatsApp pendant les 4 semaines</li>
+          <li>Plan d'action personnalisé</li>
+        </ul>
+        <a class="btn" href="formulaire-candidature-business.html">Candidater au coaching</a>
+      </div>
+      <div class="pack-card">
+        <div class="badge-rec">Île-de-France uniquement</div>
+        <h3>Business + Visite terrain</h3>
+        <div class="price">800€</div>
+        <div class="sub">4 SEMAINES + 1 VISITE SUR PLACE</div>
+        <div class="fit">Pour un accompagnement complet, avec un œil sur place dès le départ.</div>
+        <ul>
+          <li>Tout le contenu du Pack Business</li>
+          <li>1 visite sur ton lieu de travail, en semaine 1</li>
+          <li>Observation d'une prestation ou de ton organisation</li>
+          <li>Conseils concrets donnés directement sur place</li>
+        </ul>
+        <a class="btn btn-outline" style="background:transparent; color:var(--ink);" href="formulaire-candidature-business.html">Candidater au coaching</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="wrap">
+    <div class="section-label">COMPARATIF</div>
+    <h2 style="font-size:clamp(26px,3vw,36px); margin-bottom:10px;">Quelle offre choisir ?</h2>
+    <table class="compare-table">
+      <tr>
+        <th>&nbsp;</th>
+        <th>Audit — 200€</th>
+        <th>Business — 500€</th>
+        <th>Business + Visite — 800€</th>
+      </tr>
+      <tr>
+        <td>Format</td>
+        <td>1 séance de 1h30</td>
+        <td>4 semaines, 4 séances individuelles</td>
+        <td>4 semaines, 4 séances + 1 visite sur place</td>
+      </tr>
+      <tr>
+        <td>Contenu</td>
+        <td>Analyse + recommandations</td>
+        <td>Accompagnement complet</td>
+        <td>Accompagnement complet + diagnostic terrain</td>
+      </tr>
+      <tr>
+        <td>Suivi</td>
+        <td>Plan d'action à 30 jours</td>
+        <td>Suivi WhatsApp + plan d'action</td>
+        <td>Suivi WhatsApp + plan d'action</td>
+      </tr>
+      <tr>
+        <td>Zone</td>
+        <td>À distance, partout</td>
+        <td>À distance, partout</td>
+        <td>Île-de-France uniquement</td>
+      </tr>
+      <tr>
+        <td>Objectif</td>
+        <td>Faire le point</td>
+        <td>Structurer et développer</td>
+        <td>Structurer, développer et être conseillée sur place</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section class="parcours" id="parcours" style="background:var(--off); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-label">DÉROULÉ</div>
+    <h2 style="font-size:clamp(28px,3.4vw,42px); margin-bottom:50px;">Comment se passe le coaching</h2>
+
+    <div class="parcours-block">
+      <div class="parcours-title">Pack Audit</div>
+      <div class="step-list">
+        <div class="step">
+          <div class="num">01</div>
+          <div><h4>Choix de l'offre</h4><p>Tu cliques sur « Réserver mon coaching ».</p></div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div><h4>Paiement</h4><p>Tu règles les 200€ directement sur le site.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div><h4>Questionnaire</h4><p>Après paiement, tu reçois un questionnaire préparatoire : activité, objectifs, tarifs, Instagram, difficultés et disponibilités.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div><h4>Réservation</h4><p>Tu reçois un lien de calendrier pour choisir ton créneau de visioconférence.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">05</div>
+          <div><h4>Préparation</h4><p>Colleen reçoit tes réponses avant le rendez-vous et prépare ton analyse.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">06</div>
+          <div><h4>Coaching</h4><p>Séance individuelle de 1h30 en visioconférence.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">07</div>
+          <div><h4>Après le coaching</h4><p>Tu reçois ton compte rendu et ton plan d'action personnalisé sur 30 jours.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="parcours-block">
+      <div class="parcours-title">Pack Business</div>
+      <div class="step-list">
+        <div class="step">
+          <div class="num">01</div>
+          <div><h4>Candidature</h4><p>Tu cliques sur « Candidater au coaching ».</p></div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div><h4>Questionnaire de candidature</h4><p>Tu renseignes ton Instagram, ton niveau d'activité, tes tarifs, tes objectifs et ta principale problématique.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div><h4>Validation</h4><p>Colleen vérifie que l'accompagnement correspond à ton profil et à tes besoins.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div><h4>Paiement</h4><p>Après validation, tu règles 500€ (Pack Business) ou 800€ (Pack Business + Visite terrain).</p></div>
+        </div>
+        <div class="step">
+          <div class="num">05</div>
+          <div><h4>Questionnaire complet</h4><p>Tu reçois les informations préparatoires nécessaires au démarrage.</p></div>
+        </div>
+        <!-- Page à envoyer par email juste après le paiement de l'étape 04 : questionnaire-complet-business.html -->
+        <div class="step">
+          <div class="num">06</div>
+          <div><h4>Planification</h4><p>Les 4 séances sont planifiées sur les 4 semaines d'accompagnement.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">07</div>
+          <div><h4>Visite sur place <span style="font-size:11px; color:var(--gray); font-family:'TT Interphase','Jost',sans-serif; letter-spacing:0.04em;">(Pack + Visite terrain uniquement)</span></h4><p>En semaine 1, Colleen se déplace sur ton lieu de travail pour observer ton organisation ou une prestation, et te conseiller directement sur place, avant de démarrer les séances de coaching.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">08</div>
+          <div><h4>Accompagnement</h4><p>1 séance d'1h par semaine, avec un suivi WhatsApp pendant les 4 semaines.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">09</div>
+          <div><h4>Bilan final</h4><p>Dernière séance : bilan de progression, priorités et plan d'action pour la suite.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-label">FOIRE AUX QUESTIONS</div>
+    <h2 style="font-size:clamp(28px,3.4vw,42px); margin-bottom:50px;">Avant de réserver</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Ce coaching remplace-t-il une formation technique de maquillage ?</summary>
+        <p>Non. Le coaching Business MUA porte sur le développement de ton activité — positionnement, tarifs, stratégie — pas sur la technique de maquillage elle-même. Pour ça, direction la formation Makeup Artist Soft Glam.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Qui peut réserver ce coaching ?</summary>
+        <p>Les Makeup Artists ayant déjà une activité ou un projet professionnel concret. Ce n'est pas une introduction au métier, mais un accompagnement pour structurer et développer une activité existante.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Pourquoi le Pack Business passe-t-il par une candidature et pas un paiement direct ?</summary>
+        <p>Pour s'assurer que l'accompagnement correspond bien à ton profil et à tes besoins avant de t'engager sur 4 semaines. Après validation de ta candidature, tu règles 500€ (ou 800€ pour la formule avec visite terrain) et le programme démarre.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Le suivi WhatsApp est-il disponible en dehors des périodes prévues ?</summary>
+        <p>Le suivi WhatsApp du Pack Business est limité aux 4 semaines d'accompagnement. Les séances doivent également être réalisées pendant cette période.</p>
+      </details>
+      <details class="faq-item">
+        <summary>En quoi consiste la visite sur place ?</summary>
+        <p>Elle fait partie du Pack Business + Visite terrain (800€). En semaine 1, Colleen se déplace directement sur ton lieu de travail pour observer une prestation ou ton organisation, et te donne des conseils concrets avant de démarrer les séances de coaching en visio.</p>
+      </details>
+      <details class="faq-item">
+        <summary>La visite sur place est-elle disponible partout en France ?</summary>
+        <p>Non, elle est réservée aux Makeup Artists basées en Île-de-France. Pour les autres régions, le Pack Business (500€) reste disponible avec un accompagnement 100% en visioconférence.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quelle est la différence entre le Pack Audit, le Pack Business et le Pack Business + Visite terrain ?</summary>
+        <p>Le Pack Audit est une séance unique de 1h30 pour faire le point et repartir avec un plan d'action à 30 jours. Le Pack Business est un accompagnement complet sur 4 semaines, avec 4 séances individuelles et un suivi WhatsApp continu. Le Pack Business + Visite terrain ajoute une visite sur ton lieu de travail en semaine 1, réservée aux Makeup Artists basées en Île-de-France.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="section-label" style="color:rgba(255,255,255,0.5); text-align:center;">PRÊTE À AVANCER ?</div>
+    <h2>Fais le point sur ton activité, avec un regard extérieur</h2>
+    <p>Choisis le format adapté à ton besoin et repars avec un plan d'action concret pour ton activité de Makeup Artist.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#packs">Voir les offres</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-about">CMAKEUP BEAUTY ACADEMY accompagne les Makeup Artists au-delà de la technique : positionnement, tarifs, stratégie de contenu et organisation, pour transformer une passion en activité structurée.</div>
+    <div class="footer-top">
+      <div class="logo">CMAKEUP<span>BEAUTY ACADEMY</span></div>
+      <div>
+        <div class="footer-note">Persan, France (95) — 07 54 03 32 66</div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/c_makeup_">Instagram</a>
+          <a href="https://www.tiktok.com/@cmakeupbeauty">TikTok</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY ACADEMY — Exemple de direction artistique, à valider avant développement.</div>
+  </div>
+</footer>
+
+</body>
+</html>
