@@ -136,11 +136,6 @@
   </div>
 
   <!-- ÉTAPE 2 : PAIEMENT -->
-  <!-- DEV TODO : intégrer Stripe Checkout (ou Stripe Elements) ici pour le paiement réel de
-       l'acompte. Ne jamais collecter de numéro de carte/CVC via un champ HTML maison : rediriger
-       vers une session Stripe Checkout créée côté serveur, ou embarquer Stripe Elements. Tant que
-       cette intégration n'est pas branchée, le bouton ci-dessous ne simule aucun paiement réussi :
-       il affiche un message honnête et bascule l'utilisatrice vers un suivi manuel par email. -->
   <div id="screenPaiement" style="display:none;">
     <h2 class="step-title">Paiement sécurisé de l'acompte</h2>
     <div class="pay-block">
@@ -148,10 +143,21 @@
         <span class="pt-label">Acompte à régler</span>
         <span class="pt-amount" id="acompteAmount">30€</span>
       </div>
-      <p class="pay-note">Le paiement en ligne sécurisé est en cours de mise en place et n'est pas encore actif. Pour finaliser votre réservation dès maintenant, contactez-nous directement : nous vous transmettrons le lien de paiement sécurisé dès qu'il sera disponible.</p>
-      <a class="btn" href="mailto:Cmakeupbeauty95@gmail.com?subject=Réservation%20prestation" style="display:block; margin-bottom:12px;">Nous écrire par email</a>
-      <a class="btn" href="tel:+33754033266" style="display:block; background:transparent; color:var(--ink);">Nous appeler — 07 54 03 32 66</a>
+      <button type="button" class="btn" id="payStripeBtn" style="margin-bottom:12px;">Payer par carte bancaire</button>
+      <button type="button" class="btn" id="payPaypalBtn" style="display:block; margin-bottom:12px; background:#FFC439; border-color:#FFC439; color:#1A1A1A;">Payer avec PayPal</button>
+      <p class="pay-note" id="payStatus" style="min-height:16px;"></p>
       <p class="pay-note">Le solde restant sera à régler directement le jour de la prestation. Cet acompte n'est pas remboursable en cas d'annulation.</p>
+      <p class="pay-note">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:Cmakeupbeauty95@gmail.com" style="text-decoration:underline;">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href="tel:+33754033266" style="text-decoration:underline;">07 54 03 32 66</a>.</p>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 3 : CONFIRMATION -->
+  <div id="screenConfirmation" style="display:none;">
+    <div class="confirm-block">
+      <div class="confirm-icon" id="confirmIcon">✓</div>
+      <h2 id="confirmTitle">Réservation confirmée !</h2>
+      <p id="confirmText">Merci, ton acompte a bien été reçu. Nous te recontactons rapidement pour finaliser les détails de ta prestation.</p>
+      <a class="btn" href="index.html" style="display:inline-block; width:auto; padding:14px 34px;">Retour à l'accueil</a>
     </div>
   </div>
 
@@ -172,16 +178,69 @@
     'full-glam': 'Makeup Full Glam — 150€'
   };
   const amounts = {
-    'smoky-eyes': '20€',
-    'soft-glam': '20€',
-    'full-glam': '30€'
+    'smoky-eyes': 2000,
+    'soft-glam': 2000,
+    'full-glam': 3000
   };
   const prestaLabel = labels[prestation] || 'À préciser';
-  const acompteLabel = amounts[prestation] || '20€';
+  const amountCents = amounts[prestation] || 2000;
+  const acompteLabel = Math.round(amountCents / 100) + '€';
   document.getElementById('recapPresta').textContent = prestaLabel;
   document.getElementById('acompteAmount').textContent = acompteLabel;
 
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+  var screenInfos = document.getElementById('screenInfos');
+  var screenPaiement = document.getElementById('screenPaiement');
+  var screenConfirmation = document.getElementById('screenConfirmation');
+  var stepDot1 = document.getElementById('stepDot1');
+  var stepDot2 = document.getElementById('stepDot2');
+  var stepDot3 = document.getElementById('stepDot3');
+  var payStatus = document.getElementById('payStatus');
+  var recordId = params.get('record_id');
+
+  function showPaiementScreen(){
+    screenInfos.style.display = 'none';
+    screenConfirmation.style.display = 'none';
+    screenPaiement.style.display = 'block';
+    stepDot1.classList.add('done');
+    stepDot2.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  function pageUrl(extra){
+    var base = window.location.origin + window.location.pathname;
+    var qp = 'prestation=' + encodeURIComponent(prestation || '') + '&record_id=' + encodeURIComponent(recordId || '');
+    return base + '?' + qp + (extra ? '&' + extra : '');
+  }
+
+  document.getElementById('payStripeBtn').addEventListener('click', function(){
+    if(!recordId){ return; }
+    payStatus.style.color = 'var(--ink-soft)';
+    payStatus.textContent = 'Redirection vers le paiement sécurisé...';
+    _sb.functions.invoke('create-checkout-session', {
+      body: {
+        table: 'reservations',
+        record_id: recordId,
+        amount_cents: amountCents,
+        description: 'Acompte — ' + prestaLabel,
+        success_url: pageUrl('paid=1&session_id={CHECKOUT_SESSION_ID}'),
+        cancel_url: pageUrl()
+      }
+    }).then(function(res){
+      if(res.error || !res.data || !res.data.url){
+        payStatus.style.color = '#B33A3A';
+        payStatus.textContent = "Le paiement en ligne n'a pas pu démarrer. Contacte-nous directement, voir plus bas.";
+        return;
+      }
+      window.location.href = res.data.url;
+    });
+  });
+
+  document.getElementById('payPaypalBtn').addEventListener('click', function(){
+    payStatus.style.color = 'var(--ink-soft)';
+    payStatus.textContent = "Le paiement par PayPal est en cours d'activation. Contacte-nous directement, voir plus bas, en attendant.";
+  });
 
   document.getElementById('clientForm').addEventListener('submit', function(e){
     e.preventDefault();
@@ -190,7 +249,9 @@
     var btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
+    var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
     _sb.from('reservations').insert({
+      id: newId,
       prenom: document.getElementById('prenom').value,
       nom: document.getElementById('nom').value,
       email: document.getElementById('email').value,
@@ -205,13 +266,38 @@
         status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline;\">Cmakeupbeauty95@gmail.com</a>.";
         return;
       }
-      document.getElementById('screenInfos').style.display = 'none';
-      document.getElementById('screenPaiement').style.display = 'block';
-      document.getElementById('stepDot1').classList.add('done');
-      document.getElementById('stepDot2').classList.add('active');
-      window.scrollTo(0,0);
+      recordId = newId;
+      showPaiementScreen();
     });
   });
+
+  // Retour depuis Stripe Checkout
+  if(params.get('paid') === '1' && params.get('session_id')){
+    screenInfos.style.display = 'none';
+    screenPaiement.style.display = 'none';
+    screenConfirmation.style.display = 'block';
+    stepDot1.classList.add('done');
+    stepDot2.classList.add('done');
+    document.getElementById('confirmIcon').textContent = '⏳';
+    document.getElementById('confirmTitle').textContent = 'Vérification du paiement...';
+    document.getElementById('confirmText').textContent = 'Merci de patienter quelques secondes.';
+    window.scrollTo(0,0);
+    _sb.functions.invoke('confirm-checkout-session', { body: { session_id: params.get('session_id') } }).then(function(res){
+      var paid = res.data && res.data.paid;
+      if(paid){
+        stepDot3.classList.add('active');
+        document.getElementById('confirmIcon').textContent = '✓';
+        document.getElementById('confirmTitle').textContent = 'Réservation confirmée !';
+        document.getElementById('confirmText').innerHTML = 'Merci ! Ton acompte a bien été reçu. Nous te recontactons rapidement pour finaliser les détails de ta prestation.';
+      } else {
+        document.getElementById('confirmIcon').textContent = '⚠';
+        document.getElementById('confirmTitle').textContent = 'Paiement non confirmé';
+        document.getElementById('confirmText').innerHTML = "Nous n'avons pas pu confirmer ton paiement. Si la somme a bien été débitée, écris-nous à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline;\">Cmakeupbeauty95@gmail.com</a> avec une capture de ta confirmation.";
+      }
+    });
+  } else if(recordId){
+    showPaiementScreen();
+  }
 })();
 </script>
 
