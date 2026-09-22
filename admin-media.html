@@ -23,12 +23,13 @@
   .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:20px; letter-spacing:0.14em;}
   .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
   .head-right{display:flex; align-items:center; gap:20px; font-size:13px; color:var(--ink-soft);}
-  .btn{border:1px solid var(--ink); padding:10px 22px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;}
-  .btn:hover{background:var(--white); color:var(--ink);}
-  .btn-outline{border:1px solid var(--line); background:transparent; color:var(--ink);}
-  .btn-outline:hover{border-color:var(--ink);}
-  .btn-small{padding:8px 16px; font-size:11px;}
-  .btn:disabled{opacity:0.5; cursor:default;}
+  .btn{border:1px solid var(--ink); border-radius:2px; padding:12px 26px; font-size:12px; letter-spacing:0.1em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer; transition:background .25s ease, color .25s ease, box-shadow .25s ease, transform .15s ease; box-shadow:0 1px 2px rgba(26,26,26,0.06);}
+  .btn:hover{background:var(--white); color:var(--ink); box-shadow:0 6px 18px rgba(26,26,26,0.14); transform:translateY(-1px);}
+  .btn:active{transform:translateY(0); box-shadow:0 1px 3px rgba(26,26,26,0.1);}
+  .btn-outline{border:1px solid var(--line); background:transparent; color:var(--ink); box-shadow:none;}
+  .btn-outline:hover{border-color:var(--ink); box-shadow:0 6px 18px rgba(26,26,26,0.08);}
+  .btn-small{padding:9px 18px; font-size:11px;}
+  .btn:disabled{opacity:0.5; cursor:default; transform:none; box-shadow:none;}
 
   nav.admin-tabs{display:flex; gap:0; background:var(--white); border-bottom:1px solid var(--line); overflow-x:auto;}
   nav.admin-tabs a{padding:16px 24px; font-size:13px; letter-spacing:0.04em; color:var(--ink-soft); border-bottom:2px solid transparent; white-space:nowrap;}
@@ -41,7 +42,9 @@
   .info-card strong{color:var(--ink);}
 
   .filters{display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; align-items:center;}
-  .filters select, .filters button{border:1px solid var(--line); background:var(--white); padding:8px 14px; font-size:12px; cursor:pointer; color:var(--ink-soft); font-family:inherit;}
+  .filters select, .filters button{border:1px solid var(--line); border-radius:2px; background:var(--white); padding:8px 14px; font-size:12px; cursor:pointer; color:var(--ink-soft); font-family:inherit; transition:border-color .2s ease, box-shadow .2s ease;}
+  .filters select:hover, .filters button:hover{border-color:var(--ink); color:var(--ink);}
+  .filters select:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px rgba(26,26,26,0.08);}
   .filters select#pageSelect{font-size:13px; padding:10px 16px; min-width:280px; color:var(--ink);}
   .filters a.view-live{font-size:12px; text-decoration:underline; color:var(--ink-soft); margin-left:auto;}
   .filters a.view-live:hover{color:var(--ink);}
@@ -59,8 +62,12 @@
   .block-card input[type="text"]:focus, .block-card textarea:focus{outline:none; border-color:var(--ink); background:var(--white);}
   .block-card .row{display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;}
   .block-card .img-preview-wrap{flex-shrink:0;}
-  .block-card .img-preview{width:120px; height:90px; object-fit:cover; border:1px solid var(--line); background:var(--paper); display:block;}
+  .block-card .img-preview{width:220px; max-width:100%; height:165px; object-fit:contain; border:1px solid var(--line); border-radius:2px; background:var(--off); padding:6px; display:block; box-shadow:0 1px 3px rgba(26,26,26,0.05);}
   .block-card .img-fields{flex:1; min-width:220px; display:flex; flex-direction:column; gap:8px;}
+  .block-card .file-picker{position:relative; display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:2px;}
+  .block-card .file-picker-btn{margin:0;}
+  .block-card .file-picker-name{font-size:12px; color:var(--ink-soft); font-style:italic;}
+  .file-input-hidden{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
   .block-card .field-note{font-size:11px; color:var(--ink-soft); margin-top:6px;}
   .save-bar{position:sticky; bottom:0; background:var(--white); border-top:1px solid var(--line); padding:16px 0; margin-top:24px; display:flex; align-items:center; gap:16px;}
   .save-bar .save-msg{font-size:12px; color:var(--ok);}
@@ -197,7 +204,11 @@
             + '<div class="img-preview-wrap"><img class="img-preview" src="'+esc(previewSrc)+'" alt="" onerror="this.style.opacity=0.3;"></div>'
             + '<div class="img-fields">'
               + '<input type="text" class="img-url-input" placeholder="URL de l\'image (ou choisis un fichier ci-dessous)" value="'+esc(currentValue)+'">'
-              + '<input type="file" class="img-file-input" accept="image/*">'
+              + '<div class="file-picker">'
+                + '<label class="btn btn-outline btn-small file-picker-btn" for="file-'+b.key+'">Choisir une photo</label>'
+                + '<input type="file" id="file-'+b.key+'" class="img-file-input file-input-hidden" accept="image/*">'
+                + '<span class="file-picker-name">Aucun fichier choisi</span>'
+              + '</div>'
               + '<div class="field-note">Par défaut : '+esc(b.default)+'</div>'
             + '</div>'
           + '</div>'
@@ -226,17 +237,21 @@
       var fileInput = card.querySelector('.img-file-input');
       var urlInput = card.querySelector('.img-url-input');
       var preview = card.querySelector('.img-preview');
+      var fileName = card.querySelector('.file-picker-name');
       var key = card.getAttribute('data-key');
       fileInput.addEventListener('change', function(){
         var file = fileInput.files[0];
         if(!file) return;
         pendingImageUploads[key] = file;
+        fileName.textContent = file.name;
         var reader = new FileReader();
         reader.onload = function(e){ preview.src = e.target.result; };
         reader.readAsDataURL(file);
       });
       urlInput.addEventListener('input', function(){
         delete pendingImageUploads[key];
+        fileInput.value = '';
+        fileName.textContent = 'Aucun fichier choisi';
         preview.src = urlInput.value;
       });
     });
