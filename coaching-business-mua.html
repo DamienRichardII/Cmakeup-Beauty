@@ -79,7 +79,7 @@
   /* HERO */
   .hero{
     position:relative;
-    min-height:560px;
+    min-height:720px;
     display:flex;
     align-items:flex-end;
     overflow:hidden;
@@ -242,6 +242,7 @@
     header{padding:20px;}
     nav{display:none;}
     .wrap, section .wrap{padding:0 20px;}
+    .hero{min-height:520px;}
     .hero-content{padding:0 20px 48px;}
     .stats-inner{grid-template-columns:1fr 1fr;}
     .stat{border-left:none; border-top:1px solid var(--line);}
@@ -280,6 +281,7 @@
 
   /* NAV DROPDOWN */
   .nav-drop{position:relative;}
+  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
   .nav-drop-menu{
     position:absolute; top:100%; left:50%; transform:translateX(-50%);
     background:var(--white); border:1px solid var(--line);
@@ -613,7 +615,7 @@
     <div class="footer-top">
       <div class="logo">CMAKEUP<span>BEAUTY ACADEMY</span></div>
       <div>
-        <div class="footer-note">Persan, France (95) — +33 7 49 86 58 95 — academy@cmakeupbeauty.fr</div>
+        <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — +33 7 49 86 58 95 — academy@cmakeupbeauty.fr</div>
         <div class="footer-social">
           <a href="https://www.instagram.com/c_makeup_">Instagram</a>
           <!-- DEV TODO : ajouter le lien TikTok officiel une fois confirmé par la cliente (ne pas reconstruire une URL approximative) -->

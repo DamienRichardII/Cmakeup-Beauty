@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CMAKEUP BEAUTY — Prestations</title>
-<meta name="description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Persan (95).">
+<meta name="description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Cergy (95).">
 <link rel="canonical" href="https://cmakeup-beauty.vercel.app/prestations.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMAKEUP BEAUTY — Prestations">
-<meta property="og:description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Persan (95).">
+<meta property="og:description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Cergy (95).">
 <meta property="og:url" content="https://cmakeup-beauty.vercel.app/prestations.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -43,36 +43,33 @@
   .btn{border:1px solid var(--ink); padding:12px 26px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;}
   .btn:hover{background:var(--white); color:var(--ink);}
 
-  .page-hero{padding:90px 0 0; text-align:center; border-bottom:1px solid var(--line);}
+  .page-hero{padding:90px 0 46px; text-align:center; border-bottom:1px solid var(--line);}
   .page-hero .eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:18px;}
   .page-hero h1{font-size:clamp(38px,5vw,60px); line-height:1.05;}
-  .banner{
-    width:100%; margin:0; padding:20px 24px; text-align:center;
-    background:var(--ink); color:var(--white); font-size:15px; font-weight:500;
-    letter-spacing:0.04em; text-transform:uppercase; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+  .info-box{
+    max-width:760px; margin:36px auto 0; padding:26px 34px; text-align:left;
+    border:1px solid var(--line); background:var(--off);
   }
-  .banner .b-icon{margin-right:8px;}
-  .page-hero-space{height:70px;}
+  .info-box .info-title{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); font-weight:500; margin-bottom:10px;}
+  .info-box .b-icon{margin-right:8px;}
+  .info-box p{font-size:14px; line-height:1.8; color:var(--ink-soft); margin:0;}
 
   section{padding:0; border-bottom:1px solid var(--line);}
   .section-eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:16px; text-align:center;}
   .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
   .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
 
-  .presta-card{display:grid; grid-template-columns:0.85fr 1.15fr; border-bottom:1px solid var(--line);}
-  .presta-card.reverse{grid-template-columns:1.15fr 0.85fr;}
-  .presta-card.reverse .p-photo{order:2;}
-  .presta-card.reverse .p-text{order:1;}
+  .presta-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); border-left:1px solid var(--line);}
+  .presta-card{border-right:1px solid var(--line); display:flex; flex-direction:column;}
   .p-photo{aspect-ratio:4/5; overflow:hidden; background:var(--paper);}
   .p-photo img{width:100%; height:100%; object-fit:cover;}
-  .p-text{padding:70px 70px; display:flex; flex-direction:column; justify-content:center;}
-  .p-text .p-badge{font-size:11px; letter-spacing:0.18em; color:var(--gray); text-transform:uppercase; margin-bottom:16px;}
-  .p-text h2{font-size:clamp(28px,3vw,38px); margin-bottom:22px;}
-  .p-text p{font-size:15px; line-height:1.85; color:var(--ink-soft); max-width:440px; margin-bottom:14px;}
-  .p-text .p-price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:32px; margin:14px 0 26px;}
-  .p-text .p-cta{align-self:flex-start;}
-
-
+  .p-text{padding:36px 32px; display:flex; flex-direction:column; flex:1;}
+  .p-text .p-badge{font-size:11px; letter-spacing:0.18em; color:var(--gray); text-transform:uppercase; margin-bottom:14px;}
+  .p-text h2{font-size:clamp(22px,2.2vw,26px); margin-bottom:14px;}
+  .p-text p{font-size:14px; line-height:1.75; color:var(--ink-soft); margin-bottom:10px;}
+  .p-text .p-price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:26px; margin:10px 0 20px;}
+  .p-text .p-cta{align-self:flex-start; margin-top:auto;}
+  .presta-note{text-align:center; font-size:13px; color:var(--ink-soft); padding:26px 0;}
 
   /* CALENDRIER */
   .cal-intro{padding:90px 0 40px; text-align:center;}
@@ -88,6 +85,7 @@
   }
   .artist-btn.selected .artist-avatar-link img{border-color:var(--ink);}
   .artist-btn.selected .artist-select-btn{color:var(--ink); font-weight:500;}
+  .artist-location{font-size:10px; color:var(--gray); letter-spacing:0.02em; text-align:center; margin-top:-4px;}
 
   .cal-month{padding:34px 30px; border-right:1px solid var(--line);}
   .cal-month-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
@@ -126,10 +124,10 @@
   @media(max-width:900px){
     nav{display:none;}
     .wrap{padding:0 24px;}
-    .presta-card, .presta-card.reverse{grid-template-columns:1fr;}
-    .presta-card.reverse .p-photo{order:1;}
-    .presta-card.reverse .p-text{order:2;}
-    .p-text{padding:50px 28px;}
+    .presta-grid{grid-template-columns:1fr; border-left:none;}
+    .presta-card{border-right:none; border-bottom:1px solid var(--line);}
+    .presta-card:last-child{border-bottom:none;}
+    .p-text{padding:36px 28px;}
     .cal-widget{grid-template-columns:1fr;}
     .cal-month{border-right:none; border-bottom:1px solid var(--line);}
   }
@@ -161,6 +159,7 @@
 
   /* NAV DROPDOWN */
   .nav-drop{position:relative;}
+  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
   .nav-drop-menu{
     position:absolute; top:100%; left:50%; transform:translateX(-50%);
     background:var(--white); border:1px solid var(--line);
@@ -201,47 +200,53 @@
   <div class="wrap">
     <div class="eyebrow" data-editable="prestations.hero_eyebrow">NOS PRESTATIONS</div>
     <h1 data-editable="prestations.hero_title">Les Prestations</h1>
+    <p style="max-width:560px; margin:24px auto 0; font-size:16px; line-height:1.8; color:var(--ink-soft);">Un maquillage professionnel, pensé pour durer toute la journée, avec des produits haut de gamme adaptés à chaque type de peau.</p>
+    <div class="info-box">
+      <div class="info-title"><span class="b-icon">📅</span>Bon à savoir</div>
+      <p>Le planning invitées ouvre chaque 15 du mois, un mois à l'avance.</p>
+    </div>
   </div>
   <div class="page-hero-space"></div>
-  <div class="banner"><span class="b-icon">📅</span>Le planning invitées ouvre chaque 15 du mois, un mois à l'avance</div>
 </section>
 
 <section>
-  <div class="presta-card">
-    <div class="p-photo"><img data-editable="prestations.photo1" src="assets/img-2b500a41bba0.webp" alt="Makeup Smoky Eyes" width="700" height="1050" loading="eager"></div>
-    <div class="p-text">
-      <div class="p-badge">Invitée</div>
-      <h2>Makeup Smoky Eyes</h2>
-      <p data-editable="prestations.hero_text">Le maquillage smoky eyes est simple avec une couleur noir ou marron sur les yeux et le teint est bien travaillé.</p>
-<div class="cms-video-slot" data-editable-video="prestations" style="display:none; margin:32px auto; max-width:900px;"></div>
-      <p>Les faux cils sont inclus dans toutes les prestations.</p>
-      <div class="p-price">90€</div>
-      <a class="btn p-cta" href="reservation.html?prestation=smoky-eyes">Je réserve</a>
-    </div>
-  </div>
+  <div class="wrap">
+    <div class="presta-grid">
+      <div class="presta-card">
+        <div class="p-photo"><img data-editable="prestations.photo1" src="assets/img-2b500a41bba0.webp" alt="Makeup Smoky Eyes" width="700" height="1050" loading="eager"></div>
+        <div class="p-text">
+          <div class="p-badge">Invitée</div>
+          <h2>Smoky Eyes</h2>
+          <p data-editable="prestations.hero_text">Le maquillage smoky eyes est simple avec une couleur noir ou marron sur les yeux et le teint est bien travaillé.</p>
+          <div class="p-price">90€</div>
+          <a class="btn p-cta" href="reservation.html?prestation=smoky-eyes">Je réserve</a>
+        </div>
+      </div>
 
-  <div class="presta-card reverse">
-    <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-720c8113beea.webp" alt="Makeup Soft Glam" width="700" height="775" loading="lazy" decoding="async"></div>
-    <div class="p-text">
-      <div class="p-badge">Invitée</div>
-      <h2>Makeup Soft Glam</h2>
-      <p>Le soft glam est un maquillage avec un effet bien maquillée mais non surchargé. Restez subtile avec un regard dans les tons dorés irisés ou nude matte.</p>
-      <p>Les faux cils sont inclus dans toutes les prestations.</p>
-      <div class="p-price">100€</div>
-      <a class="btn p-cta" href="reservation.html?prestation=soft-glam">Je réserve</a>
-    </div>
-  </div>
+      <div class="presta-card">
+        <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-720c8113beea.webp" alt="Makeup Soft Glam" width="700" height="775" loading="lazy" decoding="async"></div>
+        <div class="p-text">
+          <div class="p-badge">Invitée</div>
+          <h2>Soft Glam</h2>
+          <p>Le soft glam est un maquillage avec un effet bien maquillée mais non surchargé. Restez subtile avec un regard dans les tons dorés irisés ou nude matte.</p>
+          <div class="p-price">100€</div>
+          <a class="btn p-cta" href="reservation.html?prestation=soft-glam">Je réserve</a>
+        </div>
+      </div>
 
-  <div class="presta-card">
-    <div class="p-photo"><img data-editable="prestations.photo3" src="assets/img-85732eeb980a.webp" alt="Makeup Full Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
-    <div class="p-text">
-      <div class="p-badge">Invitée</div>
-      <h2>Makeup Full Glam</h2>
-      <p>Le maquillage Full Glam est plus sophistiqué. Ce sont les cut crease, maquillages pailletés ou colorés.</p>
-      <p>Les faux cils sont inclus dans toutes les prestations.</p>
-      <div class="p-price">150€</div>
-      <a class="btn p-cta" href="reservation.html?prestation=full-glam">Je réserve</a>
+      <div class="presta-card">
+        <div class="p-photo"><img data-editable="prestations.photo3" src="assets/img-85732eeb980a.webp" alt="Makeup Full Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
+        <div class="p-text">
+          <div class="p-badge">Invitée</div>
+          <h2>Full Glam</h2>
+          <p>Le maquillage Full Glam est plus sophistiqué. Ce sont les cut crease, maquillages pailletés ou colorés.</p>
+          <div class="p-price">150€</div>
+          <a class="btn p-cta" href="reservation.html?prestation=full-glam">Je réserve</a>
+        </div>
+      </div>
     </div>
+    <div class="cms-video-slot" data-editable-video="prestations" style="display:none; margin:32px auto; max-width:900px;"></div>
+    <p class="presta-note">Les faux cils sont inclus dans toutes les prestations.</p>
   </div>
 </section>
 
@@ -249,17 +254,17 @@
   <div class="cal-intro wrap">
     <div class="section-eyebrow" data-editable="prestations.section1_eyebrow">RÉSERVATION</div>
     <h2 class="section-title" data-editable="prestations.section1_title">Choisis ta maquilleuse<br>et ton créneau</h2>
-    <p class="section-lede" data-editable="prestations.section1_lede">Chacune de nos 4 maquilleuses a ses propres disponibilités — sélectionne d'abord ta préférence (ou reste flexible), puis choisis ton créneau.</p>
+    <p class="section-lede" data-editable="prestations.section1_lede">Chacune de nos 4 maquilleuses a ses propres disponibilités et son lieu de résidence (Cergy, Garges, Sarcelles) — sélectionne d'abord ta préférence (ou reste flexible), puis choisis ton créneau.</p>
   </div>
 
   <div class="wrap">
     <p style="text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px;">Clique sur une photo pour découvrir son travail, ou sur son prénom pour choisir ta maquilleuse.</p>
     <div class="artist-picker" id="artistPicker">
       <button type="button" class="artist-btn selected" data-artist="peu-importe" style="cursor:pointer; border:none; background:none;"><img src="assets/img-ce900d398b2f.webp" alt="Peu importe" style="width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(100%);opacity:0.5;" width="240" height="240" loading="lazy" decoding="async"><span style="font-size:11px;color:var(--ink-soft);">Peu importe</span></button>
-      <div class="artist-btn" data-artist="colleen"><a class="artist-avatar-link" href="equipe.html#colleen" target="_blank"><img src="assets/img-ce900d398b2f.webp" alt="Colleen" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Colleen</button></div>
-      <div class="artist-btn" data-artist="arlyne"><a class="artist-avatar-link" href="equipe.html#arlyne" target="_blank"><img src="assets/img-6dc803a40704.webp" alt="Arlyne" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Arlyne</button></div>
-      <div class="artist-btn" data-artist="fatou"><a class="artist-avatar-link" href="equipe.html#fatou" target="_blank"><img src="assets/img-92b461d93c48.webp" alt="Fatou" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Fatou</button></div>
-      <div class="artist-btn" data-artist="lady"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button></div>
+      <div class="artist-btn" data-artist="colleen"><a class="artist-avatar-link" href="equipe.html#colleen" target="_blank"><img src="assets/img-ce900d398b2f.webp" alt="Colleen" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Colleen</button><div class="artist-location">Cergy (95)</div></div>
+      <div class="artist-btn" data-artist="arlyne"><a class="artist-avatar-link" href="equipe.html#arlyne" target="_blank"><img src="assets/img-6dc803a40704.webp" alt="Arlyne" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Arlyne</button><div class="artist-location">Cergy (95)</div></div>
+      <div class="artist-btn" data-artist="fatou"><a class="artist-avatar-link" href="equipe.html#fatou" target="_blank"><img src="assets/img-92b461d93c48.webp" alt="Fatou" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Fatou</button><div class="artist-location">Garges (95)</div></div>
+      <div class="artist-btn" data-artist="lady"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button><div class="artist-location">Sarcelles (95)</div></div>
     </div>
 
     <div class="cal-widget">
@@ -293,7 +298,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-      <div class="footer-note">Persan, France (95) — 07 54 03 32 66</div>
+      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — 07 54 03 32 66</div>
     </div>
     <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
   </div>

@@ -155,6 +155,7 @@
 
   /* NAV DROPDOWN */
   .nav-drop{position:relative;}
+  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
   .nav-drop-menu{
     position:absolute; top:100%; left:50%; transform:translateX(-50%);
     background:var(--white); border:1px solid var(--line);
@@ -311,7 +312,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-      <div class="footer-note">Persan, France (95) — 07 54 03 32 66</div>
+      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — 07 54 03 32 66</div>
     </div>
     <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
   </div>
