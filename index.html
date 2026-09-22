@@ -145,7 +145,7 @@
   }
   .stats-inner{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
     max-width:1200px; margin:0 auto;
   }
   .stat{
@@ -165,17 +165,12 @@
 
   /* BIO / ABOUT */
   .about{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr;
-    gap:80px;
-    align-items:center;
+    text-align:center;
   }
-  .about-img{
-    aspect-ratio:4/5;
-    overflow:hidden;
-    background:var(--paper);
+  .about-text{
+    max-width:640px;
+    margin:0 auto;
   }
-  .about-img img{width:100%; height:100%; object-fit:cover; object-position:50% 15%;}
   .about-text h2{
     font-size:clamp(32px,3.6vw,46px);
     line-height:1.15;
@@ -185,11 +180,11 @@
     font-size:16px;
     line-height:1.8;
     color:var(--ink-soft);
-    max-width:480px;
-    margin-bottom:20px;
+    max-width:520px;
+    margin:0 auto 20px;
   }
   .quote{
-    margin-top:32px;
+    margin:32px auto 0;
     padding-top:28px;
     border-top:1px solid var(--line);
     font-family:'The Silver Editorial','Cormorant Garamond', serif;
@@ -197,7 +192,7 @@
     font-size:22px;
     line-height:1.5;
     color:var(--ink);
-    max-width:480px;
+    max-width:520px;
   }
   .quote-by{
     margin-top:14px;
@@ -268,15 +263,11 @@
   .ebook p{color:rgba(255,255,255,0.7); font-size:16px; line-height:1.8; max-width:440px; margin-bottom:30px;}
   .ebook-mock{
     background:var(--white);
-    color:var(--ink);
     aspect-ratio:3/4;
     max-width:320px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'The Silver Editorial','Cormorant Garamond',serif;
-    font-size:26px;
-    text-align:center;
-    padding:40px;
+    overflow:hidden;
   }
+  .ebook-mock img{width:100%; height:100%; object-fit:cover;}
 
   /* FOOTER */
   footer{
@@ -297,8 +288,7 @@
     .stats-inner{grid-template-columns:1fr; }
     .stat{border-left:none; border-top:1px solid var(--line);}
     .stat:first-child{border-top:none;}
-    .about, .ebook-inner{grid-template-columns:1fr; gap:40px;}
-    .team-grid{grid-template-columns:1fr; gap:40px;}
+    .ebook-inner{grid-template-columns:1fr; gap:40px;}
     section{padding:70px 0;}
     .presta-grid{grid-template-columns:1fr;}
     .presta-card{border-right:none; border-bottom:1px solid var(--line);}
@@ -326,7 +316,7 @@
     nav.nav-open .nav-drop{display:flex; flex-direction:column;}
     nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
     nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
-    header .btn{background:transparent; border:none; color:var(--ink); padding:8px 2px; font-size:12px;}
+    header .btn{display:none;}
   }
 
   /* NAV DROPDOWN */
@@ -347,6 +337,34 @@
   }
   .nav-drop-menu a::after{display:none;}
   .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
+
+  /* NOUS CONTACTER */
+  .contact-section{background:var(--off); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:80px;}
+  .info-block{display:flex; flex-direction:column; gap:36px;}
+  .info-item .i-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:10px;}
+  .info-item .i-value{font-size:19px; font-family:'The Silver Editorial','Cormorant Garamond',serif;}
+  .info-item .i-value a:hover{color:var(--ink-soft);}
+  .socials{display:flex; gap:16px; margin-top:6px;}
+  .social-link{border:1px solid var(--line); padding:10px 20px; font-size:12px; letter-spacing:0.06em; background:var(--white);}
+  .social-link:hover{border-color:var(--ink);}
+  .hours-list{list-style:none; font-size:14px; color:var(--ink-soft); line-height:2;}
+  form.contact-form{display:flex; flex-direction:column; gap:22px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:11px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase;}
+  .field input, .field select, .field textarea{
+    border:none; border-bottom:1px solid var(--line); padding:12px 4px;
+    font-family:'TT Interphase','Jost',sans-serif; font-size:15px; color:var(--ink); background:transparent;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-bottom-color:var(--ink);}
+  .field textarea{resize:vertical; min-height:120px;}
+  .form-submit{align-self:flex-start; padding:15px 40px;}
+  @media(max-width:860px){
+    .contact-grid{grid-template-columns:1fr; gap:50px;}
+    .form-row{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -388,26 +406,19 @@
       <div class="label">ANNÉES D'EXPÉRIENCE</div>
     </div>
     <div class="stat">
-      <div class="num">4</div>
-      <div class="label">MAQUILLEUSES PROFESSIONNELLES</div>
-    </div>
-    <div class="stat">
-      <div class="num">Paris</div>
-      <div class="label">ET ÎLE-DE-FRANCE</div>
+      <div class="num">Melanin Skin</div>
+      <div class="label">EXPERT</div>
     </div>
   </div>
 </div>
 
 <section class="about">
-  <div class="wrap" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:80px; align-items:center;">
-    <div class="about-img">
-      <img data-editable="index.photo2" src="assets/img-17c46e006e48.webp" alt="Portrait de Colleen" width="1000" height="1499" loading="lazy" decoding="async">
-    </div>
+  <div class="wrap">
     <div class="about-text">
       <div class="section-label">À PROPOS</div>
       <h2>Bienvenue chez<br>CMAKEUP BEAUTY</h2>
       <p>Je m'appelle Colleen, plus connue sous le nom de CMAKEUP. Maquilleuse professionnelle autodidacte depuis plus de 10 ans, spécialisée dans les peaux noires à métissées, experte du Soft Glam.</p>
-      <p>Aujourd'hui entourée de Lady, Arlyne et Fatou, je vous propose une expérience haut de gamme pensée pour révéler votre beauté à chaque occasion.</p>
+      <p>Je vous propose une expérience haut de gamme pensée pour révéler votre beauté à chaque occasion, avec une méthode et un savoir-faire affinés au fil de centaines de prestations et de formations.</p>
       <div class="quote">
         « Vous offrir une expérience haut de gamme, un service de qualité, et vous transmettre tout mon savoir-faire. »
         <div class="quote-by">COLLEEN — FONDATRICE</div>
@@ -454,48 +465,6 @@
   </div>
 </section>
 
-<section class="team-section">
-  <div class="wrap">
-    <div class="team-head">
-      <div class="section-label">L'ÉQUIPE</div>
-      <h2>Quatre maquilleuses, une même exigence</h2>
-    </div>
-    <div class="team-grid">
-      <div class="team-member">
-        <div class="team-img"><img data-editable="index.photo6" src="assets/lady-makeup-artist.webp" alt="Lady, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
-        <h3>Lady</h3>
-        <div class="role">Soft Glam &amp; Full Glam</div>
-        <p>Sérieuse, à l'écoute et passionnée, Lady maquille depuis 5 ans. Sa signature : une touche raffinée.</p>
-      </div>
-      <div class="team-member">
-        <div class="team-img"><img data-editable="index.photo7" src="assets/arlyne-makeup-artist.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" width="1023" height="1537" loading="lazy" decoding="async"></div>
-        <h3>Arlyne</h3>
-        <div class="role">Formatrice — Auto Makeup Class &amp; formations</div>
-        <p>Formatrice depuis 3 ans aux côtés de Colleen, elle anime l'Auto Makeup Class et nos formations.</p>
-      </div>
-      <div class="team-member">
-        <div class="team-img"><img data-editable="index.photo8" src="assets/fatou-makeup-artist.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
-        <h3>Fatou</h3>
-        <div class="role">Soft Glam &amp; Full Glam</div>
-        <p>Patiente et passionnée, Fatou maquille depuis plus de 5 ans, avec une spécialité pour le Full Glam.</p>
-      </div>
-      <div class="team-member">
-        <div class="team-img"><img data-editable="index.photo9" src="assets/img-428c9c126a58.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" style="object-position:50% 15%;" width="1000" height="1502" loading="lazy" decoding="async"></div>
-        <h3>Arlyne</h3>
-        <div class="role">Invitées &amp; demoiselles d'honneur</div>
-        <p>Une courte description d'Arlyne à ajouter ici : spécialité, style, expérience.</p>
-      </div>
-      <div class="team-member">
-        <div class="team-img"><img data-editable="index.photo10" src="assets/fatou-makeup-artist.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
-        <h3>Fatou</h3>
-        <div class="role">Soft Glam &amp; Full Glam</div>
-        <p>Une courte description de Fatou à ajouter ici : spécialité, style, expérience.</p>
-      </div>
-    </div>
-    <a class="btn" style="margin-top:48px; display:inline-block;" href="equipe.html">Découvrir toute l'équipe</a>
-  </div>
-</section>
-
 <section class="ebook">
   <div class="wrap ebook-inner">
     <div>
@@ -504,7 +473,86 @@
       <p>Ton talent de Makeup Artist mérite une stratégie. Un guide pour structurer ton activité, attirer tes premières clientes et faire évoluer ton business.</p>
       <a class="btn-white" href="ebook.html">Découvrir l'ebook — 30€</a>
     </div>
-    <div class="ebook-mock">Vivre du<br>Maquillage</div>
+    <div class="ebook-mock"><img data-editable="index.photo2" src="assets/ebook-cover-vivre-du-maquillage-business.jpg" alt="Ebook Vivre du Maquillage Business — CMAKEUP BEAUTY" width="512" height="800" loading="lazy" decoding="async"></div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="wrap contact-grid">
+
+    <div class="info-block">
+      <div class="info-item">
+        <div class="i-label">Localisation</div>
+        <div class="i-value">Persan, France (95)</div>
+      </div>
+      <div class="info-item">
+        <div class="i-label">Téléphone</div>
+        <div class="i-value"><a href="tel:+33754033266">07 54 03 32 66</a></div>
+      </div>
+      <div class="info-item">
+        <div class="i-label">Instagram</div>
+        <div class="i-value"><a href="https://instagram.com/c_makeup_" target="_blank">@c_makeup_</a></div>
+        <div class="socials">
+          <a class="social-link" href="https://instagram.com/c_makeup_" target="_blank">Instagram</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="i-label">Horaires</div>
+        <ul class="hours-list">
+          <li>Prestations : uniquement sur rendez-vous</li>
+          <li>Téléphone : joignable de 11h à 17h</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">NOUS CONTACTER</div>
+      <h2 style="font-size:clamp(28px,3.2vw,40px); margin-bottom:30px;">Une question, un projet ?</h2>
+      <form class="contact-form" id="homeContactForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="hcPrenom">Prénom</label>
+            <input type="text" id="hcPrenom" name="prenom" required>
+          </div>
+          <div class="field">
+            <label for="hcNom">Nom</label>
+            <input type="text" id="hcNom" name="nom" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="hcEmail">Email</label>
+            <input type="email" id="hcEmail" name="email" required>
+          </div>
+          <div class="field">
+            <label for="hcTelephone">Téléphone</label>
+            <input type="tel" id="hcTelephone" name="telephone">
+          </div>
+        </div>
+        <div class="field full">
+          <label for="hcSujet">Sujet</label>
+          <select id="hcSujet" name="sujet">
+            <option value="">Sélectionnez</option>
+            <option value="prestation">Une prestation maquillage</option>
+            <option value="mariage">Mon mariage</option>
+            <option value="formation">Une formation</option>
+            <option value="partenariat">Un partenariat / collaboration</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="hcMessage">Message</label>
+          <textarea id="hcMessage" name="message" placeholder="Dites-nous en plus sur votre demande..." required></textarea>
+        </div>
+        <div class="field full" style="flex-direction:row; align-items:flex-start; gap:10px;">
+          <input type="checkbox" id="hcRgpd" name="rgpd" required style="margin-top:3px; width:auto;">
+          <label for="hcRgpd" style="text-transform:none; letter-spacing:normal; font-size:12px;">J'accepte que mes informations soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.</label>
+        </div>
+        <button type="submit" class="btn form-submit">Envoyer le message</button>
+        <p class="form-status" role="status" aria-live="polite" style="margin-top:14px; font-size:12px;"></p>
+      </form>
+    </div>
+
   </div>
 </section>
 
@@ -573,6 +621,43 @@
           el.textContent = row.content;
         }
       });
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var form = document.getElementById('homeContactForm');
+  var status = form ? form.querySelector('.form-status') : null;
+  if(!form || !status) return;
+  var _sbHomeContact = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+    status.style.color = 'var(--ink-soft)';
+    status.textContent = 'Envoi en cours...';
+    _sbHomeContact.from('contacts').insert({
+      prenom: document.getElementById('hcPrenom').value,
+      nom: document.getElementById('hcNom').value,
+      email: document.getElementById('hcEmail').value,
+      telephone: document.getElementById('hcTelephone').value,
+      sujet: document.getElementById('hcSujet').value,
+      message: document.getElementById('hcMessage').value,
+      rgpd_consent: document.getElementById('hcRgpd').checked
+    }).then(function(res){
+      btn.disabled = false;
+      btn.textContent = 'Envoyer le message';
+      if(res.error){
+        status.style.color = '#B33A3A';
+        status.innerHTML = "Un problème est survenu lors de l'envoi. Écrivez-nous directement à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline;\">Cmakeupbeauty95@gmail.com</a> ou appelez le <a href=\"tel:+33754033266\" style=\"text-decoration:underline;\">07 54 03 32 66</a>.";
+      } else {
+        status.style.color = 'var(--ink-soft)';
+        status.textContent = 'Merci ! Votre message a bien été envoyé, nous vous répondons rapidement.';
+        form.reset();
+      }
     });
   });
 })();
