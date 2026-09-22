@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Tableau de bord</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --off:#F4F4F2; --paper:#D6D1C5; --line:#D6D1C5;
+    --ink:#1A1A1A; --ink-soft:#75736D; --gray:#B8B6A9; --ok:#5B7A5B; --warn:#B8863B; --danger:#B33A3A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--off); color:var(--ink); font-family:'TT Interphase','Jost', sans-serif; font-weight:300; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-weight:400; letter-spacing:0.01em;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  header.admin-head{display:flex; align-items:center; justify-content:space-between; padding:22px 40px; border-bottom:1px solid var(--line); background:var(--white);}
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:20px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  .head-right{display:flex; align-items:center; gap:20px; font-size:13px; color:var(--ink-soft);}
+  .btn{border:1px solid var(--ink); padding:10px 22px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;}
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .btn-outline{border:1px solid var(--line); background:transparent; color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink);}
+
+  nav.admin-tabs{display:flex; gap:0; background:var(--white); border-bottom:1px solid var(--line); overflow-x:auto;}
+  nav.admin-tabs a{padding:16px 24px; font-size:13px; letter-spacing:0.04em; color:var(--ink-soft); border-bottom:2px solid transparent; white-space:nowrap;}
+  nav.admin-tabs a.current{color:var(--ink); border-bottom-color:var(--ink);}
+  nav.admin-tabs a:hover{color:var(--ink);}
+
+  main{padding:48px 0 80px;}
+  .section-title{font-size:13px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:18px;}
+
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px; margin-bottom:56px;}
+  .kpi-card{background:var(--white); border:1px solid var(--line); padding:26px 22px;}
+  .kpi-value{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:32px;}
+  .kpi-label{font-size:12px; color:var(--ink-soft); margin-top:8px; line-height:1.4;}
+
+  .quick-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-bottom:56px;}
+  .quick-card{background:var(--white); border:1px solid var(--line); padding:24px; display:flex; flex-direction:column; gap:10px;}
+  .quick-card h3{font-size:18px;}
+  .quick-card p{font-size:13px; color:var(--ink-soft); line-height:1.6; flex:1;}
+  .quick-card .go{font-size:12px; letter-spacing:0.06em; text-decoration:underline;}
+
+  table.admin-table{width:100%; border-collapse:collapse; background:var(--white); border:1px solid var(--line); font-size:13px;}
+  table.admin-table th{text-align:left; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); padding:12px 14px; border-bottom:1px solid var(--line);}
+  table.admin-table td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.admin-table tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block; padding:4px 10px; font-size:11px; letter-spacing:0.04em; border:1px solid var(--line); white-space:nowrap;}
+  .empty-row{color:var(--ink-soft); font-style:italic; padding:20px 14px;}
+
+  @media(max-width:760px){
+    .wrap{padding:0 20px;}
+    header.admin-head{padding:18px 20px;}
+    nav.admin-tabs a{padding:14px 16px;}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header class="admin-head">
+  <div class="logo">CMAKEUP<br>BEAUTY<span>ESPACE ADMIN</span></div>
+  <div class="head-right">
+    <span>Bonjour, <strong class="admin-name">…</strong></span>
+    <button type="button" class="btn btn-outline" id="logoutBtn">Déconnexion</button>
+  </div>
+</header>
+<nav class="admin-tabs">
+  <a href="admin-dashboard.html" class="current">Tableau de bord</a>
+  <a href="admin-messagerie.html">Messagerie</a>
+  <a href="admin-formations.html">Formations</a>
+  <a href="admin-coaching.html">Coaching</a>
+  <a href="admin-media.html">Gestion des médias</a>
+  <a href="https://calendly.com/app" target="_blank" rel="noopener">Calendrier (Calendly) ↗</a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div style="background:#B33A3A; color:#fff; padding:12px 20px; font-size:13px; letter-spacing:0.03em; margin-bottom:24px; text-align:center;">
+      ⚠ MODE TEST — authentification désactivée temporairement pour contrôle. Les actions d'écriture (changer un statut, enregistrer une note, etc.) échoueront tant qu'aucun vrai compte admin n'est connecté (protection base de données). À réactiver avant mise en production.
+    </div>
+        <p class="section-title">Vue d'ensemble</p>
+    <div class="kpi-grid" id="kpiGrid">
+      <div class="kpi-card"><div class="kpi-value">…</div><div class="kpi-label">Chargement…</div></div>
+    </div>
+
+    <p class="section-title">Accès rapide</p>
+    <div class="quick-grid">
+      <div class="quick-card">
+        <h3>Messagerie</h3>
+        <p>Messages reçus via le formulaire de contact : lecture, statut, réponse par email et notes internes.</p>
+        <a class="go" href="admin-messagerie.html">Ouvrir la messagerie →</a>
+      </div>
+      <div class="quick-card">
+        <h3>Formations</h3>
+        <p>Inscriptions formations & formation collective, liste d'attente formation en ligne, demandes Auto Makeup Class.</p>
+        <a class="go" href="admin-formations.html">Ouvrir les formations →</a>
+      </div>
+      <div class="quick-card">
+        <h3>Coaching business</h3>
+        <p>Candidatures Pack Business, questionnaires Pack Audit et questionnaires d'onboarding.</p>
+        <a class="go" href="admin-coaching.html">Ouvrir le coaching →</a>
+      </div>
+      <div class="quick-card">
+        <h3>Calendrier</h3>
+        <p>Les disponibilités des rendez-vous (Auto Makeup Class, appel découverte mariée) se gèrent directement dans Calendly.</p>
+        <a class="go" href="https://calendly.com/app" target="_blank" rel="noopener">Ouvrir Calendly ↗</a>
+      </div>
+    </div>
+
+    <p class="section-title">Dernières demandes (tous formulaires)</p>
+    <table class="admin-table">
+      <thead><tr><th>Date</th><th>Origine</th><th>Nom</th><th>Détail</th></tr></thead>
+      <tbody id="recentBody"><tr><td colspan="4" class="empty-row">Chargement…</td></tr></tbody>
+    </table>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co','sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+
+  // ===== MODE TEST TEMPORAIRE =====
+  // Passer à false (ou supprimer ce bloc) dès qu'un compte admin existe et avant mise en production.
+  // Tant que c'est à true, la vérification de connexion ci-dessous est court-circuitée : la page
+  // s'ouvre sans login pour permettre un contrôle visuel. ATTENTION : les actions d'écriture
+  // continueront d'échouer sans session admin valide, car les règles de sécurité (RLS) côté base
+  // de données exigent un vrai compte admin connecté — ce contournement ne concerne que l'écran.
+  var TEMP_DISABLE_LOGIN = true;
+
+  function fmtDate(iso){
+    if(!iso) return '';
+    var d = new Date(iso);
+    return d.toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit', year:'numeric'}) + ' ' + d.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+  }
+  function euros(cents){
+    return (Math.round((cents||0)) / 100).toLocaleString('fr-FR', {minimumFractionDigits:0, maximumFractionDigits:2}) + ' €';
+  }
+
+  function kpiCard(value, label){
+    return '<div class="kpi-card"><div class="kpi-value">' + value + '</div><div class="kpi-label">' + label + '</div></div>';
+  }
+
+  function loadKpis(){
+    Promise.all([
+      _sb.from('reservations').select('montant_acompte_centimes').eq('statut_paiement','paye'),
+      _sb.from('reservations').select('id', {count:'exact', head:true}).eq('statut_paiement','en_attente'),
+      _sb.from('contacts').select('id', {count:'exact', head:true}).eq('statut','nouveau'),
+      _sb.from('formation_inscriptions').select('id', {count:'exact', head:true}).eq('statut','nouveau'),
+      _sb.from('waitlist_formation_en_ligne').select('id', {count:'exact', head:true}).eq('statut','nouveau'),
+      _sb.from('candidatures_coaching').select('id', {count:'exact', head:true}).in('statut',['nouvelle','en_etude']),
+      _sb.from('appels_decouverte_mariee').select('id', {count:'exact', head:true}).eq('statut','nouveau')
+    ]).then(function(res){
+      var caPaid = (res[0].data || []).reduce(function(sum, r){ return sum + (r.montant_acompte_centimes || 0); }, 0);
+      var attentePaiement = res[1].count || 0;
+      var msgNouveaux = res[2].count || 0;
+      var formationsNouv = (res[3].count || 0) + (res[4].count || 0);
+      var coachingATraiter = res[5].count || 0;
+      var mariageATraiter = res[6].count || 0;
+
+      var html = '';
+      html += kpiCard(euros(caPaid), 'CA encaissé (acomptes payés)');
+      html += kpiCard(attentePaiement, 'Réservations en attente de paiement');
+      html += kpiCard(msgNouveaux, 'Messages non traités');
+      html += kpiCard(formationsNouv, 'Nouvelles demandes formation');
+      html += kpiCard(coachingATraiter, 'Candidatures coaching à traiter');
+      html += kpiCard(mariageATraiter, 'Appels découverte mariée à traiter');
+      document.getElementById('kpiGrid').innerHTML = html;
+    });
+  }
+
+  function loadRecent(){
+    Promise.all([
+      _sb.from('contacts').select('created_at,prenom,nom,sujet').order('created_at',{ascending:false}).limit(5),
+      _sb.from('reservations').select('created_at,prenom,nom,prestation').order('created_at',{ascending:false}).limit(5),
+      _sb.from('formation_inscriptions').select('created_at,prenom,nom,formation,source_page').order('created_at',{ascending:false}).limit(5),
+      _sb.from('candidatures_coaching').select('created_at,nom_prenom,pack').order('created_at',{ascending:false}).limit(5),
+      _sb.from('appels_decouverte_mariee').select('created_at,prenom,nom').order('created_at',{ascending:false}).limit(5)
+    ]).then(function(res){
+      var rows = [];
+      (res[0].data||[]).forEach(function(r){ rows.push({date:r.created_at, origine:'Contact', nom:(r.prenom||'')+' '+(r.nom||''), detail:r.sujet||'—'}); });
+      (res[1].data||[]).forEach(function(r){ rows.push({date:r.created_at, origine:'Réservation', nom:(r.prenom||'')+' '+(r.nom||''), detail:r.prestation||'—'}); });
+      (res[2].data||[]).forEach(function(r){ rows.push({date:r.created_at, origine:'Formation', nom:(r.prenom||'')+' '+(r.nom||''), detail:(r.formation||r.source_page||'—')}); });
+      (res[3].data||[]).forEach(function(r){ rows.push({date:r.created_at, origine:'Coaching', nom:r.nom_prenom||'—', detail:r.pack||'—'}); });
+      (res[4].data||[]).forEach(function(r){ rows.push({date:r.created_at, origine:'Mariée', nom:(r.prenom||'')+' '+(r.nom||''), detail:'Appel découverte'}); });
+
+      rows.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+      rows = rows.slice(0, 10);
+
+      var body = document.getElementById('recentBody');
+      if(rows.length === 0){
+        body.innerHTML = '<tr><td colspan="4" class="empty-row">Aucune demande pour le moment.</td></tr>';
+        return;
+      }
+      body.innerHTML = rows.map(function(r){
+        return '<tr><td>'+fmtDate(r.date)+'</td><td><span class="tag">'+r.origine+'</span></td><td>'+(r.nom.trim()||'—')+'</td><td>'+r.detail+'</td></tr>';
+      }).join('');
+    });
+  }
+
+  if(TEMP_DISABLE_LOGIN){
+    document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = 'Mode test (login désactivé)'; });
+    loadKpis();
+    loadRecent();
+  } else {
+  _sb.auth.getSession().then(function(res){
+    var session = res.data && res.data.session;
+    if(!session){ window.location.href = 'admin-login.html'; return; }
+    _sb.from('admins').select('prenom').eq('id', session.user.id).maybeSingle().then(function(r){
+      if(r.error || !r.data){
+        _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html?denied=1'; });
+        return;
+      }
+      document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = r.data.prenom; });
+      loadKpis();
+      loadRecent();
+    });
+  });
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html'; });
+  });
+})();
+</script>
+</body>
+</html>

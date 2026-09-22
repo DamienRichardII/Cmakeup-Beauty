@@ -153,8 +153,30 @@
     }
     nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
     nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
     header .btn{background:transparent; border:none; color:var(--ink); padding:8px 2px; font-size:12px;}
   }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 </style>
 </head>
 <body>
@@ -165,7 +187,8 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html" class="current">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <a href="formations.html">Formations</a>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
     <a href="contact.html">Contact</a>
@@ -176,8 +199,8 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow">NOS PRESTATIONS</div>
-    <h1>Les Prestations</h1>
+    <div class="eyebrow" data-editable="prestations.hero_eyebrow">NOS PRESTATIONS</div>
+    <h1 data-editable="prestations.hero_title">Les Prestations</h1>
   </div>
   <div class="page-hero-space"></div>
   <div class="banner"><span class="b-icon">📅</span>Le planning invitées ouvre chaque 15 du mois, un mois à l'avance</div>
@@ -185,11 +208,12 @@
 
 <section>
   <div class="presta-card">
-    <div class="p-photo"><img src="assets/img-2b500a41bba0.webp" alt="Makeup Smoky Eyes" width="700" height="1050" loading="eager"></div>
+    <div class="p-photo"><img data-editable="prestations.photo1" src="assets/img-2b500a41bba0.webp" alt="Makeup Smoky Eyes" width="700" height="1050" loading="eager"></div>
     <div class="p-text">
       <div class="p-badge">Invitée</div>
       <h2>Makeup Smoky Eyes</h2>
-      <p>Le maquillage smoky eyes est simple avec une couleur noir ou marron sur les yeux et le teint est bien travaillé.</p>
+      <p data-editable="prestations.hero_text">Le maquillage smoky eyes est simple avec une couleur noir ou marron sur les yeux et le teint est bien travaillé.</p>
+<div class="cms-video-slot" data-editable-video="prestations" style="display:none; margin:32px auto; max-width:900px;"></div>
       <p>Les faux cils sont inclus dans toutes les prestations.</p>
       <div class="p-price">90€</div>
       <a class="btn p-cta" href="reservation.html?prestation=smoky-eyes">Je réserve</a>
@@ -197,7 +221,7 @@
   </div>
 
   <div class="presta-card reverse">
-    <div class="p-photo"><img src="assets/img-720c8113beea.webp" alt="Makeup Soft Glam" width="700" height="775" loading="lazy" decoding="async"></div>
+    <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-720c8113beea.webp" alt="Makeup Soft Glam" width="700" height="775" loading="lazy" decoding="async"></div>
     <div class="p-text">
       <div class="p-badge">Invitée</div>
       <h2>Makeup Soft Glam</h2>
@@ -209,7 +233,7 @@
   </div>
 
   <div class="presta-card">
-    <div class="p-photo"><img src="assets/img-85732eeb980a.webp" alt="Makeup Full Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
+    <div class="p-photo"><img data-editable="prestations.photo3" src="assets/img-85732eeb980a.webp" alt="Makeup Full Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
     <div class="p-text">
       <div class="p-badge">Invitée</div>
       <h2>Makeup Full Glam</h2>
@@ -223,9 +247,9 @@
 
 <section id="reserver">
   <div class="cal-intro wrap">
-    <div class="section-eyebrow">RÉSERVATION</div>
-    <h2 class="section-title">Choisis ta maquilleuse<br>et ton créneau</h2>
-    <p class="section-lede">Chacune de nos 4 maquilleuses a ses propres disponibilités — sélectionne d'abord ta préférence (ou reste flexible), puis choisis ton créneau.</p>
+    <div class="section-eyebrow" data-editable="prestations.section1_eyebrow">RÉSERVATION</div>
+    <h2 class="section-title" data-editable="prestations.section1_title">Choisis ta maquilleuse<br>et ton créneau</h2>
+    <p class="section-lede" data-editable="prestations.section1_lede">Chacune de nos 4 maquilleuses a ses propres disponibilités — sélectionne d'abord ta préférence (ou reste flexible), puis choisis ton créneau.</p>
   </div>
 
   <div class="wrap">
@@ -459,6 +483,45 @@
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function embedVideo(container, url){
+    if(!url) return;
+    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
+    var vim = url.match(/vimeo\.com\/(\d+)/);
+    if(yt){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(vim){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else {
+      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
+    }
+    container.style.display = 'block';
+  }
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'prestations').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      if(row.block_type === 'video'){
+        var vc = document.querySelector('[data-editable-video="prestations"]');
+        if(vc) embedVideo(vc, row.content);
+        return;
+      }
+      var els = document.querySelectorAll('[data-editable="prestations.' + row.block_key + '"]');
+      els.forEach(function(el){
+        if(row.block_type === 'image'){
+          el.setAttribute('src', row.content);
+        } else {
+          el.textContent = row.content;
+        }
+      });
     });
   });
 })();

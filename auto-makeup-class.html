@@ -278,7 +278,29 @@
     }
     nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
     nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
   }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 </style>
 </head>
 <body>
@@ -289,7 +311,8 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <a href="formations.html" class="current">Formations</a>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="auto-makeup-class.html" class="current">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html" class="current">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
     <a href="contact.html">Contact</a>
@@ -300,17 +323,18 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow">COURS PRIVÉ — EXPÉRIENCE HAUT DE GAMME</div>
-    <h1>Auto Makeup Class</h1>
-    <div class="tagline">Apprends à te maquiller seule, comme une vraie pro</div>
-    <p>Une journée entière, en petit comité, pensée comme une véritable expérience premium : méthode professionnelle, accompagnement personnalisé et matériel offert pour repartir avec un vrai savoir-faire.</p>
+    <div class="eyebrow" data-editable="auto-makeup-class.hero_eyebrow">COURS PRIVÉ — EXPÉRIENCE HAUT DE GAMME</div>
+    <h1 data-editable="auto-makeup-class.hero_title">Auto Makeup Class</h1>
+    <div class="tagline" data-editable="auto-makeup-class.hero_tagline">Apprends à te maquiller seule, comme une vraie pro</div>
+    <p data-editable="auto-makeup-class.hero_text">Une journée entière, en petit comité, pensée comme une véritable expérience premium : méthode professionnelle, accompagnement personnalisé et matériel offert pour repartir avec un vrai savoir-faire.</p>
+<div class="cms-video-slot" data-editable-video="auto-makeup-class" style="display:none; margin:32px auto; max-width:900px;"></div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="section-eyebrow">POUR QUI ?</div>
-    <h2 class="section-title">Cette formation<br>est faite pour toi si...</h2>
+    <div class="section-eyebrow" data-editable="auto-makeup-class.section1_eyebrow">POUR QUI ?</div>
+    <h2 class="section-title" data-editable="auto-makeup-class.section1_title">Cette formation<br>est faite pour toi si...</h2>
     <ul class="criteria-list">
       <li><span class="check">✓</span> Tu veux maîtriser ton maquillage au quotidien</li>
       <li><span class="check">✓</span> Tu veux enfin savoir quoi utiliser, comment l'appliquer et dans quel ordre</li>
@@ -318,15 +342,15 @@
       <li><span class="check">✓</span> Tu en as marre d'acheter des produits qui ne te vont pas</li>
       <li><span class="check">✓</span> Tu veux gagner en confiance et devenir autonome dans ta routine beauté</li>
     </ul>
-    <p class="section-lede" style="margin-top:50px; margin-bottom:0;">Débutantes, intermédiaires, femmes qui veulent se sentir plus confiantes, apprendre à se mettre en valeur ou devenir autonomes dans leur routine beauté — cette classe est pour toi.</p>
+    <p class="section-lede" data-editable="auto-makeup-class.section1_lede" style="margin-top:50px; margin-bottom:0;">Débutantes, intermédiaires, femmes qui veulent se sentir plus confiantes, apprendre à se mettre en valeur ou devenir autonomes dans leur routine beauté — cette classe est pour toi.</p>
   </div>
 </section>
 
 <section style="padding-bottom:0;">
   <div class="wrap" style="padding-bottom:70px;">
-    <div class="section-eyebrow">LE PROGRAMME</div>
-    <h2 class="section-title">6 heures complètes,<br>pas à pas</h2>
-    <p class="section-lede">Je t'accompagne du début à la fin pour te transmettre la méthode professionnelle que j'utilise sur mes clientes : simple, efficace et réalisable seule à la maison.</p>
+    <div class="section-eyebrow" data-editable="auto-makeup-class.section2_eyebrow">LE PROGRAMME</div>
+    <h2 class="section-title" data-editable="auto-makeup-class.section2_title">6 heures complètes,<br>pas à pas</h2>
+    <p class="section-lede" data-editable="auto-makeup-class.section2_lede">Je t'accompagne du début à la fin pour te transmettre la méthode professionnelle que j'utilise sur mes clientes : simple, efficace et réalisable seule à la maison.</p>
   </div>
   <div class="programme-grid">
     <div class="prog-card"><div class="p-num">01</div><p>Petit déjeuner d'accueil</p></div>
@@ -342,9 +366,9 @@
 
 <section>
   <div class="wrap">
-    <div class="section-eyebrow">SESSIONS</div>
-    <h2 class="section-title">Prochaines dates</h2>
-    <p class="section-lede">Places limitées pour garantir un accompagnement personnalisé — consulte les disponibilités en temps réel et réserve directement ton créneau plus bas sur cette page.</p>
+    <div class="section-eyebrow" data-editable="auto-makeup-class.section3_eyebrow">SESSIONS</div>
+    <h2 class="section-title" data-editable="auto-makeup-class.section3_title">Prochaines dates</h2>
+    <p class="section-lede" data-editable="auto-makeup-class.section3_lede">Places limitées pour garantir un accompagnement personnalisé — consulte les disponibilités en temps réel et réserve directement ton créneau plus bas sur cette page.</p>
     <div class="sessions-grid">
       <div class="session-card">
         <div class="s-label">Session A</div>
@@ -364,8 +388,8 @@
 
 <section class="infos-wrap">
   <div class="wrap">
-    <div class="section-eyebrow" style="color:var(--gray);">INFORMATIONS PRATIQUES</div>
-    <h2 class="section-title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
+    <div class="section-eyebrow" data-editable="auto-makeup-class.section4_eyebrow" style="color:var(--gray);">INFORMATIONS PRATIQUES</div>
+    <h2 class="section-title" data-editable="auto-makeup-class.section4_title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
     <div class="infos-grid">
       <div>— Durée : 6h (10h → 16h)</div>
       <div>— Lieu : Saint-Denis (93)</div>
@@ -390,9 +414,9 @@
 
 <section>
   <div class="wrap" style="text-align:center;">
-    <div class="section-eyebrow">LE MATÉRIEL À PRÉVOIR</div>
-    <h2 class="section-title">Un kit personnel, sur-mesure</h2>
-    <p class="section-lede" style="margin-bottom:0;">📩 La liste complète du matériel recommandé (avec les liens directs vers chaque produit) te sera envoyée par PDF juste après l'achat de ta place — pour un accompagnement pensé selon ta carnation et tes besoins. Pour rappel, les pinceaux sont inclus dans la formation 💕</p>
+    <div class="section-eyebrow" data-editable="auto-makeup-class.section5_eyebrow">LE MATÉRIEL À PRÉVOIR</div>
+    <h2 class="section-title" data-editable="auto-makeup-class.section5_title">Un kit personnel, sur-mesure</h2>
+    <p class="section-lede" data-editable="auto-makeup-class.section5_lede" style="margin-bottom:0;">📩 La liste complète du matériel recommandé (avec les liens directs vers chaque produit) te sera envoyée par PDF juste après l'achat de ta place — pour un accompagnement pensé selon ta carnation et tes besoins. Pour rappel, les pinceaux sont inclus dans la formation 💕</p>
   </div>
 </section>
 
@@ -422,16 +446,16 @@
 
 <section style="background:var(--off);">
   <div class="wrap" style="text-align:center;">
-    <div class="section-eyebrow">APRÈS LA FORMATION</div>
-    <h2 class="section-title">Un vrai suivi, pas juste une journée</h2>
-    <p class="section-lede" style="margin-bottom:0;">📱 Toutes les participantes rejoignent un <strong>groupe WhatsApp privé</strong> après la formation : tu peux y poser tes questions, partager tes essais, échanger avec les autres élèves et continuer à progresser bien après ta journée en présentiel.</p>
+    <div class="section-eyebrow" data-editable="auto-makeup-class.section6_eyebrow">APRÈS LA FORMATION</div>
+    <h2 class="section-title" data-editable="auto-makeup-class.section6_title">Un vrai suivi, pas juste une journée</h2>
+    <p class="section-lede" data-editable="auto-makeup-class.section6_lede" style="margin-bottom:0;">📱 Toutes les participantes rejoignent un <strong>groupe WhatsApp privé</strong> après la formation : tu peux y poser tes questions, partager tes essais, échanger avec les autres élèves et continuer à progresser bien après ta journée en présentiel.</p>
   </div>
 </section>
 
 <section id="formulaire">
   <div class="wrap">
-    <div class="section-eyebrow">INSCRIPTIONS</div>
-    <h2 class="section-title">Réserver ma place</h2>
+    <div class="section-eyebrow" data-editable="auto-makeup-class.section7_eyebrow">INSCRIPTIONS</div>
+    <h2 class="section-title" data-editable="auto-makeup-class.section7_title">Réserver ma place</h2>
     <p class="form-note">Choisis directement ton créneau ci-dessous pour réserver ta session.</p>
 
     <div class="calendly-inline-widget" data-url="https://calendly.com/cmakeupbeauty" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
@@ -466,6 +490,45 @@
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function embedVideo(container, url){
+    if(!url) return;
+    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
+    var vim = url.match(/vimeo\.com\/(\d+)/);
+    if(yt){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(vim){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else {
+      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
+    }
+    container.style.display = 'block';
+  }
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'auto-makeup-class').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      if(row.block_type === 'video'){
+        var vc = document.querySelector('[data-editable-video="auto-makeup-class"]');
+        if(vc) embedVideo(vc, row.content);
+        return;
+      }
+      var els = document.querySelectorAll('[data-editable="auto-makeup-class.' + row.block_key + '"]');
+      els.forEach(function(el){
+        if(row.block_type === 'image'){
+          el.setAttribute('src', row.content);
+        } else {
+          el.textContent = row.content;
+        }
+      });
     });
   });
 })();

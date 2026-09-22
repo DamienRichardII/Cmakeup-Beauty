@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Messagerie</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --off:#F4F4F2; --paper:#D6D1C5; --line:#D6D1C5;
+    --ink:#1A1A1A; --ink-soft:#75736D; --gray:#B8B6A9; --ok:#5B7A5B; --warn:#B8863B; --danger:#B33A3A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--off); color:var(--ink); font-family:'TT Interphase','Jost', sans-serif; font-weight:300;}
+  h1,h2,h3{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-weight:400;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  header.admin-head{display:flex; align-items:center; justify-content:space-between; padding:22px 40px; border-bottom:1px solid var(--line); background:var(--white);}
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:20px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  .head-right{display:flex; align-items:center; gap:20px; font-size:13px; color:var(--ink-soft);}
+  .btn{border:1px solid var(--ink); padding:10px 22px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;}
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .btn-outline{border:1px solid var(--line); background:transparent; color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink);}
+  .btn-small{padding:8px 16px; font-size:11px;}
+
+  nav.admin-tabs{display:flex; gap:0; background:var(--white); border-bottom:1px solid var(--line); overflow-x:auto;}
+  nav.admin-tabs a{padding:16px 24px; font-size:13px; letter-spacing:0.04em; color:var(--ink-soft); border-bottom:2px solid transparent; white-space:nowrap;}
+  nav.admin-tabs a.current{color:var(--ink); border-bottom-color:var(--ink);}
+  nav.admin-tabs a:hover{color:var(--ink);}
+
+  main{padding:48px 0 80px;}
+  .section-title{font-size:13px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:18px;}
+
+  .filters{display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;}
+  .filters button{border:1px solid var(--line); background:var(--white); padding:8px 16px; font-size:12px; cursor:pointer; color:var(--ink-soft);}
+  .filters button.active{border-color:var(--ink); color:var(--ink);}
+
+  table.admin-table{width:100%; border-collapse:collapse; background:var(--white); border:1px solid var(--line); font-size:13px; cursor:pointer;}
+  table.admin-table th{text-align:left; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); padding:12px 14px; border-bottom:1px solid var(--line);}
+  table.admin-table td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.admin-table tr:last-child td{border-bottom:none;}
+  table.admin-table tr:hover{background:var(--off);}
+  table.admin-table tr.selected{background:var(--off);}
+  .empty-row{color:var(--ink-soft); font-style:italic; padding:20px 14px;}
+  .tag{display:inline-block; padding:4px 10px; font-size:11px; letter-spacing:0.04em; border:1px solid var(--line); white-space:nowrap;}
+  .tag-nouveau{border-color:var(--warn); color:var(--warn);}
+  .tag-traite{border-color:var(--ok); color:var(--ok);}
+  .tag-archive{border-color:var(--gray); color:var(--gray);}
+
+  .detail-panel{background:var(--white); border:1px solid var(--line); padding:28px; margin-top:24px; display:none;}
+  .detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px 28px; margin-bottom:20px; font-size:14px;}
+  .detail-grid .dl{font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); margin-bottom:4px;}
+  .detail-grid .dv{color:var(--ink);}
+  .detail-full{grid-column:1/-1;}
+  .detail-full .dv{white-space:pre-wrap; line-height:1.6;}
+  textarea.admin-note{width:100%; border:1px solid var(--line); padding:12px; font-family:inherit; font-size:13px; min-height:80px; resize:vertical; margin-bottom:12px;}
+  select.statut-select{border:1px solid var(--line); padding:8px 10px; font-size:12px; background:var(--white); font-family:inherit; cursor:pointer;}
+  .detail-actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:16px;}
+  .save-msg{font-size:12px; color:var(--ok); margin-left:8px;}
+  .replied-note{font-size:12px; color:var(--ink-soft); margin-top:14px;}
+
+  @media(max-width:760px){
+    .wrap{padding:0 20px;}
+    header.admin-head{padding:18px 20px;}
+    nav.admin-tabs a{padding:14px 16px;}
+    .detail-grid{grid-template-columns:1fr;}
+    table.admin-table{font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="admin-head">
+  <div class="logo">CMAKEUP<br>BEAUTY<span>ESPACE ADMIN</span></div>
+  <div class="head-right">
+    <span>Bonjour, <strong class="admin-name">…</strong></span>
+    <button type="button" class="btn btn-outline" id="logoutBtn">Déconnexion</button>
+  </div>
+</header>
+<nav class="admin-tabs">
+  <a href="admin-dashboard.html">Tableau de bord</a>
+  <a href="admin-messagerie.html" class="current">Messagerie</a>
+  <a href="admin-formations.html">Formations</a>
+  <a href="admin-coaching.html">Coaching</a>
+  <a href="admin-media.html">Gestion des médias</a>
+  <a href="https://calendly.com/app" target="_blank" rel="noopener">Calendrier (Calendly) ↗</a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div style="background:#B33A3A; color:#fff; padding:12px 20px; font-size:13px; letter-spacing:0.03em; margin-bottom:24px; text-align:center;">
+      ⚠ MODE TEST — authentification désactivée temporairement pour contrôle. Les actions d'écriture (changer un statut, enregistrer une note, etc.) échoueront tant qu'aucun vrai compte admin n'est connecté (protection base de données). À réactiver avant mise en production.
+    </div>
+        <p class="section-title">Messages du formulaire de contact</p>
+    <div class="filters" id="filters">
+      <button data-f="tous" class="active">Tous</button>
+      <button data-f="nouveau">Nouveaux</button>
+      <button data-f="traite">Traités</button>
+      <button data-f="archive">Archivés</button>
+    </div>
+    <table class="admin-table">
+      <thead><tr><th>Date</th><th>Nom</th><th>Sujet</th><th>Statut</th></tr></thead>
+      <tbody id="listBody"><tr><td colspan="4" class="empty-row">Chargement…</td></tr></tbody>
+    </table>
+
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-grid">
+        <div><div class="dl">Nom</div><div class="dv" id="dNom"></div></div>
+        <div><div class="dl">Date</div><div class="dv" id="dDate"></div></div>
+        <div><div class="dl">Email</div><div class="dv"><a id="dEmail"></a></div></div>
+        <div><div class="dl">Téléphone</div><div class="dv" id="dTel"></div></div>
+        <div class="detail-full"><div class="dl">Sujet</div><div class="dv" id="dSujet"></div></div>
+        <div class="detail-full"><div class="dl">Message</div><div class="dv" id="dMessage"></div></div>
+      </div>
+      <div class="dl" style="margin-bottom:6px;">Note interne (visible admins uniquement)</div>
+      <textarea class="admin-note" id="dNote" placeholder="Ex : rappelée le 12/09, en attente de devis…"></textarea>
+      <div class="detail-actions">
+        <select class="statut-select" id="dStatut">
+          <option value="nouveau">Nouveau</option>
+          <option value="traite">Traité</option>
+          <option value="archive">Archivé</option>
+        </select>
+        <button type="button" class="btn btn-small" id="btnSave">Enregistrer</button>
+        <button type="button" class="btn btn-small btn-outline" id="btnReply">Répondre par email</button>
+        <span class="save-msg" id="saveMsg"></span>
+      </div>
+      <p class="replied-note" id="repliedNote"></p>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co','sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+
+  // ===== MODE TEST TEMPORAIRE =====
+  // Passer à false (ou supprimer ce bloc) dès qu'un compte admin existe et avant mise en production.
+  // Tant que c'est à true, la vérification de connexion ci-dessous est court-circuitée : la page
+  // s'ouvre sans login pour permettre un contrôle visuel. ATTENTION : les actions d'écriture
+  // continueront d'échouer sans session admin valide, car les règles de sécurité (RLS) côté base
+  // de données exigent un vrai compte admin connecté — ce contournement ne concerne que l'écran.
+  var TEMP_DISABLE_LOGIN = true;
+  var contacts = [];
+  var currentFilter = 'tous';
+  var selectedId = null;
+  var adminPrenom = '';
+
+  function fmtDate(iso){
+    if(!iso) return '';
+    var d = new Date(iso);
+    return d.toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit', year:'numeric'}) + ' ' + d.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+  }
+
+  function renderList(){
+    var body = document.getElementById('listBody');
+    var filtered = contacts.filter(function(c){ return currentFilter === 'tous' || c.statut === currentFilter; });
+    if(filtered.length === 0){
+      body.innerHTML = '<tr><td colspan="4" class="empty-row">Aucun message.</td></tr>';
+      return;
+    }
+    body.innerHTML = filtered.map(function(c){
+      var sel = c.id === selectedId ? ' selected' : '';
+      return '<tr class="row-'+c.id+sel+'" data-id="'+c.id+'">'
+        + '<td>'+fmtDate(c.created_at)+'</td>'
+        + '<td>'+(c.prenom||'')+' '+(c.nom||'')+'</td>'
+        + '<td>'+(c.sujet||'—')+'</td>'
+        + '<td><span class="tag tag-'+c.statut+'">'+c.statut+'</span></td>'
+        + '</tr>';
+    }).join('');
+    Array.prototype.forEach.call(body.querySelectorAll('tr[data-id]'), function(tr){
+      tr.addEventListener('click', function(){ showDetail(tr.getAttribute('data-id')); });
+    });
+  }
+
+  function showDetail(id){
+    selectedId = id;
+    var c = contacts.find(function(x){ return x.id === id; });
+    if(!c) return;
+    document.getElementById('dNom').textContent = (c.prenom||'')+' '+(c.nom||'');
+    document.getElementById('dDate').textContent = fmtDate(c.created_at);
+    document.getElementById('dEmail').textContent = c.email || '—';
+    document.getElementById('dEmail').href = c.email ? ('mailto:'+c.email) : '#';
+    document.getElementById('dTel').textContent = c.telephone || '—';
+    document.getElementById('dSujet').textContent = c.sujet || '—';
+    document.getElementById('dMessage').textContent = c.message || '—';
+    document.getElementById('dNote').value = c.admin_note || '';
+    document.getElementById('dStatut').value = c.statut;
+    document.getElementById('saveMsg').textContent = '';
+    var repliedNote = document.getElementById('repliedNote');
+    if(c.replied_at){
+      repliedNote.textContent = 'Répondu par ' + (c.replied_by||'—') + ' le ' + fmtDate(c.replied_at) + '.';
+    } else {
+      repliedNote.textContent = 'Pas encore de réponse enregistrée.';
+    }
+    document.getElementById('detailPanel').style.display = 'block';
+    renderList();
+  }
+
+  function loadContacts(){
+    _sb.from('contacts').select('*').order('created_at', {ascending:false}).then(function(res){
+      contacts = res.data || [];
+      renderList();
+    });
+  }
+
+  document.getElementById('filters').addEventListener('click', function(e){
+    if(e.target.tagName !== 'BUTTON') return;
+    currentFilter = e.target.getAttribute('data-f');
+    Array.prototype.forEach.call(document.querySelectorAll('#filters button'), function(b){ b.classList.remove('active'); });
+    e.target.classList.add('active');
+    renderList();
+  });
+
+  document.getElementById('btnSave').addEventListener('click', function(){
+    if(!selectedId) return;
+    var note = document.getElementById('dNote').value;
+    var statut = document.getElementById('dStatut').value;
+    _sb.from('contacts').update({ admin_note: note, statut: statut }).eq('id', selectedId).then(function(res){
+      var saveMsg = document.getElementById('saveMsg');
+      if(res.error){ saveMsg.style.color = 'var(--danger)'; saveMsg.textContent = 'Erreur.'; return; }
+      saveMsg.style.color = 'var(--ok)'; saveMsg.textContent = 'Enregistré.';
+      var c = contacts.find(function(x){ return x.id === selectedId; });
+      if(c){ c.admin_note = note; c.statut = statut; }
+      renderList();
+    });
+  });
+
+  document.getElementById('btnReply').addEventListener('click', function(){
+    if(!selectedId) return;
+    var c = contacts.find(function(x){ return x.id === selectedId; });
+    if(!c || !c.email) return;
+    var subject = 'Re: ' + (c.sujet || 'Votre message') + ' — CMAKEUP BEAUTY';
+    var body = 'Bonjour ' + (c.prenom||'') + ',\n\n';
+    window.location.href = 'mailto:' + encodeURIComponent(c.email) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+    var patch = { replied_at: new Date().toISOString(), replied_by: adminPrenom };
+    if(c.statut === 'nouveau') patch.statut = 'traite';
+    _sb.from('contacts').update(patch).eq('id', selectedId).then(function(res){
+      if(!res.error){
+        Object.assign(c, patch);
+        showDetail(selectedId);
+      }
+    });
+  });
+
+  if(TEMP_DISABLE_LOGIN){
+    adminPrenom = 'Mode test';
+      document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = 'Mode test (login désactivé)'; });
+      loadContacts();
+  } else {
+  _sb.auth.getSession().then(function(res){
+    var session = res.data && res.data.session;
+    if(!session){ window.location.href = 'admin-login.html'; return; }
+    _sb.from('admins').select('prenom').eq('id', session.user.id).maybeSingle().then(function(r){
+      if(r.error || !r.data){
+        _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html?denied=1'; });
+        return;
+      }
+      adminPrenom = r.data.prenom;
+      document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = r.data.prenom; });
+      loadContacts();
+    });
+  });
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html'; });
+  });
+})();
+</script>
+</body>
+</html>

@@ -264,7 +264,29 @@
     }
     nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
     nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
   }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 </style>
 </head>
 <body>
@@ -275,7 +297,8 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html" class="current">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <a href="formations.html">Formations</a>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
     <a href="contact.html">Contact</a>
@@ -286,12 +309,12 @@
 
 <section class="hero" style="padding:0;">
   <div class="hero-img">
-    <img src="assets/img-2894f9add88d.webp" alt="Maquillage mariée CMAKEUP BEAUTY" width="900" height="1350" loading="eager">
+    <img data-editable="prestations-mariee.photo1" src="assets/img-2894f9add88d.webp" alt="Maquillage mariée CMAKEUP BEAUTY" width="900" height="1350" loading="eager">
   </div>
   <div class="hero-copy">
-    <div class="eyebrow">PRESTATION MARIÉE — SUR-MESURE</div>
-    <h1>Ton jour J,<br>sublimé avec justesse</h1>
-    <div class="tagline">"Un maquillage qui te ressemble, pensé pour durer jusqu'au bout de la nuit."</div>
+    <div class="eyebrow" data-editable="prestations-mariee.hero_eyebrow">PRESTATION MARIÉE — SUR-MESURE</div>
+    <h1 data-editable="prestations-mariee.hero_title">Ton jour J,<br>sublimé avec justesse</h1>
+    <div class="tagline" data-editable="prestations-mariee.hero_tagline">"Un maquillage qui te ressemble, pensé pour durer jusqu'au bout de la nuit."</div>
     <p class="sub">Chaque mariage est unique. Ta prestation l'est tout autant : un accompagnement personnalisé, de la première consultation jusqu'au dernier coup de pinceau le jour J.</p>
     <a class="btn-outline light" href="#appel">Réserver mon appel découverte — gratuit</a>
   </div>
@@ -299,8 +322,8 @@
 
 <section>
   <div class="wrap">
-    <div class="section-eyebrow">LA PROMESSE</div>
-    <h2 class="section-title">Une expérience pensée<br>pour ton jour J</h2>
+    <div class="section-eyebrow" data-editable="prestations-mariee.section1_eyebrow">LA PROMESSE</div>
+    <h2 class="section-title" data-editable="prestations-mariee.section1_title">Une expérience pensée<br>pour ton jour J</h2>
     <ul class="promesse-list">
       <li><span class="check">✓</span> Un rendu impeccable, longue tenue, quel que soit ton type de peau</li>
       <li><span class="check">✓</span> Une écoute réelle de tes envies, pour un maquillage qui te ressemble vraiment</li>
@@ -314,15 +337,16 @@
 
 <section style="padding-bottom:0;">
   <div class="wrap" style="padding-bottom:70px;">
-    <div class="section-eyebrow">LE PARCOURS</div>
-    <h2 class="section-title">De l'appel découverte<br>au grand jour</h2>
-    <p class="section-lede">Un accompagnement en trois temps, pour avancer en toute confiance jusqu'au jour J.</p>
+    <div class="section-eyebrow" data-editable="prestations-mariee.section2_eyebrow">LE PARCOURS</div>
+    <h2 class="section-title" data-editable="prestations-mariee.section2_title">De l'appel découverte<br>au grand jour</h2>
+    <p class="section-lede" data-editable="prestations-mariee.section2_lede">Un accompagnement en trois temps, pour avancer en toute confiance jusqu'au jour J.</p>
   </div>
   <div class="parcours-grid">
     <div class="parcours-card">
       <div class="p-num">01</div>
       <h3>Appel découverte</h3>
-      <p>Un échange téléphonique gratuit pour parler de ton mariage, de tes envies et répondre à toutes tes questions — sans engagement.</p>
+      <p data-editable="prestations-mariee.hero_text">Un échange téléphonique gratuit pour parler de ton mariage, de tes envies et répondre à toutes tes questions — sans engagement.</p>
+<div class="cms-video-slot" data-editable-video="prestations-mariee" style="display:none; margin:32px auto; max-width:900px;"></div>
     </div>
     <div class="parcours-card">
       <div class="p-num">02</div>
@@ -339,9 +363,9 @@
 
 <section class="formules-wrap">
   <div class="wrap">
-    <div class="section-eyebrow" style="color:var(--gray);">LES FORMULES</div>
-    <h2 class="section-title" style="color:var(--white);">Un aperçu de nos prestations</h2>
-    <p class="section-lede" style="color:#C9C7BE;">Chaque mariage est unique : le détail de nos formules et ton devis personnalisé te seront présentés lors de notre appel découverte.</p>
+    <div class="section-eyebrow" data-editable="prestations-mariee.section3_eyebrow" style="color:var(--gray);">LES FORMULES</div>
+    <h2 class="section-title" data-editable="prestations-mariee.section3_title" style="color:var(--white);">Un aperçu de nos prestations</h2>
+    <p class="section-lede" data-editable="prestations-mariee.section3_lede" style="color:#C9C7BE;">Chaque mariage est unique : le détail de nos formules et ton devis personnalisé te seront présentés lors de notre appel découverte.</p>
 
     <div class="formules-grid">
       <div class="formule-card">
@@ -388,7 +412,7 @@
 <section id="appel" class="call-wrap">
   <div class="wrap">
     <div class="call-icon">📞</div>
-    <div class="section-eyebrow">ÉTAPE 1</div>
+    <div class="section-eyebrow" data-editable="prestations-mariee.section4_eyebrow">ÉTAPE 1</div>
     <h2>Réserve ton appel découverte</h2>
     <p>Un échange de 30 minutes maximum, 100% gratuit et sans engagement, pour faire connaissance, parler de ton mariage et voir ensemble si nous sommes faites pour travailler ensemble.</p>
 
@@ -591,6 +615,45 @@
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function embedVideo(container, url){
+    if(!url) return;
+    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
+    var vim = url.match(/vimeo\.com\/(\d+)/);
+    if(yt){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(vim){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else {
+      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
+    }
+    container.style.display = 'block';
+  }
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'prestations-mariee').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      if(row.block_type === 'video'){
+        var vc = document.querySelector('[data-editable-video="prestations-mariee"]');
+        if(vc) embedVideo(vc, row.content);
+        return;
+      }
+      var els = document.querySelectorAll('[data-editable="prestations-mariee.' + row.block_key + '"]');
+      els.forEach(function(el){
+        if(row.block_type === 'image'){
+          el.setAttribute('src', row.content);
+        } else {
+          el.textContent = row.content;
+        }
+      });
     });
   });
 })();

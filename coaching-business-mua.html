@@ -272,8 +272,30 @@
     }
     nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
     nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
     header .btn{background:transparent; border:none; color:var(--ink); padding:8px 2px; font-size:12px;}
   }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 </style>
 </head>
 <body>
@@ -284,8 +306,9 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <a href="formation-en-ligne.html">Formations</a>
-    <a href="coaching-business-mua.html" class="active">Coaching</a>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
+    <a href="coaching-business-mua.html" class="current">Coaching</a>
     <a href="ebook.html">Ebook</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -294,11 +317,12 @@
 </header>
 
 <section class="hero">
-  <img src="assets/colleen-portrait.webp" alt="Coaching Business pour Makeup Artist — CMAKEUP BEAUTY" width="1066" height="1600" loading="eager">
+  <img data-editable="coaching-business-mua.photo1" src="assets/colleen-portrait.webp" alt="Coaching Business pour Makeup Artist — CMAKEUP BEAUTY" width="1066" height="1600" loading="eager">
   <div class="hero-content">
-    <div class="hero-eyebrow">Coaching individuel — Business MUA</div>
-    <h1>Structure et développe ton activité de Makeup Artist</h1>
-    <p class="hero-sub">Un accompagnement personnalisé avec Colleen pour clarifier ton positionnement, tes tarifs et ta stratégie — au-delà de la technique.</p>
+    <div class="hero-eyebrow" data-editable="coaching-business-mua.hero_eyebrow">Coaching individuel — Business MUA</div>
+    <h1 data-editable="coaching-business-mua.hero_title">Structure et développe ton activité de Makeup Artist</h1>
+    <p class="hero-sub" data-editable="coaching-business-mua.hero_text">Un accompagnement personnalisé avec Colleen pour clarifier ton positionnement, tes tarifs et ta stratégie — au-delà de la technique.</p>
+<div class="cms-video-slot" data-editable-video="coaching-business-mua" style="display:none; margin:32px auto; max-width:900px;"></div>
     <div class="hero-actions">
       <a class="btn-white" href="#packs">Voir les offres</a>
       <a class="btn-ghost" href="#parcours">Comprendre le déroulé</a>
@@ -616,6 +640,45 @@
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function embedVideo(container, url){
+    if(!url) return;
+    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
+    var vim = url.match(/vimeo\.com\/(\d+)/);
+    if(yt){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(vim){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else {
+      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
+    }
+    container.style.display = 'block';
+  }
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'coaching-business-mua').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      if(row.block_type === 'video'){
+        var vc = document.querySelector('[data-editable-video="coaching-business-mua"]');
+        if(vc) embedVideo(vc, row.content);
+        return;
+      }
+      var els = document.querySelectorAll('[data-editable="coaching-business-mua.' + row.block_key + '"]');
+      els.forEach(function(el){
+        if(row.block_type === 'image'){
+          el.setAttribute('src', row.content);
+        } else {
+          el.textContent = row.content;
+        }
+      });
     });
   });
 })();

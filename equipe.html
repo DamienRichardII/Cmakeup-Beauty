@@ -189,8 +189,30 @@
     }
     nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
     nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
     header .btn{background:transparent; border:none; color:var(--ink); padding:8px 2px; font-size:12px;}
   }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 </style>
 </head>
 <body>
@@ -201,7 +223,8 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html" class="current">Équipe</a>
-    <a href="formations.html">Formations</a>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
     <a href="contact.html">Contact</a>
@@ -212,21 +235,22 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow">L'ÉQUIPE</div>
-    <h1>Quatre maquilleuses,<br>une même exigence</h1>
-    <p>Derrière CMAKEUP BEAUTY, une équipe de maquilleuses professionnelles, chacune avec sa spécialité, réunies autour d'une même vision : un maquillage haut de gamme, pensé pour chaque peau et chaque occasion.</p>
+    <div class="eyebrow" data-editable="equipe.hero_eyebrow">L'ÉQUIPE</div>
+    <h1 data-editable="equipe.hero_title">Quatre maquilleuses,<br>une même exigence</h1>
+    <p data-editable="equipe.hero_text">Derrière CMAKEUP BEAUTY, une équipe de maquilleuses professionnelles, chacune avec sa spécialité, réunies autour d'une même vision : un maquillage haut de gamme, pensé pour chaque peau et chaque occasion.</p>
+<div class="cms-video-slot" data-editable-video="equipe" style="display:none; margin:32px auto; max-width:900px;"></div>
   </div>
 </section>
 
 <section class="team-photo">
-  <img src="assets/img-4492dc139dee.webp" alt="L'équipe CMAKEUP BEAUTY — Colleen, Lady, Arlyne et Fatou" width="1400" height="933" loading="lazy" decoding="async">
+  <img data-editable="equipe.photo1" src="assets/img-4492dc139dee.webp" alt="L'équipe CMAKEUP BEAUTY — Colleen, Lady, Arlyne et Fatou" width="1400" height="933" loading="lazy" decoding="async">
 </section>
 
 <!-- COLLEEN — FONDATRICE -->
 <section class="member" id="colleen">
   <div class="wrap">
     <div class="member-photo">
-      <img src="assets/img-bedf3f324690.webp" alt="Colleen, fondatrice de CMAKEUP BEAUTY" style="object-position:50% 15%;" width="900" height="1350" loading="lazy" decoding="async">
+      <img data-editable="equipe.photo2" src="assets/img-bedf3f324690.webp" alt="Colleen, fondatrice de CMAKEUP BEAUTY" style="object-position:50% 15%;" width="900" height="1350" loading="lazy" decoding="async">
     </div>
     <div class="member-text">
       <div class="num">01 — L'ÉQUIPE</div>
@@ -235,10 +259,10 @@
       <div class="role">Makeup Artist &amp; Formatrice — Soft &amp; Full Glam</div>
       <p>Perfectionniste et exigeante, Colleen maquille toutes les carnations de peau, avec une expertise particulière pour les peaux noires à métissées. Maquilleuse professionnelle autodidacte depuis plus de 10 ans, elle a fondé CMAKEUP BEAUTY pour transmettre son savoir-faire — à travers les prestations, mais aussi les formations et l'Auto Makeup Class — et offrir à chaque cliente et élève une expérience haut de gamme.</p>
       <div class="member-gallery gallery-real">
-        <img src="assets/img-d87df068211b.webp" alt="Réalisation de Colleen 1" width="700" height="1050" loading="lazy" decoding="async">
-        <img src="assets/img-0b7a07fd790a.webp" alt="Réalisation de Colleen 2" width="700" height="775" loading="lazy" decoding="async">
-        <img src="assets/img-09bd832f5086.webp" alt="Réalisation de Colleen 3" width="700" height="833" loading="lazy" decoding="async">
-        <img src="assets/img-53f22bd8f9ee.webp" alt="Réalisation de Colleen 4" width="700" height="854" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo3" src="assets/img-d87df068211b.webp" alt="Réalisation de Colleen 1" width="700" height="1050" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo4" src="assets/img-0b7a07fd790a.webp" alt="Réalisation de Colleen 2" width="700" height="775" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo5" src="assets/img-09bd832f5086.webp" alt="Réalisation de Colleen 3" width="700" height="833" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo6" src="assets/img-53f22bd8f9ee.webp" alt="Réalisation de Colleen 4" width="700" height="854" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -248,7 +272,7 @@
 <section class="member" id="lady">
   <div class="wrap">
     <div class="member-photo">
-      <img src="assets/img-8f09b0701713.webp" alt="Lady, maquilleuse CMAKEUP BEAUTY" width="900" height="1349" loading="lazy" decoding="async">
+      <img data-editable="equipe.photo7" src="assets/img-8f09b0701713.webp" alt="Lady, maquilleuse CMAKEUP BEAUTY" width="900" height="1349" loading="lazy" decoding="async">
     </div>
     <div class="member-text">
       <div class="num">02 — L'ÉQUIPE</div>
@@ -256,10 +280,10 @@
       <div class="role">Soft Glam &amp; Full Glam — Invitées, demoiselles d'honneur</div>
       <p>Sérieuse, à l'écoute et passionnée, Lady maquille depuis 5 ans et fait partie de l'équipe CMAKEUP BEAUTY depuis plus de 3 ans. Sa signature : une touche raffinée qui sublime chaque visage avec précision et douceur.</p>
       <div class="member-gallery gallery-real">
-        <img src="assets/img-da00fa6d0449.webp" alt="Réalisation de Lady 1" width="700" height="1049" loading="lazy" decoding="async">
-        <img src="assets/img-9f09efbd2dcc.webp" alt="Réalisation de Lady 2" width="700" height="1049" loading="lazy" decoding="async">
-        <img src="assets/img-61001689be04.webp" alt="Réalisation de Lady 3" width="700" height="870" loading="lazy" decoding="async">
-        <img src="assets/img-acb1534ae782.webp" alt="Réalisation de Lady 4" width="700" height="916" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo8" src="assets/img-da00fa6d0449.webp" alt="Réalisation de Lady 1" width="700" height="1049" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo9" src="assets/img-9f09efbd2dcc.webp" alt="Réalisation de Lady 2" width="700" height="1049" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo10" src="assets/img-61001689be04.webp" alt="Réalisation de Lady 3" width="700" height="870" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo11" src="assets/img-acb1534ae782.webp" alt="Réalisation de Lady 4" width="700" height="916" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -269,7 +293,7 @@
 <section class="member reverse" id="arlyne">
   <div class="wrap">
     <div class="member-photo">
-      <img src="assets/img-428c9c126a58.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" style="object-position:50% 15%;" width="1000" height="1502" loading="lazy" decoding="async">
+      <img data-editable="equipe.photo12" src="assets/img-428c9c126a58.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" style="object-position:50% 15%;" width="1000" height="1502" loading="lazy" decoding="async">
     </div>
     <div class="member-text">
       <div class="num">03 — L'ÉQUIPE</div>
@@ -277,10 +301,10 @@
       <div class="role">Makeup Artist &amp; Formatrice</div>
       <p>Maquilleuse et formatrice depuis 3 ans aux côtés de Colleen, Arlyne partage son temps entre les prestations makeup et l'animation de l'Auto Makeup Class et des formations CMAKEUP BEAUTY. Appliquée, à l'écoute et passionnée, elle a elle-même débuté en tant qu'élève — elle sait exactement se mettre à la place de celles qui apprennent.</p>
       <div class="member-gallery gallery-real">
-        <img src="assets/img-f7f0a960a5d1.webp" alt="Arlyne en formation 1" width="700" height="765" loading="lazy" decoding="async">
-        <img src="assets/img-f8ed6ee37118.webp" alt="Arlyne en formation 2" width="700" height="1050" loading="lazy" decoding="async">
-        <img src="assets/img-d8e26f52af16.webp" alt="Arlyne en formation 3" width="700" height="1050" loading="lazy" decoding="async">
-        <img src="assets/img-acb26a2f5e83.webp" alt="Réalisation de Arlyne 4" width="700" height="774" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo13" src="assets/img-f7f0a960a5d1.webp" alt="Arlyne en formation 1" width="700" height="765" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo14" src="assets/img-f8ed6ee37118.webp" alt="Arlyne en formation 2" width="700" height="1050" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo15" src="assets/img-d8e26f52af16.webp" alt="Arlyne en formation 3" width="700" height="1050" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo16" src="assets/img-acb26a2f5e83.webp" alt="Réalisation de Arlyne 4" width="700" height="774" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -290,7 +314,7 @@
 <section class="member" id="fatou">
   <div class="wrap">
     <div class="member-photo">
-      <img src="assets/img-b560e62a049e.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="900" height="1349" loading="lazy" decoding="async">
+      <img data-editable="equipe.photo17" src="assets/img-b560e62a049e.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="900" height="1349" loading="lazy" decoding="async">
     </div>
     <div class="member-text">
       <div class="num">04 — L'ÉQUIPE</div>
@@ -298,10 +322,10 @@
       <div class="role">Soft Glam &amp; Full Glam — Invitées &amp; Mariée</div>
       <p>Patiente et passionnée, Fatou maquille depuis plus de 5 ans et fait partie de l'équipe CMAKEUP BEAUTY depuis 3 ans. Elle s'adapte à tous les styles, du glamour affirmé à la touche plus légère, avec une vraie spécialité pour le Full Glam — et sublime toutes les carnations de peau.</p>
       <div class="member-gallery gallery-real">
-        <img src="assets/img-7ca30b4bb54b.webp" alt="Réalisation de Fatou 1" width="700" height="747" loading="lazy" decoding="async">
-        <img src="assets/img-8d65aa68c310.webp" alt="Réalisation de Fatou 2" width="700" height="868" loading="lazy" decoding="async">
-        <img src="assets/img-af1833e4b7f8.webp" alt="Réalisation de Fatou 3" width="700" height="834" loading="lazy" decoding="async">
-        <img src="assets/img-bbfb22c08fe0.webp" alt="Réalisation de Fatou 4" width="700" height="857" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo18" src="assets/img-7ca30b4bb54b.webp" alt="Réalisation de Fatou 1" width="700" height="747" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo19" src="assets/img-8d65aa68c310.webp" alt="Réalisation de Fatou 2" width="700" height="868" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo20" src="assets/img-af1833e4b7f8.webp" alt="Réalisation de Fatou 3" width="700" height="834" loading="lazy" decoding="async">
+        <img data-editable="equipe.photo21" src="assets/img-bbfb22c08fe0.webp" alt="Réalisation de Fatou 4" width="700" height="857" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -335,6 +359,45 @@
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function embedVideo(container, url){
+    if(!url) return;
+    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
+    var vim = url.match(/vimeo\.com\/(\d+)/);
+    if(yt){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(vim){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else {
+      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
+    }
+    container.style.display = 'block';
+  }
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'equipe').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      if(row.block_type === 'video'){
+        var vc = document.querySelector('[data-editable-video="equipe"]');
+        if(vc) embedVideo(vc, row.content);
+        return;
+      }
+      var els = document.querySelectorAll('[data-editable="equipe.' + row.block_key + '"]');
+      els.forEach(function(el){
+        if(row.block_type === 'image'){
+          el.setAttribute('src', row.content);
+        } else {
+          el.textContent = row.content;
+        }
+      });
     });
   });
 })();

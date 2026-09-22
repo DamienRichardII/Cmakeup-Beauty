@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Gestion des médias</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --off:#F4F4F2; --paper:#D6D1C5; --line:#D6D1C5;
+    --ink:#1A1A1A; --ink-soft:#75736D; --gray:#B8B6A9; --ok:#5B7A5B; --warn:#B8863B; --danger:#B33A3A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--off); color:var(--ink); font-family:'TT Interphase','Jost', sans-serif; font-weight:300;}
+  h1,h2,h3{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-weight:400;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  header.admin-head{display:flex; align-items:center; justify-content:space-between; padding:22px 40px; border-bottom:1px solid var(--line); background:var(--white);}
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:20px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  .head-right{display:flex; align-items:center; gap:20px; font-size:13px; color:var(--ink-soft);}
+  .btn{border:1px solid var(--ink); padding:10px 22px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;}
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .btn-outline{border:1px solid var(--line); background:transparent; color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink);}
+  .btn-small{padding:8px 16px; font-size:11px;}
+  .btn:disabled{opacity:0.5; cursor:default;}
+
+  nav.admin-tabs{display:flex; gap:0; background:var(--white); border-bottom:1px solid var(--line); overflow-x:auto;}
+  nav.admin-tabs a{padding:16px 24px; font-size:13px; letter-spacing:0.04em; color:var(--ink-soft); border-bottom:2px solid transparent; white-space:nowrap;}
+  nav.admin-tabs a.current{color:var(--ink); border-bottom-color:var(--ink);}
+  nav.admin-tabs a:hover{color:var(--ink);}
+
+  main{padding:48px 0 80px;}
+  .section-title{font-size:13px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:18px;}
+  .info-card{background:var(--white); border:1px solid var(--line); border-left:3px solid var(--ink); padding:18px 22px; font-size:13px; color:var(--ink-soft); line-height:1.7; margin-bottom:32px;}
+  .info-card strong{color:var(--ink);}
+
+  .filters{display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; align-items:center;}
+  .filters select, .filters button{border:1px solid var(--line); background:var(--white); padding:8px 14px; font-size:12px; cursor:pointer; color:var(--ink-soft); font-family:inherit;}
+  .filters select#pageSelect{font-size:13px; padding:10px 16px; min-width:280px; color:var(--ink);}
+  .filters a.view-live{font-size:12px; text-decoration:underline; color:var(--ink-soft); margin-left:auto;}
+  .filters a.view-live:hover{color:var(--ink);}
+
+  .empty-row{color:var(--ink-soft); font-style:italic; padding:20px 0;}
+
+  .block-card{background:var(--white); border:1px solid var(--line); padding:20px 22px; margin-bottom:14px;}
+  .block-card .block-label{font-size:12px; letter-spacing:0.04em; color:var(--ink); font-weight:400; display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+  .block-card .block-type-tag{font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); background:var(--gray); padding:2px 8px; border-radius:2px;}
+  .block-card .block-type-tag.type-title{background:var(--ink);}
+  .block-card .block-type-tag.type-image{background:var(--warn);}
+  .block-card .block-type-tag.type-video{background:#6B7FA3;}
+  .block-card input[type="text"], .block-card textarea{width:100%; border:1px solid var(--line); padding:10px 12px; font-family:inherit; font-size:13px; background:var(--off);}
+  .block-card textarea{min-height:80px; resize:vertical;}
+  .block-card input[type="text"]:focus, .block-card textarea:focus{outline:none; border-color:var(--ink); background:var(--white);}
+  .block-card .row{display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;}
+  .block-card .img-preview-wrap{flex-shrink:0;}
+  .block-card .img-preview{width:120px; height:90px; object-fit:cover; border:1px solid var(--line); background:var(--paper); display:block;}
+  .block-card .img-fields{flex:1; min-width:220px; display:flex; flex-direction:column; gap:8px;}
+  .block-card .field-note{font-size:11px; color:var(--ink-soft); margin-top:6px;}
+  .save-bar{position:sticky; bottom:0; background:var(--white); border-top:1px solid var(--line); padding:16px 0; margin-top:24px; display:flex; align-items:center; gap:16px;}
+  .save-bar .save-msg{font-size:12px; color:var(--ok);}
+  .save-bar .save-msg.err{color:var(--danger);}
+  .reset-page-btn{margin-left:auto; font-size:11px; color:var(--danger); text-decoration:underline; cursor:pointer; background:none; border:none; font-family:inherit;}
+
+  @media(max-width:760px){
+    .wrap{padding:0 20px;}
+    header.admin-head{padding:18px 20px;}
+    nav.admin-tabs a{padding:14px 16px;}
+    .filters a.view-live{margin-left:0;}
+    .block-card .row{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header class="admin-head">
+  <div class="logo">CMAKEUP<br>BEAUTY<span>ESPACE ADMIN</span></div>
+  <div class="head-right">
+    <span>Bonjour, <strong class="admin-name">…</strong></span>
+    <button type="button" class="btn btn-outline" id="logoutBtn">Déconnexion</button>
+  </div>
+</header>
+<nav class="admin-tabs">
+  <a href="admin-dashboard.html">Tableau de bord</a>
+  <a href="admin-messagerie.html">Messagerie</a>
+  <a href="admin-formations.html">Formations</a>
+  <a href="admin-coaching.html">Coaching</a>
+  <a href="admin-media.html" class="current">Gestion des médias</a>
+  <a href="https://calendly.com/app" target="_blank" rel="noopener">Calendrier (Calendly) ↗</a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div style="background:#B33A3A; color:#fff; padding:12px 20px; font-size:13px; letter-spacing:0.03em; margin-bottom:24px; text-align:center;">
+      ⚠ MODE TEST — authentification désactivée temporairement pour contrôle. Le bouton « Enregistrer » n'écrira rien tant qu'aucun vrai compte admin n'est connecté (protection base de données). À réactiver avant mise en production.
+    </div>
+    <p class="section-title">Gestion des médias & contenus</p>
+
+    <div class="filters">
+      <select id="pageSelect"></select>
+      <a href="#" target="_blank" rel="noopener" class="view-live" id="viewLiveLink">Voir la page en direct ↗</a>
+    </div>
+
+    <div id="blocksContainer">
+      <p class="empty-row">Chargement…</p>
+    </div>
+
+    <div class="save-bar">
+      <button type="button" class="btn" id="saveBtn">Enregistrer les modifications</button>
+      <span class="save-msg" id="saveMsg"></span>
+      <button type="button" class="reset-page-btn" id="resetPageBtn">Réinitialiser cette page (supprimer toutes les modifications)</button>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+  // ===== MODE TEST TEMPORAIRE =====
+  // Passer à false (ou supprimer ce bloc) dès qu'un compte admin existe et avant mise en production.
+  // Tant que c'est à true, la vérification de connexion ci-dessous est court-circuitée : la page
+  // s'ouvre sans login pour permettre un contrôle visuel. ATTENTION : l'enregistrement réel des
+  // modifications (bouton "Enregistrer") continuera d'échouer sans session admin valide, car les
+  // règles de sécurité (RLS) côté base de données exigent un vrai compte admin connecté — ce
+  // contournement ne concerne que l'écran, pas la base de données.
+  var TEMP_DISABLE_LOGIN = true;
+
+  // Libellés français des pages, dans l'ordre d'affichage du menu déroulant
+  var PAGE_LABELS = {
+    "index": "Accueil (index.html)",
+    "prestations": "Prestations",
+    "prestations-mariee": "Prestations — Mariée",
+    "equipe": "Équipe",
+    "formations": "Formations — page principale",
+    "formation-collective": "Formation collective",
+    "formation-intensive-collective-3-jours": "Formation intensive collective (3 jours)",
+    "formation-perfectionnement-1-jour": "Formation perfectionnement (1 jour)",
+    "formation-perfectionnement-2-jours": "Formation perfectionnement (2 jours)",
+    "cours-auto-maquillage-prive": "Cours auto-maquillage privé",
+    "auto-makeup-class": "Auto Makeup Class",
+    "coaching-business-mua": "Coaching Business MUA",
+    "ebook": "Ebook",
+    "contact": "Contact",
+    "formation-en-ligne": "Formation en ligne",
+    "formation-en-ligne-complete": "Formation en ligne — page complète"
+  };
+
+  var MANIFEST = {"index":{"file":"index.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Un maquillage sur-mesure,pensé pour votre éclat"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"Maquilleuse professionnelle — Paris"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Prestations événementielles, mariage et formations professionnelles, par Colleen et son équipe de maquilleuses expertes peaux noires à métissées."},{"key":"photo1","type":"image","label":"Photo — Colleen, fondatrice de CMAKEUP BEAUTY","default":"assets/img-17c46e006e48.webp"},{"key":"photo2","type":"image","label":"Photo — Portrait de Colleen","default":"assets/img-17c46e006e48.webp"},{"key":"photo3","type":"image","label":"Photo — Makeup Soft Glam","default":"assets/makeup-soft-glam.webp"},{"key":"photo4","type":"image","label":"Photo — Makeup Full Glam","default":"assets/makeup-full-glam.webp"},{"key":"photo5","type":"image","label":"Photo — Makeup Mariée","default":"assets/colleen-portrait.webp"},{"key":"photo6","type":"image","label":"Photo — Lady, maquilleuse CMAKEUP BEAUTY","default":"assets/lady-makeup-artist.webp"},{"key":"photo7","type":"image","label":"Photo — Arlyne, maquilleuse CMAKEUP BEAUTY","default":"assets/arlyne-makeup-artist.webp"},{"key":"photo8","type":"image","label":"Photo — Fatou, maquilleuse CMAKEUP BEAUTY","default":"assets/fatou-makeup-artist.webp"},{"key":"photo9","type":"image","label":"Photo — Arlyne, maquilleuse CMAKEUP BEAUTY","default":"assets/img-428c9c126a58.webp"},{"key":"photo10","type":"image","label":"Photo — Fatou, maquilleuse CMAKEUP BEAUTY","default":"assets/fatou-makeup-artist.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"prestations":{"file":"prestations.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Les Prestations"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"NOS PRESTATIONS"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Le maquillage smoky eyes est simple avec une couleur noir ou marron sur les yeux et le teint est bien travaillé."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"RÉSERVATION"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"Choisis ta maquilleuseet ton créneau"},{"key":"section1_lede","type":"text","label":"Section 1 — texte","default":"Chacune de nos 4 maquilleuses a ses propres disponibilités — sélectionne d'abord ta préférence (ou reste flexible), puis choisis ton créneau."},{"key":"photo1","type":"image","label":"Photo — Makeup Smoky Eyes","default":"assets/img-2b500a41bba0.webp"},{"key":"photo2","type":"image","label":"Photo — Makeup Soft Glam","default":"assets/img-720c8113beea.webp"},{"key":"photo3","type":"image","label":"Photo — Makeup Full Glam","default":"assets/img-85732eeb980a.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"prestations-mariee":{"file":"prestations-mariee.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Ton jour J,sublimé avec justesse"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"PRESTATION MARIÉE — SUR-MESURE"},{"key":"hero_tagline","type":"text","label":"Tagline (phrase d'accroche italique)","default":"\"Un maquillage qui te ressemble, pensé pour durer jusqu'au bout de la nuit.\""},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Un échange téléphonique gratuit pour parler de ton mariage, de tes envies et répondre à toutes tes questions — sans engagement."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"LA PROMESSE"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"Une expérience penséepour ton jour J"},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"LE PARCOURS"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"De l'appel découverteau grand jour"},{"key":"section2_lede","type":"text","label":"Section 2 — texte","default":"Un accompagnement en trois temps, pour avancer en toute confiance jusqu'au jour J."},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"LES FORMULES"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Un aperçu de nos prestations"},{"key":"section3_lede","type":"text","label":"Section 3 — texte","default":"Chaque mariage est unique : le détail de nos formules et ton devis personnalisé te seront présentés lors de notre appel découverte."},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"ÉTAPE 1"},{"key":"photo1","type":"image","label":"Photo — Maquillage mariée CMAKEUP BEAUTY","default":"assets/img-2894f9add88d.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"equipe":{"file":"equipe.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Quatre maquilleuses,une même exigence"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"L'ÉQUIPE"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Derrière CMAKEUP BEAUTY, une équipe de maquilleuses professionnelles, chacune avec sa spécialité, réunies autour d'une même vision : un maquillage haut de gamme, pensé pour chaque peau et chaque occasion."},{"key":"photo1","type":"image","label":"Photo — L'équipe CMAKEUP BEAUTY — Colleen, Lady, Arlyne et Fatou","default":"assets/img-4492dc139dee.webp"},{"key":"photo2","type":"image","label":"Photo — Colleen, fondatrice de CMAKEUP BEAUTY","default":"assets/img-bedf3f324690.webp"},{"key":"photo3","type":"image","label":"Photo — Réalisation de Colleen 1","default":"assets/img-d87df068211b.webp"},{"key":"photo4","type":"image","label":"Photo — Réalisation de Colleen 2","default":"assets/img-0b7a07fd790a.webp"},{"key":"photo5","type":"image","label":"Photo — Réalisation de Colleen 3","default":"assets/img-09bd832f5086.webp"},{"key":"photo6","type":"image","label":"Photo — Réalisation de Colleen 4","default":"assets/img-53f22bd8f9ee.webp"},{"key":"photo7","type":"image","label":"Photo — Lady, maquilleuse CMAKEUP BEAUTY","default":"assets/img-8f09b0701713.webp"},{"key":"photo8","type":"image","label":"Photo — Réalisation de Lady 1","default":"assets/img-da00fa6d0449.webp"},{"key":"photo9","type":"image","label":"Photo — Réalisation de Lady 2","default":"assets/img-9f09efbd2dcc.webp"},{"key":"photo10","type":"image","label":"Photo — Réalisation de Lady 3","default":"assets/img-61001689be04.webp"},{"key":"photo11","type":"image","label":"Photo — Réalisation de Lady 4","default":"assets/img-acb1534ae782.webp"},{"key":"photo12","type":"image","label":"Photo — Arlyne, maquilleuse CMAKEUP BEAUTY","default":"assets/img-428c9c126a58.webp"},{"key":"photo13","type":"image","label":"Photo — Arlyne en formation 1","default":"assets/img-f7f0a960a5d1.webp"},{"key":"photo14","type":"image","label":"Photo — Arlyne en formation 2","default":"assets/img-f8ed6ee37118.webp"},{"key":"photo15","type":"image","label":"Photo — Arlyne en formation 3","default":"assets/img-d8e26f52af16.webp"},{"key":"photo16","type":"image","label":"Photo — Réalisation de Arlyne 4","default":"assets/img-acb26a2f5e83.webp"},{"key":"photo17","type":"image","label":"Photo — Fatou, maquilleuse CMAKEUP BEAUTY","default":"assets/img-b560e62a049e.webp"},{"key":"photo18","type":"image","label":"Photo — Réalisation de Fatou 1","default":"assets/img-7ca30b4bb54b.webp"},{"key":"photo19","type":"image","label":"Photo — Réalisation de Fatou 2","default":"assets/img-8d65aa68c310.webp"},{"key":"photo20","type":"image","label":"Photo — Réalisation de Fatou 3","default":"assets/img-af1833e4b7f8.webp"},{"key":"photo21","type":"image","label":"Photo — Réalisation de Fatou 4","default":"assets/img-bbfb22c08fe0.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"formations":{"file":"formations.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Formation Makeup Artist"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"SE FORMER AUPRÈS DE CMAKEUP BEAUTY"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Des formations privées ou collectives pensées pour de futures professionnelles. Bien plus que du maquillage : pratique intensive, théorie, bases du business et création de contenu selon les formations — c'est ça, la vraie valeur ajoutée."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"OBJECTIFS"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"Ce que ces formationsvont vous apporter"},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"LES FORMATIONS"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"Quatre parcours,selon votre niveau"},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"FORMATIONS COLLECTIVES"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Apprendre en groupe"},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"FORMATIONS PERFECTIONNEMENT"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"Un accompagnement individuel"},{"key":"section5_eyebrow","type":"text","label":"Section 5 — eyebrow","default":"PROCHAINEMENT"},{"key":"section5_title","type":"text","label":"Section 5 — titre","default":"Une formation 100% en ligne arrive"},{"key":"section5_lede","type":"text","label":"Section 5 — texte","default":"Apprends à ton rythme, où que tu sois. Inscris-toi à la liste d'attente pour être informée en priorité du lancement."},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"formation-collective":{"file":"formation-collective.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Formation Débutante"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"FORMATION COLLECTIVE — 5 JOURS"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Modules Soft Glam & Full Glam. Une formation complète en groupe, en présentiel, pour partir de zéro et repartir avec une vraie base solide, de A à Z."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"AU PROGRAMME"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"4 jours de pratique, 1 jour pour poser les bases de ton activité"},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"TARIFS & FINANCEMENT"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"Deux façons de financer ta formation"},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"SESSIONS"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Prochaines dates"},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"INFORMATIONS"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"Bon à savoir"},{"key":"section5_eyebrow","type":"text","label":"Section 5 — eyebrow","default":"FOIRE AUX QUESTIONS"},{"key":"section5_title","type":"text","label":"Section 5 — titre","default":"Avant de t'inscrire"},{"key":"section6_eyebrow","type":"text","label":"Section 6 — eyebrow","default":"INSCRIPTIONS"},{"key":"section6_title","type":"text","label":"Section 6 — titre","default":"Réserver ma place"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"formation-intensive-collective-3-jours":{"file":"formation-intensive-collective-3-jours.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Formation Intensive Mariée"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"FORMATION COLLECTIVE — 3 JOURS"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Réservée aux Makeup Artists intermédiaires ou confirmées, déjà équipées de leur matériel. Une formation intensive en groupe pour te spécialiser dans le maquillage mariée et structurer ta présence en ligne, sur 3 jours."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"AU PROGRAMME"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"2 jours de techniques mariée, 1 jour dédié à la création de contenu"},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"TARIFS & FINANCEMENT"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"Deux façons de financer ta formation"},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"SESSIONS"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Prochaines dates"},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"INFORMATIONS"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"Bon à savoir"},{"key":"section5_eyebrow","type":"text","label":"Section 5 — eyebrow","default":"FOIRE AUX QUESTIONS"},{"key":"section5_title","type":"text","label":"Section 5 — titre","default":"Avant de t'inscrire"},{"key":"section6_eyebrow","type":"text","label":"Section 6 — eyebrow","default":"INSCRIPTIONS"},{"key":"section6_title","type":"text","label":"Section 6 — titre","default":"Réserver ma place"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"formation-perfectionnement-1-jour":{"file":"formation-perfectionnement-1-jour.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Formation Perfectionnement 1 Jour"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"FORMATION PRIVÉE — 1 JOUR"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Réservée aux Makeup Artists intermédiaires ou confirmées, déjà équipées de leur matériel. Une journée individuelle avec Colleen pour perfectionner un module précis, en te concentrant uniquement sur ce dont tu as besoin. Deux modules au choix, chacun sur une journée complète."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"DEUX MODULES AU CHOIX"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"Choisis ton module"},{"key":"section1_lede","type":"text","label":"Section 1 — texte","default":"Chaque module se déroule en formation individuelle, sur une journée complète, avec un accompagnement entièrement personnalisé selon ton niveau et tes objectifs."},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"INFORMATIONS"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"Bon à savoir"},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"FOIRE AUX QUESTIONS"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Avant de t'inscrire"},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"INSCRIPTION"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"Réserver ta journée"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"formation-perfectionnement-2-jours":{"file":"formation-perfectionnement-2-jours.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Formation Perfectionnement 2 Jours"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"FORMATION PRIVÉE — 2 JOURS"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Réservée aux Makeup Artists intermédiaires ou confirmées, déjà équipées de leur matériel. Le parcours le plus complet en individuel : les 3 modules Soft Glam, Full Glam et Mariée, sur deux journées consécutives avec Colleen."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"PROGRAMME"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"2 jours, 3 techniques travaillées"},{"key":"section1_lede","type":"text","label":"Section 1 — texte","default":"Un parcours individuel pensé pour progresser en continu, avec la même exigence que les modules pris séparément — pour un tarif plus avantageux."},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"INFORMATIONS"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"Bon à savoir"},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"FOIRE AUX QUESTIONS"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Avant de t'inscrire"},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"INSCRIPTION"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"Réserver tes 2 journées"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"cours-auto-maquillage-prive":{"file":"cours-auto-maquillage-prive.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Cours d'Auto Maquillage Privé"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"COURS PRIVÉ — DEMI-JOURNÉE"},{"key":"hero_tagline","type":"text","label":"Tagline (phrase d'accroche italique)","default":"Un accompagnement 100% individuel, en tête-à-tête"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"3 heures rien que pour toi, en tête-à-tête avec Colleen : créneau du matin ou de l'après-midi, pour apprendre à te maquiller seule avec une méthode professionnelle, à ton rythme."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"POUR QUI ?"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"Ce coursest fait pour toi si..."},{"key":"section1_lede","type":"text","label":"Section 1 — texte","default":"Débutantes, intermédiaires, femmes qui veulent se sentir plus confiantes, apprendre à se mettre en valeur ou devenir autonomes dans leur routine beauté — ce cours est pour toi."},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"LE PROGRAMME"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"3 heures complètes,rien que pour toi"},{"key":"section2_lede","type":"text","label":"Section 2 — texte","default":"Je t'accompagne du début à la fin pour te transmettre la méthode professionnelle que j'utilise sur mes clientes : simple, efficace et réalisable seule à la maison."},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"SESSIONS"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Prochaines dates"},{"key":"section3_lede","type":"text","label":"Section 3 — texte","default":"Places très limitées pour garantir un accompagnement 100% individuel — choisis ta session et ton créneau préféré (matin ou après-midi) dans le formulaire plus bas sur cette page."},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"INFORMATIONS PRATIQUES"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"Bon à savoir"},{"key":"section5_eyebrow","type":"text","label":"Section 5 — eyebrow","default":"LE MATÉRIEL À PRÉVOIR"},{"key":"section5_title","type":"text","label":"Section 5 — titre","default":"Un kit personnel, sur-mesure"},{"key":"section5_lede","type":"text","label":"Section 5 — texte","default":"📩 La liste complète du matériel recommandé (avec les liens directs vers chaque produit) te sera envoyée par PDF juste après l'achat de ta place — pour un accompagnement pensé selon ta carnation et tes besoins. Pour rappel, les pinceaux sont inclus dans la formation 💕"},{"key":"section6_eyebrow","type":"text","label":"Section 6 — eyebrow","default":"FOIRE AUX QUESTIONS"},{"key":"section6_title","type":"text","label":"Section 6 — titre","default":"Avant de réserver"},{"key":"section7_eyebrow","type":"text","label":"Section 7 — eyebrow","default":"INSCRIPTIONS"},{"key":"section7_title","type":"text","label":"Section 7 — titre","default":"Réserver ma place"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"auto-makeup-class":{"file":"auto-makeup-class.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Auto Makeup Class"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"COURS PRIVÉ — EXPÉRIENCE HAUT DE GAMME"},{"key":"hero_tagline","type":"text","label":"Tagline (phrase d'accroche italique)","default":"Apprends à te maquiller seule, comme une vraie pro"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Une journée entière, en petit comité, pensée comme une véritable expérience premium : méthode professionnelle, accompagnement personnalisé et matériel offert pour repartir avec un vrai savoir-faire."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"POUR QUI ?"},{"key":"section1_title","type":"text","label":"Section 1 — titre","default":"Cette formationest faite pour toi si..."},{"key":"section1_lede","type":"text","label":"Section 1 — texte","default":"Débutantes, intermédiaires, femmes qui veulent se sentir plus confiantes, apprendre à se mettre en valeur ou devenir autonomes dans leur routine beauté — cette classe est pour toi."},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"LE PROGRAMME"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"6 heures complètes,pas à pas"},{"key":"section2_lede","type":"text","label":"Section 2 — texte","default":"Je t'accompagne du début à la fin pour te transmettre la méthode professionnelle que j'utilise sur mes clientes : simple, efficace et réalisable seule à la maison."},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"SESSIONS"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"Prochaines dates"},{"key":"section3_lede","type":"text","label":"Section 3 — texte","default":"Places limitées pour garantir un accompagnement personnalisé — consulte les disponibilités en temps réel et réserve directement ton créneau plus bas sur cette page."},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"INFORMATIONS PRATIQUES"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"Bon à savoir"},{"key":"section5_eyebrow","type":"text","label":"Section 5 — eyebrow","default":"LE MATÉRIEL À PRÉVOIR"},{"key":"section5_title","type":"text","label":"Section 5 — titre","default":"Un kit personnel, sur-mesure"},{"key":"section5_lede","type":"text","label":"Section 5 — texte","default":"📩 La liste complète du matériel recommandé (avec les liens directs vers chaque produit) te sera envoyée par PDF juste après l'achat de ta place — pour un accompagnement pensé selon ta carnation et tes besoins. Pour rappel, les pinceaux sont inclus dans la formation 💕"},{"key":"section6_eyebrow","type":"text","label":"Section 6 — eyebrow","default":"APRÈS LA FORMATION"},{"key":"section6_title","type":"text","label":"Section 6 — titre","default":"Un vrai suivi, pas juste une journée"},{"key":"section6_lede","type":"text","label":"Section 6 — texte","default":"📱 Toutes les participantes rejoignent un groupe WhatsApp privé"},{"key":"section7_eyebrow","type":"text","label":"Section 7 — eyebrow","default":"INSCRIPTIONS"},{"key":"section7_title","type":"text","label":"Section 7 — titre","default":"Réserver ma place"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"coaching-business-mua":{"file":"coaching-business-mua.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Structure et développe ton activité de Makeup Artist"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"Coaching individuel — Business MUA"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Un accompagnement personnalisé avec Colleen pour clarifier ton positionnement, tes tarifs et ta stratégie — au-delà de la technique."},{"key":"photo1","type":"image","label":"Photo — Coaching Business pour Makeup Artist — CMAKEUP BEAUTY","default":"assets/colleen-portrait.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"ebook":{"file":"ebook.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Vivre duMaquillage — Business"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"ÉCRIT ET PENSÉ PAR CMAKEUP BEAUTY"},{"key":"hero_tagline","type":"text","label":"Tagline (phrase d'accroche italique)","default":"\"De la passion au business rentable\""},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Je m'appelle Colleen, plus connue sous le nom de CMAKEUP BEAUTY. Maquilleuse autodidacte depuis près de huit ans, j'ai eu le courage de croire en moi — même dans les moments où je repartais de zéro."},{"key":"section1_eyebrow","type":"text","label":"Section 1 — eyebrow","default":"L'INTRODUCTION"},{"key":"section2_eyebrow","type":"text","label":"Section 2 — eyebrow","default":"CE QUE TU VAS Y TROUVER"},{"key":"section2_title","type":"text","label":"Section 2 — titre","default":"Ce ebook est conçupour t'aider à"},{"key":"section3_eyebrow","type":"text","label":"Section 3 — eyebrow","default":"SOMMAIRE"},{"key":"section3_title","type":"text","label":"Section 3 — titre","default":"10 chapitres pourconstruire ton business"},{"key":"section4_eyebrow","type":"text","label":"Section 4 — eyebrow","default":"EN BONUS"},{"key":"section4_title","type":"text","label":"Section 4 — titre","default":"8 outils prêts à l'emploi"},{"key":"section4_lede","type":"text","label":"Section 4 — texte","default":"Des ressources concrètes à utiliser dès aujourd'hui dans ton activité."},{"key":"section5_eyebrow","type":"text","label":"Section 5 — eyebrow","default":"PRÊTE À TE LANCER ?"},{"key":"photo1","type":"image","label":"Photo — Colleen, fondatrice de CMAKEUP BEAUTY","default":"assets/img-bedf3f324690.webp"},{"key":"photo2","type":"image","label":"Photo — Colleen, fondatrice de CMAKEUP BEAUTY","default":"assets/img-17c46e006e48.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"contact":{"file":"contact.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Contact"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"RESTONS EN CONTACT"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"Une question, un projet, une envie de collaborer ? Écris-nous, on te répond avec plaisir."},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"formation-en-ligne":{"file":"formation-en-ligne.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Formation en ligne — Makeup Artist Soft Glam"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"Formation en ligne — Bientôt disponible"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"La formation vidéo 100% en ligne de CMAKEUP BEAUTY ACADEMY arrive très prochainement. Sois parmi les premières informées de son lancement."},{"key":"photo1","type":"image","label":"Photo — Formation Makeup Artist Soft Glam CMAKEUP BEAUTY — bientôt disponible","default":"assets/formation-en-ligne-hero.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]},"formation-en-ligne-complete":{"file":"formation-en-ligne-complete.html","blocks":[{"key":"hero_title","type":"title","label":"Titre principal","default":"Révèle ta signature Soft Glam"},{"key":"hero_eyebrow","type":"text","label":"Eyebrow (accroche courte au-dessus du titre)","default":"Formation vidéo — 100% en ligne"},{"key":"hero_text","type":"text","label":"Texte d'intro (sous le titre)","default":"La méthode de Colleen, 10 ans d'expérience et une expertise reconnue des peaux mélaninées, pour maîtriser un maquillage professionnel, lumineux et longue tenue — à ton rythme, depuis chez toi."},{"key":"photo1","type":"image","label":"Photo — Formation Makeup Artist Soft Glam CMAKEUP BEAUTY","default":"assets/formation-en-ligne-hero.webp"},{"key":"photo2","type":"image","label":"Photo — Colleen, fondatrice de CMAKEUP BEAUTY Academy","default":"assets/lady-makeup-artist.webp"},{"key":"video_principale","type":"video","label":"Vidéo de présentation (URL YouTube / Vimeo / MP4)","default":""}]}}
+;
+
+  var currentSlug = null;
+  var currentOverrides = {}; // block_key -> row {content, block_type}
+  var pendingImageUploads = {}; // block_key -> File
+
+  function esc(s){ return (s||'').toString().replace(/</g,'&lt;'); }
+
+  function populatePageSelect(){
+    var sel = document.getElementById('pageSelect');
+    var slugs = Object.keys(MANIFEST);
+    sel.innerHTML = slugs.map(function(slug){
+      var label = PAGE_LABELS[slug] || MANIFEST[slug].file;
+      return '<option value="'+slug+'">'+esc(label)+'</option>';
+    }).join('');
+  }
+
+  function isLongText(key, type){
+    if(type === 'title') return false;
+    return /text|lede|tagline/.test(key) && key.indexOf('eyebrow') === -1;
+  }
+
+  function typeTagLabel(type){
+    return {title:'Titre', text:'Texte', image:'Photo', video:'Vidéo'}[type] || type;
+  }
+
+  function renderBlocks(){
+    var data = MANIFEST[currentSlug];
+    var container = document.getElementById('blocksContainer');
+    if(!data || !data.blocks.length){
+      container.innerHTML = '<p class="empty-row">Aucun bloc éditable détecté sur cette page.</p>';
+      return;
+    }
+    container.innerHTML = data.blocks.map(function(b){
+      var override = currentOverrides[b.key];
+      var currentValue = override && override.content != null ? override.content : '';
+      if(b.type === 'image'){
+        var previewSrc = currentValue || b.default || '';
+        return '<div class="block-card" data-key="'+b.key+'" data-type="image">'
+          + '<div class="block-label"><span class="block-type-tag type-image">'+typeTagLabel(b.type)+'</span> '+esc(b.label)+'</div>'
+          + '<div class="row">'
+            + '<div class="img-preview-wrap"><img class="img-preview" src="'+esc(previewSrc)+'" alt="" onerror="this.style.opacity=0.3;"></div>'
+            + '<div class="img-fields">'
+              + '<input type="text" class="img-url-input" placeholder="URL de l\'image (ou choisis un fichier ci-dessous)" value="'+esc(currentValue)+'">'
+              + '<input type="file" class="img-file-input" accept="image/*">'
+              + '<div class="field-note">Par défaut : '+esc(b.default)+'</div>'
+            + '</div>'
+          + '</div>'
+        + '</div>';
+      }
+      if(b.type === 'video'){
+        return '<div class="block-card" data-key="'+b.key+'" data-type="video">'
+          + '<div class="block-label"><span class="block-type-tag type-video">'+typeTagLabel(b.type)+'</span> '+esc(b.label)+'</div>'
+          + '<input type="text" class="field-input" placeholder="https://www.youtube.com/watch?v=... ou .mp4" value="'+esc(currentValue)+'">'
+          + '<div class="field-note">Accepte un lien YouTube, Vimeo, ou un fichier vidéo direct (.mp4). Laisse vide pour ne rien afficher.</div>'
+        + '</div>';
+      }
+      var tagClass = b.type === 'title' ? ' type-title' : '';
+      var inputHtml = isLongText(b.key, b.type)
+        ? '<textarea class="field-input">'+esc(currentValue)+'</textarea>'
+        : '<input type="text" class="field-input" value="'+esc(currentValue)+'">';
+      return '<div class="block-card" data-key="'+b.key+'" data-type="'+b.type+'">'
+        + '<div class="block-label"><span class="block-type-tag'+tagClass+'">'+typeTagLabel(b.type)+'</span> '+esc(b.label)+'</div>'
+        + inputHtml
+        + '<div class="field-note">Par défaut : '+esc(b.default || '—')+'</div>'
+      + '</div>';
+    }).join('');
+
+    // wire image file inputs -> live preview on selection
+    Array.prototype.forEach.call(container.querySelectorAll('.block-card[data-type="image"]'), function(card){
+      var fileInput = card.querySelector('.img-file-input');
+      var urlInput = card.querySelector('.img-url-input');
+      var preview = card.querySelector('.img-preview');
+      var key = card.getAttribute('data-key');
+      fileInput.addEventListener('change', function(){
+        var file = fileInput.files[0];
+        if(!file) return;
+        pendingImageUploads[key] = file;
+        var reader = new FileReader();
+        reader.onload = function(e){ preview.src = e.target.result; };
+        reader.readAsDataURL(file);
+      });
+      urlInput.addEventListener('input', function(){
+        delete pendingImageUploads[key];
+        preview.src = urlInput.value;
+      });
+    });
+
+    document.getElementById('viewLiveLink').href = data.file;
+  }
+
+  function loadPage(slug, preserveMsg){
+    currentSlug = slug;
+    currentOverrides = {};
+    pendingImageUploads = {};
+    document.getElementById('blocksContainer').innerHTML = '<p class="empty-row">Chargement…</p>';
+    if(!preserveMsg){ document.getElementById('saveMsg').textContent = ''; }
+    _sb.from('page_content').select('block_key,block_type,content').eq('page_slug', slug).then(function(res){
+      if(!res.error && res.data){
+        res.data.forEach(function(row){ currentOverrides[row.block_key] = row; });
+      }
+      renderBlocks();
+    });
+  }
+
+  function slugify(filename){
+    return filename.toLowerCase().replace(/[^a-z0-9.]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function uploadImage(slug, key, file){
+    var path = slug + '/' + key + '-' + Date.now() + '-' + slugify(file.name);
+    return _sb.storage.from('page-media').upload(path, file, { upsert: true, contentType: file.type }).then(function(res){
+      if(res.error) throw res.error;
+      var pub = _sb.storage.from('page-media').getPublicUrl(path);
+      return pub.data.publicUrl;
+    });
+  }
+
+  function saveAll(){
+    var saveBtn = document.getElementById('saveBtn');
+    var msg = document.getElementById('saveMsg');
+    saveBtn.disabled = true;
+    msg.className = 'save-msg';
+    msg.textContent = 'Enregistrement…';
+
+    _sb.auth.getSession().then(function(sres){
+      var userId = sres.data && sres.data.session ? sres.data.session.user.id : null;
+      var container = document.getElementById('blocksContainer');
+      var cards = Array.prototype.slice.call(container.querySelectorAll('.block-card'));
+
+      var uploadPromises = cards.map(function(card){
+        var key = card.getAttribute('data-key');
+        if(card.getAttribute('data-type') === 'image' && pendingImageUploads[key]){
+          return uploadImage(currentSlug, key, pendingImageUploads[key]).then(function(url){
+            card.querySelector('.img-url-input').value = url;
+            return null;
+          });
+        }
+        return Promise.resolve(null);
+      });
+
+      Promise.all(uploadPromises).then(function(){
+        var rows = cards.map(function(card){
+          var key = card.getAttribute('data-key');
+          var type = card.getAttribute('data-type');
+          var value;
+          if(type === 'image'){
+            value = card.querySelector('.img-url-input').value.trim();
+          } else {
+            value = card.querySelector('.field-input').value.trim();
+          }
+          return {
+            page_slug: currentSlug,
+            block_key: key,
+            block_type: type,
+            content: value,
+            updated_at: new Date().toISOString(),
+            updated_by: userId
+          };
+        }).filter(function(r){ return r.content !== ''; });
+
+        var deleteKeys = cards.map(function(card){ return card.getAttribute('data-key'); })
+          .filter(function(key){
+            var card = container.querySelector('.block-card[data-key="'+key+'"]');
+            var type = card.getAttribute('data-type');
+            var value = type === 'image' ? card.querySelector('.img-url-input').value.trim() : card.querySelector('.field-input').value.trim();
+            return value === '';
+          });
+
+        var ops = [];
+        if(rows.length){
+          ops.push(_sb.from('page_content').upsert(rows, { onConflict: 'page_slug,block_key' }));
+        }
+        if(deleteKeys.length){
+          ops.push(_sb.from('page_content').delete().eq('page_slug', currentSlug).in('block_key', deleteKeys));
+        }
+
+        Promise.all(ops).then(function(results){
+          var hasError = results.some(function(r){ return r && r.error; });
+          saveBtn.disabled = false;
+          pendingImageUploads = {};
+          if(hasError){
+            msg.className = 'save-msg err';
+            msg.textContent = "Une erreur est survenue lors de l'enregistrement.";
+          } else {
+            msg.className = 'save-msg';
+            msg.textContent = 'Modifications enregistrées ✓';
+            loadPage(currentSlug, true);
+          }
+        });
+      }).catch(function(){
+        saveBtn.disabled = false;
+        msg.className = 'save-msg err';
+        msg.textContent = "Erreur lors de l'envoi d'une image.";
+      });
+    });
+  }
+
+  function resetPage(){
+    if(!confirm('Supprimer toutes les modifications enregistrées pour cette page et revenir au contenu d\'origine ?')) return;
+    _sb.from('page_content').delete().eq('page_slug', currentSlug).then(function(res){
+      if(!res.error){
+        loadPage(currentSlug);
+      }
+    });
+  }
+
+  populatePageSelect();
+  document.getElementById('pageSelect').addEventListener('change', function(){
+    loadPage(this.value);
+  });
+  document.getElementById('saveBtn').addEventListener('click', saveAll);
+  document.getElementById('resetPageBtn').addEventListener('click', resetPage);
+
+  if(TEMP_DISABLE_LOGIN){
+    document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = 'Mode test (login désactivé)'; });
+    loadPage(Object.keys(MANIFEST)[0]);
+  } else {
+    _sb.auth.getSession().then(function(res){
+      var session = res.data && res.data.session;
+      if(!session){ window.location.href = 'admin-login.html'; return; }
+      _sb.from('admins').select('prenom').eq('id', session.user.id).maybeSingle().then(function(r){
+        if(r.error || !r.data){
+          _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html?denied=1'; });
+          return;
+        }
+        document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = r.data.prenom; });
+        loadPage(Object.keys(MANIFEST)[0]);
+      });
+    });
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html'; });
+  });
+})();
+</script>
+</body>
+</html>

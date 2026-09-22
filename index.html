@@ -323,8 +323,30 @@
     }
     nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
     nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
     header .btn{background:transparent; border:none; color:var(--ink); padding:8px 2px; font-size:12px;}
   }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 </style>
 </head>
 <body>
@@ -335,7 +357,8 @@
     <a href="index.html" class="current">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <a href="formations.html">Formations</a>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
     <a href="contact.html">Contact</a>
@@ -345,11 +368,12 @@
 </header>
 
 <section class="hero" style="padding:0;">
-  <img src="assets/img-17c46e006e48.webp" alt="Colleen, fondatrice de CMAKEUP BEAUTY" width="1000" height="1499" loading="eager">
+  <img data-editable="index.photo1" src="assets/img-17c46e006e48.webp" alt="Colleen, fondatrice de CMAKEUP BEAUTY" width="1000" height="1499" loading="eager">
   <div class="hero-content">
-    <div class="hero-eyebrow">Maquilleuse professionnelle — Paris</div>
-    <h1>Un maquillage <em>sur-mesure</em>,<br>pensé pour votre éclat</h1>
-    <p class="hero-sub">Prestations événementielles, mariage et formations professionnelles, par Colleen et son équipe de maquilleuses expertes peaux noires à métissées.</p>
+    <div class="hero-eyebrow" data-editable="index.hero_eyebrow">Maquilleuse professionnelle — Paris</div>
+    <h1 data-editable="index.hero_title">Un maquillage <em>sur-mesure</em>,<br>pensé pour votre éclat</h1>
+    <p class="hero-sub" data-editable="index.hero_text">Prestations événementielles, mariage et formations professionnelles, par Colleen et son équipe de maquilleuses expertes peaux noires à métissées.</p>
+<div class="cms-video-slot" data-editable-video="index" style="display:none; margin:32px auto; max-width:900px;"></div>
     <div class="hero-actions">
       <a class="btn-white" href="prestations.html#reserver">Réserver une prestation</a>
       <a class="btn-ghost" href="formations.html">Découvrir les formations</a>
@@ -377,7 +401,7 @@
 <section class="about">
   <div class="wrap" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:80px; align-items:center;">
     <div class="about-img">
-      <img src="assets/img-17c46e006e48.webp" alt="Portrait de Colleen" width="1000" height="1499" loading="lazy" decoding="async">
+      <img data-editable="index.photo2" src="assets/img-17c46e006e48.webp" alt="Portrait de Colleen" width="1000" height="1499" loading="lazy" decoding="async">
     </div>
     <div class="about-text">
       <div class="section-label">À PROPOS</div>
@@ -403,7 +427,7 @@
     </div>
     <div class="presta-grid">
       <div class="presta-card">
-        <div class="presta-img"><img src="assets/makeup-soft-glam.webp" alt="Makeup Soft Glam" width="1023" height="1537" loading="lazy" decoding="async"></div>
+        <div class="presta-img"><img data-editable="index.photo3" src="assets/makeup-soft-glam.webp" alt="Makeup Soft Glam" width="1023" height="1537" loading="lazy" decoding="async"></div>
         <div class="presta-body">
           <h3>Soft Glam</h3>
           <div class="price">À partir de 100€</div>
@@ -411,7 +435,7 @@
         </div>
       </div>
       <div class="presta-card">
-        <div class="presta-img"><img src="assets/makeup-full-glam.webp" alt="Makeup Full Glam" width="1066" height="1600" loading="lazy" decoding="async"></div>
+        <div class="presta-img"><img data-editable="index.photo4" src="assets/makeup-full-glam.webp" alt="Makeup Full Glam" width="1066" height="1600" loading="lazy" decoding="async"></div>
         <div class="presta-body">
           <h3>Full Glam</h3>
           <div class="price">À partir de 150€</div>
@@ -419,7 +443,7 @@
         </div>
       </div>
       <div class="presta-card">
-        <div class="presta-img"><img src="assets/colleen-portrait.webp" alt="Makeup Mariée" width="1066" height="1600" loading="lazy" decoding="async"></div>
+        <div class="presta-img"><img data-editable="index.photo5" src="assets/colleen-portrait.webp" alt="Makeup Mariée" width="1066" height="1600" loading="lazy" decoding="async"></div>
         <div class="presta-body">
           <h3>Maquillage Mariée</h3>
           <div class="price">Devis sur appel</div>
@@ -438,31 +462,31 @@
     </div>
     <div class="team-grid">
       <div class="team-member">
-        <div class="team-img"><img src="assets/lady-makeup-artist.webp" alt="Lady, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
+        <div class="team-img"><img data-editable="index.photo6" src="assets/lady-makeup-artist.webp" alt="Lady, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
         <h3>Lady</h3>
         <div class="role">Soft Glam &amp; Full Glam</div>
         <p>Sérieuse, à l'écoute et passionnée, Lady maquille depuis 5 ans. Sa signature : une touche raffinée.</p>
       </div>
       <div class="team-member">
-        <div class="team-img"><img src="assets/arlyne-makeup-artist.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" width="1023" height="1537" loading="lazy" decoding="async"></div>
+        <div class="team-img"><img data-editable="index.photo7" src="assets/arlyne-makeup-artist.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" width="1023" height="1537" loading="lazy" decoding="async"></div>
         <h3>Arlyne</h3>
         <div class="role">Formatrice — Auto Makeup Class &amp; formations</div>
         <p>Formatrice depuis 3 ans aux côtés de Colleen, elle anime l'Auto Makeup Class et nos formations.</p>
       </div>
       <div class="team-member">
-        <div class="team-img"><img src="assets/fatou-makeup-artist.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
+        <div class="team-img"><img data-editable="index.photo8" src="assets/fatou-makeup-artist.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
         <h3>Fatou</h3>
         <div class="role">Soft Glam &amp; Full Glam</div>
         <p>Patiente et passionnée, Fatou maquille depuis plus de 5 ans, avec une spécialité pour le Full Glam.</p>
       </div>
       <div class="team-member">
-        <div class="team-img"><img src="assets/img-428c9c126a58.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" style="object-position:50% 15%;" width="1000" height="1502" loading="lazy" decoding="async"></div>
+        <div class="team-img"><img data-editable="index.photo9" src="assets/img-428c9c126a58.webp" alt="Arlyne, maquilleuse CMAKEUP BEAUTY" style="object-position:50% 15%;" width="1000" height="1502" loading="lazy" decoding="async"></div>
         <h3>Arlyne</h3>
         <div class="role">Invitées &amp; demoiselles d'honneur</div>
         <p>Une courte description d'Arlyne à ajouter ici : spécialité, style, expérience.</p>
       </div>
       <div class="team-member">
-        <div class="team-img"><img src="assets/fatou-makeup-artist.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
+        <div class="team-img"><img data-editable="index.photo10" src="assets/fatou-makeup-artist.webp" alt="Fatou, maquilleuse CMAKEUP BEAUTY" width="1067" height="1600" loading="lazy" decoding="async"></div>
         <h3>Fatou</h3>
         <div class="role">Soft Glam &amp; Full Glam</div>
         <p>Une courte description de Fatou à ajouter ici : spécialité, style, expérience.</p>
@@ -510,6 +534,45 @@
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function embedVideo(container, url){
+    if(!url) return;
+    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
+    var vim = url.match(/vimeo\.com\/(\d+)/);
+    if(yt){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(vim){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else {
+      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
+    }
+    container.style.display = 'block';
+  }
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'index').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      if(row.block_type === 'video'){
+        var vc = document.querySelector('[data-editable-video="index"]');
+        if(vc) embedVideo(vc, row.content);
+        return;
+      }
+      var els = document.querySelectorAll('[data-editable="index.' + row.block_key + '"]');
+      els.forEach(function(el){
+        if(row.block_type === 'image'){
+          el.setAttribute('src', row.content);
+        } else {
+          el.textContent = row.content;
+        }
+      });
     });
   });
 })();

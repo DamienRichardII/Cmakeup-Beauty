@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Formations</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --off:#F4F4F2; --paper:#D6D1C5; --line:#D6D1C5;
+    --ink:#1A1A1A; --ink-soft:#75736D; --gray:#B8B6A9; --ok:#5B7A5B; --warn:#B8863B; --danger:#B33A3A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--off); color:var(--ink); font-family:'TT Interphase','Jost', sans-serif; font-weight:300;}
+  h1,h2,h3{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-weight:400;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  header.admin-head{display:flex; align-items:center; justify-content:space-between; padding:22px 40px; border-bottom:1px solid var(--line); background:var(--white);}
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:20px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  .head-right{display:flex; align-items:center; gap:20px; font-size:13px; color:var(--ink-soft);}
+  .btn{border:1px solid var(--ink); padding:10px 22px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;}
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .btn-outline{border:1px solid var(--line); background:transparent; color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink);}
+  .btn-small{padding:8px 16px; font-size:11px;}
+
+  nav.admin-tabs{display:flex; gap:0; background:var(--white); border-bottom:1px solid var(--line); overflow-x:auto;}
+  nav.admin-tabs a{padding:16px 24px; font-size:13px; letter-spacing:0.04em; color:var(--ink-soft); border-bottom:2px solid transparent; white-space:nowrap;}
+  nav.admin-tabs a.current{color:var(--ink); border-bottom-color:var(--ink);}
+  nav.admin-tabs a:hover{color:var(--ink);}
+
+  main{padding:48px 0 80px;}
+  .section-title{font-size:13px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:18px;}
+  .info-card{background:var(--white); border:1px solid var(--line); border-left:3px solid var(--ink); padding:18px 22px; font-size:13px; color:var(--ink-soft); line-height:1.7; margin-bottom:32px;}
+  .info-card strong{color:var(--ink);}
+
+  .subtabs{display:flex; gap:0; margin-bottom:20px; border-bottom:1px solid var(--line);}
+  .subtabs button{border:none; background:transparent; padding:10px 20px 12px; font-size:13px; letter-spacing:0.04em; color:var(--ink-soft); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;}
+  .subtabs button.active{color:var(--ink); border-bottom-color:var(--ink);}
+
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .filters{display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; align-items:center;}
+  .filters select, .filters button{border:1px solid var(--line); background:var(--white); padding:8px 14px; font-size:12px; cursor:pointer; color:var(--ink-soft); font-family:inherit;}
+
+  table.admin-table{width:100%; border-collapse:collapse; background:var(--white); border:1px solid var(--line); font-size:13px;}
+  table.admin-table th{text-align:left; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); padding:12px 14px; border-bottom:1px solid var(--line);}
+  table.admin-table td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.admin-table tr:last-child td{border-bottom:none;}
+  .empty-row{color:var(--ink-soft); font-style:italic; padding:20px 14px;}
+  select.statut-select{border:1px solid var(--line); padding:6px 8px; font-size:12px; background:var(--white); font-family:inherit; cursor:pointer;}
+  .note-toggle{font-size:11px; text-decoration:underline; cursor:pointer; color:var(--ink-soft); display:inline-block; margin-top:6px;}
+  .note-row{display:none;}
+  .note-row.open{display:table-row;}
+  .note-row td{background:var(--off);}
+  textarea.admin-note{width:100%; border:1px solid var(--line); padding:10px; font-family:inherit; font-size:13px; min-height:60px; resize:vertical; margin-bottom:8px;}
+  .msg-cell{max-width:220px; white-space:pre-wrap;}
+
+  @media(max-width:760px){
+    .wrap{padding:0 20px;}
+    header.admin-head{padding:18px 20px;}
+    nav.admin-tabs a{padding:14px 16px;}
+    table.admin-table{font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="admin-head">
+  <div class="logo">CMAKEUP<br>BEAUTY<span>ESPACE ADMIN</span></div>
+  <div class="head-right">
+    <span>Bonjour, <strong class="admin-name">…</strong></span>
+    <button type="button" class="btn btn-outline" id="logoutBtn">Déconnexion</button>
+  </div>
+</header>
+<nav class="admin-tabs">
+  <a href="admin-dashboard.html">Tableau de bord</a>
+  <a href="admin-messagerie.html">Messagerie</a>
+  <a href="admin-formations.html" class="current">Formations</a>
+  <a href="admin-coaching.html">Coaching</a>
+  <a href="admin-media.html">Gestion des médias</a>
+  <a href="https://calendly.com/app" target="_blank" rel="noopener">Calendrier (Calendly) ↗</a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div style="background:#B33A3A; color:#fff; padding:12px 20px; font-size:13px; letter-spacing:0.03em; margin-bottom:24px; text-align:center;">
+      ⚠ MODE TEST — authentification désactivée temporairement pour contrôle. Les actions d'écriture (changer un statut, enregistrer une note, etc.) échoueront tant qu'aucun vrai compte admin n'est connecté (protection base de données). À réactiver avant mise en production.
+    </div>
+        <p class="section-title">Formations & ateliers</p>
+
+    <div class="subtabs">
+      <button data-panel="p-formations" class="active">Formations & formation collective</button>
+      <button data-panel="p-waitlist">Liste d'attente — formation en ligne</button>
+      <button data-panel="p-automakeup">Auto Makeup Class</button>
+    </div>
+
+    <div class="panel active" id="p-formations">
+      <div class="filters">
+        <select id="fFilterPage">
+          <option value="tous">Toutes les pages</option>
+          <option value="formations">formations.html</option>
+          <option value="formation-collective">formation-collective.html</option>
+          <option value="formation-intensive-collective-3-jours">formation-intensive-collective-3-jours.html</option>
+          <option value="formation-perfectionnement-1-jour">formation-perfectionnement-1-jour.html</option>
+          <option value="formation-perfectionnement-2-jours">formation-perfectionnement-2-jours.html</option>
+          <option value="cours-auto-maquillage-prive">cours-auto-maquillage-prive.html</option>
+        </select>
+        <select id="fFilterStatut">
+          <option value="tous">Tous statuts</option>
+          <option value="nouveau">Nouveau</option>
+          <option value="contacte">Contacté</option>
+          <option value="confirme">Confirmé</option>
+          <option value="annule">Annulé</option>
+        </select>
+      </div>
+      <table class="admin-table">
+        <thead><tr><th>Date</th><th>Nom</th><th>Page</th><th>Formation / Session</th><th>Niveau / Matériel</th><th>Autres infos</th><th>Statut</th></tr></thead>
+        <tbody id="formationsBody"><tr><td colspan="7" class="empty-row">Chargement…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="p-waitlist">
+      <div class="filters">
+        <select id="wFilterStatut">
+          <option value="tous">Tous statuts</option>
+          <option value="nouveau">Nouveau</option>
+          <option value="contacte">Contacté</option>
+        </select>
+        <button type="button" id="btnCopyEmails">Copier les emails "nouveau"</button>
+        <span id="copyMsg" style="font-size:12px; color:var(--ok);"></span>
+      </div>
+      <table class="admin-table">
+        <thead><tr><th>Date</th><th>Email</th><th>Statut</th></tr></thead>
+        <tbody id="waitlistBody"><tr><td colspan="3" class="empty-row">Chargement…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="p-automakeup">
+      <table class="admin-table">
+        <thead><tr><th>Date</th><th>Nom</th><th>Créneau souhaité</th><th>Statut</th></tr></thead>
+        <tbody id="autoBody"><tr><td colspan="4" class="empty-row">Chargement…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co','sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+
+  // ===== MODE TEST TEMPORAIRE =====
+  // Passer à false (ou supprimer ce bloc) dès qu'un compte admin existe et avant mise en production.
+  // Tant que c'est à true, la vérification de connexion ci-dessous est court-circuitée : la page
+  // s'ouvre sans login pour permettre un contrôle visuel. ATTENTION : les actions d'écriture
+  // continueront d'échouer sans session admin valide, car les règles de sécurité (RLS) côté base
+  // de données exigent un vrai compte admin connecté — ce contournement ne concerne que l'écran.
+  var TEMP_DISABLE_LOGIN = true;
+  var formations = [], waitlist = [], autoDemandes = [];
+
+  function fmtDate(iso){
+    if(!iso) return '';
+    var d = new Date(iso);
+    return d.toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit', year:'numeric'});
+  }
+  function esc(s){ return (s||'').toString().replace(/</g,'&lt;'); }
+
+  function statutOptions(current, options){
+    return options.map(function(o){
+      return '<option value="'+o+'"'+(o===current?' selected':'')+'>'+o+'</option>';
+    }).join('');
+  }
+
+  function updateRow(table, id, patch, arr){
+    _sb.from(table).update(patch).eq('id', id).then(function(res){
+      if(!res.error){
+        var row = arr.find(function(x){ return x.id === id; });
+        if(row) Object.assign(row, patch);
+      }
+    });
+  }
+
+  function renderFormations(){
+    var pageF = document.getElementById('fFilterPage').value;
+    var statutF = document.getElementById('fFilterStatut').value;
+    var rows = formations.filter(function(f){
+      return (pageF === 'tous' || f.source_page === pageF) && (statutF === 'tous' || f.statut === statutF);
+    });
+    var body = document.getElementById('formationsBody');
+    if(rows.length === 0){ body.innerHTML = '<tr><td colspan="7" class="empty-row">Aucune inscription.</td></tr>'; return; }
+    body.innerHTML = rows.map(function(f){
+      var noteId = 'note-'+f.id;
+      var extras = [
+        f.ville ? 'Ville : '+esc(f.ville) : '',
+        f.financement ? 'Financement : '+esc(f.financement) : '',
+        f.creneau ? 'Créneau : '+esc(f.creneau) : '',
+        f.style ? 'Style : '+esc(f.style) : '',
+        f.trousse ? 'Trousse : '+esc(f.trousse) : '',
+        f.deja_cliente ? 'Déjà cliente : '+esc(f.deja_cliente) : '',
+        f.modele ? 'Modèle : '+esc(f.modele) : '',
+        f.instagram ? 'Instagram : '+esc(f.instagram) : '',
+        f.experience ? 'Expérience : '+esc(f.experience) : '',
+        f.pourquoi ? 'Pourquoi : '+esc(f.pourquoi) : ''
+      ].filter(Boolean).join('<br>');
+      return '<tr>'
+        + '<td>'+fmtDate(f.created_at)+'</td>'
+        + '<td>'+esc(f.prenom)+' '+esc(f.nom)+'<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(f.email)+'</span>'
+          + '<div class="note-toggle" data-toggle="'+noteId+'">Note interne</div></td>'
+        + '<td>'+esc(f.source_page)+'</td>'
+        + '<td>'+esc(f.formation)+(f.session ? '<br>'+esc(f.session) : '')+(f.dates_souhaitees ? '<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(f.dates_souhaitees)+'</span>' : '')+'</td>'
+        + '<td>'+(f.niveau?esc(f.niveau):'—')+(f.materiel?'<br>'+esc(f.materiel):'')+(f.experience_mariee?'<br>'+esc(f.experience_mariee):'')+'</td>'
+        + '<td class="msg-cell">'+(extras || '—')+'</td>'
+        + '<td><select class="statut-select" data-id="'+f.id+'" data-table="formation_inscriptions">'+statutOptions(f.statut,['nouveau','contacte','confirme','annule'])+'</select></td>'
+        + '</tr>'
+        + '<tr class="note-row" id="'+noteId+'"><td colspan="7">'
+          + (f.message ? '<p style="font-size:12px; color:var(--ink-soft); margin-bottom:10px;"><strong style="color:var(--ink);">Message :</strong> '+esc(f.message)+'</p>' : '')
+          + '<textarea class="admin-note" data-id="'+f.id+'" data-table="formation_inscriptions">'+esc(f.admin_note)+'</textarea>'
+          + '<button type="button" class="btn btn-small save-note" data-id="'+f.id+'" data-table="formation_inscriptions">Enregistrer la note</button>'
+          + '</td></tr>';
+    }).join('');
+    wireRowEvents(body, formations);
+  }
+
+  function renderWaitlist(){
+    var statutF = document.getElementById('wFilterStatut').value;
+    var rows = waitlist.filter(function(w){ return statutF === 'tous' || w.statut === statutF; });
+    var body = document.getElementById('waitlistBody');
+    if(rows.length === 0){ body.innerHTML = '<tr><td colspan="3" class="empty-row">Aucune inscription en liste d\'attente.</td></tr>'; return; }
+    body.innerHTML = rows.map(function(w){
+      return '<tr><td>'+fmtDate(w.created_at)+'</td><td>'+esc(w.email)+'</td>'
+        + '<td><select class="statut-select" data-id="'+w.id+'" data-table="waitlist_formation_en_ligne">'+statutOptions(w.statut,['nouveau','contacte'])+'</select></td></tr>';
+    }).join('');
+    wireRowEvents(body, waitlist);
+  }
+
+  function renderAuto(){
+    var body = document.getElementById('autoBody');
+    if(autoDemandes.length === 0){ body.innerHTML = '<tr><td colspan="4" class="empty-row">Aucune demande.</td></tr>'; return; }
+    body.innerHTML = autoDemandes.map(function(a){
+      var creneau = (a.creneau_souhaite_date ? fmtDate(a.creneau_souhaite_date) : '—') + (a.creneau_souhaite_heure ? ' à ' + esc(a.creneau_souhaite_heure) : '');
+      return '<tr><td>'+fmtDate(a.created_at)+'</td><td>'+esc(a.prenom)+' '+esc(a.nom)+'<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(a.email)+'</span></td>'
+        + '<td>'+creneau+'</td>'
+        + '<td><select class="statut-select" data-id="'+a.id+'" data-table="auto_makeup_class_demandes">'+statutOptions(a.statut,['nouveau','confirme','annule'])+'</select></td></tr>';
+    }).join('');
+    wireRowEvents(body, autoDemandes);
+  }
+
+  function wireRowEvents(container, arr){
+    Array.prototype.forEach.call(container.querySelectorAll('.statut-select'), function(sel){
+      sel.addEventListener('change', function(){
+        updateRow(sel.getAttribute('data-table'), sel.getAttribute('data-id'), {statut: sel.value}, arr);
+      });
+    });
+    Array.prototype.forEach.call(container.querySelectorAll('.note-toggle'), function(t){
+      t.addEventListener('click', function(){
+        var target = document.getElementById(t.getAttribute('data-toggle'));
+        target.classList.toggle('open');
+      });
+    });
+    Array.prototype.forEach.call(container.querySelectorAll('.save-note'), function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-id');
+        var table = btn.getAttribute('data-table');
+        var textarea = container.querySelector('textarea[data-id="'+id+'"]');
+        updateRow(table, id, {admin_note: textarea.value}, arr);
+        btn.textContent = 'Enregistré ✓';
+        setTimeout(function(){ btn.textContent = 'Enregistrer la note'; }, 1500);
+      });
+    });
+  }
+
+  function loadAll(){
+    Promise.all([
+      _sb.from('formation_inscriptions').select('*').order('created_at',{ascending:false}),
+      _sb.from('waitlist_formation_en_ligne').select('*').order('created_at',{ascending:false}),
+      _sb.from('auto_makeup_class_demandes').select('*').order('created_at',{ascending:false})
+    ]).then(function(res){
+      formations = res[0].data || [];
+      waitlist = res[1].data || [];
+      autoDemandes = res[2].data || [];
+      renderFormations(); renderWaitlist(); renderAuto();
+    });
+  }
+
+  document.getElementById('fFilterPage').addEventListener('change', renderFormations);
+  document.getElementById('fFilterStatut').addEventListener('change', renderFormations);
+  document.getElementById('wFilterStatut').addEventListener('change', renderWaitlist);
+
+  document.getElementById('btnCopyEmails').addEventListener('click', function(){
+    var emails = waitlist.filter(function(w){ return w.statut === 'nouveau'; }).map(function(w){ return w.email; });
+    var msg = document.getElementById('copyMsg');
+    if(emails.length === 0){ msg.textContent = 'Aucun email à copier.'; return; }
+    navigator.clipboard.writeText(emails.join(', ')).then(function(){
+      msg.textContent = emails.length + ' email(s) copié(s).';
+    }).catch(function(){ msg.textContent = "Impossible de copier automatiquement — sélectionne manuellement."; });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.subtabs button'), function(btn){
+    btn.addEventListener('click', function(){
+      Array.prototype.forEach.call(document.querySelectorAll('.subtabs button'), function(b){ b.classList.remove('active'); });
+      Array.prototype.forEach.call(document.querySelectorAll('.panel'), function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.getAttribute('data-panel')).classList.add('active');
+    });
+  });
+
+  if(TEMP_DISABLE_LOGIN){
+    document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = 'Mode test (login désactivé)'; });
+    loadAll();
+  } else {
+  _sb.auth.getSession().then(function(res){
+    var session = res.data && res.data.session;
+    if(!session){ window.location.href = 'admin-login.html'; return; }
+    _sb.from('admins').select('prenom').eq('id', session.user.id).maybeSingle().then(function(r){
+      if(r.error || !r.data){
+        _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html?denied=1'; });
+        return;
+      }
+      document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = r.data.prenom; });
+      loadAll();
+    });
+  });
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    _sb.auth.signOut().then(function(){ window.location.href = 'admin-login.html'; });
+  });
+})();
+</script>
+</body>
+</html>

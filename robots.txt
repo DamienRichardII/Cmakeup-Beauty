@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Pages volontairement exclues de l'indexation (voir sitemap.xml pour la liste publique) :
+# - formation-en-ligne-complete.html : offre de lancement non encore publiée officiellement
+# - reservation.html, formulaire-candidature-business.html : parcours post-clic, pas des pages d'atterrissage
+# - questionnaire-audit.html, questionnaire-complet-business.html : questionnaires privés post-paiement
+Disallow: /formation-en-ligne-complete.html
+Disallow: /reservation.html
+Disallow: /formulaire-candidature-business.html
+Disallow: /questionnaire-audit.html
+Disallow: /questionnaire-complet-business.html
+Disallow: /admin-login.html
+Disallow: /admin-reset-password.html
+Disallow: /admin-dashboard.html
+Disallow: /admin-messagerie.html
+Disallow: /admin-formations.html
+Disallow: /admin-coaching.html
+
+Sitemap: https://cmakeup-beauty.vercel.app/sitemap.xml

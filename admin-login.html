@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Espace admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --off:#F4F4F2; --paper:#D6D1C5; --line:#D6D1C5;
+    --ink:#1A1A1A; --ink-soft:#75736D; --gray:#B8B6A9; --danger:#B33A3A; --ok:#5B7A5B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--off); color:var(--ink); font-family:'TT Interphase','Jost', sans-serif; font-weight:300; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-weight:400;}
+  a{color:inherit;}
+  .login-shell{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;}
+  .login-card{background:var(--white); border:1px solid var(--line); padding:48px 40px; width:100%; max-width:400px;}
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em; text-align:center;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:4px;}
+  .login-card .sub{text-align:center; font-size:12px; color:var(--ink-soft); letter-spacing:0.06em; margin:24px 0 32px;}
+  .field{display:flex; flex-direction:column; gap:8px; margin-bottom:20px;}
+  .field label{font-size:11px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase;}
+  .field input{border:none; border-bottom:1px solid var(--line); padding:12px 4px; font-family:inherit; font-size:15px; background:transparent; width:100%;}
+  .field input:focus{outline:none; border-bottom-color:var(--ink);}
+  .btn{border:1px solid var(--ink); padding:13px 26px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); width:100%; cursor:pointer; margin-top:8px;}
+  .btn:hover{background:var(--white); color:var(--ink);}
+  .btn:disabled{opacity:0.5; cursor:default;}
+  .login-msg{font-size:13px; min-height:18px; margin-top:16px; text-align:center;}
+  .login-links{text-align:center; margin-top:22px; font-size:12px;}
+  .login-links a{text-decoration:underline; color:var(--ink-soft); cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="login-shell">
+  <div class="login-card">
+    <div class="logo">CMAKEUP<br>BEAUTY<span>ESPACE ADMIN</span></div>
+    <p class="sub">Connecte-toi pour accéder au tableau de bord</p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn" id="loginBtn">Se connecter</button>
+      <p class="login-msg" id="loginMsg"></p>
+    </form>
+    <div class="login-links"><a id="forgotLink">Mot de passe oublié ?</a></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co','sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  var msg = document.getElementById('loginMsg');
+  var params = new URLSearchParams(window.location.search);
+
+  if(params.get('denied') === '1'){
+    msg.style.color = 'var(--danger)';
+    msg.textContent = "Ce compte n'a pas accès à l'administration.";
+  }
+  if(params.get('reset') === '1'){
+    msg.style.color = 'var(--ok)';
+    msg.textContent = 'Mot de passe mis à jour. Tu peux te connecter.';
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = document.getElementById('loginBtn');
+    btn.disabled = true; btn.textContent = 'Connexion...';
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value;
+
+    _sb.auth.signInWithPassword({ email: email, password: password }).then(function(res){
+      if(res.error || !res.data.session){
+        btn.disabled = false; btn.textContent = 'Se connecter';
+        msg.style.color = 'var(--danger)';
+        msg.textContent = 'Email ou mot de passe incorrect.';
+        return;
+      }
+      var uid = res.data.session.user.id;
+      _sb.from('admins').select('id').eq('id', uid).maybeSingle().then(function(r){
+        if(r.error || !r.data){
+          _sb.auth.signOut().then(function(){
+            btn.disabled = false; btn.textContent = 'Se connecter';
+            msg.style.color = 'var(--danger)';
+            msg.textContent = "Ce compte n'a pas accès à l'administration.";
+          });
+          return;
+        }
+        window.location.href = 'admin-dashboard.html';
+      });
+    });
+  });
+
+  document.getElementById('forgotLink').addEventListener('click', function(){
+    var email = document.getElementById('email').value.trim();
+    if(!email){
+      msg.style.color = 'var(--danger)';
+      msg.textContent = 'Renseigne ton email ci-dessus puis reclique sur ce lien.';
+      return;
+    }
+    var redirectTo = window.location.origin + window.location.pathname.replace('admin-login.html','admin-reset-password.html');
+    _sb.auth.resetPasswordForEmail(email, { redirectTo: redirectTo }).then(function(){
+      msg.style.color = 'var(--ok)';
+      msg.textContent = 'Si ce compte existe, un email de réinitialisation vient de partir.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
