@@ -142,6 +142,22 @@
   .call-wrap .call-icon{font-size:34px; margin-bottom:24px;}
   .call-wrap h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:20px;}
   .call-wrap p{max-width:520px; margin:0 auto 40px; font-size:16px; line-height:1.85; color:var(--ink-soft);}
+
+  /* FAQ */
+  .faq-list{border-top:1px solid var(--line); max-width:780px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding:26px 0;
+    font-size:17px;
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
   .sms-note{
     max-width:560px; margin:0 auto 50px; text-align:center; font-size:13px; line-height:1.9;
     color:var(--ink-soft); background:var(--off); border:1px solid var(--line); padding:18px 24px;
@@ -332,7 +348,11 @@
       <li><span class="check">✓</span> Mon expertise et mes conseils en mise en beauté, bien au-delà du maquillage</li>
       <li><span class="check">✓</span> Un vrai soutien le jour J : je t'aide avec la robe, je tiens le bouquet, je veille sur ta mise en beauté</li>
       <li><span class="check">✓</span> Une prestation sur mesure, pensée pour que tout soit parfait</li>
+      <li><span class="check">✓</span> Maquillage <strong>et</strong> coiffure : une prestation beauté complète, tout-en-un</li>
     </ul>
+    <p style="max-width:640px; margin:34px auto 0; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft); border:1px solid var(--line); padding:20px 24px;">
+      <strong style="color:var(--ink);">Bon à savoir :</strong> beaucoup de mariées ne le savent pas, mais je ne fais pas que le maquillage — je propose aussi la coiffure. Pas besoin de chercher une coiffeuse en plus, je peux m'occuper des deux le jour J.
+    </p>
   </div>
 </section>
 
@@ -409,6 +429,34 @@
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow">FOIRE AUX QUESTIONS</div>
+    <h2 class="section-title" style="text-align:center; margin-bottom:50px;">Avant de réserver</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Avez-vous déjà une coiffeuse ?</summary>
+        <p>Pas besoin d'en chercher une : je propose aussi la coiffure, en plus du maquillage. Beaucoup de mariées ne le savent pas, mais je peux m'occuper des deux le jour J — demande-moi le Pack Makeup & Coiffure.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Faites-vous un essai avant le mariage ?</summary>
+        <p>Oui, l'essai maquillage est inclus dans le forfait journée complète. Il est fortement recommandé pour arriver sereine le jour J.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Vous déplacez-vous le jour du mariage ?</summary>
+        <p>Oui, je me déplace sur le lieu de préparation. Les frais de déplacement sont précisés lors de ton devis personnalisé, selon la distance.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Pouvez-vous maquiller mes demoiselles d'honneur et ma famille ?</summary>
+        <p>Oui, une équipe de 3 maquilleuses peut intervenir en simultané le jour J pour que tout le monde soit prête à temps.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Comment se passe la réservation ?</summary>
+        <p>Tout commence par un appel découverte gratuit pour parler de ton projet. Le détail des formules et ton devis personnalisé te seront présentés à cette occasion.</p>
+      </details>
+    </div>
+  </div>
+</section>
 
 <section id="appel" class="call-wrap">
   <div class="wrap">
