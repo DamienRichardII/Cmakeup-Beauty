@@ -539,7 +539,7 @@
     <div class="cal-step-label">Étape 2 — Choisis ton créneau</div>
     <p style="max-width:640px; margin:0 auto 30px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);">Une fois tes informations envoyées, réserve directement ton créneau d'appel découverte ci-dessous.</p>
 
-    <div class="calendly-inline-widget" data-url="https://calendly.com/cmakeupbeauty" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
+    <div id="calendlyWidget" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
   </div>
 </section>
 
@@ -551,6 +551,27 @@
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+  var CALENDLY_EVENT_URL = 'https://calendly.com/cmakeupbeauty/appel-telephonique-future-mariee';
+  var calWidgetEl = document.getElementById('calendlyWidget');
+
+  function waitForCalendly(cb, tries){
+    tries = tries || 0;
+    if(window.Calendly){ cb(); }
+    else if(tries < 60){ setTimeout(function(){ waitForCalendly(cb, tries + 1); }, 250); }
+  }
+
+  function initCalendlyWidget(prefill){
+    if(!calWidgetEl) return;
+    calWidgetEl.innerHTML = '';
+    window.Calendly.initInlineWidget({
+      url: CALENDLY_EVENT_URL,
+      parentElement: calWidgetEl,
+      prefill: prefill || {}
+    });
+  }
+
+  waitForCalendly(function(){ initCalendlyWidget(); });
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
@@ -558,10 +579,13 @@
     btn.textContent = 'Envoi en cours...';
     status.style.color = 'var(--ink-soft)';
     status.textContent = 'Envoi en cours...';
+    var prenomVal = document.getElementById('prenom').value;
+    var nomVal = document.getElementById('nom').value;
+    var emailVal = document.getElementById('email').value;
     _sb.from('appels_decouverte_mariee').insert({
-      prenom: document.getElementById('prenom').value,
-      nom: document.getElementById('nom').value,
-      email: document.getElementById('email').value,
+      prenom: prenomVal,
+      nom: nomVal,
+      email: emailVal,
       telephone: document.getElementById('telephone').value,
       date_mariage: document.getElementById('date-mariage').value || null,
       lieu_preparation: document.getElementById('lieu-prepa').value,
@@ -583,6 +607,12 @@
       } else {
         status.textContent = 'Merci ! Tes informations ont bien été envoyées. Réserve maintenant ton créneau juste en dessous 👇';
         form.reset();
+        waitForCalendly(function(){
+          initCalendlyWidget({
+            name: (prenomVal + ' ' + nomVal).trim(),
+            email: emailVal
+          });
+        });
       }
     });
   });
