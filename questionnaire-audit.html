@@ -157,8 +157,13 @@
   <p>Merci pour ta confiance ! Ce questionnaire permet à Colleen de préparer ton analyse avant votre séance de 1h30. Prends le temps d'y répondre avec précision — plus tes réponses sont complètes, plus votre échange sera efficace.</p>
 </div>
 
-<!-- Formulaire à connecter à l'outil d'envoi / CRM utilisé (ex : email automatique, Notion, Airtable...). Champs requis marqués d'un astérisque. -->
-<form class="wrap" action="#" method="post">
+<div class="wrap" id="auditGate" style="display:none; padding:40px 0; text-align:center;">
+  <p style="font-size:15px; line-height:1.8; color:var(--ink-soft);">Ce questionnaire est accessible uniquement après le paiement du Pack Audit.<br>Si tu penses qu'il s'agit d'une erreur, écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:var(--ink);">academy@cmakeupbeauty.fr</a>.</p>
+  <a class="btn" href="coaching-business-mua.html#packs" style="display:inline-block; margin-top:24px; padding:14px 34px;">Voir le Pack Audit</a>
+</div>
+
+<!-- Champs requis marqués d'un astérisque. -->
+<form class="wrap" id="auditForm" action="#" method="post">
 
   <fieldset>
     <legend>Tes informations</legend>
@@ -283,16 +288,33 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (function(){
-  var form = document.querySelector('form.wrap');
+  var form = document.getElementById('auditForm');
+  var gate = document.getElementById('auditGate');
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+  var packAuditPaiementId = new URLSearchParams(window.location.search).get('pack_audit_paiement_id');
+
+  if(!packAuditPaiementId){
+    form.style.display = 'none';
+    gate.style.display = 'block';
+  } else {
+    _sb.from('pack_audit_paiements').select('statut_paiement').eq('id', packAuditPaiementId).maybeSingle().then(function(res){
+      if(res.error || !res.data || res.data.statut_paiement !== 'paye'){
+        form.style.display = 'none';
+        gate.style.display = 'block';
+      }
+    });
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.btn');
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
     _sb.from('questionnaires_audit').insert({
+      pack_audit_paiement_id: packAuditPaiementId,
       nom_prenom: document.getElementById('nom').value,
       email: document.getElementById('email').value,
       telephone: document.getElementById('tel').value,

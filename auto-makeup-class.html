@@ -137,8 +137,8 @@
     max-width:640px; margin:0 auto 40px; padding:14px 20px;
   }
   .sessions-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
-    max-width:920px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+    max-width:1080px; margin:0 auto;
     border:1px solid var(--line);
   }
   .session-card{background:var(--white); padding:38px 30px; text-align:center;}
@@ -169,8 +169,6 @@
   }
   .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-bottom-color:var(--ink);}
   .field textarea{resize:vertical; min-height:90px;}
-  .field-checkbox{display:flex; align-items:flex-start; gap:12px; font-size:13px; color:var(--ink-soft); line-height:1.6;}
-  .field-checkbox input{margin-top:3px; flex-shrink:0;}
   .form-submit{width:100%; text-align:center; margin-top:16px; padding:16px; font-size:13px; letter-spacing:0.1em; border:none;}
   .form-disclaimer{font-size:11px; color:var(--gray); text-align:center; margin-top:18px; line-height:1.6;}
 
@@ -284,6 +282,21 @@
     nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
     nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
   }
+  /* FAQ */
+  .faq-list{border-top:1px solid var(--line); max-width:780px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding:26px 0;
+    font-size:17px;
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
 
   /* NAV DROPDOWN */
   .nav-drop{position:relative;}
@@ -303,7 +316,7 @@
     color:var(--ink); white-space:nowrap;
   }
   .nav-drop-menu a::after{display:none;}
-  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
+  .nav-drop-menu a:hover{background:var(--off);}
 </style>
 </head>
 <body>
@@ -314,8 +327,7 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
-    <div class="nav-drop"><a href="auto-makeup-class.html" class="current">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html" class="current">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div><div class="nav-drop"><a href="auto-makeup-class.html" class="current">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
     <a href="contact.html">Contact</a>
@@ -371,19 +383,27 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="auto-makeup-class.section3_eyebrow">SESSIONS</div>
     <h2 class="section-title" data-editable="auto-makeup-class.section3_title">Prochaines dates</h2>
-    <p class="section-lede" data-editable="auto-makeup-class.section3_lede">Places limitées pour garantir un accompagnement personnalisé — consulte les disponibilités en temps réel et réserve directement ton créneau plus bas sur cette page.</p>
+    <p class="section-lede" data-editable="auto-makeup-class.section3_lede">Places limitées pour garantir un accompagnement personnalisé — les sessions ont lieu le dimanche. Choisis ta session préférée dans le formulaire plus bas sur cette page.</p>
     <div class="sessions-grid">
       <div class="session-card">
-        <div class="s-label">Session A</div>
-        <div class="s-dates">Dimanche 18 octobre</div>
+        <div class="s-label">Session 1</div>
+        <div class="s-dates">Dimanche 8 novembre</div>
+        <div class="s-status">Places disponibles</div>
       </div>
       <div class="session-card">
-        <div class="s-label">Session B</div>
-        <div class="s-dates">Dimanche 15 novembre</div>
+        <div class="s-label">Session 2</div>
+        <div class="s-dates">Dimanche 29 novembre</div>
+        <div class="s-status">Places disponibles</div>
       </div>
       <div class="session-card">
-        <div class="s-label">Session C</div>
+        <div class="s-label">Session 3</div>
+        <div class="s-dates">Dimanche 6 décembre</div>
+        <div class="s-status">Places disponibles</div>
+      </div>
+      <div class="session-card">
+        <div class="s-label">Session 4</div>
         <div class="s-dates">Dimanche 13 décembre</div>
+        <div class="s-status">Places disponibles</div>
       </div>
     </div>
   </div>
@@ -412,8 +432,10 @@
   <div class="wrap">
     <div class="invest-badge">L'investissement</div>
     <div class="invest-price">300<span>€</span></div>
-    <div class="invest-sub">La journée complète — acompte de 150€ pour valider ta place</div>
+    <div class="invest-sub">La journée complète — acompte de 100€ pour valider ta place</div>
+    <div class="invest-sub" style="margin-top:6px;">Également finançable via ton CPF : 1100€</div>
     <p class="invest-note">Ce tarif reflète une expérience premium pensée pour toi : un accompagnement individuel, du matériel offert, un suivi après la formation et une méthode professionnelle transmise pas à pas. Places très limitées pour garantir cette qualité d'accompagnement.</p>
+    <p class="invest-note" style="margin-top:18px; font-size:13px;">Tu préfères une formule plus courte, en tête-à-tête ? Découvre le <a href="cours-auto-maquillage-prive.html" style="text-decoration:underline; color:var(--white);">Cours Privé en demi-journée</a> (500€, matin ou après-midi).</p>
   </div>
 </section>
 
@@ -422,6 +444,11 @@
     <div class="section-eyebrow" data-editable="auto-makeup-class.section5_eyebrow">LE MATÉRIEL À PRÉVOIR</div>
     <h2 class="section-title" data-editable="auto-makeup-class.section5_title">Un kit personnel, sur-mesure</h2>
     <p class="section-lede" data-editable="auto-makeup-class.section5_lede" style="margin-bottom:0;">📩 La liste complète du matériel recommandé (avec les liens directs vers chaque produit) te sera envoyée par PDF juste après l'achat de ta place — pour un accompagnement pensé selon ta carnation et tes besoins. Pour rappel, les pinceaux sont inclus dans la formation 💕</p>
+    <div style="max-width:480px; margin:34px auto 0; padding:26px 30px; background:var(--off); border:1px solid var(--line);">
+      <div style="font-size:11px; letter-spacing:0.14em; color:var(--gray); text-transform:uppercase; margin-bottom:8px;">Budget moyen à prévoir</div>
+      <div style="font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:32px; color:var(--ink);">≈ 130 – 160 €</div>
+      <div style="font-size:12px; color:var(--ink-soft); margin-top:8px; line-height:1.7;">Pour l'ensemble de ta trousse personnalisée (base, teint, yeux, lèvres, fixation) — hors pinceaux, déjà inclus dans la formation. Estimation à titre indicatif, susceptible de varier selon les prix Amazon du moment.</div>
+    </div>
   </div>
 </section>
 
@@ -457,13 +484,41 @@
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow">FOIRE AUX QUESTIONS</div>
+    <h2 class="section-title" style="margin-bottom:50px;">Avant de réserver</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Faut-il un niveau particulier pour participer ?</summary>
+        <p>Non, cette classe est accessible à toutes : débutantes totales comme celles qui ont déjà quelques bases et veulent progresser. Le programme s'adapte à ton niveau.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Le matériel est-il fourni ?</summary>
+        <p>Les pinceaux sont offerts et inclus dans la formation. Du matériel professionnel est aussi à disposition sur place le jour J. La liste complète du reste du matériel recommandé pour chez toi (avec les liens directs) te sera envoyée par PDF juste après ta réservation, pour un choix adapté à ta carnation et tes besoins.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Cette formation est-elle finançable via mon CPF ?</summary>
+        <p>Oui, à 1100€. Précise-le lors de ta prise de contact : nous te recontacterons pour récupérer les informations nécessaires à ton dossier. Ta place n'est définitivement validée qu'une fois le financement accepté par notre organisme partenaire.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Comment se passe la réservation ?</summary>
+        <p>Indique ta session préférée dans le formulaire ci-dessous. Une fois les dates confirmées, un acompte de 100€ (non remboursable) te sera demandé pour valider définitivement ta place.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Que se passe-t-il après la formation ?</summary>
+        <p>Tu rejoins un groupe WhatsApp privé avec les autres participantes, pour poser tes questions, partager tes essais et continuer à progresser bien après ta journée.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section id="formulaire">
   <div class="wrap">
     <div class="section-eyebrow" data-editable="auto-makeup-class.section7_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="auto-makeup-class.section7_title">Réserver ma place</h2>
-
     <div id="amcScreenForm">
-    <p class="form-note">Remplis le formulaire ci-dessous : tu seras ensuite invitée à régler l'acompte pour valider définitivement ta place.</p>
+    <p class="form-note">Les dates n'étant pas encore confirmées, indique ta session préférée : nous te recontacterons dès leur validation pour finaliser ton inscription.</p>
 
     <form class="inscription-form" id="amcForm">
       <div class="form-row">
@@ -496,15 +551,20 @@
       </div>
 
       <div class="form-row">
-        <div class="field">
+        <div class="field full">
           <label for="session">Session qui t'intéresse</label>
           <select id="session" name="session" required>
             <option value="">Sélectionnez</option>
-            <option value="sessionA">Session A — Dimanche 18 octobre</option>
-            <option value="sessionB">Session B — Dimanche 15 novembre</option>
-            <option value="sessionC">Session C — Dimanche 13 décembre</option>
+            <option value="sessionA">Session 1 — Dimanche 8 novembre</option>
+            <option value="sessionB">Session 2 — Dimanche 29 novembre</option>
+            <option value="sessionC">Session 3 — Dimanche 6 décembre</option>
+            <option value="sessionD">Session 4 — Dimanche 13 décembre</option>
+            <option value="indifferent">Peu importe, je suis flexible</option>
           </select>
         </div>
+      </div>
+
+      <div class="form-row">
         <div class="field">
           <label for="niveau">Ton niveau actuel</label>
           <select id="niveau" name="niveau">
@@ -514,9 +574,6 @@
             <option value="intermediaire">Intermédiaire</option>
           </select>
         </div>
-      </div>
-
-      <div class="form-row">
         <div class="field">
           <label for="trousse">As-tu déjà une trousse de maquillage ?</label>
           <select id="trousse" name="trousse">
@@ -524,15 +581,6 @@
             <option value="oui-complete">Oui, complète</option>
             <option value="oui-incomplete">Oui, mais incomplète</option>
             <option value="non">Non, pas encore</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="style">Quel style veux-tu apprendre en priorité ?</label>
-          <select id="style" name="style">
-            <option value="">Sélectionnez</option>
-            <option value="quotidien">Pour tous les jours</option>
-            <option value="evenement">Pour les événements / soirées</option>
-            <option value="les-deux">Les deux</option>
           </select>
         </div>
       </div>
@@ -545,9 +593,18 @@
       </div>
 
       <div class="form-row">
-        <div class="field full">
-          <label for="dejaCliente">As-tu déjà été cliente chez nous ?</label>
-          <select id="dejaCliente" name="dejaCliente">
+        <div class="field">
+          <label for="style">Quel style veux-tu apprendre en priorité ?</label>
+          <select id="style" name="style">
+            <option value="">Sélectionnez</option>
+            <option value="quotidien">Pour tous les jours</option>
+            <option value="evenement">Pour les événements / soirées</option>
+            <option value="les-deux">Les deux</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="deja-cliente">As-tu déjà été cliente chez nous ?</label>
+          <select id="deja-cliente" name="deja-cliente">
             <option value="">Sélectionnez</option>
             <option value="oui">Oui</option>
             <option value="non">Non, première fois</option>
@@ -559,7 +616,7 @@
         <div class="field full">
           <label for="financement">Mode de financement souhaité</label>
           <select id="financement" name="financement">
-            <option value="classique">Paiement classique — 300€ (acompte de 150€)</option>
+            <option value="classique">Paiement classique — 300€ (acompte de 100€)</option>
             <option value="cpf">Financement CPF — 1100€</option>
           </select>
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, nous te recontacterons pour récupérer les informations nécessaires à ton dossier. Ta place ne sera définitivement validée qu'une fois la demande de financement acceptée par notre organisme partenaire.</p>
@@ -581,7 +638,7 @@
       </div>
 
       <button type="submit" class="btn form-submit">Continuer vers le paiement</button>
-      <p class="form-disclaimer">Un acompte de 150€ (non remboursable) sera demandé pour bloquer définitivement ta place — sauf si tu choisis le financement CPF ci-dessus.</p>
+      <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place, une fois les dates confirmées — sauf si tu choisis le financement CPF ci-dessus.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
     </div>
@@ -589,12 +646,12 @@
     <div id="amcScreenPaiement" style="display:none;">
       <div class="price-final">
         <div class="p-label">Acompte à régler</div>
-        <div class="p-amount">150€</div>
+        <div class="p-amount">100€</div>
         <div class="p-sub">Sur un total de 300€ — le solde est réglé le jour de la formation</div>
       </div>
       <button type="button" class="btn form-submit" id="amcPayBtn" style="margin-bottom:14px;">Payer l'acompte par carte bancaire</button>
       <p class="pay-note" id="amcPayStatus" style="min-height:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
-      <p class="form-disclaimer">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:Cmakeupbeauty95@gmail.com" style="text-decoration:underline; color:inherit;">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href="tel:+33754033266" style="text-decoration:underline; color:inherit;">07 54 03 32 66</a>.</p>
+      <p class="form-disclaimer">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:inherit;">academy@cmakeupbeauty.fr</a> ou appelle le <a href="tel:+33754033266" style="text-decoration:underline; color:inherit;">07 54 03 32 66</a>.</p>
     </div>
 
     <div id="amcScreenConfirmation" style="display:none; text-align:center;">
@@ -609,11 +666,12 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — 07 54 03 32 66</div>
+      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe</div>
     </div>
     <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
   </div>
 </footer>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
@@ -643,7 +701,7 @@
 
   var params = new URLSearchParams(window.location.search);
   var recordId = params.get('record_id');
-  var AMOUNT_CENTS = 15000;
+  var AMOUNT_CENTS = 10000;
 
   var screenForm = document.getElementById('amcScreenForm');
   var screenPaiement = document.getElementById('amcScreenPaiement');
@@ -692,7 +750,7 @@
       trousse: document.getElementById('trousse').value,
       pourquoi: document.getElementById('pourquoi').value,
       style: document.getElementById('style').value,
-      deja_cliente: document.getElementById('dejaCliente').value,
+      deja_cliente: document.getElementById('deja-cliente').value,
       financement: financement,
       message: document.getElementById('message').value,
       rgpd_consent: document.getElementById('rgpd').checked
@@ -701,7 +759,7 @@
       btn.textContent = 'Continuer vers le paiement';
       if(res.error){
         status.style.color = '#B33A3A';
-        status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline; color:inherit;\">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
+        status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
         return;
       }
       recordId = newId;
@@ -758,7 +816,7 @@
       } else {
         document.getElementById('amcConfirmIcon').textContent = '⚠';
         document.getElementById('amcConfirmTitle').textContent = 'Paiement non confirmé';
-        document.getElementById('amcConfirmText').innerHTML = "Nous n'avons pas pu confirmer ton paiement. Si la somme a bien été débitée, écris-nous à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline; color:inherit;\">Cmakeupbeauty95@gmail.com</a> avec une capture de ta confirmation.";
+        document.getElementById('amcConfirmText').innerHTML = "Nous n'avons pas pu confirmer ton paiement. Si la somme a bien été débitée, écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> avec une capture de ta confirmation.";
       }
     });
   } else if(recordId){

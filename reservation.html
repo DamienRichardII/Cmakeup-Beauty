@@ -144,7 +144,6 @@
         <span class="pt-amount" id="acompteAmount">30€</span>
       </div>
       <button type="button" class="btn" id="payStripeBtn" style="margin-bottom:12px;">Payer par carte bancaire</button>
-      <button type="button" class="btn" id="payPaypalBtn" style="display:block; margin-bottom:12px; background:#FFC439; border-color:#FFC439; color:#1A1A1A;">Payer avec PayPal</button>
       <p class="pay-note" id="payStatus" style="min-height:16px;"></p>
       <p class="pay-note">Le solde restant sera à régler directement le jour de la prestation. Cet acompte n'est pas remboursable en cas d'annulation.</p>
       <p class="pay-note">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:Cmakeupbeauty95@gmail.com" style="text-decoration:underline;">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href="tel:+33754033266" style="text-decoration:underline;">07 54 03 32 66</a>.</p>
@@ -178,15 +177,38 @@
     'full-glam': 'Makeup Full Glam — 150€'
   };
   const amounts = {
-    'smoky-eyes': 2000,
-    'soft-glam': 2000,
-    'full-glam': 3000
+    'smoky-eyes': 4000,
+    'soft-glam': 4000,
+    'full-glam': 4000
+  };
+  const artistLabels = {
+    'peu-importe': 'Peu importe',
+    'colleen': 'Colleen',
+    'arlyne': 'Arlyne',
+    'fatou': 'Fatou',
+    'lady': 'Lady'
   };
   const prestaLabel = labels[prestation] || 'À préciser';
-  const amountCents = amounts[prestation] || 2000;
+  const amountCents = 4000;
   const acompteLabel = Math.round(amountCents / 100) + '€';
   document.getElementById('recapPresta').textContent = prestaLabel;
   document.getElementById('acompteAmount').textContent = acompteLabel;
+
+  const artistParam = params.get('artist');
+  const dateParam = params.get('date');
+  const slotParam = params.get('slot');
+  if(artistParam && artistLabels[artistParam] && artistParam !== 'peu-importe'){
+    var recapExtra = document.createElement('div');
+    recapExtra.style.marginTop = '6px';
+    var bits = ['avec ' + artistLabels[artistParam]];
+    if(dateParam){
+      var dparts = dateParam.split('-');
+      if(dparts.length === 3){ bits.push('le ' + dparts[2] + '/' + dparts[1] + '/' + dparts[0]); }
+    }
+    if(slotParam){ bits.push('à ' + slotParam); }
+    recapExtra.textContent = bits.join(' ');
+    document.getElementById('recapBox').appendChild(recapExtra);
+  }
 
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
 
@@ -235,11 +257,6 @@
       }
       window.location.href = res.data.url;
     });
-  });
-
-  document.getElementById('payPaypalBtn').addEventListener('click', function(){
-    payStatus.style.color = 'var(--ink-soft)';
-    payStatus.textContent = "Le paiement par PayPal est en cours d'activation. Contacte-nous directement, voir plus bas, en attendant.";
   });
 
   document.getElementById('clientForm').addEventListener('submit', function(e){

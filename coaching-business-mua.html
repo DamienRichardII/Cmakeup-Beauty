@@ -390,10 +390,14 @@
           <li>Plan d'action sur 30 jours</li>
           <li>Compte rendu personnalisé</li>
         </ul>
-        <!-- DEV TODO : brancher ce bouton sur une session de paiement Stripe Checkout (200€).
-             Rediriger vers questionnaire-audit.html uniquement après confirmation réelle du
-             paiement (webhook Stripe), jamais côté client seul. En attendant, lien vers contact. -->
-        <a class="btn btn-outline" style="background:transparent; color:var(--ink);" href="contact.html">Réserver mon coaching</a>
+        <button type="button" class="btn btn-outline" style="background:transparent; color:var(--ink);" id="auditPayToggle">Réserver mon coaching</button>
+        <div id="auditPayForm" style="display:none; margin-top:16px; padding:20px; border:1px solid var(--line); background:var(--off); text-align:left;">
+          <label for="auditEmail" style="display:block; font-size:11px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:8px;">Ton email</label>
+          <input type="email" id="auditEmail" required placeholder="ton@email.com" style="width:100%; border:none; border-bottom:1px solid var(--line); padding:10px 4px; font-family:inherit; font-size:15px; background:transparent; margin-bottom:16px; color:var(--ink);">
+          <button type="button" class="btn" id="auditPayBtn" style="width:100%;">Payer 200€ par carte bancaire</button>
+          <p id="auditPayStatus" style="min-height:16px; font-size:12px; color:var(--ink-soft); margin-top:10px;"></p>
+          <p style="font-size:11px; color:var(--gray); margin-top:8px; line-height:1.6;">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:inherit;">academy@cmakeupbeauty.fr</a>.</p>
+        </div>
       </div>
       <div class="pack-card featured">
         <div class="badge-rec">Le plus choisi</div>
@@ -615,7 +619,7 @@
     <div class="footer-top">
       <div class="logo">CMAKEUP<span>BEAUTY ACADEMY</span></div>
       <div>
-        <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — +33 7 49 86 58 95 — academy@cmakeupbeauty.fr</div>
+        <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — academy@cmakeupbeauty.fr</div>
         <div class="footer-social">
           <a href="https://www.instagram.com/c_makeup_">Instagram</a>
           <!-- DEV TODO : ajouter le lien TikTok officiel une fois confirmé par la cliente (ne pas reconstruire une URL approximative) -->
@@ -648,6 +652,88 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var toggleBtn = document.getElementById('auditPayToggle');
+  var payForm = document.getElementById('auditPayForm');
+  var payBtn = document.getElementById('auditPayBtn');
+  var payStatus = document.getElementById('auditPayStatus');
+  if(!toggleBtn || !payForm || !payBtn) return;
+
+  var _sbAudit = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  var params = new URLSearchParams(window.location.search);
+  var AMOUNT_CENTS = 20000;
+
+  function pageUrl(extra){
+    var base = window.location.origin + window.location.pathname;
+    return base + (extra ? '?' + extra : '') + '#packs';
+  }
+
+  toggleBtn.addEventListener('click', function(){
+    var open = payForm.style.display === 'none';
+    payForm.style.display = open ? 'block' : 'none';
+    if(open){ payForm.scrollIntoView({behavior:'smooth', block:'center'}); }
+  });
+
+  payBtn.addEventListener('click', function(){
+    var email = document.getElementById('auditEmail').value;
+    if(!email){ return; }
+    payBtn.disabled = true;
+    payStatus.style.color = 'var(--ink-soft)';
+    payStatus.textContent = 'Préparation du paiement sécurisé...';
+    _sbAudit.from('pack_audit_paiements').insert({ email: email, statut_paiement: 'en_attente' }).select().single().then(function(res){
+      if(res.error || !res.data){
+        payBtn.disabled = false;
+        payStatus.style.color = '#B33A3A';
+        payStatus.textContent = "Un problème est survenu. Écris-nous directement, voir plus bas.";
+        return;
+      }
+      var recordId = res.data.id;
+      _sbAudit.functions.invoke('create-checkout-session', {
+        body: {
+          table: 'pack_audit_paiements',
+          record_id: recordId,
+          amount_cents: AMOUNT_CENTS,
+          description: 'Pack Audit — Coaching Business MUA',
+          success_url: pageUrl('paid=1&session_id={CHECKOUT_SESSION_ID}'),
+          cancel_url: pageUrl()
+        }
+      }).then(function(res2){
+        payBtn.disabled = false;
+        if(res2.error || !res2.data || !res2.data.url){
+          payStatus.style.color = '#B33A3A';
+          payStatus.textContent = "Le paiement en ligne n'a pas pu démarrer. Contacte-nous directement, voir plus bas.";
+          return;
+        }
+        window.location.href = res2.data.url;
+      });
+    });
+  });
+
+  // Retour depuis Stripe Checkout
+  if(params.get('paid') === '1' && params.get('session_id')){
+    toggleBtn.style.display = 'none';
+    payForm.style.display = 'block';
+    document.getElementById('auditEmail').style.display = 'none';
+    payBtn.style.display = 'none';
+    payStatus.style.color = 'var(--ink-soft)';
+    payStatus.textContent = 'Vérification du paiement...';
+    _sbAudit.functions.invoke('confirm-checkout-session', { body: { session_id: params.get('session_id') } }).then(function(res){
+      var paid = res.data && res.data.paid;
+      var recordId = res.data && res.data.record_id;
+      if(paid && recordId){
+        payStatus.style.color = 'var(--ink-soft)';
+        payStatus.textContent = 'Paiement confirmé ! Redirection vers ton questionnaire...';
+        window.location.href = 'questionnaire-audit.html?pack_audit_paiement_id=' + encodeURIComponent(recordId);
+      } else {
+        payStatus.style.color = '#B33A3A';
+        payStatus.textContent = "Nous n'avons pas pu confirmer ton paiement. Si la somme a bien été débitée, écris-nous directement, voir plus bas.";
+      }
+    });
+  }
+})();
+</script>
+
 <script>
 (function(){
   var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');

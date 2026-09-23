@@ -219,7 +219,7 @@
           <h2>Smoky Eyes</h2>
           <p data-editable="prestations.hero_text">Le maquillage smoky eyes est simple avec une couleur noir ou marron sur les yeux et le teint est bien travaillé.</p>
           <div class="p-price">90€</div>
-          <a class="btn p-cta" href="reservation.html?prestation=smoky-eyes">Je réserve</a>
+          <a class="btn p-cta presta-cta" href="#reserver" data-prestation="smoky-eyes">Je réserve</a>
         </div>
       </div>
 
@@ -230,7 +230,7 @@
           <h2>Soft Glam</h2>
           <p>Le soft glam est un maquillage avec un effet bien maquillée mais non surchargé. Restez subtile avec un regard dans les tons dorés irisés ou nude matte.</p>
           <div class="p-price">100€</div>
-          <a class="btn p-cta" href="reservation.html?prestation=soft-glam">Je réserve</a>
+          <a class="btn p-cta presta-cta" href="#reserver" data-prestation="soft-glam">Je réserve</a>
         </div>
       </div>
 
@@ -241,7 +241,7 @@
           <h2>Full Glam</h2>
           <p>Le maquillage Full Glam est plus sophistiqué. Ce sont les cut crease, maquillages pailletés ou colorés.</p>
           <div class="p-price">150€</div>
-          <a class="btn p-cta" href="reservation.html?prestation=full-glam">Je réserve</a>
+          <a class="btn p-cta presta-cta" href="#reserver" data-prestation="full-glam">Je réserve</a>
         </div>
       </div>
     </div>
@@ -298,7 +298,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — 07 54 03 32 66</div>
+      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe</div>
     </div>
     <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
   </div>
@@ -311,6 +311,13 @@
   let viewYear = 2026, viewMonth = 8;
   let selectedDate = null, selectedSlot = null;
   let selectedArtist = 'peu-importe';
+  const prestaLabels = {
+    'smoky-eyes': 'Smoky Eyes — 90€',
+    'soft-glam': 'Soft Glam — 100€',
+    'full-glam': 'Full Glam — 150€'
+  };
+  const urlPrestation = new URLSearchParams(window.location.search).get('prestation');
+  let selectedPrestation = prestaLabels[urlPrestation] ? urlPrestation : null;
 
   // Disponibilités fictives par maquilleuse (jours de la semaine, 0=dimanche)
   const availability = {
@@ -413,19 +420,33 @@
     return selBtn ? selBtn.textContent : '';
   }
 
+  function confirmUrl(){
+    const p = new URLSearchParams();
+    if(selectedPrestation) p.set('prestation', selectedPrestation);
+    p.set('artist', selectedArtist);
+    if(selectedDate) p.set('date', selectedDate.y + '-' + String(selectedDate.m+1).padStart(2,'0') + '-' + String(selectedDate.d).padStart(2,'0'));
+    if(selectedSlot) p.set('slot', selectedSlot);
+    return 'reservation.html?' + p.toString();
+  }
+
+  function prestaPrefix(){
+    return selectedPrestation ? ('Prestation choisie : <strong>' + prestaLabels[selectedPrestation] + '</strong>. ') : '';
+  }
+
   function updateSummary(){
     if(selectedDate && selectedSlot){
       const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
-      calSummary.innerHTML = 'Rendez-vous avec <strong>' + artistLabel() + '</strong> le <strong>' + dateLabel + ' à ' + selectedSlot + '</strong>';
+      calSummary.innerHTML = prestaPrefix() + 'Rendez-vous avec <strong>' + artistLabel() + '</strong> le <strong>' + dateLabel + ' à ' + selectedSlot + '</strong>';
+      calConfirmBtn.href = confirmUrl();
       calConfirmBtn.style.pointerEvents = 'auto';
       calConfirmBtn.style.opacity = '1';
     } else if(selectedDate){
       const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
-      calSummary.innerHTML = 'Date choisie : <strong>' + dateLabel + '</strong> — sélectionne un créneau.';
+      calSummary.innerHTML = prestaPrefix() + 'Date choisie : <strong>' + dateLabel + '</strong> — sélectionne un créneau.';
       calConfirmBtn.style.pointerEvents = 'none';
       calConfirmBtn.style.opacity = '0.4';
     } else {
-      calSummary.textContent = "Sélectionne une maquilleuse, une date et un créneau pour continuer.";
+      calSummary.innerHTML = prestaPrefix() + "Sélectionne une maquilleuse, une date et un créneau pour continuer.";
       calConfirmBtn.style.pointerEvents = 'none';
       calConfirmBtn.style.opacity = '0.4';
     }
@@ -441,6 +462,13 @@
     renderSlots();
     updateSummary();
   }
+
+  document.querySelectorAll('.presta-cta').forEach(function(a){
+    a.addEventListener('click', function(){
+      selectedPrestation = a.getAttribute('data-prestation');
+      updateSummary();
+    });
+  });
 
   // "Peu importe" — bouton simple, clic = sélection
   const peuImporteBtn = artistPicker.querySelector('button.artist-btn[data-artist="peu-importe"]');
@@ -469,6 +497,7 @@
 
   render();
   renderSlots();
+  updateSummary();
 })();
 </script>
 
