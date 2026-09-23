@@ -140,6 +140,13 @@
   .form-submit{width:100%; text-align:center; margin-top:16px; padding:16px; font-size:13px; letter-spacing:0.1em; border:none;}
   .form-disclaimer{font-size:11px; color:var(--gray); text-align:center; margin-top:18px; line-height:1.6;}
 
+  /* CALENDRIER PERSONNALISÉ */
+  .cal-step-label{
+    font-size:12px; letter-spacing:0.14em; color:var(--ink-soft); text-transform:uppercase;
+    margin:60px 0 26px; padding-top:40px; border-top:1px solid var(--line);
+    text-align:center;
+  }
+
   footer{padding:40px 0; background:var(--white); border-bottom:none;}
   .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
   .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
@@ -453,10 +460,16 @@
       <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place. Pas d'acompte à régler en cas de financement CPF.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
+
+    <div class="cal-step-label">Étape 2 — Choisis ton créneau</div>
+    <p style="max-width:640px; margin:0 auto 30px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);">Une fois tes informations envoyées, réserve directement ton créneau ci-dessous — nous confirmerons ensemble les derniers détails avant ta journée.</p>
+
+    <div id="calendlyWidget" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
   </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
 (function(){
   var toggle = document.querySelector('.nav-toggle');
@@ -480,6 +493,28 @@
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+
+  var CALENDLY_EVENT_URL = 'https://calendly.com/cmakeupbeauty/formation-perfectionnement-1-jour';
+  var calWidgetEl = document.getElementById('calendlyWidget');
+
+  function waitForCalendly(cb, tries){
+    tries = tries || 0;
+    if(window.Calendly){ cb(); }
+    else if(tries < 60){ setTimeout(function(){ waitForCalendly(cb, tries + 1); }, 250); }
+  }
+
+  function initCalendlyWidget(prefill){
+    if(!calWidgetEl) return;
+    calWidgetEl.innerHTML = '';
+    window.Calendly.initInlineWidget({
+      url: CALENDLY_EVENT_URL,
+      parentElement: calWidgetEl,
+      prefill: prefill || {}
+    });
+  }
+
+  waitForCalendly(function(){ initCalendlyWidget(); });
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
@@ -507,8 +542,13 @@
         status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
       } else {
         status.style.color = 'var(--ink-soft)';
-        status.textContent = 'Merci ! Ta demande a bien été envoyée, nous te recontactons rapidement.';
+        status.textContent = 'Merci ! Ta demande a bien été envoyée. Réserve maintenant ton créneau juste en dessous 👇';
+        var prefillName = (document.getElementById('prenom').value + ' ' + document.getElementById('nom').value).trim();
+        var prefillEmail = document.getElementById('email').value;
         form.reset();
+        waitForCalendly(function(){
+          initCalendlyWidget({ name: prefillName, email: prefillEmail });
+        });
       }
     });
   });
