@@ -96,11 +96,6 @@
   .day-block .modules-list li{padding:12px 0; font-size:15px;}
 
   /* SESSIONS */
-  .provisional-badge{
-    display:block; text-align:center; font-size:12px; letter-spacing:0.06em;
-    color:#A8621F; background:#F7EDE3; border:1px solid #E7D3BC;
-    max-width:640px; margin:0 auto 40px; padding:14px 20px;
-  }
   .sessions-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
     max-width:920px; margin:0 auto;
@@ -199,6 +194,29 @@
   .nav-drop-menu a::after{display:none;}
   .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 
+  /* WAITLIST */
+  .waitlist-box{max-width:560px; margin:44px auto 0; text-align:center; padding:40px 36px; background:var(--off); border:1px solid var(--line);}
+  .waitlist-box h3{font-size:20px; margin-bottom:12px;}
+  .waitlist-box p{font-size:14px; color:var(--ink-soft); line-height:1.8; margin-bottom:24px;}
+  .waitlist-form{display:flex; gap:0; border-bottom:1px solid var(--ink); padding-bottom:14px; max-width:420px; margin:0 auto;}
+  .waitlist-form input{
+    flex:1; border:none; background:transparent; font-family:'TT Interphase','Jost',sans-serif;
+    font-size:15px; color:var(--ink); padding:6px 0;
+  }
+  .waitlist-form input:focus{outline:none;}
+  .waitlist-form input::placeholder{color:var(--gray);}
+  .waitlist-form button{
+    background:none; border:none; font-family:'TT Interphase','Jost',sans-serif;
+    font-size:13px; letter-spacing:0.04em; color:var(--ink); cursor:pointer; white-space:nowrap; padding:6px 0 6px 14px;
+  }
+  .waitlist-form button:hover{color:var(--ink-soft);}
+  .waitlist-note{font-size:11px; color:var(--gray); margin-top:16px;}
+  @media(max-width:600px){
+    .waitlist-form{flex-direction:column; gap:16px; border-bottom:none;}
+    .waitlist-form input{border-bottom:1px solid var(--line); padding-bottom:14px;}
+    .waitlist-form button{align-self:center; padding-left:0;}
+  }
+
   /* Menu mobile (hamburger) */
   .nav-toggle{display:none;}
   @media(max-width:900px){
@@ -232,7 +250,7 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="formations.html" class="current">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html" class="current">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="formations.html" class="current">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html" class="current">Formation Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
     <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
@@ -294,16 +312,16 @@
       <div class="price-option">
         <div class="p-label">Paiement classique</div>
         <div class="p-amount">1000 €</div>
-        <div class="p-note">Paiement en 1 fois.<br>Acompte de 100€ pour réserver sa place.</div>
+        <div class="p-note">Paiement en 1 fois.<br>Acompte de 200€ pour réserver sa place.</div>
       </div>
       <div class="price-option featured">
         <div class="p-label">Financement CPF</div>
         <div class="p-amount">2500 €</div>
-        <div class="p-note">Formation finançable via ton Compte Personnel de Formation.<br>Aucune avance de frais à prévoir.<br>Matériel professionnel inclus.</div>
+        <div class="p-note">Formation finançable via ton Compte Personnel de Formation.<br>Aucune avance de frais à prévoir, pas d'acompte à régler.<br>Matériel professionnel inclus.</div>
       </div>
     </div>
     <p style="max-width:640px; margin:34px auto 0; text-align:center; font-size:13px; color:var(--ink-soft); line-height:1.8;">
-      En cas de financement CPF, merci de bien le préciser lors de ton inscription. Tu seras recontactée pour récupérer les informations nécessaires à ton dossier. <strong style="color:var(--ink); font-weight:500;">Ta place n'est définitivement validée qu'une fois la demande de financement CPF acceptée</strong> par notre organisme partenaire.
+      En cas de financement CPF, merci de bien le préciser lors de ton inscription. Ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner pas à pas dans ta démarche d'inscription. <strong style="color:var(--ink); font-weight:500;">Ta place n'est définitivement validée qu'une fois ton dossier de financement CPF accepté</strong> par notre organisme partenaire.
     </p>
   </div>
 </section>
@@ -312,23 +330,34 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="formation-collective.section3_eyebrow">SESSIONS</div>
     <h2 class="section-title" data-editable="formation-collective.section3_title">Prochaines dates</h2>
-    <div class="provisional-badge">⚠️ Dates provisoires, à confirmer prochainement — inscris-toi en liste d'attente pour être prévenue dès la validation.</div>
     <div class="sessions-grid">
       <div class="session-card">
         <div class="s-label">Session 1</div>
-        <div class="s-dates">12 → 16 janvier</div>
-        <div class="s-status">Dates à valider</div>
+        <div class="s-dates">26 → 30 octobre</div>
+        <div class="s-status">Places disponibles</div>
       </div>
       <div class="session-card">
         <div class="s-label">Session 2</div>
-        <div class="s-dates">9 → 13 mars</div>
-        <div class="s-status">Dates à valider</div>
+        <div class="s-dates">30 nov. → 4 déc.</div>
+        <div class="s-status">Places disponibles</div>
       </div>
       <div class="session-card">
         <div class="s-label">Session 3</div>
-        <div class="s-dates">Été (juin/juillet)</div>
-        <div class="s-status">Dates à valider</div>
+        <div class="s-dates">4 → 8 janvier</div>
+        <div class="s-status">Places disponibles</div>
       </div>
+    </div>
+
+    <div class="waitlist-box">
+      <h3>Aucune de ces dates ne te convient ?</h3>
+      <p>Laisse-nous ton prénom et ton email : nous te contacterons pour échanger, ou pour t'envoyer les prochaines dates dès qu'elles seront programmées.</p>
+      <form class="waitlist-form" id="waitlistForm">
+        <input type="text" name="prenom" id="waitlistPrenom" placeholder="Ton prénom" required>
+        <input type="email" name="email" id="waitlistEmail" placeholder="Ton adresse email" required>
+        <button type="submit">Je m'inscris →</button>
+      </form>
+      <p class="waitlist-status" role="status" aria-live="polite" style="font-size:12px; color:var(--ink-soft); margin-top:12px; display:none;"></p>
+      <div class="waitlist-note">Pas de spam, juste un message dès qu'une nouvelle session est programmée.</div>
     </div>
   </div>
 </section>
@@ -342,7 +371,7 @@
       <div>— Horaires : 9h – 17h chaque jour</div>
       <div>— 40h de formation au total</div>
       <div>— Formation éligible CPF, sous validation du dossier</div>
-      <div>— Acompte : 100 € (hors financement CPF)</div>
+      <div>— Acompte : 200 € (hors financement CPF)</div>
       <div>— Modèles non inclus</div>
       <div>— Matériel professionnel inclus</div>
       <div>— Certificat de participation</div>
@@ -370,11 +399,11 @@
       </details>
       <details class="faq-item">
         <summary>Quelle est la différence entre le paiement classique et le financement CPF ?</summary>
-        <p>Le paiement classique est à 1000€ (en 1 fois). Le financement CPF est à 2500€ et ne demande aucune avance de frais — il te suffit de le préciser dans le formulaire, tu seras recontactée pour ton dossier.</p>
+        <p>Le paiement classique est à 1000€ (en 1 fois). Le financement CPF est à 2500€ et ne demande aucune avance de frais ni acompte — il te suffit de le préciser dans le formulaire, ton dossier sera transmis à notre organisme partenaire qui te contactera sur WhatsApp pour t'accompagner.</p>
       </details>
       <details class="faq-item">
         <summary>Comment se passe l'inscription ?</summary>
-        <p>Indique tes disponibilités dans le formulaire ci-dessous. Une fois les dates de session confirmées, un acompte de 100€ (non remboursable, hors financement CPF) est demandé pour bloquer définitivement ta place.</p>
+        <p>Choisis ta session dans le formulaire ci-dessous. Un acompte de 200€ (non remboursable, hors financement CPF) est demandé pour bloquer définitivement ta place. En cas de financement CPF, aucun acompte n'est à régler — ta place est validée dès l'acceptation de ton dossier.</p>
       </details>
     </div>
   </div>
@@ -384,7 +413,7 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="formation-collective.section6_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="formation-collective.section6_title">Réserver ma place</h2>
-    <p class="form-note">Les dates n'étant pas encore confirmées, indique ta ou tes sessions préférées : nous te recontacterons dès leur validation pour finaliser ton inscription.</p>
+    <p class="form-note">Choisis ta session préférée ci-dessous : nous te recontacterons rapidement pour finaliser ton inscription.</p>
     <p class="form-note" style="margin-top:-30px;">Déjà intermédiaire ou confirmée et envie de te spécialiser mariée ? La <a href="formation-intensive-collective-3-jours.html" style="text-decoration:underline; color:var(--ink);">Formation Intensive Mariée (3 jours)</a> est faite pour toi.</p>
 
     <form class="inscription-form">
@@ -422,9 +451,10 @@
           <label for="session">Session(s) qui t'intéresse(nt)</label>
           <select id="session" name="session" required>
             <option value="">Sélectionnez</option>
-            <option value="session1">Session 1 — 12 au 16 janvier (à valider)</option>
-            <option value="session2">Session 2 — 9 au 13 mars (à valider)</option>
-            <option value="session3">Session 3 — Été, juin/juillet (à valider)</option>
+            <option value="session1">Session 1 — 26 au 30 octobre</option>
+            <option value="session2">Session 2 — 30 novembre au 4 décembre</option>
+            <option value="session3">Session 3 — 4 au 8 janvier</option>
+            <option value="liste-attente">Aucune de ces dates ne me convient — liste d'attente</option>
             <option value="indifferent">Peu importe, je suis flexible</option>
           </select>
         </div>
@@ -437,7 +467,7 @@
             <option value="classique">Paiement classique — 1000€</option>
             <option value="cpf">Financement CPF — 2500€</option>
           </select>
-          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, nous te recontacterons pour récupérer les informations nécessaires à ton dossier. Ta place ne sera définitivement validée qu'une fois la demande de financement acceptée par notre organisme partenaire.</p>
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner dans ta démarche d'inscription. Ta place ne sera définitivement validée qu'une fois ton dossier accepté.</p>
         </div>
       </div>
 
@@ -488,7 +518,7 @@
       </div>
 
       <button type="submit" class="btn form-submit">Envoyer ma demande d'inscription</button>
-      <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place, une fois les dates confirmées.</p>
+      <p class="form-disclaimer">Un acompte de 200€ (non remboursable) sera demandé pour bloquer définitivement ta place. Pas d'acompte à régler en cas de financement CPF.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
   </div>
@@ -550,6 +580,32 @@
       }
     });
   });
+
+  var wlForm = document.getElementById('waitlistForm');
+  if(wlForm){
+    var wlStatus = wlForm.parentElement.querySelector('.waitlist-status');
+    wlForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = wlForm.querySelector('button');
+      btn.disabled = true;
+      _sb.from('waitlist_formations').insert({
+        source_page: 'formation-collective',
+        prenom: document.getElementById('waitlistPrenom').value,
+        email: document.getElementById('waitlistEmail').value
+      }).then(function(res){
+        btn.disabled = false;
+        wlStatus.style.display = 'block';
+        if(res.error){
+          wlStatus.style.color = '#B33A3A';
+          wlStatus.textContent = "Un problème est survenu. Écris-nous à academy@cmakeupbeauty.fr.";
+        } else {
+          wlStatus.style.color = 'var(--ink-soft)';
+          wlStatus.textContent = "Merci ! Nous te tiendrons informée dès qu\'une nouvelle date est programmée.";
+          wlForm.reset();
+        }
+      });
+    });
+  }
 })();
 </script>
 

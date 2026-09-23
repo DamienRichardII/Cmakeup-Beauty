@@ -206,7 +206,7 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="formations.html" class="current">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html" class="current">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="formations.html" class="current">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html" class="current">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
     <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
@@ -300,6 +300,14 @@
   </div>
 </section>
 
+<section style="text-align:center;">
+  <div class="wrap">
+    <div class="section-eyebrow">NOTRE MÉTHODE</div>
+    <h2 class="section-title" style="margin-bottom:30px;">Comment se déroule la journée</h2>
+    <p class="section-lede">Colleen réalise une démonstration complète le matin, une seule fois — le temps de bien observer chaque geste. Le reste de la journée, tu es directement en pratique sur modèle, avec un accompagnement pas à pas. Au total, tu réalises <strong style="color:var(--ink);">7 maquillages en semi-autonomie</strong>, avec une évaluation finale incluse pour valider tes acquis.</p>
+  </div>
+</section>
+
 <section class="infos-wrap">
   <div class="wrap">
     <div class="section-eyebrow" data-editable="formation-perfectionnement-1-jour.section2_eyebrow" style="color:var(--gray);">INFORMATIONS</div>
@@ -349,7 +357,8 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="formation-perfectionnement-1-jour.section4_eyebrow">INSCRIPTION</div>
     <h2 class="section-title" data-editable="formation-perfectionnement-1-jour.section4_title">Réserver ta journée</h2>
-    <p class="form-note">Débutante totale ? La <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (5 jours)</a> est plus adaptée pour poser les bases avant de te perfectionner. Tu veux te spécialiser mariée en groupe ? La <a href="formation-intensive-collective-3-jours.html" style="text-decoration:underline; color:var(--ink);">Formation Intensive Mariée (3 jours)</a> est faite pour ça.</p>
+    <p class="form-note">Cette formation privée se programme selon tes disponibilités : indique la date qui t'arrange, nous te recontacterons pour la confirmer.</p>
+    <p class="form-note" style="margin-top:-30px;">Débutante totale ? La <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (5 jours)</a> est plus adaptée pour poser les bases avant de te perfectionner. Tu veux te spécialiser mariée en groupe ? La <a href="formation-intensive-collective-3-jours.html" style="text-decoration:underline; color:var(--ink);">Formation Intensive Mariée (3 jours)</a> est faite pour ça.</p>
 
     <form class="inscription-form">
       <div class="form-row">
@@ -393,27 +402,39 @@
       </div>
 
       <div class="form-row">
-        <div class="field">
-          <label for="niveau">Ton niveau actuel</label>
-          <select id="niveau" name="niveau" required>
-            <option value="">Sélectionnez</option>
-            <option value="intermediaire">Intermédiaire</option>
-            <option value="confirmee">Confirmée</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="financement">Mode de financement souhaité</label>
-          <select id="financement" name="financement">
-            <option value="classique">Paiement classique</option>
-            <option value="cpf">Financement CPF — 1100€</option>
-          </select>
+        <div class="field full">
+          <label for="dates">Ta date souhaitée</label>
+          <input type="text" id="dates" name="dates" placeholder="Ex : le 14 novembre, ou toute autre date qui t'arrange" required>
         </div>
       </div>
 
       <div class="form-row">
         <div class="field full">
-          <label for="dates">Dates ou disponibilités souhaitées</label>
-          <input type="text" id="dates" name="dates" placeholder="Ex : semaine du 12 octobre, week-ends uniquement...">
+          <label for="financement">Mode de financement souhaité</label>
+          <select id="financement" name="financement">
+            <option value="classique">Paiement classique</option>
+            <option value="cpf">Financement CPF — 1100€</option>
+          </select>
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner dans ta démarche d'inscription. Ta place ne sera définitivement validée qu'une fois ton dossier accepté.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="materiel">As-tu déjà ton propre matériel de maquillage ?</label>
+          <select id="materiel" name="materiel">
+            <option value="oui">Oui, j'ai mon matériel</option>
+            <option value="non">Non, je n'en ai pas</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="modele">As-tu déjà un modèle pour la pratique ?</label>
+          <select id="modele" name="modele">
+            <option value="">Sélectionnez</option>
+            <option value="oui">Oui, j'ai déjà mon modèle</option>
+            <option value="non">Non, pas encore</option>
+            <option value="aide">Non, j'aurais besoin d'aide pour en trouver</option>
+          </select>
         </div>
       </div>
 
@@ -429,7 +450,7 @@
         <label for="rgpd" style="text-transform:none; letter-spacing:normal; font-size:12px; color:var(--ink-soft);">J'accepte que mes informations soient utilisées pour traiter ma demande d'inscription, conformément à la politique de confidentialité.</label>
       </div>
       <button type="submit" class="btn form-submit">Envoyer ma demande d'inscription</button>
-      <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place, après confirmation par email.</p>
+      <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place. Pas d'acompte à régler en cas de financement CPF.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
   </div>
@@ -472,9 +493,10 @@
       telephone: document.getElementById('telephone').value,
       ville: document.getElementById('ville').value,
       formation: document.getElementById('formation').value,
-      niveau: document.getElementById('niveau').value,
       financement: document.getElementById('financement').value,
       dates_souhaitees: document.getElementById('dates').value,
+      materiel: document.getElementById('materiel').value,
+      modele: document.getElementById('modele').value,
       message: document.getElementById('message').value,
       rgpd_consent: document.getElementById('rgpd').checked
     }).then(function(res){

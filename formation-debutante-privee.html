@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CMAKEUP BEAUTY — Formation Perfectionnement 2 Jours</title>
-<meta name="description" content="Formation Perfectionnement 2 Jours CMAKEUP BEAUTY : parcours individuel complet pour Makeup Artists intermédiaires ou confirmées — Soft Glam, Full Glam et Mariée.">
-<link rel="canonical" href="https://cmakeup-beauty.vercel.app/formation-perfectionnement-2-jours.html">
+<title>CMAKEUP BEAUTY — Formation Débutante Privée 4 Jours</title>
+<meta name="description" content="Formation makeup débutante en individuel, 4 jours, en présentiel à Cergy (95), avec CMAKEUP BEAUTY. Dates flexibles. Finançable via le CPF.">
+<link rel="canonical" href="https://cmakeup-beauty.vercel.app/formation-debutante-privee.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="CMAKEUP BEAUTY — Formation Perfectionnement 2 Jours">
-<meta property="og:description" content="Formation Perfectionnement 2 Jours CMAKEUP BEAUTY : parcours individuel complet pour Makeup Artists intermédiaires ou confirmées — Soft Glam, Full Glam et Mariée.">
-<meta property="og:url" content="https://cmakeup-beauty.vercel.app/formation-perfectionnement-2-jours.html">
+<meta property="og:title" content="CMAKEUP BEAUTY — Formation Débutante Privée 4 Jours">
+<meta property="og:description" content="Formation makeup débutante en individuel, 4 jours, en présentiel à Cergy (95), avec CMAKEUP BEAUTY. Dates flexibles. Finançable via le CPF.">
+<meta property="og:url" content="https://cmakeup-beauty.vercel.app/formation-debutante-privee.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,31 +77,34 @@
   .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
   .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
 
-  .modules-list{max-width:none; list-style:none;}
+  /* MODULES */
+  .modules-list{max-width:640px; margin:0 auto; list-style:none;}
   .modules-list li{
     display:flex; gap:16px; align-items:flex-start;
-    padding:14px 0; border-bottom:1px solid var(--line); font-size:15px; color:var(--ink); line-height:1.5;
+    padding:18px 0; border-bottom:1px solid var(--line); font-size:16px; color:var(--ink);
   }
   .modules-list li:last-child{border-bottom:none;}
-  .modules-list .check{color:var(--ink-soft); font-size:15px; margin-top:2px;}
+  .modules-list .check{color:var(--ink-soft); font-size:16px; margin-top:2px;}
 
   /* DAY BLOCKS */
-  .day-block{max-width:820px; margin:0 auto 60px; border:1px solid var(--line); padding:50px 46px;}
+  .day-block{max-width:720px; margin:0 auto 44px; border:1px solid var(--gray); padding:40px 40px;}
   .day-block:last-child{margin-bottom:0;}
-  .day-label{font-size:12px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:12px;}
-  .day-block h3{font-size:26px; margin-bottom:6px;}
-  .day-meta{font-size:13px; color:var(--gray); letter-spacing:0.04em; margin-bottom:30px;}
-  .day-meta strong{color:var(--ink-soft); font-weight:400;}
+  .day-label{font-size:12px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:10px;}
+  .day-block h3{font-size:23px; margin-bottom:10px;}
+  .day-meta{font-size:13px; color:var(--gray); letter-spacing:0.03em; margin-bottom:26px;}
+  .day-block .modules-list{max-width:none; margin:0;}
+  .day-block .modules-list li{padding:12px 0; font-size:15px;}
 
-  /* RECAP BAND */
-  .recap-band{background:var(--off);}
-  .recap-inner{
-    max-width:640px; margin:0 auto; border:1px solid var(--line); background:var(--white);
-    padding:44px 50px; text-align:center;
+  /* PRICING */
+  .pricing-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line);
+    max-width:820px; margin:0 auto; border:1px solid var(--line);
   }
-  .recap-inner .r-total{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:42px; margin-bottom:8px;}
-  .recap-inner .r-note{font-size:14px; color:var(--ink-soft); line-height:1.7;}
-  .recap-inner .r-save{display:inline-block; margin-top:18px; font-size:12px; letter-spacing:0.06em; color:var(--ink); border:1px solid var(--line); padding:8px 16px;}
+  .price-option{background:var(--white); padding:44px 34px; text-align:center;}
+  .price-option.featured{background:var(--paper);}
+  .price-option .p-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:16px;}
+  .price-option .p-amount{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:36px; margin-bottom:14px;}
+  .price-option .p-note{font-size:13px; color:var(--ink-soft); line-height:1.75;}
 
   /* INFOS */
   .infos-wrap{background:var(--ink); color:var(--white);}
@@ -111,22 +114,6 @@
     background:#242422; padding:44px 50px;
   }
   .infos-grid div{font-size:14px; letter-spacing:0.02em; line-height:1.8; color:#D8D6D0;}
-
-  /* FAQ */
-  .faq-list{border-top:1px solid var(--line); max-width:780px; margin:0 auto;}
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{
-    cursor:pointer;
-    list-style:none;
-    padding:26px 0;
-    font-size:17px;
-    font-family:'The Silver Editorial','Cormorant Garamond', serif;
-    display:flex; justify-content:space-between; align-items:center; gap:20px;
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
-  .faq-item[open] summary::after{transform:rotate(45deg);}
-  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
 
   /* FORM */
   .form-note{max-width:560px; margin:0 auto 50px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);}
@@ -154,10 +141,46 @@
     .wrap{padding:0 24px;}
     section{padding:60px 0;}
     .infos-grid{grid-template-columns:1fr; padding:34px 28px;}
-    .day-block{padding:36px 26px;}
-    .recap-inner{padding:34px 26px;}
     .form-row{grid-template-columns:1fr;}
   }
+  /* WARM SECTION (grey wash) */
+  .section-warm{background:rgba(184,182,169,0.16);}
+
+  /* FAQ */
+  .faq-list{border-top:1px solid var(--line); max-width:780px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding:26px 0;
+    font-size:17px;
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 
   /* Menu mobile (hamburger) */
   .nav-toggle{display:none;}
@@ -182,26 +205,6 @@
     nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
     nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
   }
-
-  /* NAV DROPDOWN */
-  .nav-drop{position:relative;}
-  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
-  .nav-drop-menu{
-    position:absolute; top:100%; left:50%; transform:translateX(-50%);
-    background:var(--white); border:1px solid var(--line);
-    min-width:230px; padding:6px 0; margin-top:18px;
-    opacity:0; visibility:hidden; pointer-events:none;
-    transition:opacity .2s ease;
-    box-shadow:0 12px 24px rgba(0,0,0,0.08);
-    z-index:30;
-  }
-  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
-  .nav-drop-menu a{
-    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
-    color:var(--ink); white-space:nowrap;
-  }
-  .nav-drop-menu a::after{display:none;}
-  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
 </style>
 </head>
 <body>
@@ -212,7 +215,7 @@
     <a href="index.html">Accueil</a>
     <a href="prestations.html">Prestations</a>
     <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="formations.html" class="current">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html" class="current">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="formations.html" class="current">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-debutante-privee.html" class="current">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
     <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
     <a href="coaching-business-mua.html">Coaching</a>
     <a href="ebook.html">Ebook</a>
@@ -224,100 +227,132 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow" data-editable="formation-perfectionnement-2-jours.hero_eyebrow">FORMATION PRIVÉE — 2 JOURS</div>
-    <h1 data-editable="formation-perfectionnement-2-jours.hero_title">Formation Perfectionnement 2 Jours</h1>
-    <p data-editable="formation-perfectionnement-2-jours.hero_text">Réservée aux Makeup Artists <strong>intermédiaires ou confirmées</strong>, déjà équipées de leur matériel. Le parcours le plus complet en individuel : les 3 modules Soft Glam, Full Glam et Mariée, sur deux journées consécutives avec Colleen.</p>
-<div class="cms-video-slot" data-editable-video="formation-perfectionnement-2-jours" style="display:none; margin:32px auto; max-width:900px;"></div>
-    <div class="price-tag">Tarif : 650 € — les 3 modules inclus</div>
+    <div class="eyebrow" data-editable="formation-debutante-privee.hero_eyebrow">FORMATION PRIVÉE — 4 JOURS</div>
+    <h1 data-editable="formation-debutante-privee.hero_title">Formation Débutante Privée</h1>
+    <p data-editable="formation-debutante-privee.hero_text">Modules Soft Glam & Full Glam. Le même programme que notre formation collective, mais en individuel, 100% adapté à ton rythme, pour partir de zéro et repartir avec une vraie base solide, de A à Z.</p>
+<div class="cms-video-slot" data-editable-video="formation-debutante-privee" style="display:none; margin:32px auto; max-width:900px;"></div>
+    <div class="price-tag">1200 € — également finançable via ton CPF</div>
+    <div class="price-tag" style="margin-top:8px; color:var(--ink-soft); font-size:13px;">9h – 17h chaque jour · 32h de formation au total</div>
+  </div>
+</section>
+
+<section class="section-warm">
+  <div class="wrap">
+    <div class="section-eyebrow" data-editable="formation-debutante-privee.section1_eyebrow">AU PROGRAMME</div>
+    <h2 class="section-title" data-editable="formation-debutante-privee.section1_title" style="margin-bottom:50px;">3 jours de pratique, 1 jour pour poser les bases de ton activité</h2>
+
+    <div class="day-block">
+      <div class="day-label">Jours 1 à 3 — Pratique</div>
+      <h3>Techniques Soft Glam & Full Glam</h3>
+      <div class="day-meta">Horaires : 9h – 17h (8h de formation par jour, pause déjeuner incluse) — 24h au total</div>
+      <ul class="modules-list">
+        <li><span class="check">✓</span> Module Soft Glam — techniques, produits, application</li>
+        <li><span class="check">✓</span> Module Full Glam — sublimer et intensifier le regard</li>
+        <li><span class="check">✓</span> Adaptation à chaque type et carnation de peau</li>
+        <li><span class="check">✓</span> Matériel professionnel inclus</li>
+        <li><span class="check">✓</span> Formation 100% individuelle, à Cergy</li>
+      </ul>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Jour 4 — Théorie & business</div>
+      <h3>Le métier de Makeup Artist</h3>
+      <div class="day-meta">Horaires : 9h – 17h (8h de formation, pause déjeuner incluse)</div>
+      <ul class="modules-list">
+        <li><span class="check">✓</span> Comprendre et démarrer le métier de Makeup Artist</li>
+        <li><span class="check">✓</span> Création de contenu : photo, vidéo, mise en valeur de ton travail</li>
+        <li><span class="check">✓</span> Astuces et conseils pour développer ton activité</li>
+        <li><span class="check">✓</span> Certificat de participation en fin de formation</li>
+        <li><span class="check">✓</span> E-book professionnel "Vivre du Maquillage" offert</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <div class="wrap">
+    <div class="section-eyebrow" data-editable="formation-debutante-privee.section2_eyebrow">NOTRE MÉTHODE</div>
+    <h2 class="section-title" data-editable="formation-debutante-privee.section2_title" style="margin-bottom:30px;">Comment se déroule la formation</h2>
+    <p class="section-lede" data-editable="formation-debutante-privee.section2_lede">Colleen réalise une démonstration complète le matin du premier jour, une seule fois — le temps de bien observer chaque geste. Le reste du temps, tu es directement en pratique sur modèle, avec un accompagnement pas à pas. Au total, tu réalises <strong style="color:var(--ink);">7 maquillages en semi-autonomie</strong>, avec une évaluation finale incluse pour valider tes acquis.</p>
+  </div>
+</section>
+
+<section style="background:var(--off);">
+  <div class="wrap">
+    <div class="section-eyebrow" data-editable="formation-debutante-privee.section3_eyebrow">TARIFS & FINANCEMENT</div>
+    <h2 class="section-title" data-editable="formation-debutante-privee.section3_title" style="margin-bottom:50px;">Deux façons de financer ta formation</h2>
+    <div class="pricing-grid">
+      <div class="price-option">
+        <div class="p-label">Paiement classique</div>
+        <div class="p-amount">1200 €</div>
+        <div class="p-note">Paiement en 1 fois.<br>Acompte de 200€ pour réserver sa place.</div>
+      </div>
+      <div class="price-option featured">
+        <div class="p-label">Financement CPF</div>
+        <div class="p-amount">2500 €</div>
+        <div class="p-note">Formation finançable via ton Compte Personnel de Formation.<br>Aucune avance de frais à prévoir, pas d'acompte à régler.<br>Matériel professionnel inclus.</div>
+      </div>
+    </div>
+    <p style="max-width:640px; margin:34px auto 0; text-align:center; font-size:13px; color:var(--ink-soft); line-height:1.8;">
+      En cas de financement CPF, merci de bien le préciser lors de ton inscription. Ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner pas à pas dans ta démarche d'inscription. <strong style="color:var(--ink); font-weight:500;">Ta place n'est définitivement validée qu'une fois ton dossier de financement CPF accepté</strong> par notre organisme partenaire.
+    </p>
   </div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="formation-perfectionnement-2-jours.section1_eyebrow">PROGRAMME</div>
-    <h2 class="section-title" data-editable="formation-perfectionnement-2-jours.section1_title">2 jours, 3 techniques travaillées</h2>
-    <p class="section-lede" data-editable="formation-perfectionnement-2-jours.section1_lede">Un parcours individuel pensé pour progresser en continu, avec la même exigence que les modules pris séparément — pour un tarif plus avantageux.</p>
-
-    <div class="day-block">
-      <div class="day-label">Jour 1</div>
-      <h3>Soft Glam & Full Glam</h3>
-      <div class="day-meta"><strong>Horaires :</strong> 9h – 17h (8h de formation, pause déjeuner incluse)</div>
-      <ul class="modules-list">
-        <li><span class="check">✓</span> Diagnostic de ta pratique actuelle et de tes axes de progression</li>
-        <li><span class="check">✓</span> Perfectionnement de la technique Soft Glam : teint lumineux, regard travaillé, structure du visage</li>
-        <li><span class="check">✓</span> Perfectionnement de la technique Full Glam : intensité du regard, smoky, tenue longue durée</li>
-        <li><span class="check">✓</span> Mise en pratique complète sur modèle</li>
-        <li><span class="check">✓</span> Analyse complète de ton kit maquillage actuel</li>
-        <li><span class="check">✓</span> Corrections personnalisées, geste par geste</li>
-      </ul>
-    </div>
-
-    <div class="day-block">
-      <div class="day-label">Jour 2</div>
-      <h3>Module Mariée</h3>
-      <div class="day-meta"><strong>Horaires :</strong> 9h – 17h (8h de formation, pause déjeuner incluse)</div>
-      <ul class="modules-list">
-        <li><span class="check">✓</span> Les spécificités du maquillage mariée : tenue longue durée, rendu photo et vidéo</li>
-        <li><span class="check">✓</span> Simulation complète d'un rendez-vous d'essai mariée</li>
-        <li><span class="check">✓</span> Techniques de teint waterproof et de fixation longue durée</li>
-        <li><span class="check">✓</span> Gestion du timing et du stress le jour J</li>
-        <li><span class="check">✓</span> Construire et structurer ton offre mariée (forfaits, book, tarifs)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="recap-band">
-  <div class="wrap">
-    <div class="recap-inner">
-      <div class="r-total">650 €</div>
-      <div class="r-note">12h de formation individuelle sur 2 jours<br>Support de suivi remis en fin de parcours &amp; certificat de participation</div>
-      <div class="r-save">Économie de 50€ par rapport aux 2 modules pris séparément (700€)</div>
-      <div style="margin-top:16px; font-size:13px; color:var(--gray);">Également finançable via CPF : 1300€</div>
-    </div>
+  <div class="wrap" style="text-align:center;">
+    <div class="section-eyebrow" data-editable="formation-debutante-privee.section4_eyebrow">DATES</div>
+    <h2 class="section-title" data-editable="formation-debutante-privee.section4_title">Une formation qui s'adapte à ton emploi du temps</h2>
+    <p class="section-lede" data-editable="formation-debutante-privee.section4_lede">Contrairement à la formation collective, cette formation privée n'a pas de dates fixes : tes 4 jours de formation (consécutifs ou non) se programment directement avec toi, selon tes disponibilités. Indique tes dates souhaitées dans le formulaire ci-dessous, nous te recontacterons pour les confirmer.</p>
   </div>
 </section>
 
 <section class="infos-wrap">
   <div class="wrap">
-    <div class="section-eyebrow" data-editable="formation-perfectionnement-2-jours.section2_eyebrow" style="color:var(--gray);">INFORMATIONS</div>
-    <h2 class="section-title" data-editable="formation-perfectionnement-2-jours.section2_title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
+    <div class="section-eyebrow" data-editable="formation-debutante-privee.section5_eyebrow" style="color:var(--gray);">INFORMATIONS</div>
+    <h2 class="section-title" data-editable="formation-debutante-privee.section5_title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
     <div class="infos-grid">
-      <div>— Formation individuelle, à Cergy</div>
-      <div>— Niveau requis : Makeup Artist intermédiaire ou confirmée uniquement</div>
-      <div>— Un modèle est à prévoir chaque jour pour la pratique</div>
-      <div>— Analyse de kit incluse</div>
-      <div>— Éligible CPF : 1300€ (sous validation du dossier)</div>
+      <div>— Formation privée, individuelle – Cergy</div>
+      <div>— Horaires : 9h – 17h chaque jour</div>
+      <div>— 32h de formation au total</div>
+      <div>— Formation éligible CPF, sous validation du dossier</div>
+      <div>— Acompte : 200 € (hors financement CPF)</div>
+      <div>— Modèle non inclus</div>
+      <div>— Matériel professionnel inclus</div>
       <div>— Certificat de participation</div>
-      <div>— Places limitées, sur réservation</div>
+      <div>— Dates flexibles, selon tes disponibilités</div>
     </div>
   </div>
 </section>
 
-<section>
+<section class="section-warm">
   <div class="wrap">
-    <div class="section-eyebrow" data-editable="formation-perfectionnement-2-jours.section3_eyebrow">FOIRE AUX QUESTIONS</div>
-    <h2 class="section-title" data-editable="formation-perfectionnement-2-jours.section3_title" style="margin-bottom:50px;">Avant de t'inscrire</h2>
+    <div class="section-eyebrow" data-editable="formation-debutante-privee.section6_eyebrow">FOIRE AUX QUESTIONS</div>
+    <h2 class="section-title" data-editable="formation-debutante-privee.section6_title" style="margin-bottom:50px;">Avant de t'inscrire</h2>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>Cette formation est-elle accessible aux débutantes ?</summary>
-        <p>Non. Cette formation s'adresse uniquement aux Makeup Artists déjà intermédiaires ou confirmées, avec leur propre matériel. Si tu débutes totalement, la <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (5 jours)</a> est plus adaptée.</p>
-      </details>
-      <details class="faq-item">
-        <summary>En quoi consiste l'analyse de kit ?</summary>
-        <p>Colleen passe en revue ton kit maquillage actuel avec toi : produits, outils, ce qui manque ou qui est à remplacer, pour t'aider à professionnaliser ton matériel. C'est inclus, sans surcoût.</p>
+        <summary>Quelle est la différence avec la formation collective ?</summary>
+        <p>Le programme est identique (Soft Glam, Full Glam, théorie & business), mais en formation 100% individuelle avec Colleen, sur 4 jours au lieu de 5, avec des dates qui s'adaptent à ton emploi du temps plutôt que des sessions fixes.</p>
       </details>
       <details class="faq-item">
         <summary>Je n'ai pas de modèle, comment faire ?</summary>
-        <p>Pas d'inquiétude — on peut t'aider à trouver des modèles selon leurs disponibilités. Les modèles sont rémunérés 50€ par jour, à ta charge.</p>
+        <p>Pas d'inquiétude — on peut t'aider à trouver un modèle selon ses disponibilités. Les modèles sont rémunérés 50€ par jour, à ta charge.</p>
       </details>
       <details class="faq-item">
-        <summary>Cette formation est-elle finançable via mon CPF ?</summary>
-        <p>Oui, à 1300€. Précise-le dans le formulaire d'inscription, tu seras recontactée pour finaliser ton dossier.</p>
+        <summary>Faut-il déjà avoir un niveau en maquillage ?</summary>
+        <p>Non. Cette formation est pensée pour partir de zéro : aucune expérience préalable n'est nécessaire.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Le matériel est-il fourni ?</summary>
+        <p>Oui, le matériel professionnel est inclus dans la formation, quel que soit ton mode de paiement.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quelle est la différence entre le paiement classique et le financement CPF ?</summary>
+        <p>Le paiement classique est à 1200€ (en 1 fois, acompte de 200€ à la réservation). Le financement CPF est à 2500€ et ne demande aucune avance de frais ni acompte — il te suffit de le préciser dans le formulaire, ton dossier sera transmis à notre organisme partenaire qui te contactera sur WhatsApp pour t'accompagner.</p>
       </details>
       <details class="faq-item">
         <summary>Comment se passe l'inscription ?</summary>
-        <p>Remplis le formulaire d'inscription avec tes disponibilités. Une fois les dates confirmées, un acompte de 100€ est demandé pour bloquer définitivement ta place.</p>
+        <p>Indique tes dates souhaitées dans le formulaire ci-dessous. Un acompte de 200€ (non remboursable, hors financement CPF) est demandé pour bloquer définitivement ta place. En cas de financement CPF, aucun acompte n'est à régler — ta place est validée dès l'acceptation de ton dossier.</p>
       </details>
     </div>
   </div>
@@ -325,10 +360,10 @@
 
 <section id="formulaire">
   <div class="wrap">
-    <div class="section-eyebrow" data-editable="formation-perfectionnement-2-jours.section4_eyebrow">INSCRIPTION</div>
-    <h2 class="section-title" data-editable="formation-perfectionnement-2-jours.section4_title">Réserver tes 2 journées</h2>
-    <p class="form-note">Cette formation privée se programme selon tes disponibilités : indique les dates qui t'arrangent, nous te recontacterons pour les confirmer.</p>
-    <p class="form-note" style="margin-top:-30px;">Débutante totale ? La <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (5 jours)</a> est plus adaptée pour poser les bases avant de te perfectionner. Tu veux te spécialiser mariée en groupe ? La <a href="formation-intensive-collective-3-jours.html" style="text-decoration:underline; color:var(--ink);">Formation Intensive Mariée (3 jours)</a> est faite pour ça.</p>
+    <div class="section-eyebrow" data-editable="formation-debutante-privee.section7_eyebrow">INSCRIPTIONS</div>
+    <h2 class="section-title" data-editable="formation-debutante-privee.section7_title">Réserver ma place</h2>
+    <p class="form-note">Cette formation privée se programme selon tes disponibilités : indique tes dates souhaitées, nous te recontacterons pour les confirmer.</p>
+    <p class="form-note" style="margin-top:-30px;">Tu préfères la formation collective (moins chère, en groupe, dates fixes) ? Découvre la <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante 5 jours</a>.</p>
 
     <form class="inscription-form">
       <div class="form-row">
@@ -363,7 +398,7 @@
       <div class="form-row">
         <div class="field full">
           <label for="dates">Tes dates souhaitées</label>
-          <input type="text" id="dates" name="dates" placeholder="Ex : les 14 et 15 novembre, ou toute autre date qui t'arrange" required>
+          <input type="text" id="dates" name="dates" placeholder="Ex : la 3ème semaine de novembre, ou toute autre période qui t'arrange" required>
         </div>
       </div>
 
@@ -371,22 +406,37 @@
         <div class="field full">
           <label for="financement">Mode de financement souhaité</label>
           <select id="financement" name="financement">
-            <option value="classique">Paiement classique — 650€</option>
-            <option value="cpf">Financement CPF — 1300€</option>
+            <option value="classique">Paiement classique — 1200€</option>
+            <option value="cpf">Financement CPF — 2500€</option>
           </select>
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner dans ta démarche d'inscription. Ta place ne sera définitivement validée qu'une fois ton dossier accepté.</p>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="field">
+        <div class="field full">
           <label for="materiel">As-tu déjà ton propre matériel de maquillage ?</label>
           <select id="materiel" name="materiel">
             <option value="oui">Oui, j'ai mon matériel</option>
             <option value="non">Non, je n'en ai pas</option>
           </select>
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Pas d'inquiétude si ce n'est pas le cas : le matériel professionnel est inclus dans la formation.</p>
         </div>
-        <div class="field">
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="niveau">Votre niveau actuel</label>
+          <select id="niveau" name="niveau">
+            <option value="">Sélectionnez</option>
+            <option value="debutante">Débutante</option>
+            <option value="intermediaire">Intermédiaire</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
           <label for="modele">As-tu déjà un ou des modèles pour la pratique ?</label>
           <select id="modele" name="modele">
             <option value="">Sélectionnez</option>
@@ -404,12 +454,13 @@
         </div>
       </div>
 
-      <div class="field full" style="flex-direction:row; align-items:flex-start; gap:10px;">
+      <div class="field full" style="flex-direction:row; align-items:flex-start; gap:10px; margin-bottom:24px;">
         <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:3px; width:auto;">
         <label for="rgpd" style="text-transform:none; letter-spacing:normal; font-size:12px; color:var(--ink-soft);">J'accepte que mes informations soient utilisées pour traiter ma demande d'inscription, conformément à la politique de confidentialité.</label>
       </div>
+
       <button type="submit" class="btn form-submit">Envoyer ma demande d'inscription</button>
-      <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place. Pas d'acompte à régler en cas de financement CPF.</p>
+      <p class="form-disclaimer">Un acompte de 200€ (non remboursable) sera demandé pour bloquer définitivement ta place. Pas d'acompte à régler en cas de financement CPF.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
   </div>
@@ -445,16 +496,16 @@
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
     _sb.from('formation_inscriptions').insert({
-      source_page: 'formation-perfectionnement-2-jours',
+      source_page: 'formation-debutante-privee',
       prenom: document.getElementById('prenom').value,
       nom: document.getElementById('nom').value,
       email: document.getElementById('email').value,
       telephone: document.getElementById('telephone').value,
       ville: document.getElementById('ville').value,
-      formation: '2j-perfectionnement-complet',
-      financement: document.getElementById('financement').value,
       dates_souhaitees: document.getElementById('dates').value,
+      financement: document.getElementById('financement').value,
       materiel: document.getElementById('materiel').value,
+      niveau: document.getElementById('niveau').value,
       modele: document.getElementById('modele').value,
       message: document.getElementById('message').value,
       rgpd_consent: document.getElementById('rgpd').checked
@@ -501,16 +552,16 @@
     }
     container.style.display = 'block';
   }
-  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'formation-perfectionnement-2-jours').then(function(res){
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'formation-debutante-privee').then(function(res){
     if(res.error || !res.data) return;
     res.data.forEach(function(row){
       if(!row.content) return;
       if(row.block_type === 'video'){
-        var vc = document.querySelector('[data-editable-video="formation-perfectionnement-2-jours"]');
+        var vc = document.querySelector('[data-editable-video="formation-debutante-privee"]');
         if(vc) embedVideo(vc, row.content);
         return;
       }
-      var els = document.querySelectorAll('[data-editable="formation-perfectionnement-2-jours.' + row.block_key + '"]');
+      var els = document.querySelectorAll('[data-editable="formation-debutante-privee.' + row.block_key + '"]');
       els.forEach(function(el){
         if(row.block_type === 'image'){
           el.setAttribute('src', row.content);
