@@ -197,15 +197,20 @@
   const artistParam = params.get('artist');
   const dateParam = params.get('date');
   const slotParam = params.get('slot');
+  const viaParam = params.get('via');
   if(artistParam && artistLabels[artistParam] && artistParam !== 'peu-importe'){
     var recapExtra = document.createElement('div');
     recapExtra.style.marginTop = '6px';
     var bits = ['avec ' + artistLabels[artistParam]];
-    if(dateParam){
-      var dparts = dateParam.split('-');
-      if(dparts.length === 3){ bits.push('le ' + dparts[2] + '/' + dparts[1] + '/' + dparts[0]); }
+    if(viaParam === 'calendly'){
+      bits.push('— rendez-vous confirmé via Calendly');
+    } else {
+      if(dateParam){
+        var dparts = dateParam.split('-');
+        if(dparts.length === 3){ bits.push('le ' + dparts[2] + '/' + dparts[1] + '/' + dparts[0]); }
+      }
+      if(slotParam){ bits.push('à ' + slotParam); }
     }
-    if(slotParam){ bits.push('à ' + slotParam); }
     recapExtra.textContent = bits.join(' ');
     document.getElementById('recapBox').appendChild(recapExtra);
   }

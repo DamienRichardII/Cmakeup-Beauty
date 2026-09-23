@@ -267,6 +267,7 @@
       <div class="artist-btn" data-artist="lady"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button><div class="artist-location">Sarcelles (95)</div></div>
     </div>
 
+    <div id="genericCalWrap">
     <div class="cal-widget">
       <div class="cal-month">
         <div class="cal-month-head">
@@ -291,14 +292,21 @@
          sur-mesure), avec paiement d'acompte intégré (Stripe) et synchronisation des agendas Apple
          Calendar de chacune. Les créneaux ci-dessus (const availability / slotsByDay) sont des
          données d'exemple et ne reflètent aucune disponibilité réelle. -->
+    </div>
+
+    <div id="colleenCalendlyWrap" style="display:none;">
+      <p id="colleenCalendlyHint" style="text-align:center; font-size:13px; color:var(--ink-soft); margin:0 auto 20px; max-width:520px;">Choisis une prestation ci-dessus (Smoky Eyes, Soft Glam ou Full Glam) pour voir les disponibilités de Colleen en direct.</p>
+      <div id="colleenCalendlyWidget" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
+      <p id="colleenCalendlyStatus" style="display:none; text-align:center; font-size:13px; color:var(--ink-soft); margin-top:16px;"></p>
+    </div>
+
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="footer-top">
+    <div class="footer-top" style="justify-content:center;">
       <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe</div>
     </div>
     <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
   </div>
@@ -338,6 +346,67 @@
   const calPrev = document.getElementById('calPrev');
   const calNext = document.getElementById('calNext');
   const artistPicker = document.getElementById('artistPicker');
+
+  const genericCalWrap = document.getElementById('genericCalWrap');
+  const colleenCalendlyWrap = document.getElementById('colleenCalendlyWrap');
+  const colleenCalendlyHint = document.getElementById('colleenCalendlyHint');
+  const colleenCalendlyWidgetEl = document.getElementById('colleenCalendlyWidget');
+  const colleenCalendlyStatus = document.getElementById('colleenCalendlyStatus');
+
+  const colleenPrestaUrls = {
+    'smoky-eyes': 'https://calendly.com/cmakeupbeauty/prestation-makeupsoftmattebronze',
+    'soft-glam': 'https://calendly.com/cmakeupbeauty/prestation-makeup-soft-glam',
+    'full-glam': 'https://calendly.com/cmakeupbeauty/prestation-makeup-full-glam'
+  };
+  var colleenCalendlyCurrentUrl = null;
+
+  function waitForCalendly(cb, tries){
+    tries = tries || 0;
+    if(window.Calendly){ cb(); }
+    else if(tries < 60){ setTimeout(function(){ waitForCalendly(cb, tries + 1); }, 250); }
+  }
+
+  function updateCalendlyMode(){
+    if(selectedArtist === 'colleen'){
+      genericCalWrap.style.display = 'none';
+      colleenCalendlyWrap.style.display = 'block';
+      var url = colleenPrestaUrls[selectedPrestation];
+      if(url){
+        colleenCalendlyHint.style.display = 'none';
+        colleenCalendlyWidgetEl.style.display = 'block';
+        if(colleenCalendlyCurrentUrl !== url){
+          colleenCalendlyCurrentUrl = url;
+          waitForCalendly(function(){
+            colleenCalendlyWidgetEl.innerHTML = '';
+            window.Calendly.initInlineWidget({ url: url, parentElement: colleenCalendlyWidgetEl });
+          });
+        }
+      } else {
+        colleenCalendlyCurrentUrl = null;
+        colleenCalendlyHint.style.display = 'block';
+        colleenCalendlyWidgetEl.style.display = 'none';
+        colleenCalendlyWidgetEl.innerHTML = '';
+      }
+    } else {
+      genericCalWrap.style.display = '';
+      colleenCalendlyWrap.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('message', function(e){
+    if(!(e.origin === 'https://calendly.com' && e.data && typeof e.data.event === 'string' && e.data.event.indexOf('calendly.') === 0)) return;
+    if(e.data.event === 'calendly.event_scheduled' && selectedArtist === 'colleen'){
+      colleenCalendlyStatus.style.display = 'block';
+      colleenCalendlyStatus.textContent = 'Rendez-vous confirmé avec Colleen ! Redirection vers le paiement de l\'acompte...';
+      var p = new URLSearchParams();
+      if(selectedPrestation) p.set('prestation', selectedPrestation);
+      p.set('artist', 'colleen');
+      p.set('via', 'calendly');
+      setTimeout(function(){
+        window.location.href = 'reservation.html?' + p.toString();
+      }, 1800);
+    }
+  });
 
   function isPast(y,m,d){
     const dt = new Date(y,m,d);
@@ -461,12 +530,14 @@
     render();
     renderSlots();
     updateSummary();
+    updateCalendlyMode();
   }
 
   document.querySelectorAll('.presta-cta').forEach(function(a){
     a.addEventListener('click', function(){
       selectedPrestation = a.getAttribute('data-prestation');
       updateSummary();
+      updateCalendlyMode();
     });
   });
 
@@ -498,6 +569,7 @@
   render();
   renderSlots();
   updateSummary();
+  updateCalendlyMode();
 })();
 </script>
 
