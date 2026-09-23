@@ -651,7 +651,7 @@
       </div>
       <button type="button" class="btn form-submit" id="amcPayBtn" style="margin-bottom:14px;">Payer l'acompte par carte bancaire</button>
       <p class="pay-note" id="amcPayStatus" style="min-height:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
-      <p class="form-disclaimer">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:inherit;">academy@cmakeupbeauty.fr</a> ou appelle le <a href="tel:+33754033266" style="text-decoration:underline; color:inherit;">07 54 03 32 66</a>.</p>
+      <p class="form-disclaimer">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:inherit;">academy@cmakeupbeauty.fr</a>.</p>
     </div>
 
     <div id="amcScreenConfirmation" style="display:none; text-align:center;">
@@ -759,7 +759,7 @@
       btn.textContent = 'Continuer vers le paiement';
       if(res.error){
         status.style.color = '#B33A3A';
-        status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
+        status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
         return;
       }
       recordId = newId;
