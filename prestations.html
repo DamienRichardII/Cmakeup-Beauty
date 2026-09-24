@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CMAKEUP BEAUTY — Prestations</title>
+<title>CMAKEUP BEAUTY — Prestations Invitées</title>
 <meta name="description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Cergy (95).">
 <link rel="canonical" href="https://cmakeup-beauty.vercel.app/prestations.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="CMAKEUP BEAUTY — Prestations">
+<meta property="og:title" content="CMAKEUP BEAUTY — Prestations Invitées">
 <meta property="og:description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Cergy (95).">
 <meta property="og:url" content="https://cmakeup-beauty.vercel.app/prestations.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -153,8 +153,10 @@
     nav.nav-open a:last-child{border-bottom:none;}
     nav.nav-open .nav-drop{display:flex; flex-direction:column;}
     nav.nav-open .nav-drop > a{position:relative; padding-right:44px;}
-    nav.nav-open .nav-drop > a::after{content:"+"; position:absolute; right:24px; top:50%; transform:translateY(-50%); font-size:16px; color:var(--gray); transition:transform .2s ease;}
-    nav.nav-open .nav-drop.open > a::after{transform:translateY(-50%) rotate(45deg);}
+    nav.nav-open .nav-drop > a::before, nav.nav-open .nav-drop > a::after{content:""; position:absolute; left:auto; right:24px; top:50%; bottom:auto; width:10px; height:2px; background:var(--gray); transition:transform .2s ease;}
+    nav.nav-open .nav-drop > a::before{transform:translateY(-50%) rotate(90deg);}
+    nav.nav-open .nav-drop > a::after{transform:translateY(-50%);}
+    nav.nav-open .nav-drop.open > a::before{transform:translateY(-50%) rotate(0deg);}
     nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:hidden; pointer-events:none; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off); max-height:0; overflow:hidden; transition:max-height .25s ease;}
     nav.nav-open .nav-drop.open .nav-drop-menu{visibility:visible; pointer-events:auto; max-height:600px;}
     nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
@@ -188,7 +190,7 @@
   <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
   <nav>
     <a href="index.html">Accueil</a>
-    <a href="prestations.html" class="current">Prestations</a>
+    <div class="nav-drop"><a href="prestations.html" class="current">Prestations</a><div class="nav-drop-menu"><a href="prestations.html" class="current">Prestations Invitées</a><a href="prestations-mariee.html">Prestations Mariée</a></div></div>
     <a href="equipe.html">Équipe</a>
     <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
     <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
@@ -203,7 +205,7 @@
 <section class="page-hero">
   <div class="wrap">
     <div class="eyebrow" data-editable="prestations.hero_eyebrow">NOS PRESTATIONS</div>
-    <h1 data-editable="prestations.hero_title">Les Prestations</h1>
+    <h1 data-editable="prestations.hero_title">Prestations Invitées</h1>
     <p style="max-width:560px; margin:24px auto 0; font-size:16px; line-height:1.8; color:var(--ink-soft);">Un maquillage professionnel, pensé pour durer toute la journée, avec des produits haut de gamme adaptés à chaque type de peau.</p>
     <div class="info-box">
       <div class="info-title"><span class="b-icon">📅</span>Bon à savoir</div>
@@ -320,8 +322,8 @@
 <script>
 (function(){
   const monthNames = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
-  const today = new Date(2026, 8, 13);
-  let viewYear = 2026, viewMonth = 8;
+  const today = new Date();
+  let viewYear = today.getFullYear(), viewMonth = today.getMonth();
   let selectedDate = null, selectedSlot = null;
   let selectedArtist = 'peu-importe';
   const prestaLabels = {
