@@ -301,7 +301,7 @@
     </div>
 
     <div id="colleenCalendlyWrap" style="display:none;">
-      <p id="colleenCalendlyHint" style="text-align:center; font-size:13px; color:var(--ink-soft); margin:0 auto 20px; max-width:520px;">Choisis une prestation ci-dessus (Smoky Eyes, Soft Glam ou Full Glam) pour voir les disponibilités de Colleen en direct.</p>
+      <p id="colleenCalendlyHint" style="text-align:center; font-size:13px; color:var(--ink-soft); margin:0 auto 20px; max-width:520px;">Choisis une prestation ci-dessus (Smoky Eyes, Soft Glam ou Full Glam) pour voir les disponibilités en direct.</p>
       <div id="colleenCalendlyWidget" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
       <p id="colleenCalendlyStatus" style="display:none; text-align:center; font-size:13px; color:var(--ink-soft); margin-top:16px;"></p>
     </div>
@@ -374,40 +374,38 @@
   }
 
   function updateCalendlyMode(){
-    if(selectedArtist === 'colleen'){
-      genericCalWrap.style.display = 'none';
-      colleenCalendlyWrap.style.display = 'block';
-      var url = colleenPrestaUrls[selectedPrestation];
-      if(url){
-        colleenCalendlyHint.style.display = 'none';
-        colleenCalendlyWidgetEl.style.display = 'block';
-        if(colleenCalendlyCurrentUrl !== url){
-          colleenCalendlyCurrentUrl = url;
-          waitForCalendly(function(){
-            colleenCalendlyWidgetEl.innerHTML = '';
-            window.Calendly.initInlineWidget({ url: url, parentElement: colleenCalendlyWidgetEl });
-          });
-        }
-      } else {
-        colleenCalendlyCurrentUrl = null;
-        colleenCalendlyHint.style.display = 'block';
-        colleenCalendlyWidgetEl.style.display = 'none';
-        colleenCalendlyWidgetEl.innerHTML = '';
+    // TEMPORAIRE : en attendant les liens Calendly individuels d'Arlyne, Fatou et Lady,
+    // les 4 maquilleuses utilisent le calendrier de Colleen. À remplacer par une URL
+    // par maquilleuse (sur le modèle de colleenPrestaUrls) dès réception des liens.
+    genericCalWrap.style.display = 'none';
+    colleenCalendlyWrap.style.display = 'block';
+    var url = colleenPrestaUrls[selectedPrestation];
+    if(url){
+      colleenCalendlyHint.style.display = 'none';
+      colleenCalendlyWidgetEl.style.display = 'block';
+      if(colleenCalendlyCurrentUrl !== url){
+        colleenCalendlyCurrentUrl = url;
+        waitForCalendly(function(){
+          colleenCalendlyWidgetEl.innerHTML = '';
+          window.Calendly.initInlineWidget({ url: url, parentElement: colleenCalendlyWidgetEl });
+        });
       }
     } else {
-      genericCalWrap.style.display = '';
-      colleenCalendlyWrap.style.display = 'none';
+      colleenCalendlyCurrentUrl = null;
+      colleenCalendlyHint.style.display = 'block';
+      colleenCalendlyWidgetEl.style.display = 'none';
+      colleenCalendlyWidgetEl.innerHTML = '';
     }
   }
 
   window.addEventListener('message', function(e){
     if(!(e.origin === 'https://calendly.com' && e.data && typeof e.data.event === 'string' && e.data.event.indexOf('calendly.') === 0)) return;
-    if(e.data.event === 'calendly.event_scheduled' && selectedArtist === 'colleen'){
+    if(e.data.event === 'calendly.event_scheduled'){
       colleenCalendlyStatus.style.display = 'block';
-      colleenCalendlyStatus.textContent = 'Rendez-vous confirmé avec Colleen ! Redirection vers le paiement de l\'acompte...';
+      colleenCalendlyStatus.textContent = 'Rendez-vous confirmé avec ' + artistLabel() + ' ! Redirection vers le paiement de l\'acompte...';
       var p = new URLSearchParams();
       if(selectedPrestation) p.set('prestation', selectedPrestation);
-      p.set('artist', 'colleen');
+      p.set('artist', selectedArtist);
       p.set('via', 'calendly');
       setTimeout(function(){
         window.location.href = 'reservation.html?' + p.toString();
