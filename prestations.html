@@ -280,9 +280,9 @@
   <div class="wrap">
     <p style="text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px;">Clique sur une photo pour découvrir son travail, ou sur son prénom pour choisir ta maquilleuse.</p>
     <div class="artist-picker" id="artistPicker">
-      <button type="button" class="artist-btn selected" data-artist="peu-importe" style="cursor:pointer; border:none; background:none;"><img src="assets/img-ce900d398b2f.webp" alt="Peu importe" style="width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(100%);opacity:0.5;" width="240" height="240" loading="lazy" decoding="async"><span style="font-size:11px;color:var(--ink-soft);">Peu importe</span></button>
-      <div class="artist-btn" data-artist="colleen"><a class="artist-avatar-link" href="equipe.html#colleen" target="_blank"><img src="assets/img-ce900d398b2f.webp" alt="Colleen" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Colleen</button><div class="artist-location">Cergy (95)</div></div>
-      <!-- TEMPORAIRE : Arlyne, Fatou et Lady masquées en attendant leurs liens Calendly individuels (prévus la semaine prochaine). Retirer style="display:none;" ci-dessous dès réception des liens. -->
+      <button type="button" class="artist-btn" data-artist="peu-importe" style="display:none; cursor:pointer; border:none; background:none;"><img src="assets/img-ce900d398b2f.webp" alt="Peu importe" style="width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(100%);opacity:0.5;" width="240" height="240" loading="lazy" decoding="async"><span style="font-size:11px;color:var(--ink-soft);">Peu importe</span></button>
+      <div class="artist-btn selected" data-artist="colleen"><a class="artist-avatar-link" href="equipe.html#colleen" target="_blank"><img src="assets/img-ce900d398b2f.webp" alt="Colleen" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Colleen</button><div class="artist-location">Cergy (95)</div></div>
+      <!-- TEMPORAIRE : seule Colleen reste sélectionnable (Peu importe, Arlyne, Fatou et Lady sont masquées) en attendant les liens Calendly individuels (prévus la semaine prochaine). Retirer les style="display:none;" et le class="selected" sur Colleen ci-dessous dès réception des liens. -->
       <div class="artist-btn" data-artist="arlyne" style="display:none;"><a class="artist-avatar-link" href="equipe.html#arlyne" target="_blank"><img src="assets/img-6dc803a40704.webp" alt="Arlyne" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Arlyne</button><div class="artist-location">Cergy (95)</div></div>
       <div class="artist-btn" data-artist="fatou" style="display:none;"><a class="artist-avatar-link" href="equipe.html#fatou" target="_blank"><img src="assets/img-92b461d93c48.webp" alt="Fatou" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Fatou</button><div class="artist-location">Garges (95)</div></div>
       <div class="artist-btn" data-artist="lady" style="display:none;"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button><div class="artist-location">Sarcelles (95)</div></div>
@@ -345,7 +345,7 @@
   const today = new Date();
   let viewYear = today.getFullYear(), viewMonth = today.getMonth();
   let selectedDate = null, selectedSlot = null;
-  let selectedArtist = 'peu-importe';
+  let selectedArtist = 'colleen';
   const prestaLabels = {
     'smoky-eyes': 'Smoky Eyes — 90€',
     'soft-glam': 'Soft Glam — 100€',
