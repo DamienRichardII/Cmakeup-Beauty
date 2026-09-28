@@ -88,9 +88,6 @@
 
 <main>
   <div class="wrap">
-    <div style="background:#B33A3A; color:#fff; padding:12px 20px; font-size:13px; letter-spacing:0.03em; margin-bottom:24px; text-align:center;">
-      ⚠ MODE TEST — authentification désactivée temporairement pour contrôle. Les actions d'écriture (changer un statut, enregistrer une note, etc.) échoueront tant qu'aucun vrai compte admin n'est connecté (protection base de données). À réactiver avant mise en production.
-    </div>
         <p class="section-title">Vue d'ensemble</p>
     <div class="kpi-grid" id="kpiGrid">
       <div class="kpi-card"><div class="kpi-value">…</div><div class="kpi-label">Chargement…</div></div>
@@ -140,7 +137,7 @@
   // s'ouvre sans login pour permettre un contrôle visuel. ATTENTION : les actions d'écriture
   // continueront d'échouer sans session admin valide, car les règles de sécurité (RLS) côté base
   // de données exigent un vrai compte admin connecté — ce contournement ne concerne que l'écran.
-  var TEMP_DISABLE_LOGIN = true;
+  var TEMP_DISABLE_LOGIN = false;
 
   function fmtDate(iso){
     if(!iso) return '';
