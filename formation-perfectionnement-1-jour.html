@@ -202,7 +202,9 @@
     box-shadow:0 12px 24px rgba(0,0,0,0.08);
     z-index:30;
   }
-  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  @media(min-width:861px){
+    .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  }
   .nav-drop-menu a{
     display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
     color:var(--ink); white-space:nowrap;
