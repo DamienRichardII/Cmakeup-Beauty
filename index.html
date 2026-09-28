@@ -145,7 +145,7 @@
   }
   .stats-inner{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(4,1fr);
     max-width:1200px; margin:0 auto;
   }
   .stat{
@@ -269,6 +269,40 @@
   }
   .ebook-mock img{width:100%; height:100%; object-fit:cover;}
 
+  /* SIGNATURE / CE QUE JE FAIS */
+  .signature{background:var(--off); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .sig-feature{display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); background:var(--white);}
+  .sig-img{aspect-ratio:4/5; overflow:hidden; background:var(--paper);}
+  .sig-img img{width:100%; height:100%; object-fit:cover; object-position:50% 30%;}
+  .sig-text{padding:64px 56px; display:flex; flex-direction:column; justify-content:center;}
+  .sig-text h3{font-size:clamp(34px,3.6vw,50px); line-height:1.1; margin-bottom:24px;}
+  .sig-text p{font-size:16px; line-height:1.8; color:var(--ink-soft); max-width:440px; margin-bottom:18px;}
+  .sig-stat{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--ink); margin:-8px 0 22px;}
+  .sig-actions{margin-top:20px; display:flex; align-items:center; gap:28px; flex-wrap:wrap;}
+  .sig-link{font-size:12px; letter-spacing:0.08em; border-bottom:1px solid var(--ink); padding-bottom:3px;}
+  .offer-grid{display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-top:none; background:var(--white);}
+  .offer{padding:36px 30px 40px; border-left:1px solid var(--line); display:flex; flex-direction:column; transition:background .25s ease;}
+  .offer:first-child{border-left:none;}
+  .offer:hover{background:var(--off);}
+  .offer .o-num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:15px; color:var(--gray); margin-bottom:18px;}
+  .offer h3{font-size:22px; margin-bottom:12px;}
+  .offer p{font-size:14px; line-height:1.7; color:var(--ink-soft); margin-bottom:22px; flex:1;}
+  .offer .o-link{font-size:12px; letter-spacing:0.08em; border-bottom:1px solid var(--ink); padding-bottom:3px; align-self:flex-start;}
+
+  /* ACADEMY */
+  .academy-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:90px; align-items:center;}
+  .academy-text h2{font-size:clamp(34px,4vw,54px); line-height:1.1; margin-bottom:28px;}
+  .academy-text p{font-size:16px; line-height:1.85; color:var(--ink-soft); max-width:560px; margin-bottom:20px;}
+  .academy-actions{margin-top:30px; display:flex; gap:16px; flex-wrap:wrap;}
+  .academy-stats{border-top:1px solid var(--ink);}
+  .a-stat{padding:30px 0; border-bottom:1px solid var(--line);}
+  .a-num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:52px; line-height:1;}
+  .a-label{font-size:12px; letter-spacing:0.12em; color:var(--gray); text-transform:uppercase; margin-top:10px;}
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:80px; border-top:1px solid var(--line);}
+  .pillar{padding:34px 34px 0 0;}
+  .pillar h3{font-size:22px; margin-bottom:10px;}
+  .pillar p{font-size:14px; line-height:1.7; color:var(--ink-soft); max-width:300px;}
+
   /* FOOTER */
   footer{
     padding:60px 0 30px;
@@ -285,13 +319,27 @@
     nav{display:none;}
     .wrap, section .wrap{padding:0 20px;}
     .hero-content{padding:0 20px 48px;}
-    .stats-inner{grid-template-columns:1fr; }
-    .stat{border-left:none; border-top:1px solid var(--line);}
-    .stat:first-child{border-top:none;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .stat{border-left:1px solid var(--line); border-top:1px solid var(--line);}
+    .stat:nth-child(odd){border-left:none;}
+    .stat:nth-child(-n+2){border-top:none;}
     .ebook-inner{grid-template-columns:1fr; gap:40px;}
     section{padding:70px 0;}
     .presta-grid{grid-template-columns:1fr;}
     .presta-card{border-right:none; border-bottom:1px solid var(--line);}
+    .sig-feature{grid-template-columns:1fr;}
+    .sig-text{padding:40px 24px;}
+    .offer-grid{grid-template-columns:1fr 1fr;}
+    .offer:nth-child(3){border-left:none;}
+    .offer:nth-child(n+3){border-top:1px solid var(--line);}
+    .academy-grid{grid-template-columns:1fr; gap:50px;}
+    .pillars{grid-template-columns:1fr; margin-top:50px;}
+    .pillar{padding:28px 0 0;}
+  }
+  @media(max-width:520px){
+    .offer-grid{grid-template-columns:1fr;}
+    .offer{border-left:none; border-top:1px solid var(--line);}
+    .offer:first-child{border-top:none;}
   }
 
   /* Menu mobile (hamburger) */
@@ -415,6 +463,14 @@
       <div class="label">ANNÉES D'EXPÉRIENCE</div>
     </div>
     <div class="stat">
+      <div class="num">+300</div>
+      <div class="label">MARIÉES SUBLIMÉES</div>
+    </div>
+    <div class="stat">
+      <div class="num">+50</div>
+      <div class="label">ÉLÈVES FORMÉES</div>
+    </div>
+    <div class="stat">
       <div class="num">Melanin Skin</div>
       <div class="label">EXPERT</div>
     </div>
@@ -436,40 +492,80 @@
   </div>
 </section>
 
-<section class="prestations">
+<section class="signature" id="prestations">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-label">PRESTATIONS</div>
-        <h2>Nos prestations makeup</h2>
+        <div class="section-label" data-editable="index.section2_eyebrow">CE QUE JE FAIS</div>
+        <h2 data-editable="index.section2_title">Maquillage, formations &amp; accompagnement</h2>
       </div>
-      <a class="btn-outline btn" style="background:transparent;color:var(--ink);" href="prestations.html">Voir toutes les prestations</a>
     </div>
-    <div class="presta-grid">
-      <div class="presta-card">
-        <div class="presta-img"><img data-editable="index.photo3" src="assets/makeup-soft-glam.webp" alt="Makeup Soft Glam" width="1023" height="1537" loading="lazy" decoding="async"></div>
-        <div class="presta-body">
-          <h3>Soft Glam</h3>
-          <div class="price">À partir de 100€</div>
-          <a href="prestations.html?prestation=soft-glam#reserver">Réserver</a>
+    <div class="sig-feature">
+      <div class="sig-img"><img data-editable="index.photo11" src="assets/mariee-signature-portrait.webp" alt="Maquillage Mariée — CMAKEUP BEAUTY" width="900" height="1350" loading="lazy" decoding="async"></div>
+      <div class="sig-text">
+        <div class="section-label">MA SIGNATURE</div>
+        <h3>Maquillage Mariée</h3>
+        <div class="sig-stat">+300 mariées sublimées</div>
+        <p data-editable="index.section2_text1">Le plus beau jour de votre vie mérite un maquillage à la hauteur : un rendu lumineux, sublimé et longue tenue, pensé sur mesure pour votre peau et votre style.</p>
+        <p data-editable="index.section2_text2">Chaque mariée est unique. Réservez un appel gratuit pour échanger sur votre projet et recevoir un devis personnalisé.</p>
+        <div class="sig-actions">
+          <a class="btn" href="prestations-mariee.html#appel">Réserver un appel gratuit</a>
+          <a class="sig-link" href="prestations-mariee.html">Découvrir la prestation mariée</a>
         </div>
       </div>
-      <div class="presta-card">
-        <div class="presta-img"><img data-editable="index.photo4" src="assets/makeup-full-glam.webp" alt="Makeup Full Glam" width="1066" height="1600" loading="lazy" decoding="async"></div>
-        <div class="presta-body">
-          <h3>Full Glam</h3>
-          <div class="price">À partir de 150€</div>
-          <a href="prestations.html?prestation=full-glam#reserver">Réserver</a>
+    </div>
+    <div class="offer-grid">
+      <a class="offer" href="prestations.html">
+        <div class="o-num">01</div>
+        <h3>Prestations makeup</h3>
+        <p>Soft Glam, Full Glam et maquillage événementiel, sur rendez-vous.</p>
+        <span class="o-link">Voir les prestations</span>
+      </a>
+      <a class="offer" href="formations.html">
+        <div class="o-num">02</div>
+        <h3>Formations maquilleuses</h3>
+        <p>Formation débutante, perfectionnement et intensive mariée, en collectif ou en privé. Éligibles CPF ou paiement en 4x PayPal.</p>
+        <span class="o-link">Voir les formations</span>
+      </a>
+      <a class="offer" href="auto-makeup-class.html">
+        <div class="o-num">03</div>
+        <h3>Cours d'auto-maquillage</h3>
+        <p>Apprends à te maquiller comme une pro, en Auto Makeup Class ou en cours privé.</p>
+        <span class="o-link">Découvrir les cours</span>
+      </a>
+      <a class="offer" href="coaching-business-mua.html">
+        <div class="o-num">04</div>
+        <h3>Coaching business MUA</h3>
+        <p>Un accompagnement pour structurer et développer ton activité de makeup artist.</p>
+        <span class="o-link">Découvrir le coaching</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="academy">
+  <div class="wrap">
+    <div class="academy-grid">
+      <div class="academy-text">
+        <div class="section-label" data-editable="index.section3_eyebrow">L'ACADÉMIE</div>
+        <h2 data-editable="index.section3_title">CMAKEUP BEAUTY<br>ACADEMY</h2>
+        <p data-editable="index.section3_text1">CMAKEUP BEAUTY ACADEMY est l'académie de maquillage fondée par Colleen, à Cergy. Depuis plus de 5 ans, on forme des makeup artists et des passionnées en leur transmettant notre méthode, affinée au fil de plus de 10 ans de pratique.</p>
+        <p data-editable="index.section3_text2">Plus de 50 élèves ont déjà été formées : des débutantes qui partent de zéro, des professionnelles qui se perfectionnent, ou des femmes qui souhaitent simplement apprendre à se maquiller elles-mêmes. Des formations en présentiel, avec du matériel professionnel, de la pratique sur modèle et un accompagnement pas à pas.</p>
+        <div class="academy-actions">
+          <a class="btn" href="formations.html">Découvrir les formations</a>
+          <a class="btn btn-outline" href="academie.html">Toute l'académie</a>
         </div>
       </div>
-      <div class="presta-card">
-        <div class="presta-img"><img data-editable="index.photo5" src="assets/colleen-portrait.webp" alt="Makeup Mariée" width="1066" height="1600" loading="lazy" decoding="async"></div>
-        <div class="presta-body">
-          <h3>Maquillage Mariée</h3>
-          <div class="price">Devis sur appel</div>
-          <a href="prestations-mariee.html#appel">Réserver un appel gratuit</a>
-        </div>
+      <div class="academy-stats">
+        <div class="a-stat"><div class="a-num">+5 ans</div><div class="a-label">que l'on forme des makeup artists</div></div>
+        <div class="a-stat"><div class="a-num">+50</div><div class="a-label">élèves formées</div></div>
+        <div class="a-stat"><div class="a-num">CPF &amp; 4x PayPal</div><div class="a-label">financement CPF ou paiement en 4 fois sans frais</div></div>
       </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><h3>Méthode professionnelle</h3><p>Une technique claire, du teint au regard, adaptée à chaque carnation.</p></div>
+      <div class="pillar"><h3>Pratique sur modèle</h3><p>Tu pratiques dès les premiers jours, avec du matériel professionnel inclus.</p></div>
+      <div class="pillar"><h3>Accompagnement</h3><p>Un suivi personnalisé, en groupe ou en cours privé, à ton rythme.</p></div>
     </div>
   </div>
 </section>
