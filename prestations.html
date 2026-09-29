@@ -79,7 +79,6 @@
   .presta-picker button{border:1px solid var(--line); background:var(--white); color:var(--ink); padding:10px 18px; font-size:12px; letter-spacing:0.03em; cursor:pointer; font-family:'TT Interphase','Jost',sans-serif;}
   .presta-picker button:hover{border-color:var(--ink);}
   .presta-picker button.selected{border-color:var(--ink); background:var(--ink); color:var(--white);}
-  .cal-widget{display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:640px; margin:0 auto; border:1px solid var(--line);}
   .artist-picker{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:0 auto 44px; max-width:640px;}
 .artist-btn{display:flex; flex-direction:column; align-items:center; gap:10px; width:80px;}
   .artist-avatar-link{display:block;}
@@ -92,36 +91,9 @@
   .artist-btn.selected .artist-avatar-link img{border-color:var(--ink);}
   .artist-btn.selected .artist-select-btn{color:var(--ink); font-weight:500;}
   .artist-location{font-size:10px; color:var(--gray); letter-spacing:0.02em; text-align:center; margin-top:-4px;}
-
-  .cal-month{padding:34px 30px; border-right:1px solid var(--line);}
-  .cal-month-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
-  .cal-month-head .cal-month-name{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:19px;}
-  .cal-nav-btn{width:28px; height:28px; border:1px solid var(--line); background:transparent; color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:13px;}
-  .cal-nav-btn:hover{background:var(--ink); color:var(--white); border-color:var(--ink);}
-  .cal-nav-btn:disabled{opacity:0.25; cursor:default;}
-  .cal-nav-btn:disabled:hover{background:transparent; color:var(--ink);}
-  .cal-weekdays{display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:8px;}
-  .cal-weekdays span{font-size:10px; letter-spacing:0.04em; color:var(--gray); text-align:center;}
-  .cal-days{display:grid; grid-template-columns:repeat(7,1fr); gap:2px;}
-  .cal-day{aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--ink); cursor:default; background:transparent; border:none; font-family:'TT Interphase','Jost',sans-serif;}
-  .cal-day.empty{visibility:hidden;}
-  .cal-day.available{cursor:pointer; color:var(--ink); position:relative;}
-  .cal-day.available::after{content:""; position:absolute; bottom:3px; width:3px; height:3px; border-radius:50%; background:var(--ink-soft);}
-  .cal-day.available:hover{background:var(--off);}
-  .cal-day.disabled{color:var(--gray); opacity:0.4;}
-  .cal-day.selected{background:var(--ink); color:var(--white);}
-  .cal-day.selected::after{background:var(--white);}
-  .cal-slots{padding:34px 30px; display:flex; flex-direction:column;}
-  .cal-slots-title{font-size:12px; letter-spacing:0.08em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:18px;}
-  .cal-slots-empty{font-size:13px; color:var(--ink-soft); font-style:italic;}
-  .cal-slot-list{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-  .cal-slot{border:1px solid var(--line); background:transparent; padding:11px 6px; font-size:13px; color:var(--ink); cursor:pointer; font-family:'TT Interphase','Jost',sans-serif;}
-  .cal-slot:hover{border-color:var(--ink);}
-  .cal-slot.selected{background:var(--ink); color:var(--white); border-color:var(--ink);}
-  .cal-summary{max-width:640px; margin:24px auto 0; padding:20px 28px; background:var(--off); border:1px solid var(--line); font-size:14px; color:var(--ink-soft); text-align:center;}
-  .cal-summary strong{color:var(--ink); font-weight:500;}
-  .cal-confirm-btn{width:100%; max-width:640px; margin:20px auto 0; display:block; text-align:center; padding:17px; font-size:13px; letter-spacing:0.1em; border:none;}
-  .dev-note{max-width:640px; margin:26px auto 60px; padding:14px 20px; text-align:center; font-size:11px; letter-spacing:0.03em; color:var(--ink-soft); background:var(--off); border:1px dashed var(--line);}
+  .artist-btn.soon .artist-avatar-link img{filter:grayscale(100%); opacity:0.5;}
+  .artist-btn.soon .artist-select-btn{color:var(--gray); cursor:default; pointer-events:none;}
+  .artist-soon-tag{font-size:9px; letter-spacing:0.06em; color:var(--gray); text-transform:uppercase; margin-top:-2px;}
 
   footer{padding:40px 0; background:var(--white); border-bottom:none;}
   .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
@@ -134,8 +106,6 @@
     .presta-card{border-right:none; border-bottom:1px solid var(--line);}
     .presta-card:last-child{border-bottom:none;}
     .p-text{padding:36px 28px;}
-    .cal-widget{grid-template-columns:1fr;}
-    .cal-month{border-right:none; border-bottom:1px solid var(--line);}
   }
 
   /* Menu mobile (hamburger) */
@@ -243,7 +213,7 @@
       </div>
 
       <div class="presta-card">
-        <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-720c8113beea.webp" alt="Makeup Soft Glam" width="700" height="775" loading="lazy" decoding="async"></div>
+        <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-0621e589ab43.webp" alt="Makeup Soft Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
         <div class="p-text">
           <div class="p-badge">Invitée</div>
           <h2>Soft Glam</h2>
@@ -274,48 +244,21 @@
   <div class="cal-intro wrap">
     <div class="section-eyebrow" data-editable="prestations.section1_eyebrow">RÉSERVATION</div>
     <h2 class="section-title" data-editable="prestations.section1_title">Choisis ta maquilleuse<br>et ton créneau</h2>
-    <p class="section-lede" data-editable="prestations.section1_lede">Pour le moment, les réservations se font avec Colleen — les disponibilités des autres maquilleuses ouvriront à la réservation très prochainement. Choisis ton créneau ci-dessous.</p>
+    <p class="section-lede" data-editable="prestations.section1_lede">Pour le moment, la réservation en ligne se fait uniquement avec Colleen. Découvre le travail de toute l'équipe en cliquant sur une photo, puis choisis ton créneau ci-dessous.</p>
   </div>
 
   <div class="wrap">
     <p style="text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px;">Clique sur une photo pour découvrir son travail, ou sur son prénom pour choisir ta maquilleuse.</p>
     <div class="artist-picker" id="artistPicker">
-      <button type="button" class="artist-btn" data-artist="peu-importe" style="display:none; cursor:pointer; border:none; background:none;"><img src="assets/img-ce900d398b2f.webp" alt="Peu importe" style="width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(100%);opacity:0.5;" width="240" height="240" loading="lazy" decoding="async"><span style="font-size:11px;color:var(--ink-soft);">Peu importe</span></button>
-      <div class="artist-btn selected" data-artist="colleen"><a class="artist-avatar-link" href="equipe.html#colleen" target="_blank"><img src="assets/img-ce900d398b2f.webp" alt="Colleen" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Colleen</button><div class="artist-location">Cergy (95)</div></div>
-      <!-- TEMPORAIRE : seule Colleen reste sélectionnable (Peu importe, Arlyne, Fatou et Lady sont masquées) en attendant les liens Calendly individuels (prévus la semaine prochaine). Retirer les style="display:none;" et le class="selected" sur Colleen ci-dessous dès réception des liens. -->
-      <div class="artist-btn" data-artist="arlyne" style="display:none;"><a class="artist-avatar-link" href="equipe.html#arlyne" target="_blank"><img src="assets/img-6dc803a40704.webp" alt="Arlyne" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Arlyne</button><div class="artist-location">Cergy (95)</div></div>
-      <div class="artist-btn" data-artist="fatou" style="display:none;"><a class="artist-avatar-link" href="equipe.html#fatou" target="_blank"><img src="assets/img-92b461d93c48.webp" alt="Fatou" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Fatou</button><div class="artist-location">Garges (95)</div></div>
-      <div class="artist-btn" data-artist="lady" style="display:none;"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button><div class="artist-location">Sarcelles (95)</div></div>
+      <button type="button" class="artist-btn selected" data-artist="peu-importe" style="cursor:pointer; border:none; background:none;"><img src="assets/img-ce900d398b2f.webp" alt="Peu importe" style="width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(100%);opacity:0.5;" width="240" height="240" loading="lazy" decoding="async"><span style="font-size:11px;color:var(--ink-soft);">Peu importe</span></button>
+      <div class="artist-btn" data-artist="colleen"><a class="artist-avatar-link" href="equipe.html#colleen" target="_blank"><img src="assets/img-ce900d398b2f.webp" alt="Colleen" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Colleen</button><div class="artist-location">Cergy (95)</div></div>
+      <!-- TEMPORAIRE : Arlyne, Fatou et Lady sont affichées en noir et blanc avec la mention "Bientôt" en attendant leurs liens Calendly individuels (prévus la semaine prochaine). Dès réception d'un lien, retirer le class="soon" et le bloc artist-soon-tag (Bientôt) correspondant ci-dessous pour repasser la maquilleuse en couleur et la rendre sélectionnable. -->
+      <div class="artist-btn soon" data-artist="arlyne"><a class="artist-avatar-link" href="equipe.html#arlyne" target="_blank"><img src="assets/img-6dc803a40704.webp" alt="Arlyne" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Arlyne</button><div class="artist-location">Cergy (95)</div><div class="artist-soon-tag">Bientôt</div></div>
+      <div class="artist-btn soon" data-artist="fatou"><a class="artist-avatar-link" href="equipe.html#fatou" target="_blank"><img src="assets/img-92b461d93c48.webp" alt="Fatou" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Fatou</button><div class="artist-location">Garges (95)</div><div class="artist-soon-tag">Bientôt</div></div>
+      <div class="artist-btn soon" data-artist="lady"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button><div class="artist-location">Sarcelles (95)</div><div class="artist-soon-tag">Bientôt</div></div>
     </div>
 
-    <div id="genericCalWrap">
-    <div class="cal-widget">
-      <div class="cal-month">
-        <div class="cal-month-head">
-          <button type="button" class="cal-nav-btn" id="calPrev">‹</button>
-          <div class="cal-month-name" id="calMonthName">Septembre 2026</div>
-          <button type="button" class="cal-nav-btn" id="calNext">›</button>
-        </div>
-        <div class="cal-weekdays"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
-        <div class="cal-days" id="calDays"></div>
-      </div>
-      <div class="cal-slots">
-        <div class="cal-slots-title" id="calSlotsTitle">Sélectionne une date</div>
-        <div id="calSlotsWrap"><p class="cal-slots-empty">Choisis un jour disponible pour voir les créneaux.</p></div>
-      </div>
-    </div>
-
-    <div class="cal-summary" id="calSummary">Sélectionne une maquilleuse, une date et un créneau pour continuer.</div>
-    <a class="btn cal-confirm-btn" id="calConfirmBtn" style="pointer-events:none; opacity:0.4;" href="reservation.html">Continuer ma réservation</a>
-    <p style="max-width:640px; margin:20px auto 60px; padding:14px 20px; text-align:center; font-size:11px; letter-spacing:0.03em; color:var(--ink-soft); background:var(--off); border:1px dashed var(--line);">Les créneaux affichés sont donnés à titre indicatif. Les disponibilités réelles de chaque maquilleuse seront synchronisées ici prochainement — en attendant, votre créneau vous sera confirmé personnellement après votre demande.</p>
-    <!-- DEV TODO : planning à connecter à un vrai outil de réservation gérant les disponibilités
-         individuelles des 4 maquilleuses (ex : Cal.com en mode "collectif/round robin", ou système
-         sur-mesure), avec paiement d'acompte intégré (Stripe) et synchronisation des agendas Apple
-         Calendar de chacune. Les créneaux ci-dessus (const availability / slotsByDay) sont des
-         données d'exemple et ne reflètent aucune disponibilité réelle. -->
-    </div>
-
-    <div id="colleenCalendlyWrap" style="display:none;">
+    <div id="colleenCalendlyWrap">
       <div class="presta-picker" id="prestaPicker">
         <button type="button" class="presta-cta" data-prestation="smoky-eyes">Smoky Eyes — 90€</button>
         <button type="button" class="presta-cta" data-prestation="soft-glam">Soft Glam — 100€</button>
@@ -341,11 +284,7 @@
 
 <script>
 (function(){
-  const monthNames = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
-  const today = new Date();
-  let viewYear = today.getFullYear(), viewMonth = today.getMonth();
-  let selectedDate = null, selectedSlot = null;
-  let selectedArtist = 'colleen';
+  let selectedArtist = 'peu-importe';
   const prestaLabels = {
     'smoky-eyes': 'Smoky Eyes — 90€',
     'soft-glam': 'Soft Glam — 100€',
@@ -354,27 +293,8 @@
   const urlPrestation = new URLSearchParams(window.location.search).get('prestation');
   let selectedPrestation = prestaLabels[urlPrestation] ? urlPrestation : null;
 
-  // Disponibilités fictives par maquilleuse (jours de la semaine, 0=dimanche)
-  const availability = {
-    'peu-importe': [1,2,3,4,5,6],
-    'colleen': [1,2,3,4,5],
-    'arlyne': [3,4,5,6],
-    'fatou': [2,3,5,6],
-    'lady': [4,5,6,0]
-  };
-  const slotsByDay = ["10:00","11:30","14:00","15:30","17:00"];
-
-  const calDays = document.getElementById('calDays');
-  const calMonthName = document.getElementById('calMonthName');
-  const calSlotsTitle = document.getElementById('calSlotsTitle');
-  const calSlotsWrap = document.getElementById('calSlotsWrap');
-  const calSummary = document.getElementById('calSummary');
-  const calConfirmBtn = document.getElementById('calConfirmBtn');
-  const calPrev = document.getElementById('calPrev');
-  const calNext = document.getElementById('calNext');
   const artistPicker = document.getElementById('artistPicker');
 
-  const genericCalWrap = document.getElementById('genericCalWrap');
   const colleenCalendlyWrap = document.getElementById('colleenCalendlyWrap');
   const colleenCalendlyHint = document.getElementById('colleenCalendlyHint');
   const colleenCalendlyWidgetEl = document.getElementById('colleenCalendlyWidget');
@@ -397,7 +317,6 @@
     // TEMPORAIRE : en attendant les liens Calendly individuels d'Arlyne, Fatou et Lady,
     // les 4 maquilleuses utilisent le calendrier de Colleen. À remplacer par une URL
     // par maquilleuse (sur le modèle de colleenPrestaUrls) dès réception des liens.
-    genericCalWrap.style.display = 'none';
     colleenCalendlyWrap.style.display = 'block';
     var prestaPicker = document.getElementById('prestaPicker');
     if(prestaPicker){
@@ -439,78 +358,6 @@
     }
   });
 
-  function isPast(y,m,d){
-    const dt = new Date(y,m,d);
-    return dt < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  }
-  function isAvailable(y,m,d){
-    if(isPast(y,m,d)) return false;
-    const day = new Date(y,m,d).getDay();
-    return availability[selectedArtist].indexOf(day) !== -1;
-  }
-
-  function render(){
-    calMonthName.textContent = monthNames[viewMonth] + " " + viewYear;
-    calDays.innerHTML = "";
-    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
-    const offset = firstDay === 0 ? 6 : firstDay - 1;
-    const daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
-
-    for(let i=0;i<offset;i++){
-      const empty = document.createElement('div');
-      empty.className = 'cal-day empty';
-      calDays.appendChild(empty);
-    }
-    for(let d=1; d<=daysInMonth; d++){
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = d;
-      const available = isAvailable(viewYear, viewMonth, d);
-      btn.className = 'cal-day ' + (available ? 'available' : 'disabled');
-      if(selectedDate && selectedDate.y===viewYear && selectedDate.m===viewMonth && selectedDate.d===d){
-        btn.classList.add('selected');
-      }
-      if(available){
-        btn.addEventListener('click', function(){
-          selectedDate = {y:viewYear, m:viewMonth, d:d};
-          selectedSlot = null;
-          render();
-          renderSlots();
-          updateSummary();
-        });
-      }
-      calDays.appendChild(btn);
-    }
-    const prevDisabled = (viewYear === today.getFullYear() && viewMonth <= today.getMonth());
-    calPrev.disabled = prevDisabled;
-  }
-
-  function renderSlots(){
-    if(!selectedDate){
-      calSlotsTitle.textContent = "Sélectionne une date";
-      calSlotsWrap.innerHTML = '<p class="cal-slots-empty">Choisis un jour disponible pour voir les créneaux.</p>';
-      return;
-    }
-    const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
-    calSlotsTitle.textContent = "Créneaux du " + dateLabel;
-    const list = document.createElement('div');
-    list.className = 'cal-slot-list';
-    slotsByDay.forEach(function(slot){
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'cal-slot' + (selectedSlot===slot ? ' selected' : '');
-      b.textContent = slot;
-      b.addEventListener('click', function(){
-        selectedSlot = slot;
-        renderSlots();
-        updateSummary();
-      });
-      list.appendChild(b);
-    });
-    calSlotsWrap.innerHTML = '';
-    calSlotsWrap.appendChild(list);
-  }
-
   function artistLabel(){
     const selEl = artistPicker.querySelector('.artist-btn.selected');
     if(!selEl) return '';
@@ -520,54 +367,16 @@
     return selBtn ? selBtn.textContent : '';
   }
 
-  function confirmUrl(){
-    const p = new URLSearchParams();
-    if(selectedPrestation) p.set('prestation', selectedPrestation);
-    p.set('artist', selectedArtist);
-    if(selectedDate) p.set('date', selectedDate.y + '-' + String(selectedDate.m+1).padStart(2,'0') + '-' + String(selectedDate.d).padStart(2,'0'));
-    if(selectedSlot) p.set('slot', selectedSlot);
-    return 'reservation.html?' + p.toString();
-  }
-
-  function prestaPrefix(){
-    return selectedPrestation ? ('Prestation choisie : <strong>' + prestaLabels[selectedPrestation] + '</strong>. ') : '';
-  }
-
-  function updateSummary(){
-    if(selectedDate && selectedSlot){
-      const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
-      calSummary.innerHTML = prestaPrefix() + 'Rendez-vous avec <strong>' + artistLabel() + '</strong> le <strong>' + dateLabel + ' à ' + selectedSlot + '</strong>';
-      calConfirmBtn.href = confirmUrl();
-      calConfirmBtn.style.pointerEvents = 'auto';
-      calConfirmBtn.style.opacity = '1';
-    } else if(selectedDate){
-      const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
-      calSummary.innerHTML = prestaPrefix() + 'Date choisie : <strong>' + dateLabel + '</strong> — sélectionne un créneau.';
-      calConfirmBtn.style.pointerEvents = 'none';
-      calConfirmBtn.style.opacity = '0.4';
-    } else {
-      calSummary.innerHTML = prestaPrefix() + "Sélectionne une maquilleuse, une date et un créneau pour continuer.";
-      calConfirmBtn.style.pointerEvents = 'none';
-      calConfirmBtn.style.opacity = '0.4';
-    }
-  }
-
   function selectArtist(el){
     artistPicker.querySelectorAll('.artist-btn').forEach(b=>b.classList.remove('selected'));
     el.classList.add('selected');
     selectedArtist = el.getAttribute('data-artist');
-    selectedDate = null;
-    selectedSlot = null;
-    render();
-    renderSlots();
-    updateSummary();
     updateCalendlyMode();
   }
 
   document.querySelectorAll('.presta-cta').forEach(function(a){
     a.addEventListener('click', function(){
       selectedPrestation = a.getAttribute('data-prestation');
-      updateSummary();
       updateCalendlyMode();
     });
   });
@@ -579,27 +388,14 @@
   }
 
   // Maquilleuses nommées — la photo ouvre son travail (équipe), le nom sélectionne pour le calendrier
+  // (les maquilleuses marquées "soon" ne sont pas encore sélectionnables)
   artistPicker.querySelectorAll('div.artist-btn').forEach(function(wrap){
     const nameBtn = wrap.querySelector('.artist-select-btn');
-    if(nameBtn){
+    if(nameBtn && !wrap.classList.contains('soon')){
       nameBtn.addEventListener('click', function(){ selectArtist(wrap); });
     }
   });
 
-  calPrev.addEventListener('click', function(){
-    viewMonth--;
-    if(viewMonth<0){ viewMonth=11; viewYear--; }
-    render();
-  });
-  calNext.addEventListener('click', function(){
-    viewMonth++;
-    if(viewMonth>11){ viewMonth=0; viewYear++; }
-    render();
-  });
-
-  render();
-  renderSlots();
-  updateSummary();
   updateCalendlyMode();
 })();
 </script>
