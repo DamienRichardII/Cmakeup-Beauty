@@ -422,6 +422,58 @@
     .contact-grid{grid-template-columns:1fr; gap:50px;}
     .form-row{grid-template-columns:1fr;}
   }
+
+  /* AVIS CLIENTS */
+  .avis{background:var(--white);}
+  .avis .section-head{align-items:flex-start;}
+  .avis-sub{font-size:14px; line-height:1.75; color:var(--ink-soft); max-width:480px; margin-top:16px;}
+  .avis-cta-group{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .avis-cta.soon{opacity:0.45; pointer-events:none;}
+  .avis-cta-note{font-size:11px; letter-spacing:0.04em; color:var(--gray);}
+  .avis-track-wrap{width:100%; overflow:hidden; margin-top:64px;}
+  .avis-track{
+    display:flex; overflow-x:auto; scroll-behavior:auto;
+    padding:4px 40px 30px;
+    -ms-overflow-style:none; scrollbar-width:none;
+  }
+  .avis-track::-webkit-scrollbar{display:none;}
+  .avis-card{
+    flex:0 0 340px; margin-right:28px;
+    border:1px solid var(--line); background:var(--white);
+    padding:36px 32px 30px;
+    display:flex; flex-direction:column;
+  }
+  .avis-stars{font-size:13px; letter-spacing:0.14em; color:var(--ink);}
+  .avis-text{
+    margin-top:18px;
+    font-family:'The Silver Editorial','Cormorant Garamond', serif; font-style:italic;
+    font-size:18px; line-height:1.6; color:var(--ink);
+    display:-webkit-box; -webkit-line-clamp:7; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .avis-card.expanded .avis-text{-webkit-line-clamp:unset; overflow:visible;}
+  .avis-more{
+    display:none; align-self:flex-start; margin-top:12px;
+    font-family:inherit; font-size:11px; letter-spacing:0.08em; color:var(--ink-soft);
+    background:none; border:none; border-bottom:1px solid var(--ink-soft); padding:0 0 2px; cursor:pointer;
+  }
+  .avis-more:hover{color:var(--ink); border-color:var(--ink);}
+  .avis-meta{margin-top:24px; padding-top:16px; border-top:1px solid var(--line); flex-shrink:0;}
+  .avis-name{display:block; font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:16px; color:var(--ink); margin-bottom:4px;}
+  .avis-date{display:block; font-size:11px; color:var(--gray); margin-bottom:4px;}
+  .avis-tag{display:block; font-size:11px; letter-spacing:0.12em; color:var(--gray); text-transform:uppercase;}
+
+  @media(max-width:860px){
+    .avis-track-wrap{margin-top:44px;}
+    .avis-track{padding:4px 20px 26px;}
+    .avis-card{flex-basis:300px; margin-right:20px; padding:30px 26px 24px;}
+  }
+  @media(max-width:520px){
+    .avis-card{flex-basis:84vw; padding:28px 24px 22px;}
+    .avis-track{padding:4px 20px 20px;}
+  }
+  @media(prefers-reduced-motion: reduce){
+    .avis-track{scroll-behavior:auto;}
+  }
 </style>
 </head>
 <body>
@@ -656,6 +708,176 @@
   </div>
 </section>
 
+<section class="avis" id="avis">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">AVIS CLIENTS</div>
+        <h2>Vos mots, notre plus belle récompense</h2>
+        <p class="avis-sub">Quelques retours reçus au fil des prestations et formations, partagés ici avec l’accord de nos clientes — en complément de nos avis Google.</p>
+      </div>
+      <div class="avis-cta-group">
+        <!-- TEMPORAIRE : en attente du lien Google avis. Des reception, remplacer href="#" par le lien reel, retirer class="soon" ainsi que le span .avis-cta-note juste apres. -->
+        <a class="btn-outline avis-cta soon" href="#" aria-disabled="true" tabindex="-1">Laisser un avis</a>
+        <span class="avis-cta-note">Lien Google en cours d’ajout</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="avis-track-wrap">
+    <div class="avis-track" id="avisTrack" tabindex="0" aria-label="Avis clients, liste défilante horizontalement">
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <div class="avis-stars" aria-hidden="true">★★★★★</div>
+      <p class="avis-text">Je te fais un retour concernant mon cours d’hier :) Cours très instructif tu est très pédagogique merci pour ta patience Je recommande ton cours surtout à celle qui n’ont absolument aucune base dans le makeup comme moi 😅 je ne savais même pas tenir un pinceau je reviens de loin 😂 C’est de loin le meilleur Cadeau de l’eïd que j’ai eu 😍 Je suis très très satisfaite .</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-name">Mariam</span>
+        <span class="avis-date">25 janvier 2024</span>
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Coucou Colleen, on est que le lendemain du mariage mais je tiens à te faire un retour. Les mots me manquent Merci infiniment pour ce travail talentueux ton maquillage a tenu toutes la soirée. Je n’ai eu que des compliments Je ne savais pas que j’étais aussi belle 😂😂 Tu as fais plus que ton travail tu m’as aidée à me preparer à gérer les imprévus ... tu as été exceptionnelle je te recommanderais à 10000000% Tu as un vrai talent et j’ai passé un super moment avec toi Merci ma colleeen d’amour, tu es exceptionnelle ne doute jamais de ton talent ❤️❤️❤️❤️❤️</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-name">Shamina</span>
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Merci du fond du cœur pour ton travail incroyable. Tu es vraiment bourrée de talent. Grâce à toi, je me suis redécouverte, je me suis sentie belle et mise en valeur comme jamais. Même le photographe a adoré le rendu. J’ai tellement hâte de t’envoyer les photos pour que tu voies le résultat de ton art. Merci encore pour ta passion et ta douceur 💖💖</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Bonsoir Collen 😊 Je viens par ce message te remercier pour cette belle formation, ton professionnalisme , ta gentillesse et ton sens du détail qui fait toute la différence 🙏🥰 Tu es plus qu’une formatrice et je suis ravi d’avoir fait cette formation 🤩 Merci du fond du cœur 🙏🥰🤗❤️</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Coucou ma star Je tenais à te remercier sincèrement pour le magnifique maquillage que tu m’as fait. Il était exactement comme je le souhaitais et a très bien tenu toute la journée et la soirée, sans retouche 🤍✨ Merci pour ton professionnalisme, ta douceur et ta gentillesse. J’ai vraiment été ravie et je n’hésiterai pas à te recommander autour de moi. Encore merci pour tout 🌸</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Hello tout le mondes Merci pour cette belle classe de make-up @CMAKEUP Merci de partager ton métier, ton savoir-faire et ta passion avec nous. Tu es une personne solaire, bienveillante et inspirante, et ça se ressent dans ta façon d’enseigner. Merci aussi aux filles avec qui j’ai partagé cette classe, c’était un vrai plaisir de vivre ce moment avec vous ✨ Agréable semaine ❤️</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Je voulais te remercier encore et encore pour la mise en beauté !! Vraiment une américaine enfaiiiite, tout le monde m’a complimenté et mon mari m’a trouver incroyable !!! Vraiment tu as un vrai talent et t’es super gentille, super cool franchement j’ai kiffer et si je me mariais une deuxième fois je t’aurais pris encore les yeux fermer. Merci encore, et je t’enverrais les photos prise par le photographe 🥰</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Une formatrice au top, gentille, patiente, avec laquelle j’ai appris beaucoup 💖</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Slt Colleen . Ca va? Juste pour te faire un excellent retour: le maquillage a eu un succés fou!. Tout le monde a adoré: discret, raffiné, et qui a duré jusqu’au lendemain..impeccable! Merci beaucoup</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" role="group" aria-roledescription="avis client">
+      <p class="avis-text">Merci Collen du fond du ❤️ grâce à toi j’ai repris confiance en moi et mes capacités.. Aujourd’hui j’ai repris goût à la vie et au challenge.... Un gros bisou et je t’oublierais jamais tu es gravé dans mon 💕💕💕💕😘😘😘😘</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <div class="avis-stars" aria-hidden="true">★★★★★</div>
+      <p class="avis-text">Je te fais un retour concernant mon cours d’hier :) Cours très instructif tu est très pédagogique merci pour ta patience Je recommande ton cours surtout à celle qui n’ont absolument aucune base dans le makeup comme moi 😅 je ne savais même pas tenir un pinceau je reviens de loin 😂 C’est de loin le meilleur Cadeau de l’eïd que j’ai eu 😍 Je suis très très satisfaite .</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-name">Mariam</span>
+        <span class="avis-date">25 janvier 2024</span>
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Coucou Colleen, on est que le lendemain du mariage mais je tiens à te faire un retour. Les mots me manquent Merci infiniment pour ce travail talentueux ton maquillage a tenu toutes la soirée. Je n’ai eu que des compliments Je ne savais pas que j’étais aussi belle 😂😂 Tu as fais plus que ton travail tu m’as aidée à me preparer à gérer les imprévus ... tu as été exceptionnelle je te recommanderais à 10000000% Tu as un vrai talent et j’ai passé un super moment avec toi Merci ma colleeen d’amour, tu es exceptionnelle ne doute jamais de ton talent ❤️❤️❤️❤️❤️</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-name">Shamina</span>
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Merci du fond du cœur pour ton travail incroyable. Tu es vraiment bourrée de talent. Grâce à toi, je me suis redécouverte, je me suis sentie belle et mise en valeur comme jamais. Même le photographe a adoré le rendu. J’ai tellement hâte de t’envoyer les photos pour que tu voies le résultat de ton art. Merci encore pour ta passion et ta douceur 💖💖</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Bonsoir Collen 😊 Je viens par ce message te remercier pour cette belle formation, ton professionnalisme , ta gentillesse et ton sens du détail qui fait toute la différence 🙏🥰 Tu es plus qu’une formatrice et je suis ravi d’avoir fait cette formation 🤩 Merci du fond du cœur 🙏🥰🤗❤️</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Coucou ma star Je tenais à te remercier sincèrement pour le magnifique maquillage que tu m’as fait. Il était exactement comme je le souhaitais et a très bien tenu toute la journée et la soirée, sans retouche 🤍✨ Merci pour ton professionnalisme, ta douceur et ta gentillesse. J’ai vraiment été ravie et je n’hésiterai pas à te recommander autour de moi. Encore merci pour tout 🌸</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Hello tout le mondes Merci pour cette belle classe de make-up @CMAKEUP Merci de partager ton métier, ton savoir-faire et ta passion avec nous. Tu es une personne solaire, bienveillante et inspirante, et ça se ressent dans ta façon d’enseigner. Merci aussi aux filles avec qui j’ai partagé cette classe, c’était un vrai plaisir de vivre ce moment avec vous ✨ Agréable semaine ❤️</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Je voulais te remercier encore et encore pour la mise en beauté !! Vraiment une américaine enfaiiiite, tout le monde m’a complimenté et mon mari m’a trouver incroyable !!! Vraiment tu as un vrai talent et t’es super gentille, super cool franchement j’ai kiffer et si je me mariais une deuxième fois je t’aurais pris encore les yeux fermer. Merci encore, et je t’enverrais les photos prise par le photographe 🥰</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Une formatrice au top, gentille, patiente, avec laquelle j’ai appris beaucoup 💖</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Slt Colleen . Ca va? Juste pour te faire un excellent retour: le maquillage a eu un succés fou!. Tout le monde a adoré: discret, raffiné, et qui a duré jusqu’au lendemain..impeccable! Merci beaucoup</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Prestation Mariée</span>
+      </div>
+      </article>
+      <article class="avis-card" aria-hidden="true" tabindex="-1">
+      <p class="avis-text">Merci Collen du fond du ❤️ grâce à toi j’ai repris confiance en moi et mes capacités.. Aujourd’hui j’ai repris goût à la vie et au challenge.... Un gros bisou et je t’oublierais jamais tu es gravé dans mon 💕💕💕💕😘😘😘😘</p>
+      <button type="button" class="avis-more">Lire la suite</button>
+      <div class="avis-meta">
+        <span class="avis-tag">Formation maquillage</span>
+      </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="footer-top" style="justify-content:flex-start;">
@@ -775,6 +997,78 @@
         status.textContent = 'Merci ! Votre message a bien été envoyé, nous vous répondons rapidement.';
         form.reset();
       }
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var track = document.getElementById('avisTrack');
+  if(!track) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var paused = false;
+  var resumeTimer = null;
+  var speed = 0.6;
+  // scrollLeft is stored as an integer pixel value by the browser, so a sub-pixel
+  // increment added directly to track.scrollLeft never accumulates (it keeps
+  // rounding back down to the same integer). We accumulate in a float instead
+  // and only ever write the rounded result to the DOM.
+  var pos = track.scrollLeft;
+
+  function syncPos(){ pos = track.scrollLeft; }
+
+  function loop(){
+    if(!paused){
+      pos += speed;
+      var half = track.scrollWidth / 2;
+      if(half > 0 && pos >= half){
+        pos -= half;
+      }
+      track.scrollLeft = pos;
+    }
+    requestAnimationFrame(loop);
+  }
+
+  function pauseAuto(){ paused = true; }
+  function resumeAutoNow(){ syncPos(); paused = false; }
+  function resumeAutoSoon(){
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(resumeAutoNow, 2600);
+  }
+
+  if(!reduceMotion){
+    track.addEventListener('mouseenter', pauseAuto);
+    track.addEventListener('mouseleave', resumeAutoNow);
+    track.addEventListener('touchstart', pauseAuto, {passive:true});
+    track.addEventListener('touchend', resumeAutoSoon, {passive:true});
+    track.addEventListener('pointerdown', pauseAuto);
+    track.addEventListener('pointerup', resumeAutoSoon);
+    requestAnimationFrame(loop);
+  }
+
+  function refreshMoreButtons(){
+    track.querySelectorAll('.avis-card').forEach(function(card){
+      var text = card.querySelector('.avis-text');
+      var more = card.querySelector('.avis-more');
+      if(!text || !more) return;
+      if(text.scrollHeight > text.clientHeight + 2){
+        more.style.display = 'inline-block';
+      } else if(!card.classList.contains('expanded')){
+        more.style.display = 'none';
+      }
+    });
+  }
+  refreshMoreButtons();
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(refreshMoreButtons); }
+  window.addEventListener('resize', refreshMoreButtons);
+
+  track.querySelectorAll('.avis-more').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('.avis-card');
+      var expanded = card.classList.toggle('expanded');
+      btn.textContent = expanded ? 'R\u00e9duire' : 'Lire la suite';
     });
   });
 })();
