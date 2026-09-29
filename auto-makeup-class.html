@@ -372,7 +372,7 @@
 <section style="padding-bottom:0;">
   <div class="wrap" style="padding-bottom:70px;">
     <div class="section-eyebrow" data-editable="auto-makeup-class.section2_eyebrow">LE PROGRAMME</div>
-    <h2 class="section-title" data-editable="auto-makeup-class.section2_title">6 heures complètes,<br>pas à pas</h2>
+    <h2 class="section-title" data-editable="auto-makeup-class.section2_title">8 heures complètes,<br>pas à pas</h2>
     <p class="section-lede" data-editable="auto-makeup-class.section2_lede">Je t'accompagne du début à la fin pour te transmettre la méthode professionnelle que j'utilise sur mes clientes : simple, efficace et réalisable seule à la maison.</p>
   </div>
   <div class="programme-grid">
@@ -633,6 +633,30 @@
 
       <div class="form-row">
         <div class="field full">
+          <label for="adresse_postale">Adresse postale complète</label>
+          <input type="text" id="adresse_postale" name="adresse_postale" placeholder="Numéro, rue, code postal, ville">
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : ton adresse est nécessaire pour constituer ton dossier auprès de notre organisme partenaire.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="piece_identite_recto">Pièce d'identité (recto)</label>
+          <input type="file" id="piece_identite_recto" name="piece_identite_recto" accept="image/*,.pdf">
+        </div>
+        <div class="field">
+          <label for="piece_identite_verso">Pièce d'identité (verso)</label>
+          <input type="file" id="piece_identite_verso" name="piece_identite_verso" accept="image/*,.pdf">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field full">
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:-6px;">Uniquement si tu choisis le financement CPF : joins une photo ou un scan recto et verso de ta carte d'identité ou passeport en cours de validité.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
           <label for="message">Votre motivation / message</label>
           <textarea id="message" name="message" placeholder="Parlez-nous un peu de vous et de ce qui vous amène à cette formation..."></textarea>
         </div>
@@ -723,6 +747,14 @@
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function _uploadCpfDoc(file, folder, label){
+    if(!file) return Promise.resolve(null);
+    var ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g,'') || 'bin';
+    var path = folder + '/' + label + '.' + ext;
+    return _sb.storage.from('documents-cpf').upload(path, file, { upsert: true }).then(function(res){
+      return res.error ? null : path;
+    });
+  }
 
   var params = new URLSearchParams(window.location.search);
   var recordId = params.get('record_id');
@@ -762,37 +794,47 @@
     btn.textContent = 'Envoi en cours...';
     var financement = document.getElementById('financement').value;
     var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
-    _sb.from('auto_makeup_class_demandes').insert({
-      id: newId,
-      statut: 'nouveau',
-      prenom: document.getElementById('prenom').value,
-      nom: document.getElementById('nom').value,
-      email: document.getElementById('email').value,
-      telephone: document.getElementById('telephone').value,
-      ville: document.getElementById('ville').value,
-      session: document.getElementById('session').value,
-      niveau: document.getElementById('niveau').value,
-      trousse: document.getElementById('trousse').value,
-      pourquoi: document.getElementById('pourquoi').value,
-      style: document.getElementById('style').value,
-      deja_cliente: document.getElementById('deja-cliente').value,
-      financement: financement,
-      message: document.getElementById('message').value,
-      rgpd_consent: document.getElementById('rgpd').checked
-    }).then(function(res){
-      btn.disabled = false;
-      btn.textContent = 'Continuer vers le paiement';
-      if(res.error){
-        status.style.color = '#B33A3A';
-        status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
-        return;
-      }
-      recordId = newId;
-      if(financement === 'cpf'){
-        showCpfConfirmation();
-      } else {
-        showPaiementScreen();
-      }
+    var rectoFile = document.getElementById('piece_identite_recto') ? document.getElementById('piece_identite_recto').files[0] : null;
+    var versoFile = document.getElementById('piece_identite_verso') ? document.getElementById('piece_identite_verso').files[0] : null;
+    Promise.all([
+      _uploadCpfDoc(rectoFile, newId, 'recto'),
+      _uploadCpfDoc(versoFile, newId, 'verso')
+    ]).then(function(paths){
+      _sb.from('auto_makeup_class_demandes').insert({
+        id: newId,
+        statut: 'nouveau',
+        prenom: document.getElementById('prenom').value,
+        nom: document.getElementById('nom').value,
+        email: document.getElementById('email').value,
+        telephone: document.getElementById('telephone').value,
+        ville: document.getElementById('ville').value,
+        session: document.getElementById('session').value,
+        niveau: document.getElementById('niveau').value,
+        trousse: document.getElementById('trousse').value,
+        pourquoi: document.getElementById('pourquoi').value,
+        style: document.getElementById('style').value,
+        deja_cliente: document.getElementById('deja-cliente').value,
+        financement: financement,
+        adresse_postale: document.getElementById('adresse_postale').value,
+        piece_identite_recto_path: paths[0],
+        piece_identite_verso_path: paths[1],
+        message: document.getElementById('message').value,
+        rgpd_consent: document.getElementById('rgpd').checked
+      }).then(function(res){
+        btn.disabled = false;
+        btn.textContent = 'Continuer vers le paiement';
+        if(res.error){
+          status.style.color = '#B33A3A';
+          status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
+          return;
+        }
+        recordId = newId;
+        if(financement === 'cpf'){
+          showCpfConfirmation();
+        } else {
+          showPaiementScreen();
+        }
+      });
     });
   });
 

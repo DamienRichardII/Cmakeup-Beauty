@@ -130,6 +130,10 @@
 
   /* FORM */
   .form-note{max-width:560px; margin:0 auto 50px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+
+  /* FINAL CTA */
+  .final-cta{text-align:center; border-bottom:none;}
+  .final-cta p{max-width:520px; margin:0 auto 30px; font-size:15px; color:var(--ink-soft); line-height:1.8;}
   form.inscription-form{max-width:640px; margin:0 auto;}
   .form-row{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;}
   .field{display:flex; flex-direction:column; gap:8px;}
@@ -293,6 +297,14 @@
   </div>
 </section>
 
+<section style="text-align:center;">
+  <div class="wrap">
+    <div class="section-eyebrow">NOTRE MÉTHODE</div>
+    <h2 class="section-title" style="margin-bottom:30px;">Comment se déroule la formation</h2>
+    <p class="section-lede">Colleen réalise une démonstration complète le matin du premier jour, une seule fois — le temps de bien observer chaque geste. Le reste du temps, tu es directement en pratique sur modèle, avec un accompagnement pas à pas. Au total, tu réalises <strong style="color:var(--ink);">7 maquillages en semi-autonomie</strong>, avec une évaluation finale incluse pour valider tes acquis.</p>
+  </div>
+</section>
+
 <section class="infos-wrap">
   <div class="wrap">
     <div class="section-eyebrow" data-editable="formation-perfectionnement-2-jours.section2_eyebrow" style="color:var(--gray);">INFORMATIONS</div>
@@ -316,7 +328,7 @@
     <div class="faq-list">
       <details class="faq-item">
         <summary>Cette formation est-elle accessible aux débutantes ?</summary>
-        <p>Non. Cette formation s'adresse uniquement aux Makeup Artists déjà intermédiaires ou confirmées, avec leur propre matériel. Si tu débutes totalement, la <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (5 jours)</a> est plus adaptée.</p>
+        <p>Non. Cette formation s'adresse uniquement aux Makeup Artists déjà intermédiaires ou confirmées, avec leur propre matériel. Si tu débutes totalement, la <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (4 jours)</a> est plus adaptée.</p>
       </details>
       <details class="faq-item">
         <summary>En quoi consiste l'analyse de kit ?</summary>
@@ -338,12 +350,20 @@
   </div>
 </section>
 
+<section class="final-cta">
+  <div class="wrap">
+    <div class="section-eyebrow">INSCRIPTION</div>
+    <h2 class="section-title">Réserver tes 2 journées</h2>
+    <p>Débutante totale ? La <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (4 jours)</a> est plus adaptée pour poser les bases avant de te perfectionner.</p>
+    <p style="font-size:13px; max-width:520px; margin:0 auto 26px; color:var(--ink-soft);">Tu veux te spécialiser mariée en groupe ? La <a href="formation-intensive-collective-3-jours.html" style="text-decoration:underline; color:var(--ink);">Formation Intensive Mariée (3 jours)</a> est faite pour ça.</p>
+  </div>
+</section>
+
 <section id="formulaire">
   <div class="wrap">
-    <div class="section-eyebrow" data-editable="formation-perfectionnement-2-jours.section4_eyebrow">INSCRIPTION</div>
-    <h2 class="section-title" data-editable="formation-perfectionnement-2-jours.section4_title">Réserver tes 2 journées</h2>
+    <div class="section-eyebrow" data-editable="formation-perfectionnement-2-jours.section4_eyebrow">INSCRIPTIONS</div>
+    <h2 class="section-title" data-editable="formation-perfectionnement-2-jours.section4_title">Réserver ma place</h2>
     <p class="form-note">Cette formation privée se programme selon tes disponibilités : indique les dates qui t'arrangent, nous te recontacterons pour les confirmer.</p>
-    <p class="form-note" style="margin-top:-30px;">Débutante totale ? La <a href="formation-collective.html" style="text-decoration:underline; color:var(--ink);">Formation Débutante (5 jours)</a> est plus adaptée pour poser les bases avant de te perfectionner. Tu veux te spécialiser mariée en groupe ? La <a href="formation-intensive-collective-3-jours.html" style="text-decoration:underline; color:var(--ink);">Formation Intensive Mariée (3 jours)</a> est faite pour ça.</p>
 
     <form class="inscription-form">
       <div class="form-row">
@@ -390,6 +410,30 @@
             <option value="cpf">Financement CPF — 1300€</option>
           </select>
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner dans ta démarche d'inscription. Ta place ne sera définitivement validée qu'une fois ton dossier accepté.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="adresse_postale">Adresse postale complète</label>
+          <input type="text" id="adresse_postale" name="adresse_postale" placeholder="Numéro, rue, code postal, ville">
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : ton adresse est nécessaire pour constituer ton dossier auprès de notre organisme partenaire.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="piece_identite_recto">Pièce d'identité (recto)</label>
+          <input type="file" id="piece_identite_recto" name="piece_identite_recto" accept="image/*,.pdf">
+        </div>
+        <div class="field">
+          <label for="piece_identite_verso">Pièce d'identité (verso)</label>
+          <input type="file" id="piece_identite_verso" name="piece_identite_verso" accept="image/*,.pdf">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field full">
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:-6px;">Uniquement si tu choisis le financement CPF : joins une photo ou un scan recto et verso de ta carte d'identité ou passeport en cours de validité.</p>
         </div>
       </div>
 
@@ -477,6 +521,14 @@
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function _uploadCpfDoc(file, folder, label){
+    if(!file) return Promise.resolve(null);
+    var ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g,'') || 'bin';
+    var path = folder + '/' + label + '.' + ext;
+    return _sb.storage.from('documents-cpf').upload(path, file, { upsert: true }).then(function(res){
+      return res.error ? null : path;
+    });
+  }
 
   var CALENDLY_EVENT_URL = 'https://calendly.com/cmakeupbeauty/formation-perfectionnement-1-jour-clone?hide_event_type_details=1&hide_gdpr_banner=1';
   var calWidgetEl = document.getElementById('calendlyWidget');
@@ -504,36 +556,48 @@
     var btn = form.querySelector('.form-submit');
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
-    _sb.from('formation_inscriptions').insert({
-      source_page: 'formation-perfectionnement-2-jours',
-      prenom: document.getElementById('prenom').value,
-      nom: document.getElementById('nom').value,
-      email: document.getElementById('email').value,
-      telephone: document.getElementById('telephone').value,
-      ville: document.getElementById('ville').value,
-      formation: '2j-perfectionnement-complet',
-      financement: document.getElementById('financement').value,
-      dates_souhaitees: document.getElementById('dates').value,
-      materiel: document.getElementById('materiel').value,
-      modele: document.getElementById('modele').value,
-      message: document.getElementById('message').value,
-      rgpd_consent: document.getElementById('rgpd').checked
-    }).then(function(res){
-      btn.disabled = false;
-      btn.textContent = "Envoyer ma demande d'inscription";
-      if(res.error){
-        status.style.color = '#B33A3A';
-        status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
-      } else {
-        status.style.color = 'var(--ink-soft)';
-        status.textContent = 'Merci ! Ta demande a bien été envoyée. Réserve maintenant ton créneau juste en dessous 👇';
-        var prefillName = (document.getElementById('prenom').value + ' ' + document.getElementById('nom').value).trim();
-        var prefillEmail = document.getElementById('email').value;
-        form.reset();
-        waitForCalendly(function(){
-          initCalendlyWidget({ name: prefillName, email: prefillEmail });
-        });
-      }
+    var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
+    var rectoFile = document.getElementById('piece_identite_recto') ? document.getElementById('piece_identite_recto').files[0] : null;
+    var versoFile = document.getElementById('piece_identite_verso') ? document.getElementById('piece_identite_verso').files[0] : null;
+    Promise.all([
+      _uploadCpfDoc(rectoFile, newId, 'recto'),
+      _uploadCpfDoc(versoFile, newId, 'verso')
+    ]).then(function(paths){
+      _sb.from('formation_inscriptions').insert({
+        id: newId,
+        source_page: 'formation-perfectionnement-2-jours',
+        prenom: document.getElementById('prenom').value,
+        nom: document.getElementById('nom').value,
+        email: document.getElementById('email').value,
+        telephone: document.getElementById('telephone').value,
+        ville: document.getElementById('ville').value,
+        formation: '2j-perfectionnement-complet',
+        financement: document.getElementById('financement').value,
+        adresse_postale: document.getElementById('adresse_postale').value,
+        piece_identite_recto_path: paths[0],
+        piece_identite_verso_path: paths[1],
+        dates_souhaitees: document.getElementById('dates').value,
+        materiel: document.getElementById('materiel').value,
+        modele: document.getElementById('modele').value,
+        message: document.getElementById('message').value,
+        rgpd_consent: document.getElementById('rgpd').checked
+      }).then(function(res){
+        btn.disabled = false;
+        btn.textContent = "Envoyer ma demande d'inscription";
+        if(res.error){
+          status.style.color = '#B33A3A';
+          status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
+        } else {
+          status.style.color = 'var(--ink-soft)';
+          status.textContent = 'Merci ! Ta demande a bien été envoyée. Réserve maintenant ton créneau juste en dessous 👇';
+          var prefillName = (document.getElementById('prenom').value + ' ' + document.getElementById('nom').value).trim();
+          var prefillEmail = document.getElementById('email').value;
+          form.reset();
+          waitForCalendly(function(){
+            initCalendlyWidget({ name: prefillName, email: prefillEmail });
+          });
+        }
+      });
     });
   });
 })();
