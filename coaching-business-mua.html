@@ -185,6 +185,8 @@
   .pack-card h3{font-size:22px; margin-bottom:8px;}
   .pack-card .price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:38px; margin-bottom:4px;}
   .pack-card .sub{font-size:11px; letter-spacing:0.06em; color:var(--gray); margin-bottom:8px;}
+  .pack-card .launch-tag{display:inline-block; background:var(--ink); color:#fff; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; margin-top:8px;}
+  .pack-card .pay-note{font-size:11px; color:var(--ink-soft); margin-top:6px;}
   .pack-card .fit{font-size:13px; color:var(--ink-soft); font-style:italic; margin-bottom:24px;}
   .pack-card ul{list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:28px;}
   .pack-card li{font-size:14px; color:var(--ink-soft); padding-left:18px; position:relative;}
@@ -347,7 +349,7 @@
       <div class="label">SÉANCE AUDIT</div>
     </div>
     <div class="stat">
-      <div class="num">4 sem.</div>
+      <div class="num">2 sem.</div>
       <div class="label">ACCOMPAGNEMENT BUSINESS</div>
     </div>
     <div class="stat">
@@ -367,13 +369,13 @@
       <div class="section-label">POURQUOI CE COACHING</div>
       <h2>La technique ne suffit pas pour faire vivre une activité</h2>
       <p>Beaucoup de Makeup Artists maîtrisent leur geste mais butent sur le positionnement, les tarifs ou la visibilité. Ce coaching individuel s'adresse à celles qui ont déjà une activité ou un projet professionnel concret, et qui veulent y voir clair pour avancer.</p>
-      <p>Trois formats, selon le niveau d'accompagnement dont tu as besoin : un audit ponctuel pour faire le point, un accompagnement sur 4 semaines pour structurer et développer ton activité, ou ce même accompagnement complété d'une visite sur place.</p>
+      <p>Trois formats, selon le niveau d'accompagnement dont tu as besoin : un audit ponctuel pour faire le point, un accompagnement sur 2 semaines pour structurer et développer ton activité, ou ce même accompagnement complété d'une visite sur place.</p>
 
       <div class="subhead">À savoir avant de réserver</div>
       <div class="check-list" style="grid-template-columns:1fr;">
         <div><span class="dash">—</span> Ce coaching s'adresse aux Makeup Artists ayant déjà une activité ou un projet professionnel concret</div>
         <div><span class="dash">—</span> Il ne remplace pas une formation technique de maquillage</div>
-        <div><span class="dash">—</span> Le suivi WhatsApp du Pack Business est limité aux 4 semaines d'accompagnement</div>
+        <div><span class="dash">—</span> Le suivi WhatsApp du Pack Business est limité aux 2 semaines d'accompagnement</div>
         <div><span class="dash">—</span> La visite sur place est réservée aux Makeup Artists basées en Île-de-France</div>
       </div>
     </div>
@@ -387,7 +389,9 @@
     <div class="packs-grid">
       <div class="pack-card">
         <h3>Pack Audit</h3>
-        <div class="price">200€</div>
+        <div class="price">100€</div>
+        <div class="launch-tag">Prix de lancement</div>
+        <div class="pay-note">Comptant</div>
         <div class="sub">1 SÉANCE DE 1H30</div>
         <div class="fit">Pour faire le point et repartir avec des actions concrètes.</div>
         <ul>
@@ -402,7 +406,7 @@
         <div id="auditPayForm" style="display:none; margin-top:16px; padding:20px; border:1px solid var(--line); background:var(--off); text-align:left;">
           <label for="auditEmail" style="display:block; font-size:11px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:8px;">Ton email</label>
           <input type="email" id="auditEmail" required placeholder="ton@email.com" style="width:100%; border:none; border-bottom:1px solid var(--line); padding:10px 4px; font-family:inherit; font-size:15px; background:transparent; margin-bottom:16px; color:var(--ink);">
-          <button type="button" class="btn" id="auditPayBtn" style="width:100%;">Payer 200€ par carte bancaire</button>
+          <button type="button" class="btn" id="auditPayBtn" style="width:100%;">Payer 100€ par carte bancaire</button>
           <p id="auditPayStatus" style="min-height:16px; font-size:12px; color:var(--ink-soft); margin-top:10px;"></p>
           <p style="font-size:11px; color:var(--gray); margin-top:8px; line-height:1.6;">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:inherit;">academy@cmakeupbeauty.fr</a>.</p>
         </div>
@@ -410,16 +414,17 @@
       <div class="pack-card featured">
         <div class="badge-rec">Le plus choisi</div>
         <h3>Pack Business</h3>
-        <div class="price">500€</div>
-        <div class="sub">4 SEMAINES D'ACCOMPAGNEMENT</div>
+        <div class="price">300€</div>
+        <div class="pay-note">2x possible : 50% à la réservation, 50% au démarrage</div>
+        <div class="sub">2 SEMAINES D'ACCOMPAGNEMENT</div>
         <div class="fit">Pour structurer et développer ton activité en profondeur.</div>
         <ul>
-          <li>4 semaines d'accompagnement</li>
-          <li>4 coachings individuels de 1h en visioconférence</li>
+          <li>2 semaines d'accompagnement</li>
+          <li>2 coachings individuels de 1h en visioconférence</li>
           <li>Travail sur le positionnement et les tarifs</li>
           <li>Stratégie Instagram &amp; contenu</li>
           <li>Organisation &amp; développement</li>
-          <li>Suivi WhatsApp pendant les 4 semaines</li>
+          <li>Suivi WhatsApp pendant les 2 semaines</li>
           <li>Plan d'action personnalisé</li>
         </ul>
         <a class="btn" href="formulaire-candidature-business.html">Candidater au coaching</a>
@@ -427,8 +432,9 @@
       <div class="pack-card">
         <div class="badge-rec">Île-de-France uniquement</div>
         <h3>Business + Visite terrain</h3>
-        <div class="price">800€</div>
-        <div class="sub">4 SEMAINES + 1 VISITE SUR PLACE</div>
+        <div class="price">500€</div>
+        <div class="pay-note">2x possible : 50% à la réservation, 50% au démarrage</div>
+        <div class="sub">2 SEMAINES + 1 VISITE SUR PLACE</div>
         <div class="fit">Pour un accompagnement complet, avec un œil sur place dès le départ.</div>
         <ul>
           <li>Tout le contenu du Pack Business</li>
@@ -450,15 +456,15 @@
     <table class="compare-table">
       <tr>
         <th>&nbsp;</th>
-        <th>Audit — 200€</th>
-        <th>Business — 500€</th>
-        <th>Business + Visite — 800€</th>
+        <th>Audit — 100€</th>
+        <th>Business — 300€</th>
+        <th>Business + Visite — 500€</th>
       </tr>
       <tr>
         <td>Format</td>
         <td>1 séance de 1h30</td>
-        <td>4 semaines, 4 séances individuelles</td>
-        <td>4 semaines, 4 séances + 1 visite sur place</td>
+        <td>2 semaines, 2 séances individuelles</td>
+        <td>2 semaines, 2 séances + 1 visite sur place</td>
       </tr>
       <tr>
         <td>Contenu</td>
@@ -503,7 +509,7 @@
         </div>
         <div class="step">
           <div class="num">02</div>
-          <div><h4>Paiement</h4><p>Tu règles les 200€ directement sur le site.</p></div>
+          <div><h4>Paiement</h4><p>Tu règles les 100€ directement sur le site, comptant.</p></div>
         </div>
         <div class="step">
           <div class="num">03</div>
@@ -545,7 +551,7 @@
         </div>
         <div class="step">
           <div class="num">04</div>
-          <div><h4>Paiement</h4><p>Après validation, tu règles 500€ (Pack Business) ou 800€ (Pack Business + Visite terrain).</p></div>
+          <div><h4>Paiement</h4><p>Après validation, tu règles un acompte de 50% pour réserver ta place — 150€ pour le Pack Business, 250€ pour le Pack Business + Visite terrain. Le solde (50%) est à régler avant le démarrage de l'accompagnement.</p></div>
         </div>
         <div class="step">
           <div class="num">05</div>
@@ -554,7 +560,7 @@
         <!-- Page à envoyer par email juste après le paiement de l'étape 04 : questionnaire-complet-business.html -->
         <div class="step">
           <div class="num">06</div>
-          <div><h4>Planification</h4><p>Les 4 séances sont planifiées sur les 4 semaines d'accompagnement.</p></div>
+          <div><h4>Planification</h4><p>Les 2 séances sont planifiées sur les 2 semaines d'accompagnement.</p></div>
         </div>
         <div class="step">
           <div class="num">07</div>
@@ -562,7 +568,7 @@
         </div>
         <div class="step">
           <div class="num">08</div>
-          <div><h4>Accompagnement</h4><p>1 séance d'1h par semaine, avec un suivi WhatsApp pendant les 4 semaines.</p></div>
+          <div><h4>Accompagnement</h4><p>1 séance d'1h par semaine, avec un suivi WhatsApp pendant les 2 semaines.</p></div>
         </div>
         <div class="step">
           <div class="num">09</div>
@@ -588,23 +594,23 @@
       </details>
       <details class="faq-item">
         <summary>Pourquoi le Pack Business passe-t-il par une candidature et pas un paiement direct ?</summary>
-        <p>Pour s'assurer que l'accompagnement correspond bien à ton profil et à tes besoins avant de t'engager sur 4 semaines. Après validation de ta candidature, tu règles 500€ (ou 800€ pour la formule avec visite terrain) et le programme démarre.</p>
+        <p>Pour s'assurer que l'accompagnement correspond bien à ton profil et à tes besoins avant de t'engager sur 2 semaines. Après validation de ta candidature, tu règles un acompte de 50% pour réserver ta place. Le solde (50%) est à régler avant le démarrage de l'accompagnement.</p>
       </details>
       <details class="faq-item">
         <summary>Le suivi WhatsApp est-il disponible en dehors des périodes prévues ?</summary>
-        <p>Le suivi WhatsApp du Pack Business est limité aux 4 semaines d'accompagnement. Les séances doivent également être réalisées pendant cette période.</p>
+        <p>Le suivi WhatsApp du Pack Business est limité aux 2 semaines d'accompagnement. Les séances doivent également être réalisées pendant cette période.</p>
       </details>
       <details class="faq-item">
         <summary>En quoi consiste la visite sur place ?</summary>
-        <p>Elle fait partie du Pack Business + Visite terrain (800€). En semaine 1, Colleen se déplace directement sur ton lieu de travail pour observer une prestation ou ton organisation, et te donne des conseils concrets avant de démarrer les séances de coaching en visio.</p>
+        <p>Elle fait partie du Pack Business + Visite terrain (500€). En semaine 1, Colleen se déplace directement sur ton lieu de travail pour observer une prestation ou ton organisation, et te donne des conseils concrets avant de démarrer les séances de coaching en visio.</p>
       </details>
       <details class="faq-item">
         <summary>La visite sur place est-elle disponible partout en France ?</summary>
-        <p>Non, elle est réservée aux Makeup Artists basées en Île-de-France. Pour les autres régions, le Pack Business (500€) reste disponible avec un accompagnement 100% en visioconférence.</p>
+        <p>Non, elle est réservée aux Makeup Artists basées en Île-de-France. Pour les autres régions, le Pack Business (300€) reste disponible avec un accompagnement 100% en visioconférence.</p>
       </details>
       <details class="faq-item">
         <summary>Quelle est la différence entre le Pack Audit, le Pack Business et le Pack Business + Visite terrain ?</summary>
-        <p>Le Pack Audit est une séance unique de 1h30 pour faire le point et repartir avec un plan d'action à 30 jours. Le Pack Business est un accompagnement complet sur 4 semaines, avec 4 séances individuelles et un suivi WhatsApp continu. Le Pack Business + Visite terrain ajoute une visite sur ton lieu de travail en semaine 1, réservée aux Makeup Artists basées en Île-de-France.</p>
+        <p>Le Pack Audit est une séance unique de 1h30 pour faire le point et repartir avec un plan d'action à 30 jours. Le Pack Business est un accompagnement complet sur 2 semaines, avec 2 séances individuelles et un suivi WhatsApp continu. Le Pack Business + Visite terrain ajoute une visite sur ton lieu de travail en semaine 1, réservée aux Makeup Artists basées en Île-de-France.</p>
       </details>
     </div>
   </div>
@@ -630,7 +636,7 @@
         <div class="footer-note">academy@cmakeupbeauty.fr</div>
         <div class="footer-social" style="justify-content:center;">
           <a href="https://www.instagram.com/c_makeup_">Instagram</a>
-          <!-- DEV TODO : ajouter le lien TikTok officiel une fois confirmé par la cliente (ne pas reconstruire une URL approximative) -->
+          <a href="https://www.tiktok.com/@cmakeupbeauty">TikTok</a>
         </div>
       </div>
     </div>
@@ -688,7 +694,7 @@
 
   var _sbAudit = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
   var params = new URLSearchParams(window.location.search);
-  var AMOUNT_CENTS = 20000;
+  var AMOUNT_CENTS = 10000;
 
   function pageUrl(extra){
     var base = window.location.origin + window.location.pathname;
