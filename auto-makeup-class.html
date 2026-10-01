@@ -452,8 +452,8 @@
 <section class="invest-wrap">
   <div class="wrap">
     <div class="invest-badge">L'investissement</div>
-    <div class="invest-price">300<span>€</span></div>
-    <div class="invest-sub">La journée complète — acompte de 100€ pour valider ta place</div>
+    <div class="invest-price"><span data-editable="auto-makeup-class.prix_total">300</span><span>€</span></div>
+    <div class="invest-sub">La journée complète — acompte de <span data-editable="auto-makeup-class.prix_acompte">100</span>€ pour valider ta place</div>
     <div class="invest-sub" style="margin-top:6px;">Également finançable via ton CPF : 1100€ — sous réserve de validation du dossier</div>
     <p class="invest-note">Ce tarif reflète une expérience premium pensée pour toi : un accompagnement individuel, du matériel offert, un suivi après la formation et une méthode professionnelle transmise pas à pas. Places très limitées pour garantir cette qualité d'accompagnement.</p>
     <p class="invest-note" style="margin-top:18px; font-size:13px;">Tu préfères une formule plus courte, en tête-à-tête ? Découvre le <a href="cours-auto-maquillage-prive.html" style="text-decoration:underline; color:var(--white);">Cours Privé en demi-journée</a> (500€, matin ou après-midi).</p>
@@ -683,7 +683,7 @@
       </div>
 
       <button type="submit" class="btn form-submit">Continuer vers le paiement</button>
-      <p class="form-disclaimer">Un acompte de 100€ (non remboursable) sera demandé pour bloquer définitivement ta place, une fois les dates confirmées — sauf si tu choisis le financement CPF ci-dessus.</p>
+      <p class="form-disclaimer">Un acompte de <span data-editable="auto-makeup-class.prix_acompte">100</span>€ (non remboursable) sera demandé pour bloquer définitivement ta place, une fois les dates confirmées — sauf si tu choisis le financement CPF ci-dessus.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
     </div>
@@ -691,8 +691,8 @@
     <div id="amcScreenPaiement" style="display:none;">
       <div class="price-final">
         <div class="p-label">Acompte à régler</div>
-        <div class="p-amount">100€</div>
-        <div class="p-sub">Sur un total de 300€ — le solde est réglé le jour de la formation</div>
+        <div class="p-amount"><span data-editable="auto-makeup-class.prix_acompte">100</span>€</div>
+        <div class="p-sub">Sur un total de <span data-editable="auto-makeup-class.prix_total">300</span>€ — le solde est réglé le jour de la formation</div>
       </div>
       <button type="button" class="btn form-submit" id="amcPayBtn" style="margin-bottom:14px;">Payer l'acompte par carte bancaire</button>
       <p class="pay-note" id="amcPayStatus" style="min-height:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
@@ -771,7 +771,6 @@
 
   var params = new URLSearchParams(window.location.search);
   var recordId = params.get('record_id');
-  var AMOUNT_CENTS = 10000;
 
   var screenForm = document.getElementById('amcScreenForm');
   var screenPaiement = document.getElementById('amcScreenPaiement');
@@ -861,7 +860,11 @@
         body: {
           table: 'auto_makeup_class_demandes',
           record_id: recordId,
-          amount_cents: AMOUNT_CENTS,
+          amount_cents: (function(){
+        var el = document.querySelector('[data-editable="auto-makeup-class.prix_acompte"]');
+        var v = el ? parseFloat((el.textContent || '').replace(',', '.')) : NaN;
+        return (isFinite(v) && v > 0) ? Math.round(v * 100) : 10000;
+      })(),
           description: 'Acompte Auto Makeup Class',
           success_url: pageUrl('paid=1&session_id={CHECKOUT_SESSION_ID}'),
           cancel_url: pageUrl()
