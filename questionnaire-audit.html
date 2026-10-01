@@ -301,8 +301,8 @@
     form.style.display = 'none';
     gate.style.display = 'block';
   } else {
-    _sb.from('pack_audit_paiements').select('statut_paiement').eq('id', packAuditPaiementId).maybeSingle().then(function(res){
-      if(res.error || !res.data || res.data.statut_paiement !== 'paye'){
+    _sb.rpc('check_pack_audit_payment_status', { p_id: packAuditPaiementId }).then(function(res){
+      if(res.error || res.data !== 'paye'){
         form.style.display = 'none';
         gate.style.display = 'block';
       }
