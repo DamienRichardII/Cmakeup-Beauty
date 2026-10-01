@@ -343,28 +343,10 @@
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section3_eyebrow">SESSIONS</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section3_title">Prochaines dates</h2>
-    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section3_lede">Places très limitées pour garantir un accompagnement 100% individuel — choisis ta session et ton créneau préféré (matin ou après-midi) dans le formulaire plus bas sur cette page.</p>
-    <div class="provisional-badge">Dates provisoires, à confirmer prochainement — inscris-toi en liste d'attente pour être prévenue dès la validation.</div>
-    <div class="sessions-grid">
-      <div class="session-card">
-        <div class="s-label">Session A</div>
-        <div class="s-dates">Samedi 17 octobre</div>
-        <div class="s-status">Matin ou après-midi</div>
-      </div>
-      <div class="session-card">
-        <div class="s-label">Session B</div>
-        <div class="s-dates">Dimanche 15 novembre</div>
-        <div class="s-status">Matin ou après-midi</div>
-      </div>
-      <div class="session-card">
-        <div class="s-label">Session C</div>
-        <div class="s-dates">Samedi 12 décembre</div>
-        <div class="s-status">Matin ou après-midi</div>
-      </div>
-    </div>
+  <div class="wrap" style="text-align:center;">
+    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section3_eyebrow">DATES</div>
+    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section3_title">Un cours qui s'adapte à ton emploi du temps</h2>
+    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section3_lede">Ce cours privé n'a pas de dates fixes : ta séance de 3h (matin ou après-midi) se programme directement avec toi, selon tes disponibilités. Indique tes dates souhaitées dans le formulaire ci-dessous, nous te recontacterons pour les confirmer.</p>
   </div>
 </section>
 
@@ -380,6 +362,7 @@
       <div>— Kit de pinceaux + guide PDF offerts</div>
       <div>— Matériel professionnel à disposition sur place</div>
       <div>— Éligible CPF : 1100€ (sous validation du dossier)</div>
+      <div>— Dates flexibles, selon tes disponibilités</div>
     </div>
   </div>
 </section>
@@ -459,7 +442,7 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section7_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section7_title">Réserver ma place</h2>
-    <p class="form-note">Les dates n'étant pas encore confirmées, indique ta session et ton créneau préférés (matin ou après-midi) : nous te recontacterons dès leur validation pour finaliser ta réservation.</p>
+    <p class="form-note">Ce cours privé se programme selon tes disponibilités : indique tes dates souhaitées et ton créneau préféré (matin ou après-midi), nous te recontacterons pour les confirmer.</p>
 
     <form class="inscription-form">
       <div class="form-row">
@@ -493,13 +476,8 @@
 
       <div class="form-row">
         <div class="field">
-          <label for="session">Session qui t'intéresse</label>
-          <select id="session" name="session" required>
-            <option value="">Sélectionnez</option>
-            <option value="sessionA">Session A — Samedi 17 octobre (à valider)</option>
-            <option value="sessionB">Session B — Dimanche 15 novembre (à valider)</option>
-            <option value="sessionC">Session C — Samedi 12 décembre (à valider)</option>
-          </select>
+          <label for="dates">Tes dates souhaitées</label>
+          <input type="text" id="dates" name="dates" placeholder="Ex : un samedi matin en novembre, ou toute autre période qui t'arrange" required>
         </div>
         <div class="field">
           <label for="creneau">Créneau</label>
@@ -684,7 +662,7 @@
         email: document.getElementById('email').value,
         telephone: document.getElementById('telephone').value,
         ville: document.getElementById('ville').value,
-        session: document.getElementById('session').value,
+        dates_souhaitees: document.getElementById('dates').value,
         creneau: document.getElementById('creneau').value,
         niveau: document.getElementById('niveau').value,
         trousse: document.getElementById('trousse').value,
