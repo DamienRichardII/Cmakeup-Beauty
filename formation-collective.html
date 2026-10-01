@@ -327,8 +327,9 @@
       </div>
       <div class="price-option featured">
         <div class="p-label">Financement CPF</div>
-        <div class="p-amount">1600 €</div>
-        <div class="p-note">Formation finançable via ton Compte Personnel de Formation.<br>Aucune avance de frais à prévoir, pas d'acompte à régler.<br>Matériel professionnel inclus.</div>
+        <div class="p-amount" style="font-size:22px; color:var(--white);">Finançable</div>
+        <div style="font-size:11px; letter-spacing:0.04em; color:rgba(255,255,255,0.6); text-transform:uppercase; margin-top:-8px; margin-bottom:10px;">Sous réserve de validation du dossier</div>
+        <div class="p-note">Aucune avance de frais à prévoir, pas d'acompte à régler.<br>Précise ton solde CPF disponible dans le formulaire ci-dessous — nous te recontacterons pour étudier ta demande.</div>
       </div>
     </div>
     <p style="max-width:640px; margin:34px auto 0; text-align:center; font-size:13px; color:var(--ink-soft); line-height:1.8;">
@@ -411,7 +412,7 @@
       </details>
       <details class="faq-item">
         <summary>Quelle est la différence entre le paiement classique et le financement CPF ?</summary>
-        <p>Le paiement classique est à 800€ (1 fois ou 4x sans frais via PayPal, acompte de 200€ à la réservation). Le financement CPF est à 1600€ et ne demande aucune avance de frais ni acompte — il te suffit de le préciser dans le formulaire, ton dossier sera transmis à notre organisme partenaire qui te contactera sur WhatsApp pour t'accompagner.</p>
+        <p>Le paiement classique est à 800€ (1 fois ou 4x sans frais via PayPal, acompte de 200€ à la réservation). Le financement CPF ne demande aucune avance de frais ni acompte : il te suffit de préciser ton solde CPF disponible dans le formulaire, ton dossier sera transmis à notre organisme partenaire qui te contactera sur WhatsApp pour t'accompagner.</p>
       </details>
       <details class="faq-item">
         <summary>Comment se passe l'inscription ?</summary>
@@ -477,9 +478,17 @@
           <label for="financement">Mode de financement souhaité</label>
           <select id="financement" name="financement">
             <option value="classique">Paiement classique — 800€ (1x ou 4x PayPal)</option>
-            <option value="cpf">Financement CPF — 1600€</option>
+            <option value="cpf">Financement CPF</option>
           </select>
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner dans ta démarche d'inscription. Ta place ne sera définitivement validée qu'une fois ton dossier accepté.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="solde_cpf">Solde disponible sur ton compte CPF</label>
+          <input type="text" id="solde_cpf" name="solde_cpf" placeholder="Ex : 1200€, ou je ne sais pas encore">
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : indique le montant dont tu disposes, nous reviendrons vers toi pour échanger sur ta demande.</p>
         </div>
       </div>
 
@@ -631,6 +640,7 @@
         ville: document.getElementById('ville').value,
         session: document.getElementById('session').value,
         financement: document.getElementById('financement').value,
+        solde_cpf: document.getElementById('solde_cpf').value,
         adresse_postale: document.getElementById('adresse_postale').value,
         piece_identite_recto_path: paths[0],
         piece_identite_verso_path: paths[1],

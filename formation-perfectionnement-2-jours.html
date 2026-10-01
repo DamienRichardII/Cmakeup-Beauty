@@ -295,7 +295,7 @@
       <div class="r-total">650 €</div>
       <div class="r-note">12h de formation individuelle sur 2 jours<br>Support de suivi remis en fin de parcours &amp; certificat de participation</div>
       <div class="r-save">Économie de 50€ par rapport aux 2 modules pris séparément (700€)</div>
-      <div style="margin-top:16px; font-size:13px; color:var(--gray);">Également finançable via CPF : 1300€</div>
+      <div style="margin-top:16px; font-size:13px; color:var(--gray);">Également finançable via CPF — sous réserve de validation du dossier</div>
     </div>
   </div>
 </section>
@@ -317,7 +317,7 @@
       <div>— Niveau requis : Makeup Artist intermédiaire ou confirmée uniquement</div>
       <div>— Un modèle est à prévoir chaque jour pour la pratique</div>
       <div>— Analyse de kit incluse</div>
-      <div>— Éligible CPF : 1300€ (sous validation du dossier)</div>
+      <div>— Éligible CPF, sous validation du dossier</div>
       <div>— Certificat de participation</div>
       <div>— Places limitées, sur réservation</div>
     </div>
@@ -343,7 +343,7 @@
       </details>
       <details class="faq-item">
         <summary>Cette formation est-elle finançable via mon CPF ?</summary>
-        <p>Oui, à 1300€. Précise-le dans le formulaire d'inscription, tu seras recontactée pour finaliser ton dossier.</p>
+        <p>Oui, sous réserve de validation de ton dossier. Précise ton solde CPF disponible dans le formulaire d'inscription, tu seras recontactée pour étudier ta demande.</p>
       </details>
       <details class="faq-item">
         <summary>Comment se passe l'inscription ?</summary>
@@ -410,9 +410,17 @@
           <label for="financement">Mode de financement souhaité</label>
           <select id="financement" name="financement">
             <option value="classique">Paiement classique — 650€</option>
-            <option value="cpf">Financement CPF — 1300€</option>
+            <option value="cpf">Financement CPF</option>
           </select>
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner dans ta démarche d'inscription. Ta place ne sera définitivement validée qu'une fois ton dossier accepté.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="solde_cpf">Solde disponible sur ton compte CPF</label>
+          <input type="text" id="solde_cpf" name="solde_cpf" placeholder="Ex : 1200€, ou je ne sais pas encore">
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : indique le montant dont tu disposes, nous reviendrons vers toi pour échanger sur ta demande.</p>
         </div>
       </div>
 
@@ -576,6 +584,7 @@
         ville: document.getElementById('ville').value,
         formation: '2j-perfectionnement-complet',
         financement: document.getElementById('financement').value,
+        solde_cpf: document.getElementById('solde_cpf').value,
         adresse_postale: document.getElementById('adresse_postale').value,
         piece_identite_recto_path: paths[0],
         piece_identite_verso_path: paths[1],
