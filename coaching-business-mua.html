@@ -331,6 +331,8 @@
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 
+<div id="coachingPayStatus" style="display:none; max-width:640px; margin:28px auto 0; padding:18px 24px; border:1px solid var(--line); border-radius:2px; font-size:13px; text-align:center; line-height:1.7;"></div>
+
 <section class="hero">
   <img data-editable="coaching-business-mua.photo1" src="assets/colleen-portrait.webp" alt="Coaching Business pour Makeup Artist — CMAKEUP BEAUTY" width="1066" height="1600" loading="eager">
   <div class="hero-content">
@@ -744,6 +746,24 @@
       });
     });
   });
+
+  // Retour depuis Stripe Checkout (Pack Business — acompte coaching généré par l'admin)
+  if(params.get('coaching_paid') === '1' && params.get('session_id')){
+    var coachBanner = document.getElementById('coachingPayStatus');
+    coachBanner.style.display = 'block';
+    coachBanner.style.color = 'var(--ink-soft)';
+    coachBanner.textContent = 'Vérification de ton paiement...';
+    _sbAudit.functions.invoke('confirm-checkout-session', { body: { session_id: params.get('session_id') } }).then(function(res){
+      var paid = res.data && res.data.paid;
+      if(paid){
+        coachBanner.style.color = 'var(--ok)';
+        coachBanner.innerHTML = 'Paiement confirmé — merci ! Tu reçois un email de confirmation, et Colleen revient vers toi très vite pour la suite de ton accompagnement.';
+      } else {
+        coachBanner.style.color = '#B33A3A';
+        coachBanner.innerHTML = "Nous n'avons pas pu confirmer ton paiement. Si la somme a bien été débitée, écris-nous directement à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
+      }
+    });
+  }
 
   // Retour depuis Stripe Checkout
   if(params.get('paid') === '1' && params.get('session_id')){
