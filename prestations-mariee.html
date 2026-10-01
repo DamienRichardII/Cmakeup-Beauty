@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://cmakeup-beauty.vercel.app/prestations-mariee.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -70,6 +71,16 @@
   .back-link:hover{color:var(--ink);}
 
   /* HERO */
+  .page-hero{position:relative; height:92vh; min-height:760px; max-height:920px; overflow:hidden; border-bottom:1px solid var(--line); padding:0;}
+  .page-hero .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .page-hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.15) 38%, rgba(8,7,5,0.95) 100%);}
+  .hero-caption{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:60px; max-width:760px;}
+  .hero-caption h1{color:#fff !important;}
+  .hero-caption .sub{color:rgba(255,255,255,0.9) !important;}
+  .hero-caption .tagline{color:rgba(255,255,255,0.88) !important;}
+  .hero-topbar{position:absolute; top:36px; left:0; right:0; z-index:2; padding:0 60px;}
+  .hero-topbar .eyebrow{color:#fff !important; opacity:0.95; text-shadow:0 1px 6px rgba(0,0,0,0.35);}
+  @media(max-width:860px){ .hero-caption{padding:36px 24px;} .hero-topbar{top:20px; padding:0 24px;} .page-hero{height:auto; min-height:560px;} }
   .hero{
     display:grid; grid-template-columns:1fr 1fr;
     min-height:620px;
@@ -335,15 +346,13 @@
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 
-<section class="hero" style="padding:0;">
-  <div class="hero-img">
-    <img data-editable="prestations-mariee.photo1" src="assets/img-2894f9add88d.webp" alt="Maquillage mariée CMAKEUP BEAUTY" width="900" height="1350" loading="eager">
-  </div>
-  <div class="hero-copy">
-    <div class="eyebrow" data-editable="prestations-mariee.hero_eyebrow">PRESTATION MARIÉE — SUR-MESURE</div>
-    <h1 data-editable="prestations-mariee.hero_title">Ton jour J,<br>sublimé avec justesse</h1>
-    <div class="tagline" data-editable="prestations-mariee.hero_tagline">"Un maquillage qui te ressemble, pensé pour durer jusqu'au bout de la nuit."</div>
-    <p class="sub">Chaque mariage est unique. Ta prestation l'est tout autant : un accompagnement personnalisé, de la première consultation jusqu'au dernier coup de pinceau le jour J.</p>
+<section class="page-hero">
+  <img class="hero-bg" data-editable="prestations-mariee.photo1" src="assets/hero-prestations-mariee.jpg" alt="Maquillage mariée CMAKEUP BEAUTY" style="object-position:50% 12%">
+  <div class="hero-topbar"><div class="eyebrow" data-editable="prestations-mariee.hero_eyebrow">PRESTATION MARIÉE — SUR-MESURE</div></div>
+  <div class="hero-caption">
+    <h1 data-editable="prestations-mariee.hero_title" style="margin-bottom:18px;">Ton jour J,<br>sublimé avec justesse</h1>
+    <div class="tagline" data-editable="prestations-mariee.hero_tagline" style="margin-bottom:16px;">"Un maquillage qui te ressemble, pensé pour durer jusqu'au bout de la nuit."</div>
+    <p class="sub" style="margin-bottom:26px; max-width:460px;">Chaque mariage est unique. Ta prestation l'est tout autant : un accompagnement personnalisé, de la première consultation jusqu'au dernier coup de pinceau le jour J.</p>
     <a class="btn-outline light" href="#appel">Réserver mon appel découverte — gratuit</a>
   </div>
 </section>
@@ -591,14 +600,9 @@
           <label for="rgpd" style="text-transform:none; letter-spacing:normal; font-size:12px;">J'accepte que mes informations soient utilisées pour préparer notre appel découverte, conformément à la politique de confidentialité.</label>
         </div>
       </div>
-      <button type="submit" class="btn form-submit" style="margin-top:10px;">Envoyer mes informations</button>
+      <button type="submit" class="btn form-submit" style="margin-top:10px;">Choisir mon créneau &amp; envoyer ma demande</button>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:14px; font-size:12px; text-align:center;"></p>
     </form>
-
-    <div class="cal-step-label">Étape 2 — Choisis ton créneau</div>
-    <p style="max-width:640px; margin:0 auto 30px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);">Une fois tes informations envoyées, réserve directement ton créneau d'appel découverte ci-dessous.</p>
-
-    <div id="calendlyWidget" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
   </div>
 </section>
 
@@ -612,7 +616,8 @@
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
 
   var CALENDLY_EVENT_URL = 'https://calendly.com/cmakeupbeauty/appel-telephonique-future-mariee?hide_event_type_details=1&hide_gdpr_banner=1';
-  var calWidgetEl = document.getElementById('calendlyWidget');
+  var btn = form.querySelector('.form-submit');
+  var pendingValues = null; // valeurs du formulaire en attente, tant que le RDV Calendly n'est pas confirmé
 
   function waitForCalendly(cb, tries){
     tries = tries || 0;
@@ -620,28 +625,20 @@
     else if(tries < 60){ setTimeout(function(){ waitForCalendly(cb, tries + 1); }, 250); }
   }
 
-  function initCalendlyWidget(prefill){
-    if(!calWidgetEl) return;
-    calWidgetEl.innerHTML = '';
-    window.Calendly.initInlineWidget({
-      url: CALENDLY_EVENT_URL,
-      parentElement: calWidgetEl,
-      prefill: prefill || {}
-    });
-  }
-
-  waitForCalendly(function(){ initCalendlyWidget(); });
+  // Le formulaire ne crée AUCUNE ligne en base tant que le RDV n'est pas réellement
+  // confirmé dans Calendly : on ouvre la fenêtre de réservation au clic, et on
+  // n'enregistre les informations qu'une fois l'événement "calendly.event_scheduled"
+  // reçu. Ça évite les demandes envoyées sans RDV pris, et ça ne déclenche qu'un seul
+  // email (au moment où le RDV est vraiment pris), pas un à l'envoi + un à la réservation.
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var btn = form.querySelector('.form-submit');
-    btn.disabled = true;
-    btn.textContent = 'Envoi en cours...';
-    status.style.color = 'var(--ink-soft)';
-    status.textContent = 'Envoi en cours...';
+    if(!form.reportValidity()) return;
+
     var prenomVal = document.getElementById('prenom').value;
     var nomVal = document.getElementById('nom').value;
     var emailVal = document.getElementById('email').value;
-    _sb.from('appels_decouverte_mariee').insert({
+
+    pendingValues = {
       prenom: prenomVal,
       nom: nomVal,
       email: emailVal,
@@ -658,20 +655,36 @@
       pack_interesse: document.getElementById('pack').value,
       autres_infos: document.getElementById('autres-infos').value,
       rgpd_consent: document.getElementById('rgpd').checked
-    }).then(function(res){
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Ouverture du calendrier...';
+    status.style.color = 'var(--ink-soft)';
+    status.textContent = 'Choisis ton créneau dans la fenêtre qui s\'ouvre, puis confirme ton rendez-vous.';
+
+    waitForCalendly(function(){
       btn.disabled = false;
-      btn.textContent = 'Envoyer mes informations';
+      btn.textContent = 'Choisir mon créneau & envoyer ma demande';
+      window.Calendly.initPopupWidget({
+        url: CALENDLY_EVENT_URL,
+        prefill: { name: (prenomVal + ' ' + nomVal).trim(), email: emailVal }
+      });
+    });
+  });
+
+  // Reçu uniquement quand un créneau est réellement confirmé dans la fenêtre Calendly.
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.event !== 'calendly.event_scheduled' || !pendingValues) return;
+    var values = pendingValues;
+    pendingValues = null;
+    status.style.color = 'var(--ink-soft)';
+    status.textContent = 'Rendez-vous confirmé, enregistrement de tes informations...';
+    _sb.from('appels_decouverte_mariee').insert(values).then(function(res){
       if(res.error){
-        status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous directement à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline;\">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline;\">07 54 03 32 66</a>.";
+        status.innerHTML = "Ton rendez-vous est bien confirmé dans l'agenda, mais tes informations complémentaires n'ont pas pu être enregistrées. Écris-nous directement à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline;\">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline;\">07 54 03 32 66</a> pour nous les transmettre.";
       } else {
-        status.textContent = 'Merci ! Tes informations ont bien été envoyées. Réserve maintenant ton créneau juste en dessous 👇';
+        status.textContent = 'Merci ! Ton rendez-vous est confirmé, on se parle très vite 🤍';
         form.reset();
-        waitForCalendly(function(){
-          initCalendlyWidget({
-            name: (prenomVal + ' ' + nomVal).trim(),
-            email: emailVal
-          });
-        });
       }
     });
   });
