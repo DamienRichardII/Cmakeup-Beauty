@@ -338,9 +338,7 @@
         status.style.color = '#B33A3A';
         status.innerHTML = "Un problème est survenu lors de l'envoi. Envoie tes réponses directement à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:var(--ink);\">academy@cmakeupbeauty.fr</a>.";
       } else {
-        status.style.color = 'var(--ink-soft)';
-        status.textContent = 'Merci ! Ton questionnaire a bien été envoyé. Colleen prépare ton analyse avant votre séance.';
-        form.reset();
+        window.location.href = 'reservation-coaching-audit.html';
       }
     });
   });
