@@ -667,9 +667,7 @@
           status.style.color = '#B33A3A';
           status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
         } else {
-          status.style.color = 'var(--ink-soft)';
-          status.textContent = 'Merci ! Ta demande a bien été envoyée, nous te recontactons rapidement.';
-          form.reset();
+          window.location.href = 'merci-formation.html';
         }
       });
     });
