@@ -62,11 +62,19 @@
   .back-link{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft);}
   .back-link:hover{color:var(--ink);}
 
-  .page-hero{
-    padding:100px 0 70px;
-    text-align:center;
-    border-bottom:1px solid var(--line);
-  }
+  .page-hero{position:relative; height:92vh; min-height:760px; max-height:920px; overflow:hidden; border-bottom:1px solid var(--line);}
+  .page-hero .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .page-hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.22) 38%, rgba(8,7,5,0.97) 100%);}
+  .hero-caption{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:60px; max-width:760px;}
+  .hero-caption .eyebrow{color:var(--ink) !important; opacity:1;}
+  .hero-caption h1{color:#fff !important;}
+  .hero-caption p{color:rgba(255,255,255,0.9) !important;}
+  .hero-caption .price-tag{color:#fff !important;}
+  .hero-caption .tagline{color:rgba(255,255,255,0.88) !important;}
+  @media(max-width:860px){ .hero-caption{padding:36px 24px;} .page-hero{height:auto; min-height:520px;} }
+  .hero-topbar{position:absolute; top:36px; left:0; right:0; z-index:2; padding:0 60px;}
+  .hero-topbar .eyebrow{color:#fff !important; opacity:0.95; text-shadow:0 1px 6px rgba(0,0,0,0.35);}
+  @media(max-width:860px){ .hero-topbar{top:20px; padding:0 24px;} }
   .page-hero .eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:18px;}
   .page-hero h1{font-size:clamp(36px,5vw,58px); line-height:1.08;}
   .page-hero .tagline{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--ink-soft); margin-top:18px;}
@@ -348,13 +356,15 @@
 </header>
 
 <section class="page-hero">
-  <div class="wrap">
-    <div class="eyebrow" data-editable="auto-makeup-class.hero_eyebrow">COURS PRIVÉ — EXPÉRIENCE HAUT DE GAMME</div>
+  <img class="hero-bg" src="assets/hero-auto-makeup-class.jpg" alt="Auto Makeup Class CMAKEUP BEAUTY" style="object-position:50% 40%">
+  <div class="hero-topbar"><div class="eyebrow" data-editable="auto-makeup-class.hero_eyebrow">COURS PRIVÉ — EXPÉRIENCE HAUT DE GAMME</div></div>
+  <div class="hero-caption">
+
     <h1 data-editable="auto-makeup-class.hero_title">Auto Makeup Class</h1>
     <div class="tagline" data-editable="auto-makeup-class.hero_tagline">Avec Arlyne — Apprends à te maquiller seule, comme une vraie pro</div>
     <p data-editable="auto-makeup-class.hero_text">Une journée entière, en petit comité, pensée comme une véritable expérience premium : méthode professionnelle, accompagnement personnalisé et matériel offert pour repartir avec un vrai savoir-faire.</p>
 <div class="cms-video-slot" data-editable-video="auto-makeup-class" style="display:none; margin:32px auto; max-width:900px;"></div>
-  </div>
+    </div>
 </section>
 
 <section>
