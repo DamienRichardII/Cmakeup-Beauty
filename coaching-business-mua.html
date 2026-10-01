@@ -394,7 +394,7 @@
     <div class="packs-grid">
       <div class="pack-card">
         <h3>Pack Audit</h3>
-        <div class="price">100€</div>
+        <div class="price">199€</div>
         <div class="launch-tag">Prix de lancement</div>
         <div class="pay-note">Comptant</div>
         <div class="sub">1 SÉANCE DE 1H30</div>
@@ -411,7 +411,7 @@
         <div id="auditPayForm" style="display:none; margin-top:16px; padding:20px; border:1px solid var(--line); background:var(--off); text-align:left;">
           <label for="auditEmail" style="display:block; font-size:11px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:8px;">Ton email</label>
           <input type="email" id="auditEmail" required placeholder="ton@email.com" style="width:100%; border:none; border-bottom:1px solid var(--line); padding:10px 4px; font-family:inherit; font-size:15px; background:transparent; margin-bottom:16px; color:var(--ink);">
-          <button type="button" class="btn" id="auditPayBtn" style="width:100%;">Payer 100€ par carte bancaire</button>
+          <button type="button" class="btn" id="auditPayBtn" style="width:100%;">Payer 199€ par carte bancaire</button>
           <p id="auditPayStatus" style="min-height:16px; font-size:12px; color:var(--ink-soft); margin-top:10px;"></p>
           <p style="font-size:11px; color:var(--gray); margin-top:8px; line-height:1.6;">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:inherit;">academy@cmakeupbeauty.fr</a>.</p>
         </div>
@@ -461,7 +461,7 @@
     <table class="compare-table">
       <tr>
         <th>&nbsp;</th>
-        <th>Audit — 100€</th>
+        <th>Audit — 199€</th>
         <th>Business — 300€</th>
         <th>Business + Visite — 500€</th>
       </tr>
@@ -514,7 +514,7 @@
         </div>
         <div class="step">
           <div class="num">02</div>
-          <div><h4>Paiement</h4><p>Tu règles les 100€ directement sur le site, comptant.</p></div>
+          <div><h4>Paiement</h4><p>Tu règles les 199€ directement sur le site, comptant.</p></div>
         </div>
         <div class="step">
           <div class="num">03</div>
@@ -699,7 +699,7 @@
 
   var _sbAudit = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
   var params = new URLSearchParams(window.location.search);
-  var AMOUNT_CENTS = 10000;
+  var AMOUNT_CENTS = 19900;
 
   function pageUrl(extra){
     var base = window.location.origin + window.location.pathname;
@@ -718,14 +718,14 @@
     payBtn.disabled = true;
     payStatus.style.color = 'var(--ink-soft)';
     payStatus.textContent = 'Préparation du paiement sécurisé...';
-    _sbAudit.from('pack_audit_paiements').insert({ email: email, statut_paiement: 'en_attente' }).select().single().then(function(res){
-      if(res.error || !res.data){
+    var recordId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
+    _sbAudit.from('pack_audit_paiements').insert({ id: recordId, email: email, statut_paiement: 'en_attente' }).then(function(res){
+      if(res.error){
         payBtn.disabled = false;
         payStatus.style.color = '#B33A3A';
         payStatus.textContent = "Un problème est survenu. Écris-nous directement, voir plus bas.";
         return;
       }
-      var recordId = res.data.id;
       _sbAudit.functions.invoke('create-checkout-session', {
         body: {
           table: 'pack_audit_paiements',
