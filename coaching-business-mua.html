@@ -192,6 +192,14 @@
   .pack-card li{font-size:14px; color:var(--ink-soft); padding-left:18px; position:relative;}
   .pack-card li::before{content:"—"; position:absolute; left:0; color:var(--ink);}
   .pack-card .btn{width:100%; text-align:center; display:block;}
+  .pack-subhead{font-size:11px; letter-spacing:0.1em; color:var(--ink); text-transform:uppercase; font-weight:600; margin:18px 0 8px;}
+  .pack-subhead:first-of-type{margin-top:0;}
+  .logic-wrap{max-width:780px; margin:0 auto;}
+  .logic-item{display:flex; gap:24px; padding:26px 0; border-bottom:1px solid var(--line); align-items:baseline;}
+  .logic-item:last-child{border-bottom:none;}
+  .logic-item .l-price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:28px; color:var(--ink); flex:0 0 150px;}
+  .logic-item .l-label{font-size:10px; letter-spacing:0.1em; color:var(--gray); text-transform:uppercase; display:block; margin-top:4px;}
+  .logic-item .l-text{font-size:14.5px; color:var(--ink-soft); line-height:1.7;}
 
   /* COMPARATIF */
   .compare-table{width:100%; border-collapse:collapse; margin-top:20px;}
@@ -413,34 +421,58 @@
       <div class="pack-card featured">
         <div class="badge-rec">Le plus choisi</div>
         <h3>Pack Business</h3>
-        <div class="price">150€</div>
-        <div class="pay-note">2x possible : 50% à la réservation, 50% au démarrage</div>
+        <div class="price">300€</div>
         <div class="sub">2 SEMAINES D'ACCOMPAGNEMENT</div>
-        <div class="fit">Pour structurer et développer ton activité en profondeur.</div>
+        <div class="fit">2 semaines pour structurer ton activité et passer à l'action.</div>
+        <div class="pack-subhead">Semaine 1</div>
         <ul>
-          <li>2 semaines d'accompagnement</li>
-          <li>2 coachings individuels de 1h en visioconférence</li>
-          <li>Travail sur le positionnement et les tarifs</li>
-          <li>Stratégie Instagram &amp; contenu</li>
-          <li>Organisation &amp; développement</li>
-          <li>Suivi WhatsApp pendant les 2 semaines</li>
-          <li>Plan d'action personnalisé</li>
+          <li>Coaching individuel de 1h en visioconférence</li>
+          <li>Travail sur ton positionnement et tes tarifs</li>
+          <li>Organisation et développement de ton activité</li>
+          <li>Définition de tes priorités et objectifs</li>
         </ul>
+        <div class="pack-subhead">Pendant les 2 semaines</div>
+        <ul>
+          <li>Suivi WhatsApp</li>
+          <li>Réponses aux questions liées aux actions mises en place</li>
+          <li>Ajustements et conseils personnalisés</li>
+          <li>Accompagnement dans la mise en application</li>
+        </ul>
+        <div class="pack-subhead">Semaine 2</div>
+        <ul>
+          <li>2e coaching individuel de 1h</li>
+          <li>Bilan des actions mises en place</li>
+          <li>Ajustements et recommandations</li>
+          <li>Travail sur la suite de ta stratégie</li>
+        </ul>
+        <div class="pack-subhead">À la fin</div>
+        <ul>
+          <li>Plan d'action personnalisé</li>
+          <li>Compte rendu de l'accompagnement</li>
+        </ul>
+        <div class="pay-note" style="margin-top:-6px; margin-bottom:18px;">2x possible : 50% à la réservation, 50% au démarrage</div>
         <a class="btn" href="formulaire-candidature-business.html">Candidater au coaching</a>
       </div>
       <div class="pack-card">
         <div class="badge-rec">Île-de-France uniquement</div>
-        <h3>Business + Visite terrain</h3>
+        <h3>Business + Terrain</h3>
         <div class="price">500€</div>
-        <div class="pay-note">2x possible : 50% à la réservation, 50% au démarrage</div>
-        <div class="sub">2 SEMAINES + 1 VISITE SUR PLACE</div>
-        <div class="fit">Pour un accompagnement complet, avec un œil sur place dès le départ.</div>
+        <div class="sub">1 COACHING + 1 VISITE TERRAIN</div>
+        <div class="fit">Un accompagnement complet avec un regard directement sur ton lieu de travail.</div>
         <ul>
-          <li>Tout le contenu du Pack Business</li>
-          <li>1 visite sur ton lieu de travail, en semaine 1</li>
-          <li>Observation d'une prestation ou de ton organisation</li>
-          <li>Conseils concrets donnés directement sur place</li>
+          <li>Analyse de ton activité en amont</li>
+          <li>Coaching individuel de 1h30 en visioconférence</li>
+          <li>Définition des points à observer sur place</li>
+          <li>1 visite d'une demi-journée sur ton lieu de travail</li>
+          <li>Observation de ton organisation ou d'une prestation</li>
+          <li>Analyse de ton fonctionnement et de ton expérience cliente</li>
+          <li>Conseils concrets directement sur place</li>
+          <li>Recommandations personnalisées</li>
+          <li>Compte rendu après la visite</li>
+          <li>Plan d'action personnalisé</li>
         </ul>
+        <div class="pay-note" style="margin-bottom:18px;">2x possible : 50% à la réservation, 50% au démarrage</div>
+        <p style="font-size:12.5px; color:var(--ink-soft); font-style:italic; line-height:1.7; margin-bottom:24px;">La visite terrain permet d'aller au-delà du coaching à distance et d'apporter des conseils adaptés à ta réalité professionnelle.</p>
         <a class="btn btn-outline" style="background:transparent; color:var(--ink);" href="formulaire-candidature-business.html">Candidater au coaching</a>
       </div>
     </div>
@@ -456,7 +488,7 @@
       <tr>
         <th>&nbsp;</th>
         <th>Audit — 150€</th>
-        <th>Business — 150€</th>
+        <th>Business — 300€</th>
         <th>Business + Visite — 500€</th>
       </tr>
       <tr>
@@ -490,6 +522,27 @@
         <td>Structurer, développer et être conseillée sur place</td>
       </tr>
     </table>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--off);">
+  <div class="wrap">
+    <div class="section-label" style="text-align:center;">LA LOGIQUE DE LA GAMME</div>
+    <h2 style="font-size:clamp(26px,3vw,36px); margin-bottom:46px; text-align:center;">Quelle offre pour toi ?</h2>
+    <div class="logic-wrap">
+      <div class="logic-item">
+        <div class="l-price">150 €<span class="l-label">Audit</span></div>
+        <div class="l-text">Tu veux comprendre ce qui bloque et savoir quoi améliorer.</div>
+      </div>
+      <div class="logic-item">
+        <div class="l-price">300 €<span class="l-label">Business</span></div>
+        <div class="l-text">Tu veux être accompagnée pendant 2 semaines pour réellement mettre en place les changements.</div>
+      </div>
+      <div class="logic-item">
+        <div class="l-price">500 €<span class="l-label">Business + Terrain</span></div>
+        <div class="l-text">Tu veux un accompagnement personnalisé avec mon regard directement sur ton lieu de travail.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -546,7 +599,7 @@
         </div>
         <div class="step">
           <div class="num">04</div>
-          <div><h4>Paiement</h4><p>Après validation, tu règles un acompte de 50% pour réserver ta place — 75€ pour le Pack Business, 250€ pour le Pack Business + Visite terrain. Le solde (50%) est à régler avant le démarrage de l'accompagnement.</p></div>
+          <div><h4>Paiement</h4><p>Après validation, tu règles un acompte de 50% pour réserver ta place — 150€ pour le Pack Business, 250€ pour le Pack Business + Visite terrain. Le solde (50%) est à régler avant le démarrage de l'accompagnement.</p></div>
         </div>
         <div class="step">
           <div class="num">05</div>
@@ -601,7 +654,7 @@
       </details>
       <details class="faq-item">
         <summary data-editable="coaching-business-mua.faq6_question">La visite sur place est-elle disponible partout en France ?</summary>
-        <p data-editable="coaching-business-mua.faq6_text">Non, elle est réservée aux Makeup Artists basées en Île-de-France. Pour les autres régions, le Pack Business (150€) reste disponible avec un accompagnement 100% en visioconférence.</p>
+        <p data-editable="coaching-business-mua.faq6_text">Non, elle est réservée aux Makeup Artists basées en Île-de-France. Pour les autres régions, le Pack Business (300€) reste disponible avec un accompagnement 100% en visioconférence.</p>
       </details>
       <details class="faq-item">
         <summary data-editable="coaching-business-mua.faq7_question">Quelle est la différence entre le Pack Audit, le Pack Business et le Pack Business + Visite terrain ?</summary>
