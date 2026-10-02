@@ -394,27 +394,21 @@
     <div class="packs-grid">
       <div class="pack-card">
         <h3>Pack Audit</h3>
-        <div class="price">199€</div>
+        <div class="price">150€</div>
         <div class="launch-tag">Prix de lancement</div>
-        <div class="pay-note">Comptant</div>
+        <div class="pay-note">Comptant, à régler sur Calendly à la réservation</div>
         <div class="sub">1 SÉANCE DE 1H30</div>
-        <div class="fit">Pour faire le point et repartir avec des actions concrètes.</div>
+        <div class="fit">Pour faire le point sur ton activité et repartir avec des actions concrètes.</div>
         <ul>
-          <li>Analyse de l'activité, des tarifs et du positionnement</li>
-          <li>Analyse Instagram</li>
+          <li>Analyse de ton activité</li>
+          <li>Analyse de tes tarifs et de ton positionnement</li>
+          <li>Analyse de ton Instagram</li>
           <li>1 coaching individuel de 1h30 en visioconférence</li>
-          <li>Conseils personnalisés</li>
-          <li>Plan d'action sur 30 jours</li>
-          <li>Compte rendu personnalisé</li>
+          <li>Conseils personnalisés selon tes problématiques</li>
+          <li>Synthèse des points abordés</li>
+          <li>3 à 5 actions prioritaires à mettre en place</li>
         </ul>
-        <button type="button" class="btn btn-outline" style="background:transparent; color:var(--ink);" id="auditPayToggle">Réserver mon coaching</button>
-        <div id="auditPayForm" style="display:none; margin-top:16px; padding:20px; border:1px solid var(--line); background:var(--off); text-align:left;">
-          <label for="auditEmail" style="display:block; font-size:11px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:8px;">Ton email</label>
-          <input type="email" id="auditEmail" required placeholder="ton@email.com" style="width:100%; border:none; border-bottom:1px solid var(--line); padding:10px 4px; font-family:inherit; font-size:15px; background:transparent; margin-bottom:16px; color:var(--ink);">
-          <button type="button" class="btn" id="auditPayBtn" style="width:100%;">Payer 199€ par carte bancaire</button>
-          <p id="auditPayStatus" style="min-height:16px; font-size:12px; color:var(--ink-soft); margin-top:10px;"></p>
-          <p style="font-size:11px; color:var(--gray); margin-top:8px; line-height:1.6;">Un souci avec le paiement en ligne ? Écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:inherit;">academy@cmakeupbeauty.fr</a>.</p>
-        </div>
+        <a class="btn btn-outline" style="background:transparent; color:var(--ink);" href="questionnaire-audit.html">Réserver mon audit</a>
       </div>
       <div class="pack-card featured">
         <div class="badge-rec">Le plus choisi</div>
@@ -461,7 +455,7 @@
     <table class="compare-table">
       <tr>
         <th>&nbsp;</th>
-        <th>Audit — 199€</th>
+        <th>Audit — 150€</th>
         <th>Business — 150€</th>
         <th>Business + Visite — 500€</th>
       </tr>
@@ -510,30 +504,26 @@
       <div class="step-list">
         <div class="step">
           <div class="num">01</div>
-          <div><h4>Choix de l'offre</h4><p>Tu cliques sur « Réserver mon coaching ».</p></div>
+          <div><h4>Choix de l'offre</h4><p>Tu cliques sur « Réserver mon audit ».</p></div>
         </div>
         <div class="step">
           <div class="num">02</div>
-          <div><h4>Paiement</h4><p>Tu règles les 199€ directement sur le site, comptant.</p></div>
+          <div><h4>Questionnaire</h4><p>Tu remplis d'abord le questionnaire préparatoire : activité, objectifs, tarifs, Instagram, difficultés.</p></div>
         </div>
         <div class="step">
           <div class="num">03</div>
-          <div><h4>Questionnaire</h4><p>Après paiement, tu reçois un questionnaire préparatoire : activité, objectifs, tarifs, Instagram, difficultés et disponibilités.</p></div>
+          <div><h4>Réservation &amp; paiement</h4><p>Tu es redirigée vers Calendly pour choisir ton créneau et régler les 150€, comptant.</p></div>
         </div>
         <div class="step">
           <div class="num">04</div>
-          <div><h4>Réservation</h4><p>Tu reçois un lien de calendrier pour choisir ton créneau de visioconférence.</p></div>
-        </div>
-        <div class="step">
-          <div class="num">05</div>
           <div><h4>Préparation</h4><p>Colleen reçoit tes réponses avant le rendez-vous et prépare ton analyse.</p></div>
         </div>
         <div class="step">
-          <div class="num">06</div>
+          <div class="num">05</div>
           <div><h4>Coaching</h4><p>Séance individuelle de 1h30 en visioconférence.</p></div>
         </div>
         <div class="step">
-          <div class="num">07</div>
+          <div class="num">06</div>
           <div><h4>Après le coaching</h4><p>Tu reçois ton compte rendu et ton plan d'action personnalisé sur 30 jours.</p></div>
         </div>
       </div>
@@ -691,61 +681,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (function(){
-  var toggleBtn = document.getElementById('auditPayToggle');
-  var payForm = document.getElementById('auditPayForm');
-  var payBtn = document.getElementById('auditPayBtn');
-  var payStatus = document.getElementById('auditPayStatus');
-  if(!toggleBtn || !payForm || !payBtn) return;
-
   var _sbAudit = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
   var params = new URLSearchParams(window.location.search);
-  var AMOUNT_CENTS = 19900;
-
-  function pageUrl(extra){
-    var base = window.location.origin + window.location.pathname;
-    return base + (extra ? '?' + extra : '') + '#packs';
-  }
-
-  toggleBtn.addEventListener('click', function(){
-    var open = payForm.style.display === 'none';
-    payForm.style.display = open ? 'block' : 'none';
-    if(open){ payForm.scrollIntoView({behavior:'smooth', block:'center'}); }
-  });
-
-  payBtn.addEventListener('click', function(){
-    var email = document.getElementById('auditEmail').value;
-    if(!email){ return; }
-    payBtn.disabled = true;
-    payStatus.style.color = 'var(--ink-soft)';
-    payStatus.textContent = 'Préparation du paiement sécurisé...';
-    var recordId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
-    _sbAudit.from('pack_audit_paiements').insert({ id: recordId, email: email, statut_paiement: 'en_attente' }).then(function(res){
-      if(res.error){
-        payBtn.disabled = false;
-        payStatus.style.color = '#B33A3A';
-        payStatus.textContent = "Un problème est survenu. Écris-nous directement, voir plus bas.";
-        return;
-      }
-      _sbAudit.functions.invoke('create-checkout-session', {
-        body: {
-          table: 'pack_audit_paiements',
-          record_id: recordId,
-          amount_cents: AMOUNT_CENTS,
-          description: 'Pack Audit — Coaching Business MUA',
-          success_url: pageUrl('paid=1&session_id={CHECKOUT_SESSION_ID}'),
-          cancel_url: pageUrl()
-        }
-      }).then(function(res2){
-        payBtn.disabled = false;
-        if(res2.error || !res2.data || !res2.data.url){
-          payStatus.style.color = '#B33A3A';
-          payStatus.textContent = "Le paiement en ligne n'a pas pu démarrer. Contacte-nous directement, voir plus bas.";
-          return;
-        }
-        window.location.href = res2.data.url;
-      });
-    });
-  });
 
   // Retour depuis Stripe Checkout (Pack Business — acompte coaching généré par l'admin)
   if(params.get('coaching_paid') === '1' && params.get('session_id')){
@@ -761,28 +698,6 @@
       } else {
         coachBanner.style.color = '#B33A3A';
         coachBanner.innerHTML = "Nous n'avons pas pu confirmer ton paiement. Si la somme a bien été débitée, écris-nous directement à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
-      }
-    });
-  }
-
-  // Retour depuis Stripe Checkout
-  if(params.get('paid') === '1' && params.get('session_id')){
-    toggleBtn.style.display = 'none';
-    payForm.style.display = 'block';
-    document.getElementById('auditEmail').style.display = 'none';
-    payBtn.style.display = 'none';
-    payStatus.style.color = 'var(--ink-soft)';
-    payStatus.textContent = 'Vérification du paiement...';
-    _sbAudit.functions.invoke('confirm-checkout-session', { body: { session_id: params.get('session_id') } }).then(function(res){
-      var paid = res.data && res.data.paid;
-      var recordId = res.data && res.data.record_id;
-      if(paid && recordId){
-        payStatus.style.color = 'var(--ink-soft)';
-        payStatus.textContent = 'Paiement confirmé ! Redirection vers ton questionnaire...';
-        window.location.href = 'questionnaire-audit.html?pack_audit_paiement_id=' + encodeURIComponent(recordId);
-      } else {
-        payStatus.style.color = '#B33A3A';
-        payStatus.textContent = "Nous n'avons pas pu confirmer ton paiement. Si la somme a bien été débitée, écris-nous directement, voir plus bas.";
       }
     });
   }

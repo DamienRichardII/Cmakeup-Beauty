@@ -157,11 +157,6 @@
   <p>Merci pour ta confiance ! Ce questionnaire permet à Colleen de préparer ton analyse avant votre séance de 1h30. Prends le temps d'y répondre avec précision — plus tes réponses sont complètes, plus votre échange sera efficace.</p>
 </div>
 
-<div class="wrap" id="auditGate" style="display:none; padding:40px 0; text-align:center;">
-  <p style="font-size:15px; line-height:1.8; color:var(--ink-soft);">Ce questionnaire est accessible uniquement après le paiement du Pack Audit.<br>Si tu penses qu'il s'agit d'une erreur, écris-nous à <a href="mailto:academy@cmakeupbeauty.fr" style="text-decoration:underline; color:var(--ink);">academy@cmakeupbeauty.fr</a>.</p>
-  <a class="btn" href="coaching-business-mua.html#packs" style="display:inline-block; margin-top:24px; padding:14px 34px;">Voir le Pack Audit</a>
-</div>
-
 <!-- Champs requis marqués d'un astérisque. -->
 <form class="wrap" id="auditForm" action="#" method="post">
 
@@ -258,14 +253,6 @@
   </fieldset>
 
   <fieldset>
-    <legend>Tes disponibilités</legend>
-    <div class="field">
-      <label class="field-label" for="dispo">Quels jours et créneaux te conviennent pour la visioconférence de 1h30 ?</label>
-      <textarea id="dispo" name="disponibilites"></textarea>
-    </div>
-  </fieldset>
-
-  <fieldset>
     <div class="field" style="margin-bottom:0; display:flex; align-items:flex-start; gap:10px;">
       <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:3px; width:auto;">
       <label class="field-label" for="rgpd" style="margin-bottom:0; font-size:13px;">J'accepte que mes informations soient utilisées pour préparer mon coaching, conformément à la politique de confidentialité.</label>
@@ -273,7 +260,7 @@
   </fieldset>
 
   <div class="submit-row">
-    <p>Une fois envoyé, Colleen prépare ton analyse à partir de tes réponses avant votre séance. Tu recevras un lien de calendrier pour choisir ton créneau.</p>
+    <p>Une fois envoyé, tu seras redirigée vers notre page de réservation pour choisir ton créneau et régler les 150€ (comptant) directement sur Calendly. Colleen prépare ton analyse à partir de tes réponses avant votre séance.</p>
     <button type="submit" class="btn">Envoyer mon questionnaire</button>
     <p class="form-status" role="status" aria-live="polite" style="margin-top:20px; font-size:13px;"></p>
   </div>
@@ -290,34 +277,20 @@
 <script>
 (function(){
   var form = document.getElementById('auditForm');
-  var gate = document.getElementById('auditGate');
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
-
-  var packAuditPaiementId = new URLSearchParams(window.location.search).get('pack_audit_paiement_id');
-
-  if(!packAuditPaiementId){
-    form.style.display = 'none';
-    gate.style.display = 'block';
-  } else {
-    _sb.rpc('check_pack_audit_payment_status', { p_id: packAuditPaiementId }).then(function(res){
-      if(res.error || res.data !== 'paye'){
-        form.style.display = 'none';
-        gate.style.display = 'block';
-      }
-    });
-  }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.btn');
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
+    var nomPrenomVal = document.getElementById('nom').value;
+    var emailVal = document.getElementById('email').value;
     _sb.from('questionnaires_audit').insert({
-      pack_audit_paiement_id: packAuditPaiementId,
-      nom_prenom: document.getElementById('nom').value,
-      email: document.getElementById('email').value,
+      nom_prenom: nomPrenomVal,
+      email: emailVal,
       telephone: document.getElementById('tel').value,
       ville: document.getElementById('ville').value,
       anciennete: (form.querySelector('input[name="anciennete"]:checked') || {}).value || '',
@@ -329,7 +302,6 @@
       instagram_usage: document.getElementById('insta-usage').value,
       objectifs: document.getElementById('objectifs').value,
       difficultes: document.getElementById('difficultes').value,
-      disponibilites: document.getElementById('dispo').value,
       rgpd_consent: document.getElementById('rgpd').checked
     }).then(function(res){
       btn.disabled = false;
@@ -338,7 +310,8 @@
         status.style.color = '#B33A3A';
         status.innerHTML = "Un problème est survenu lors de l'envoi. Envoie tes réponses directement à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:var(--ink);\">academy@cmakeupbeauty.fr</a>.";
       } else {
-        window.location.href = 'reservation-coaching-audit.html';
+        var redirectParams = new URLSearchParams({ nom: nomPrenomVal, email: emailVal });
+        window.location.href = 'reservation-coaching-audit.html?' + redirectParams.toString();
       }
     });
   });

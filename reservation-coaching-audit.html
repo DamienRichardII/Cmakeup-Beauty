@@ -45,8 +45,9 @@
   .calendly-section{padding:50px 0 90px;}
   .calendly-inline-widget{border:1px solid var(--line);}
 
-  .prep-note{max-width:640px; margin:0 auto 50px; text-align:center; background:var(--off); border:1px solid var(--line); padding:22px 28px; font-size:13.5px; line-height:1.8; color:var(--ink);}
+  .prep-note{max-width:640px; margin:0 auto 24px; text-align:center; background:var(--off); border:1px solid var(--line); padding:22px 28px; font-size:13.5px; line-height:1.8; color:var(--ink);}
   .prep-note a{text-decoration:underline; color:var(--ink);}
+  .pay-note{max-width:640px; margin:0 auto 40px; text-align:center; font-size:12.5px; color:var(--ink-soft); line-height:1.8;}
 
   footer{padding:32px 0; background:var(--white); border-top:1px solid var(--line); text-align:center;}
   .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
@@ -68,11 +69,12 @@
 <div class="intro">
   <div class="wrap">
     <div class="eyebrow">Pack Audit — 1h30</div>
-    <h1>Ton questionnaire est bien reçu<br>réserve ton créneau d'appel</h1>
+    <h1>Réserve ton appel directement</h1>
     <p class="lead">Choisis le créneau qui t'arrange ci-dessous. L'appel se déroule en visio (Zoom), et tu recevras automatiquement ta confirmation et le lien de connexion.</p>
 
     <div class="info-row">
       <div class="info-item"><div class="i-num">1h30</div><div class="i-label">Durée de<br>l'appel</div></div>
+      <div class="info-item"><div class="i-num">150€</div><div class="i-label">Paiement unique<br>à la réservation</div></div>
       <div class="info-item"><div class="i-num">Visio</div><div class="i-label">Zoom,<br>lien envoyé</div></div>
       <div class="info-item"><div class="i-num">1–2h</div><div class="i-label">Délai du<br>compte rendu</div></div>
     </div>
@@ -82,7 +84,8 @@
 <div class="calendly-section">
   <div class="wrap">
     <div class="prep-note">Colleen a bien reçu ton questionnaire préparatoire — elle l'étudiera avant votre échange pour le rendre encore plus efficace.</div>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/cmakeupbeauty/coachingmakeup?hide_gdpr_banner=1" style="min-width:320px;height:750px;"></div>
+    <div class="pay-note">Un paiement unique de 150€ (comptant) est à régler directement sur Calendly pour valider ta réservation.</div>
+    <div class="calendly-inline-widget" id="calendlyWidget" data-url="https://calendly.com/cmakeupbeauty/coachingmakeup?hide_gdpr_banner=1" style="min-width:320px;height:750px;"></div>
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
   </div>
 </div>
@@ -90,6 +93,21 @@
 <footer>
   <div class="footer-note">© 2026 CMAKEUP BEAUTY — academy@cmakeupbeauty.fr</div>
 </footer>
+
+<script>
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var prefillName = params.get('nom') || '';
+    var prefillEmail = params.get('email') || '';
+    var baseUrl = 'https://calendly.com/cmakeupbeauty/coachingmakeup?hide_gdpr_banner=1';
+    var prefillParams = new URLSearchParams();
+    if(prefillName) prefillParams.set('name', prefillName);
+    if(prefillEmail) prefillParams.set('email', prefillEmail);
+    var widgetUrl = baseUrl + (prefillParams.toString() ? '&' + prefillParams.toString() : '');
+    var widgetEl = document.getElementById('calendlyWidget');
+    if(widgetEl) widgetEl.setAttribute('data-url', widgetUrl);
+  })();
+</script>
 
 </body>
 </html>
