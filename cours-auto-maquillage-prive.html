@@ -279,6 +279,16 @@
   .nav-drop-label:not(:first-child){margin-top:4px; padding-top:14px; border-top:1px solid var(--line);}
   .nav-drop-menu a::after{display:none;}
   .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
+  .pricing-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line);
+    max-width:820px; margin:0 auto; border:1px solid var(--line);
+  }
+  .price-option{background:var(--white); padding:44px 34px; text-align:center;}
+  .price-option.featured{background:var(--ink);}
+  .price-option.featured .p-note{color:#D8D6D0;}
+  .price-option .p-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:16px;}
+  .price-option .p-amount{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:36px; margin-bottom:14px;}
+  .price-option .p-note{font-size:13px; color:var(--ink-soft); line-height:1.75;}
 </style>
 </head>
 <body>
@@ -344,9 +354,9 @@
 
 <section>
   <div class="wrap" style="text-align:center;">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section3_eyebrow">DATES</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section3_title">Un cours qui s'adapte à ton emploi du temps</h2>
-    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section3_lede">Ce cours privé n'a pas de dates fixes : ta séance de 3h (matin ou après-midi) se programme directement avec toi, selon tes disponibilités. Indique tes dates souhaitées dans le formulaire ci-dessous, nous te recontacterons pour les confirmer.</p>
+    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section3_eyebrow">RÉSERVATION</div>
+    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section3_title">Remplis le formulaire ci-dessous</h2>
+    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section3_lede">Indique tes disponibilités dans le formulaire plus bas sur cette page. Kit de pinceaux et guide makeup inclus. Je te réponds par email sous 1 à 3 jours pour confirmer ta date.</p>
   </div>
 </section>
 
@@ -361,19 +371,29 @@
       <div>— Places très limitées</div>
       <div>— Kit de pinceaux + guide PDF offerts</div>
       <div>— Matériel professionnel à disposition sur place</div>
-      <div>— Éligible CPF : 1100€ (sous validation du dossier)</div>
+      <div>— Éligible CPF : 1100€, sous validation du dossier</div>
       <div>— Dates flexibles, selon tes disponibilités</div>
     </div>
   </div>
 </section>
 
-<section class="invest-wrap">
+<section>
   <div class="wrap">
-    <div class="invest-badge">L'investissement</div>
-    <div class="invest-price"><span data-editable="cours-auto-maquillage-prive.prix_classique">500</span><span>€</span></div>
-    <div class="invest-sub">La demi-journée (3h) — créneau matin ou après-midi — acompte de 150€ pour valider ta place</div>
-    <div class="invest-sub" style="margin-top:6px;">Le cours complet est également finançable via ton CPF : 1100€ — sous réserve de validation du dossier</div>
-    <p class="invest-note">Ce tarif reflète un accompagnement 100% individuel, pensé pour toi seule : méthode professionnelle et matériel offert. Places très limitées pour garantir cette qualité d'accompagnement.</p>
+    <div class="section-eyebrow" style="text-align:center;">L'INVESTISSEMENT</div>
+    <h2 class="section-title" style="margin-bottom:40px;">Deux façons de financer ton cours</h2>
+    <div class="pricing-grid">
+      <div class="price-option">
+        <div class="p-label">Paiement classique</div>
+        <div class="p-amount"><span data-editable="cours-auto-maquillage-prive.prix_classique">500</span> €</div>
+        <div class="p-note">La demi-journée (3h), créneau matin ou après-midi.<br>Acompte de 150€ pour valider ta place.</div>
+      </div>
+      <div class="price-option featured">
+        <div class="p-label">Financement CPF</div>
+        <div class="p-amount">1100 €</div>
+        <div class="p-note">Cours finançable via ton Compte Personnel de Formation.<br>Sous réserve de validation du dossier.</div>
+      </div>
+    </div>
+    <p style="max-width:640px; margin:34px auto 0; text-align:center; font-size:13px; color:var(--ink-soft); line-height:1.8;">Ce tarif reflète un accompagnement 100% individuel, pensé pour toi seule : méthode professionnelle et matériel offert. Places très limitées pour garantir cette qualité d'accompagnement.</p>
   </div>
 </section>
 
@@ -392,7 +412,7 @@
       <div class="badge-premium">Bonus offert</div>
       <h2>Le Master Guide<br>d'Auto-Maquillage</h2>
       <div class="l-tagline">Confiance · Maîtrise · Éclat</div>
-      <p class="l-desc">En plus de ta séance en présentiel, tu repars avec un livret complet pour continuer à t'entraîner chez toi — pensé comme un vrai guide de référence, étape par étape.</p>
+      <p class="l-desc">En plus de ta journée en présentiel, tu repars avec un livret complet pour continuer à t'entraîner chez toi — pensé comme un vrai guide de référence, étape par étape.</p>
       <ul class="livret-programme">
         <li><span class="l-num">01</span> Introduction au maquillage Soft Glam</li>
         <li><span class="l-num">02</span> Les pinceaux</li>
@@ -416,7 +436,7 @@
     <div class="faq-list">
       <details class="faq-item">
         <summary data-editable="cours-auto-maquillage-prive.faq1_question">Quelle est la différence avec l'Auto Makeup Class ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq1_text">L'<a href="auto-makeup-class.html" style="text-decoration:underline; color:var(--ink);">Auto Makeup Class</a> est une journée complète (8h, 300€), en petit comité. Ce cours privé est un format plus court et 100% individuel : 3h, en tête-à-tête avec Colleen ou Arlyne (selon les disponibilités), pour un accompagnement encore plus personnalisé.</p>
+        <p data-editable="cours-auto-maquillage-prive.faq1_text">L'<a href="auto-makeup-class.html" style="text-decoration:underline; color:var(--ink);">Auto Makeup Class</a> est une journée complète (8h, 300€), en petit comité. Ce cours privé est un format plus court et 100% individuel : 3h, en tête-à-tête avec Colleen ou Arlyne selon les disponibilités, pour un accompagnement encore plus personnalisé.</p>
       </details>
       <details class="faq-item">
         <summary data-editable="cours-auto-maquillage-prive.faq2_question">Faut-il un niveau particulier pour participer ?</summary>
@@ -442,7 +462,7 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section7_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section7_title">Réserver ma place</h2>
-    <p class="form-note">Ce cours privé se programme selon tes disponibilités : indique tes dates souhaitées et ton créneau préféré (matin ou après-midi), nous te recontacterons pour les confirmer.</p>
+    <p class="form-note">Les dates n'étant pas encore confirmées, indique ta session et ton créneau préférés (matin ou après-midi) : nous te recontacterons dès leur validation pour finaliser ta réservation.</p>
 
     <form class="inscription-form">
       <div class="form-row">
@@ -476,8 +496,8 @@
 
       <div class="form-row">
         <div class="field">
-          <label for="dates">Tes dates souhaitées</label>
-          <input type="text" id="dates" name="dates" placeholder="Ex : un samedi matin en novembre, ou toute autre période qui t'arrange" required>
+          <label for="disponibilites">Tes disponibilités</label>
+          <input type="text" id="disponibilites" name="disponibilites" placeholder="Ex : le 17 octobre, ou toute autre date qui t'arrange" required>
         </div>
         <div class="field">
           <label for="creneau">Créneau</label>
@@ -528,8 +548,8 @@
           </select>
         </div>
         <div class="field">
-          <label for="dejaCliente">As-tu déjà été cliente chez nous ?</label>
-          <select id="dejaCliente" name="dejaCliente">
+          <label for="deja-cliente">As-tu déjà été cliente chez nous ?</label>
+          <select id="deja-cliente" name="deja-cliente">
             <option value="">Sélectionnez</option>
             <option value="oui">Oui</option>
             <option value="non">Non, première fois</option>
@@ -595,7 +615,7 @@
       </div>
 
       <button type="submit" class="btn form-submit">Envoyer ma demande de réservation</button>
-      <p class="form-disclaimer">En cas de paiement personnel, tu seras redirigée vers Calendly pour choisir ton créneau et régler l'acompte de 150€ (non remboursable) directement en ligne. En cas de financement CPF, ta demande est d'abord étudiée, sans acompte à ce stade.</p>
+      <p class="form-disclaimer">Réponse par email sous 1 à 3 jours pour confirmer ta date. Un acompte de 150€ (non remboursable) sera demandé pour bloquer définitivement ta place — uniquement en cas de financement personnel. En cas de financement CPF, aucun acompte n'est demandé.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
   </div>
@@ -655,39 +675,6 @@
     var btn = form.querySelector('.form-submit');
     var financementVal = document.getElementById('financement').value;
 
-    if(financementVal === 'classique'){
-      // Paiement personnel : redirection vers la réservation Calendly. Aucun enregistrement
-      // en base tant que le créneau n'est pas réellement confirmé (même principe que pour
-      // l'appel découverte mariée et le Pack Audit).
-      var pendingValues = {
-        source_page: 'cours-auto-maquillage-prive',
-        prenom: document.getElementById('prenom').value,
-        nom: document.getElementById('nom').value,
-        email: document.getElementById('email').value,
-        telephone: document.getElementById('telephone').value,
-        ville: document.getElementById('ville').value,
-        dates_souhaitees: document.getElementById('dates').value,
-        creneau: document.getElementById('creneau').value,
-        niveau: document.getElementById('niveau').value,
-        trousse: document.getElementById('trousse').value,
-        pourquoi: document.getElementById('pourquoi').value,
-        style: document.getElementById('style').value,
-        deja_cliente: document.getElementById('dejaCliente').value,
-        financement: financementVal,
-        message: document.getElementById('message').value,
-        rgpd_consent: document.getElementById('rgpd').checked
-      };
-      try{ sessionStorage.setItem('cmk_cours_prive_pending', JSON.stringify(pendingValues)); } catch(err){}
-      var redirectParams = new URLSearchParams({
-        prenom: pendingValues.prenom,
-        nom: pendingValues.nom,
-        email: pendingValues.email
-      });
-      window.location.href = 'reservation-cours-prive.html?' + redirectParams.toString();
-      return;
-    }
-
-    // Financement CPF : dossier à étudier, enregistrement direct (comportement existant).
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
     var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
@@ -705,13 +692,13 @@
         email: document.getElementById('email').value,
         telephone: document.getElementById('telephone').value,
         ville: document.getElementById('ville').value,
-        dates_souhaitees: document.getElementById('dates').value,
+        dates_souhaitees: document.getElementById('disponibilites').value,
         creneau: document.getElementById('creneau').value,
         niveau: document.getElementById('niveau').value,
         trousse: document.getElementById('trousse').value,
         pourquoi: document.getElementById('pourquoi').value,
         style: document.getElementById('style').value,
-        deja_cliente: document.getElementById('dejaCliente').value,
+        deja_cliente: document.getElementById('deja-cliente').value,
         financement: financementVal,
         solde_cpf: document.getElementById('solde_cpf').value,
         adresse_postale: document.getElementById('adresse_postale').value,
