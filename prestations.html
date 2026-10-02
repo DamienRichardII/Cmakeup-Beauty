@@ -12,8 +12,6 @@
 <meta property="og:url" content="https://cmakeup-beauty.vercel.app/prestations.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -186,7 +184,7 @@
 <section class="page-hero">
   <div class="wrap">
     <div class="eyebrow" data-editable="prestations.hero_eyebrow">NOS PRESTATIONS</div>
-    <h1 data-editable="prestations.hero_title">Prestations Invitées</h1>
+    <h1 data-editable="prestations.hero_title">Les Prestations</h1>
     <p data-editable="prestations.hero_text" style="max-width:560px; margin:24px auto 0; font-size:16px; line-height:1.8; color:var(--ink-soft);">Un maquillage professionnel, pensé pour durer toute la journée, avec des produits haut de gamme adaptés à chaque type de peau.</p>
     <div class="info-box">
       <div class="info-title"><span class="b-icon">📅</span>Bon à savoir</div>
@@ -211,19 +209,17 @@
           <p data-editable="prestations.smoky_eyes_text">Maquillage simple, couleur noir ou marron sur les yeux, teint bien travaillé.</p>
           <p>Faux cils inclus.</p>
           <div class="p-price" data-editable="prestations.smoky_eyes_price">90€</div>
-          <a class="btn p-cta presta-cta" href="#reserver" data-prestation="smoky-eyes">Je réserve</a>
         </div>
       </div>
 
       <div class="presta-card">
-        <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-0621e589ab43.webp" alt="Makeup Soft Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
+        <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-672ddd10e32e.webp" alt="Makeup Soft Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
         <div class="p-text">
           <div class="p-badge">Invitée</div>
           <h2>Soft Glam</h2>
           <p data-editable="prestations.soft_glam_text">Effet bien maquillée mais subtil, regard dans les tons dorés irisés ou nude matte.</p>
           <p>Faux cils inclus.</p>
           <div class="p-price" data-editable="prestations.soft_glam_price">100€</div>
-          <a class="btn p-cta presta-cta" href="#reserver" data-prestation="soft-glam">Je réserve</a>
         </div>
       </div>
 
@@ -235,7 +231,6 @@
           <p data-editable="prestations.full_glam_text">Maquillage plus sophistiqué : cut crease, paillettes ou couleurs.</p>
           <p>Faux cils inclus.</p>
           <div class="p-price" data-editable="prestations.full_glam_price">150€</div>
-          <a class="btn p-cta presta-cta" href="#reserver" data-prestation="full-glam">Je réserve</a>
         </div>
       </div>
     </div>
@@ -261,18 +256,10 @@
       <div class="artist-btn soon" data-artist="lady"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button><div class="artist-location">Sarcelles (95)</div><div class="artist-soon-tag">Bientôt</div></div>
     </div>
 
-    <div id="colleenCalendlyWrap">
-      <div class="presta-picker" id="prestaPicker">
-        <button type="button" class="presta-cta" data-prestation="smoky-eyes">Smoky Eyes — 90€</button>
-        <button type="button" class="presta-cta" data-prestation="soft-glam">Soft Glam — 100€</button>
-        <button type="button" class="presta-cta" data-prestation="full-glam">Full Glam — 150€</button>
-      </div>
-      <p id="colleenCalendlyHint" style="text-align:center; font-size:13px; color:var(--ink-soft); margin:0 auto 20px; max-width:520px;">Choisis une prestation ci-dessus pour voir les disponibilités en direct.</p>
-      <div id="colleenCalendlyWidget" style="min-width:280px; height:700px; max-width:640px; margin:0 auto;"></div>
-      <p id="colleenCalendlyStatus" style="display:none; text-align:center; font-size:13px; color:var(--ink-soft); margin-top:16px;"></p>
-    </div>
-
     <p style="text-align:center; font-size:14.5px; color:var(--ink-soft); margin-top:34px;">Pense à consulter les <a href="conditions-rdv.html" style="text-decoration:underline; color:var(--ink);">conditions de rendez-vous</a> avant de réserver.</p>
+    <div class="presta-cta-wrap" style="text-align:center; margin-top:28px;">
+      <a class="btn" href="reservation-invitee.html" style="display:inline-block; padding:20px 56px; font-size:15px; letter-spacing:0.1em;">Réserver une prestation</a>
+    </div>
 
   </div>
 </section>
@@ -286,124 +273,6 @@
     <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
   </div>
 </footer>
-
-<script>
-(function(){
-  let selectedArtist = 'peu-importe';
-  const prestaLabels = {
-    'smoky-eyes': 'Smoky Eyes — 90€',
-    'soft-glam': 'Soft Glam — 100€',
-    'full-glam': 'Full Glam — 150€'
-  };
-  const urlPrestation = new URLSearchParams(window.location.search).get('prestation');
-  let selectedPrestation = prestaLabels[urlPrestation] ? urlPrestation : null;
-
-  const artistPicker = document.getElementById('artistPicker');
-
-  const colleenCalendlyWrap = document.getElementById('colleenCalendlyWrap');
-  const colleenCalendlyHint = document.getElementById('colleenCalendlyHint');
-  const colleenCalendlyWidgetEl = document.getElementById('colleenCalendlyWidget');
-  const colleenCalendlyStatus = document.getElementById('colleenCalendlyStatus');
-
-  const colleenPrestaUrls = {
-    'smoky-eyes': 'https://calendly.com/cmakeupbeauty/prestation-makeupsoftmattebronze?hide_event_type_details=1&hide_gdpr_banner=1',
-    'soft-glam': 'https://calendly.com/cmakeupbeauty/prestation-makeup-soft-glam?hide_event_type_details=1&hide_gdpr_banner=1',
-    'full-glam': 'https://calendly.com/cmakeupbeauty/prestation-makeup-full-glam?hide_event_type_details=1&hide_gdpr_banner=1'
-  };
-  var colleenCalendlyCurrentUrl = null;
-
-  function waitForCalendly(cb, tries){
-    tries = tries || 0;
-    if(window.Calendly){ cb(); }
-    else if(tries < 60){ setTimeout(function(){ waitForCalendly(cb, tries + 1); }, 250); }
-  }
-
-  function updateCalendlyMode(){
-    // TEMPORAIRE : en attendant les liens Calendly individuels d'Arlyne, Fatou et Lady,
-    // les 4 maquilleuses utilisent le calendrier de Colleen. À remplacer par une URL
-    // par maquilleuse (sur le modèle de colleenPrestaUrls) dès réception des liens.
-    colleenCalendlyWrap.style.display = 'block';
-    var prestaPicker = document.getElementById('prestaPicker');
-    if(prestaPicker){
-      prestaPicker.querySelectorAll('button').forEach(function(b){
-        b.classList.toggle('selected', b.getAttribute('data-prestation') === selectedPrestation);
-      });
-    }
-    var url = colleenPrestaUrls[selectedPrestation];
-    if(url){
-      colleenCalendlyHint.style.display = 'none';
-      colleenCalendlyWidgetEl.style.display = 'block';
-      if(colleenCalendlyCurrentUrl !== url){
-        colleenCalendlyCurrentUrl = url;
-        waitForCalendly(function(){
-          colleenCalendlyWidgetEl.innerHTML = '';
-          window.Calendly.initInlineWidget({ url: url, parentElement: colleenCalendlyWidgetEl });
-        });
-      }
-    } else {
-      colleenCalendlyCurrentUrl = null;
-      colleenCalendlyHint.style.display = 'block';
-      colleenCalendlyWidgetEl.style.display = 'none';
-      colleenCalendlyWidgetEl.innerHTML = '';
-    }
-  }
-
-  window.addEventListener('message', function(e){
-    if(!(e.origin === 'https://calendly.com' && e.data && typeof e.data.event === 'string' && e.data.event.indexOf('calendly.') === 0)) return;
-    if(e.data.event === 'calendly.event_scheduled'){
-      colleenCalendlyStatus.style.display = 'block';
-      colleenCalendlyStatus.textContent = 'Rendez-vous confirmé avec ' + artistLabel() + ' ! Redirection vers le paiement de l\'acompte...';
-      var p = new URLSearchParams();
-      if(selectedPrestation) p.set('prestation', selectedPrestation);
-      p.set('artist', selectedArtist);
-      p.set('via', 'calendly');
-      setTimeout(function(){
-        window.location.href = 'reservation.html?' + p.toString();
-      }, 1800);
-    }
-  });
-
-  function artistLabel(){
-    const selEl = artistPicker.querySelector('.artist-btn.selected');
-    if(!selEl) return '';
-    const span = selEl.querySelector('span');
-    if(span) return span.textContent;
-    const selBtn = selEl.querySelector('.artist-select-btn');
-    return selBtn ? selBtn.textContent : '';
-  }
-
-  function selectArtist(el){
-    artistPicker.querySelectorAll('.artist-btn').forEach(b=>b.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedArtist = el.getAttribute('data-artist');
-    updateCalendlyMode();
-  }
-
-  document.querySelectorAll('.presta-cta').forEach(function(a){
-    a.addEventListener('click', function(){
-      selectedPrestation = a.getAttribute('data-prestation');
-      updateCalendlyMode();
-    });
-  });
-
-  // "Peu importe" — bouton simple, clic = sélection
-  const peuImporteBtn = artistPicker.querySelector('button.artist-btn[data-artist="peu-importe"]');
-  if(peuImporteBtn){
-    peuImporteBtn.addEventListener('click', function(){ selectArtist(peuImporteBtn); });
-  }
-
-  // Maquilleuses nommées — la photo ouvre son travail (équipe), le nom sélectionne pour le calendrier
-  // (les maquilleuses marquées "soon" ne sont pas encore sélectionnables)
-  artistPicker.querySelectorAll('div.artist-btn').forEach(function(wrap){
-    const nameBtn = wrap.querySelector('.artist-select-btn');
-    if(nameBtn && !wrap.classList.contains('soon')){
-      nameBtn.addEventListener('click', function(){ selectArtist(wrap); });
-    }
-  });
-
-  updateCalendlyMode();
-})();
-</script>
 
 
 <script>

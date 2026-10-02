@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Réserver ma prestation invitée</title>
+<style>
+  :root{
+    --white:#FFFFFF; --off:#F4F4F2; --paper:#D6D1C5; --line:#D6D1C5;
+    --ink:#1A1A1A; --ink-soft:#75736D; --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--white); color:var(--ink); font-family:'TT Interphase','Jost', sans-serif; font-weight:300; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-weight:400; letter-spacing:0.01em;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 40px;}
+
+  header{display:flex; align-items:center; justify-content:space-between; padding:28px 40px; border-bottom:1px solid var(--line);}
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  .back-link{font-size:13px; letter-spacing:0.04em; color:var(--ink-soft);}
+  .back-link:hover{color:var(--ink);}
+
+  .intro{padding:70px 0 30px; text-align:center;}
+  .eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); text-transform:uppercase; margin-bottom:18px;}
+  h1{font-size:clamp(30px,4vw,44px); line-height:1.15; margin-bottom:18px;}
+  .lead{font-size:16px; line-height:1.8; color:var(--ink-soft); max-width:640px; margin:0 auto;}
+
+  .picker{display:flex; justify-content:center; gap:1px; background:var(--line); border:1px solid var(--line); max-width:720px; margin:40px auto 0;}
+  .pick-item{flex:1; background:var(--white); text-align:center; padding:20px 16px; cursor:pointer; border:none; font-family:inherit;}
+  .pick-item .p-name{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:17px; margin-bottom:4px; color:var(--ink);}
+  .pick-item .p-price{font-size:11px; color:var(--ink-soft);}
+  .pick-item.active{background:var(--ink);}
+  .pick-item.active .p-name, .pick-item.active .p-price{color:#fff;}
+
+  .calendly-section{padding:50px 0 90px;}
+  .prep-note{max-width:640px; margin:0 auto 40px; text-align:center; background:var(--off); border:1px solid var(--line); padding:22px 28px; font-size:13.5px; line-height:1.8; color:var(--ink);}
+  .prep-note a{text-decoration:underline; color:var(--ink);}
+
+  footer{padding:32px 0; background:var(--white); border-top:1px solid var(--line); text-align:center;}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
+
+  @media(max-width:600px){
+    header{padding:20px 24px;}
+    .wrap{padding:0 24px;}
+    .picker{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
+  <a class="back-link" href="prestations.html">← Retour aux prestations</a>
+</header>
+
+<div class="intro">
+  <div class="wrap">
+    <div class="eyebrow">Prestation Invitée</div>
+    <h1>Réserve ta prestation directement</h1>
+    <p class="lead">Choisis ton maquillage, puis le créneau qui t'arrange. Un acompte est à régler directement sur Calendly pour valider ta réservation.</p>
+
+    <div class="picker" id="picker">
+      <button class="pick-item" data-url="https://calendly.com/cmakeupbeauty/prestation-makeupsoftmattebronze" data-name="Smoky Eyes">
+        <div class="p-name">Smoky Eyes</div>
+        <div class="p-price">90€</div>
+      </button>
+      <button class="pick-item" data-url="https://calendly.com/cmakeupbeauty/prestation-makeup-soft-glam" data-name="Soft Glam">
+        <div class="p-name">Soft Glam</div>
+        <div class="p-price">100€</div>
+      </button>
+      <button class="pick-item" data-url="https://calendly.com/cmakeupbeauty/prestation-makeup-full-glam" data-name="Full Glam">
+        <div class="p-name">Full Glam</div>
+        <div class="p-price">150€</div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="calendly-section">
+  <div class="wrap">
+    <div class="prep-note">Le planning affiché va de 9h à 17h. Pense à relire les <a href="conditions-rdv.html">conditions de rendez-vous</a> avant de réserver (ponctualité, confirmation la veille par SMS, politique de retard et d'annulation).<br>Pour tout créneau en dehors des horaires affichés, écris-moi directement par SMS au <strong>+33 7 49 86 58 95</strong>.</div>
+    <div class="calendly-inline-widget" id="calWidget" data-url="https://calendly.com/cmakeupbeauty/prestation-makeupsoftmattebronze?hide_gdpr_banner=1" style="min-width:320px;height:750px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-note">© 2026 CMAKEUP BEAUTY — academy@cmakeupbeauty.fr</div>
+</footer>
+
+<script>
+  (function(){
+    var buttons = document.querySelectorAll('.pick-item');
+    var params = new URLSearchParams(window.location.search);
+    var presta = params.get('prestation');
+    var map = {'smoky-eyes':0, 'soft-glam':1, 'full-glam':2};
+    var initialIndex = map.hasOwnProperty(presta) ? map[presta] : 0;
+
+    function selectButton(btn){
+      buttons.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var widget = document.getElementById('calWidget');
+      var newUrl = btn.getAttribute('data-url') + '?hide_gdpr_banner=1';
+      widget.setAttribute('data-url', newUrl);
+      widget.innerHTML = '';
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({ url: newUrl, parentElement: widget });
+      }
+    }
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){ selectButton(btn); });
+    });
+
+    selectButton(buttons[initialIndex]);
+  })();
+</script>
+
+</body>
+</html>

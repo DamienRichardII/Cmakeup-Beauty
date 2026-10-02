@@ -253,6 +253,14 @@
   </fieldset>
 
   <fieldset>
+    <legend>Tes disponibilités</legend>
+    <div class="field">
+      <label class="field-label" for="dispo">Quels jours et créneaux te conviennent pour la visioconférence de 1h30 ?</label>
+      <textarea id="dispo" name="disponibilites"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
     <div class="field" style="margin-bottom:0; display:flex; align-items:flex-start; gap:10px;">
       <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:3px; width:auto;">
       <label class="field-label" for="rgpd" style="margin-bottom:0; font-size:13px;">J'accepte que mes informations soient utilisées pour préparer mon coaching, conformément à la politique de confidentialité.</label>
@@ -260,7 +268,7 @@
   </fieldset>
 
   <div class="submit-row">
-    <p>Une fois envoyé, tu seras redirigée vers notre page de réservation pour choisir ton créneau et régler les 150€ (comptant) directement sur Calendly. Colleen prépare ton analyse à partir de tes réponses avant votre séance.</p>
+    <p>Une fois envoyé, Colleen prépare ton analyse à partir de tes réponses avant votre séance. Tu recevras un lien de calendrier pour choisir ton créneau.</p>
     <button type="submit" class="btn">Envoyer mon questionnaire</button>
     <p class="form-status" role="status" aria-live="polite" style="margin-top:20px; font-size:13px;"></p>
   </div>
@@ -302,6 +310,7 @@
       instagram_usage: document.getElementById('insta-usage').value,
       objectifs: document.getElementById('objectifs').value,
       difficultes: document.getElementById('difficultes').value,
+      disponibilites: document.getElementById('dispo').value,
       rgpd_consent: document.getElementById('rgpd').checked
     }).then(function(res){
       btn.disabled = false;
