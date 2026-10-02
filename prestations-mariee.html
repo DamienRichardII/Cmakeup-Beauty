@@ -511,6 +511,13 @@
       </div>
 
       <div class="form-row">
+        <div class="field full">
+          <label for="ville">Ville</label>
+          <input type="text" id="ville" name="ville" required>
+        </div>
+      </div>
+
+      <div class="form-row">
         <div class="field">
           <label for="date-mariage">Date du mariage</label>
           <input type="date" id="date-mariage" name="date-mariage">
@@ -518,6 +525,26 @@
         <div class="field">
           <label for="lieu-prepa">Lieu de préparation</label>
           <input type="text" id="lieu-prepa" name="lieu-prepa" placeholder="Ville / adresse">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="type-prepa">Type de lieu de préparation</label>
+          <select id="type-prepa" name="type-prepa">
+            <option value="">Sélectionnez</option>
+            <option value="hotel">Hôtel</option>
+            <option value="ceremonie">Sur le lieu de cérémonie (salle ou domaine)</option>
+            <option value="domicile">À domicile</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
+          <label for="lieu-ceremonie">Lieu de cérémonie</label>
+          <input type="text" id="lieu-ceremonie" name="lieu-ceremonie" placeholder="Nom de la salle, du domaine, ou autre">
         </div>
       </div>
 
@@ -590,6 +617,14 @@
 
       <div class="form-row">
         <div class="field full">
+          <label for="photos-inspiration">Photos d'inspiration (maquillage et coiffure)</label>
+          <input type="file" id="photos-inspiration" name="photos-inspiration" accept="image/*" multiple>
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Envoie-moi une ou plusieurs photos du rendu maquillage et coiffure que tu aimerais pour ton jour J — ça m'aide énormément à cerner tes envies avant notre appel.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
           <label for="autres-infos">Autres infos à me communiquer avant l'appel</label>
           <textarea id="autres-infos" name="autres-infos" placeholder="Toute information utile, ou les questions que tu aimerais me poser"></textarea>
         </div>
@@ -607,29 +642,40 @@
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
 (function(){
   var form = document.querySelector('.call-form');
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
-
-  var CALENDLY_EVENT_URL = 'https://calendly.com/cmakeupbeauty/appel-telephonique-future-mariee?hide_event_type_details=1&hide_gdpr_banner=1';
   var btn = form.querySelector('.form-submit');
-  var pendingValues = null; // valeurs du formulaire en attente, tant que le RDV Calendly n'est pas confirmé
 
-  function waitForCalendly(cb, tries){
-    tries = tries || 0;
-    if(window.Calendly){ cb(); }
-    else if(tries < 60){ setTimeout(function(){ waitForCalendly(cb, tries + 1); }, 250); }
+  // Upload les photos d'inspiration choisies vers le storage public dédié
+  // et renvoie la liste de leurs URLs publiques (tableau vide si aucun
+  // fichier, ou si l'upload échoue pour une raison quelconque — on ne
+  // bloque jamais l'envoi de la demande à cause d'une photo).
+  function uploadInspirationPhotos(){
+    var input = document.getElementById('photos-inspiration');
+    var files = input && input.files ? Array.prototype.slice.call(input.files) : [];
+    if(!files.length) return Promise.resolve([]);
+    var folder = 'appel-mariee/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+    return Promise.all(files.map(function(file){
+      var safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      var path = folder + '/' + safeName;
+      return _sb.storage.from('uploads-appel-mariee').upload(path, file).then(function(res){
+        if(res.error) return null;
+        return _sb.storage.from('uploads-appel-mariee').getPublicUrl(path).data.publicUrl;
+      }).catch(function(){ return null; });
+    })).then(function(urls){
+      return urls.filter(Boolean);
+    });
   }
 
-  // Le formulaire ne crée AUCUNE ligne en base tant que le RDV n'est pas réellement
-  // confirmé dans Calendly : on ouvre la fenêtre de réservation au clic, et on
-  // n'enregistre les informations qu'une fois l'événement "calendly.event_scheduled"
-  // reçu. Ça évite les demandes envoyées sans RDV pris, et ça ne déclenche qu'un seul
-  // email (au moment où le RDV est vraiment pris), pas un à l'envoi + un à la réservation.
+  // Le formulaire ne crée AUCUNE ligne en base ici : les informations sont
+  // conservées (sessionStorage) le temps d'une redirection vers
+  // reservation-appel-mariee.html, qui affiche le calendrier Calendly juste
+  // en dessous et n'enregistre tout qu'une fois le rendez-vous réellement
+  // confirmé. Ça évite les demandes envoyées sans RDV pris.
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!form.reportValidity()) return;
@@ -638,54 +684,46 @@
     var nomVal = document.getElementById('nom').value;
     var emailVal = document.getElementById('email').value;
 
-    pendingValues = {
-      prenom: prenomVal,
-      nom: nomVal,
-      email: emailVal,
-      telephone: document.getElementById('telephone').value,
-      date_mariage: document.getElementById('date-mariage').value || null,
-      lieu_preparation: document.getElementById('lieu-prepa').value,
-      heure_ceremonie: document.getElementById('heure-ceremonie').value || null,
-      heure_prete: document.getElementById('heure-prete').value || null,
-      type_ceremonie: document.getElementById('type-ceremonie').value,
-      precision_ceremonie: document.getElementById('precision-ceremonie').value,
-      autres_personnes: document.getElementById('autres-personnes').value === 'oui',
-      nombre_personnes: document.getElementById('nombre-personnes').value,
-      essai_prevu: document.getElementById('essai').value,
-      pack_interesse: document.getElementById('pack').value,
-      autres_infos: document.getElementById('autres-infos').value,
-      rgpd_consent: document.getElementById('rgpd').checked
-    };
-
     btn.disabled = true;
-    btn.textContent = 'Ouverture du calendrier...';
+    btn.textContent = 'Envoi en cours...';
     status.style.color = 'var(--ink-soft)';
-    status.textContent = 'Choisis ton créneau dans la fenêtre qui s\'ouvre, puis confirme ton rendez-vous.';
+    status.textContent = 'Envoi de tes informations et de tes photos...';
 
-    waitForCalendly(function(){
+    uploadInspirationPhotos().then(function(photoUrls){
+      var pendingValues = {
+        prenom: prenomVal,
+        nom: nomVal,
+        email: emailVal,
+        telephone: document.getElementById('telephone').value,
+        ville: document.getElementById('ville').value,
+        date_mariage: document.getElementById('date-mariage').value || null,
+        lieu_preparation: document.getElementById('lieu-prepa').value,
+        type_lieu_preparation: document.getElementById('type-prepa').value,
+        lieu_ceremonie: document.getElementById('lieu-ceremonie').value,
+        heure_ceremonie: document.getElementById('heure-ceremonie').value || null,
+        heure_prete: document.getElementById('heure-prete').value || null,
+        type_ceremonie: document.getElementById('type-ceremonie').value,
+        precision_ceremonie: document.getElementById('precision-ceremonie').value,
+        autres_personnes: document.getElementById('autres-personnes').value === 'oui',
+        nombre_personnes: document.getElementById('nombre-personnes').value,
+        essai_prevu: document.getElementById('essai').value,
+        pack_interesse: document.getElementById('pack').value,
+        photos_inspiration_urls: photoUrls,
+        autres_infos: document.getElementById('autres-infos').value,
+        rgpd_consent: document.getElementById('rgpd').checked
+      };
+
+      try{
+        sessionStorage.setItem('cmk_appel_mariee_pending', JSON.stringify(pendingValues));
+      } catch(err){}
+
+      var params = new URLSearchParams({ prenom: prenomVal, nom: nomVal, email: emailVal });
+      window.location.href = 'reservation-appel-mariee.html?' + params.toString();
+    }).catch(function(){
       btn.disabled = false;
       btn.textContent = 'Choisir mon créneau & envoyer ma demande';
-      window.Calendly.initPopupWidget({
-        url: CALENDLY_EVENT_URL,
-        prefill: { name: (prenomVal + ' ' + nomVal).trim(), email: emailVal }
-      });
-    });
-  });
-
-  // Reçu uniquement quand un créneau est réellement confirmé dans la fenêtre Calendly.
-  window.addEventListener('message', function(e){
-    if(!e.data || e.data.event !== 'calendly.event_scheduled' || !pendingValues) return;
-    var values = pendingValues;
-    pendingValues = null;
-    status.style.color = 'var(--ink-soft)';
-    status.textContent = 'Rendez-vous confirmé, enregistrement de tes informations...';
-    _sb.from('appels_decouverte_mariee').insert(values).then(function(res){
-      if(res.error){
-        status.innerHTML = "Ton rendez-vous est bien confirmé dans l'agenda, mais tes informations complémentaires n'ont pas pu être enregistrées. Écris-nous directement à <a href=\"mailto:Cmakeupbeauty95@gmail.com\" style=\"text-decoration:underline;\">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline;\">07 54 03 32 66</a> pour nous les transmettre.";
-      } else {
-        status.textContent = 'Merci ! Ton rendez-vous est confirmé, on se parle très vite 🤍';
-        form.reset();
-      }
+      status.style.color = '#A8563F';
+      status.textContent = "Une erreur est survenue lors de l'envoi de tes photos. Réessaie, ou écris-nous directement à Cmakeupbeauty95@gmail.com.";
     });
   });
 })();
