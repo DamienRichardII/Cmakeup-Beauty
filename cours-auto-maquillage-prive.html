@@ -550,6 +550,14 @@
 
       <div class="form-row">
         <div class="field full">
+          <label for="solde_cpf">Solde disponible sur ton compte CPF</label>
+          <input type="text" id="solde_cpf" name="solde_cpf" placeholder="Ex : 1200€, ou je ne sais pas encore">
+          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : indique le montant dont tu disposes, nous reviendrons vers toi pour échanger sur ta demande.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field full">
           <label for="adresse_postale">Adresse postale complète</label>
           <input type="text" id="adresse_postale" name="adresse_postale" placeholder="Numéro, rue, code postal, ville">
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : ton adresse est nécessaire pour constituer ton dossier auprès de notre organisme partenaire.</p>
@@ -587,7 +595,7 @@
       </div>
 
       <button type="submit" class="btn form-submit">Envoyer ma demande de réservation</button>
-      <p class="form-disclaimer">Un acompte de 150€ (non remboursable) sera demandé pour bloquer définitivement ta place, une fois la date confirmée.</p>
+      <p class="form-disclaimer">En cas de paiement personnel, tu seras redirigée vers Calendly pour choisir ton créneau et régler l'acompte de 150€ (non remboursable) directement en ligne. En cas de financement CPF, ta demande est d'abord étudiée, sans acompte à ce stade.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
   </div>
@@ -645,6 +653,41 @@
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
+    var financementVal = document.getElementById('financement').value;
+
+    if(financementVal === 'classique'){
+      // Paiement personnel : redirection vers la réservation Calendly. Aucun enregistrement
+      // en base tant que le créneau n'est pas réellement confirmé (même principe que pour
+      // l'appel découverte mariée et le Pack Audit).
+      var pendingValues = {
+        source_page: 'cours-auto-maquillage-prive',
+        prenom: document.getElementById('prenom').value,
+        nom: document.getElementById('nom').value,
+        email: document.getElementById('email').value,
+        telephone: document.getElementById('telephone').value,
+        ville: document.getElementById('ville').value,
+        dates_souhaitees: document.getElementById('dates').value,
+        creneau: document.getElementById('creneau').value,
+        niveau: document.getElementById('niveau').value,
+        trousse: document.getElementById('trousse').value,
+        pourquoi: document.getElementById('pourquoi').value,
+        style: document.getElementById('style').value,
+        deja_cliente: document.getElementById('dejaCliente').value,
+        financement: financementVal,
+        message: document.getElementById('message').value,
+        rgpd_consent: document.getElementById('rgpd').checked
+      };
+      try{ sessionStorage.setItem('cmk_cours_prive_pending', JSON.stringify(pendingValues)); } catch(err){}
+      var redirectParams = new URLSearchParams({
+        prenom: pendingValues.prenom,
+        nom: pendingValues.nom,
+        email: pendingValues.email
+      });
+      window.location.href = 'reservation-cours-prive.html?' + redirectParams.toString();
+      return;
+    }
+
+    // Financement CPF : dossier à étudier, enregistrement direct (comportement existant).
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
     var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
@@ -669,7 +712,8 @@
         pourquoi: document.getElementById('pourquoi').value,
         style: document.getElementById('style').value,
         deja_cliente: document.getElementById('dejaCliente').value,
-        financement: document.getElementById('financement').value,
+        financement: financementVal,
+        solde_cpf: document.getElementById('solde_cpf').value,
         adresse_postale: document.getElementById('adresse_postale').value,
         piece_identite_recto_path: paths[0],
         piece_identite_verso_path: paths[1],
