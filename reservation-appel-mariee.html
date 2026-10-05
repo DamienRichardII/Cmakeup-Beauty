@@ -122,6 +122,9 @@
     if(raw) pendingValues = JSON.parse(raw);
   } catch(err){ pendingValues = null; }
 
+  var savedId = null;
+  try{ savedId = sessionStorage.getItem('cmk_appel_mariee_saved'); } catch(err){ savedId = null; }
+
   function showConfirm(html){
     document.getElementById('calendlySection').style.display = 'none';
     var block = document.getElementById('confirmBlock');
@@ -132,6 +135,23 @@
   // Reçu uniquement quand un créneau est réellement confirmé dans le widget Calendly.
   window.addEventListener('message', function(e){
     if(!e.data || e.data.event !== 'calendly.event_scheduled') return;
+
+    if(savedId){
+      // La demande a déjà été enregistrée (et notifiée) à l'envoi du formulaire :
+      // on y rattache simplement le créneau confirmé. Échec sans conséquence
+      // pour la visiteuse (le RDV existe dans Calendly dans tous les cas).
+      var slot = { p_id: savedId, p_event: null, p_invitee: null };
+      try{
+        var pl = e.data.payload || {};
+        if(pl.event && pl.event.uri) slot.p_event = pl.event.uri;
+        if(pl.invitee && pl.invitee.uri) slot.p_invitee = pl.invitee.uri;
+      } catch(err){}
+      try{ sessionStorage.removeItem('cmk_appel_mariee_saved'); } catch(err){}
+      savedId = null;
+      Promise.resolve(_sb.rpc('attach_mariee_rdv', slot)).catch(function(){});
+      showConfirm('Merci ! Ton rendez-vous est confirmé, on se parle très vite 🤍');
+      return;
+    }
 
     if(!pendingValues){
       // Visite directe de cette page sans être passée par le formulaire

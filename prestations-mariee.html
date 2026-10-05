@@ -674,11 +674,19 @@
     });
   }
 
-  // Le formulaire ne crée AUCUNE ligne en base ici : les informations sont
-  // conservées (sessionStorage) le temps d'une redirection vers
-  // reservation-appel-mariee.html, qui affiche le calendrier Calendly juste
-  // en dessous et n'enregistre tout qu'une fois le rendez-vous réellement
-  // confirmé. Ça évite les demandes envoyées sans RDV pris.
+  // La demande est enregistrée en base (et la notification e-mail envoyée à
+  // l'équipe) dès l'envoi du formulaire, AVANT le choix du créneau : une
+  // visiteuse qui s'arrête au calendrier n'est ainsi plus perdue. Le créneau
+  // Calendly est rattaché ensuite à cette même fiche (reservation-appel-mariee.html).
+  // Si l'enregistrement échoue, on garde l'ancien comportement de secours :
+  // les infos restent en sessionStorage et sont enregistrées à la confirmation du RDV.
+  function newLeadId(){
+    try{ if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch(err){}
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){
+      var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!form.reportValidity()) return;
@@ -693,7 +701,9 @@
     status.textContent = 'Envoi de tes informations et de tes photos...';
 
     uploadInspirationPhotos().then(function(photoUrls){
+      var leadId = newLeadId();
       var pendingValues = {
+        id: leadId,
         prenom: prenomVal,
         nom: nomVal,
         email: emailVal,
@@ -716,12 +726,23 @@
         rgpd_consent: document.getElementById('rgpd').checked
       };
 
-      try{
-        sessionStorage.setItem('cmk_appel_mariee_pending', JSON.stringify(pendingValues));
-      } catch(err){}
-
       var params = new URLSearchParams({ prenom: prenomVal, nom: nomVal, email: emailVal });
-      window.location.href = 'reservation-appel-mariee.html?' + params.toString();
+      var nextUrl = 'reservation-appel-mariee.html?' + params.toString();
+
+      status.textContent = 'Enregistrement de ta demande...';
+      return _sb.from('appels_decouverte_mariee').insert(pendingValues).then(function(res){
+        try{
+          if(res.error){
+            // Secours : enregistrement différé à la confirmation du RDV.
+            sessionStorage.setItem('cmk_appel_mariee_pending', JSON.stringify(pendingValues));
+            sessionStorage.removeItem('cmk_appel_mariee_saved');
+          } else {
+            sessionStorage.setItem('cmk_appel_mariee_saved', leadId);
+            sessionStorage.removeItem('cmk_appel_mariee_pending');
+          }
+        } catch(err){}
+        window.location.href = nextUrl;
+      });
     }).catch(function(){
       btn.disabled = false;
       btn.textContent = 'Choisir mon créneau & envoyer ma demande';
