@@ -575,11 +575,11 @@
     <h2 data-editable="academie.section1_title">Deviens makeup artist</h2>
     <div class="sub2">En présentiel à Cergy · matériel professionnel inclus · certificat de participation</div>
     <div class="acards"><div class="acard"><div class="a-top"><div><h3>Formation Débutante</h3><div class="a-meta">Collective · 5 jours · 40h · Soft Glam &amp; Full Glam</div></div></div>
-<div class="a-dates">26 → 30 octobre · 30 nov. → 4 déc. · 4 → 8 janvier</div>
+<div class="a-dates" data-sessions-summary="formation-collective">26 → 30 octobre · 30 nov. → 4 déc. · 4 → 8 janvier</div>
 <div class="a-actions"><a class="btn" href="formation-collective.html">Plus d'informations</a></div></div><div class="acard"><div class="a-top"><div><h3>Formation Débutante Privée</h3><div class="a-meta">En individuel · 4 jours · 32h · Soft Glam &amp; Full Glam</div></div></div>
 <div class="a-dates">Dates à convenir selon les disponibilités du planning</div>
 <div class="a-actions"><a class="btn" href="formation-debutante-privee.html">Plus d'informations</a></div></div><div class="acard"><div class="a-top"><div><h3>Formation Intensive Mariée</h3><div class="a-meta">Collective · 3 jours · 24h · niveau intermédiaire à confirmé</div></div></div>
-<div class="a-dates">23 → 25 novembre · 14 → 16 décembre · 11 → 13 janvier</div>
+<div class="a-dates" data-sessions-summary="formation-intensive-collective-3-jours">23 → 25 novembre · 14 → 16 décembre · 11 → 13 janvier</div>
 <div class="a-actions"><a class="btn" href="formation-intensive-collective-3-jours.html">Plus d'informations</a></div></div><div class="acard"><div class="a-top"><div><h3>Perfectionnement 1 jour</h3><div class="a-meta">En privé · Soft Glam / Full Glam ou Mariée</div></div></div>
 <div class="a-dates">Dates à convenir selon les disponibilités du planning</div>
 <div class="a-actions"><a class="btn" href="formation-perfectionnement-1-jour.html">Plus d'informations</a></div></div><div class="acard"><div class="a-top"><div><h3>Perfectionnement 2 jours</h3><div class="a-meta">En privé · Soft Glam, Full Glam et Mariée</div></div></div>
@@ -594,7 +594,7 @@
     <h2 data-editable="academie.section2_title">Apprends à te maquiller comme une pro</h2>
     <div class="sub2">Pinceaux et Master Guide d'Auto-Maquillage offerts</div>
     <div class="acards"><div class="acard"><div class="a-top"><div><h3>Auto Makeup Class</h3><div class="a-meta">Journée en petit comité · 8h · avec Arlyne</div></div></div>
-<div class="a-dates">Samedi 28 novembre · Dimanche 6 décembre</div>
+<div class="a-dates" data-sessions-summary="auto-makeup-class">Samedi 28 novembre · Dimanche 6 décembre</div>
 <div class="a-actions"><a class="btn" href="auto-makeup-class.html">Plus d'informations</a></div></div><div class="acard"><div class="a-top"><div><h3>Cours d'auto-maquillage privé</h3><div class="a-meta">En tête-à-tête · 3h · matin ou après-midi</div></div></div>
 <div class="a-dates">Dates à convenir selon les disponibilités du planning</div>
 <div class="a-actions"><a class="btn" href="cours-auto-maquillage-prive.html">Plus d'informations</a></div></div></div>
@@ -656,6 +656,17 @@
     }
     container.style.display = 'block';
   }
+  // Résumé des dates des sessions : suit la liste gérée dans l'admin (Gestion des médias → Dates des sessions)
+  _sbContent.from('page_content').select('page_slug,content').eq('block_key','sessions_list').in('page_slug',['formation-collective','formation-intensive-collective-3-jours','auto-makeup-class']).then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      try{
+        var list = JSON.parse(row.content).filter(function(x){ return x && typeof x.d === 'string' && x.d.trim(); });
+        var el = document.querySelector('[data-sessions-summary="' + row.page_slug + '"]');
+        if(el) el.textContent = list.length ? list.map(function(x){ return x.d.trim(); }).join(' · ') : 'Prochaines dates à venir';
+      } catch(err){}
+    });
+  });
   _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'academie').then(function(res){
     if(res.error || !res.data) return;
     res.data.forEach(function(row){

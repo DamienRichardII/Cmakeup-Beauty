@@ -105,13 +105,14 @@
 
   /* SESSIONS */
   .sessions-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
+    display:grid; grid-template-columns:repeat(var(--n,3),1fr); gap:1px; background:none;
     max-width:920px; margin:0 auto;
-    border:1px solid var(--line);
   }
-  .session-card{background:var(--white); padding:38px 30px; text-align:center;}
+  .session-card{background:var(--white); outline:1px solid var(--line); padding:38px 30px; text-align:center;}
   .session-card .s-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); margin-bottom:14px; text-transform:uppercase;}
   .session-card .s-dates{font-size:20px; font-family:'The Silver Editorial','Cormorant Garamond',serif; margin-bottom:10px;}
+  .session-card.is-full .s-dates{color:var(--gray);}
+  .session-card.is-full .s-status{color:#A8563F; font-weight:600;}
   .session-card .s-status{font-size:12px; color:var(--ink-soft);}
 
   /* PRICING */
@@ -365,18 +366,18 @@
     <div class="sessions-grid">
       <div class="session-card">
         <div class="s-label">Session 1</div>
-        <div class="s-dates" data-editable="formation-collective.session1_dates">26 → 29 octobre</div>
-        <div class="s-status" data-editable="formation-collective.session1_places">Places disponibles</div>
+        <div class="s-dates">26 → 29 octobre</div>
+        <div class="s-status">Places disponibles</div>
       </div>
       <div class="session-card">
         <div class="s-label">Session 2</div>
-        <div class="s-dates" data-editable="formation-collective.session2_dates">30 nov. → 3 déc.</div>
-        <div class="s-status" data-editable="formation-collective.session2_places">Places disponibles</div>
+        <div class="s-dates">30 nov. → 3 déc.</div>
+        <div class="s-status">Places disponibles</div>
       </div>
       <div class="session-card">
         <div class="s-label">Session 3</div>
-        <div class="s-dates" data-editable="formation-collective.session3_dates">4 → 7 janvier</div>
-        <div class="s-status" data-editable="formation-collective.session3_places">Places disponibles</div>
+        <div class="s-dates">4 → 7 janvier</div>
+        <div class="s-status">Places disponibles</div>
       </div>
     </div>
 
@@ -484,9 +485,9 @@
           <label for="session">Session(s) qui t'intéresse(nt)</label>
           <select id="session" name="session" required>
             <option value="">Sélectionnez</option>
-            <option value="session1">Session 1 — 26 au 29 octobre</option>
-            <option value="session2">Session 2 — 30 novembre au 3 décembre</option>
-            <option value="session3">Session 3 — 4 au 7 janvier</option>
+            <option value="26 → 29 octobre">Session 1 — 26 → 29 octobre</option>
+            <option value="30 nov. → 3 déc.">Session 2 — 30 nov. → 3 déc.</option>
+            <option value="4 → 7 janvier">Session 3 — 4 → 7 janvier</option>
             <option value="liste-attente">Aucune de ces dates ne me convient — liste d'attente</option>
             <option value="indifferent">Peu importe, je suis flexible</option>
           </select>
@@ -783,8 +784,59 @@
     }
     container.style.display = 'block';
   }
+
+  // ===== Dates des sessions pilotées depuis l'admin (Gestion des médias → Dates des sessions) =====
+  // Une ligne page_content "sessions_list" (JSON [{d:"Samedi 28 novembre", s:"Places disponibles"}])
+  // remplace les cartes de dates ET les choix du formulaire. Sans elle, les dates d'origine du HTML s'affichent.
+  function applySessions(list){
+    if(!Array.isArray(list)) return;
+    list = list.filter(function(s){ return s && typeof s.d === 'string' && s.d.trim(); });
+    var grid = document.querySelector('.sessions-grid');
+    if(grid){
+      var n = Math.min(Math.max(list.length, 1), 4);
+      grid.innerHTML = '';
+      grid.style.setProperty('--n', n);
+      grid.style.maxWidth = (n * 290) + 'px';
+      if(!list.length){
+        var empty = document.createElement('div');
+        empty.className = 'session-card';
+        var e1 = document.createElement('div'); e1.className = 's-dates'; e1.textContent = 'Prochaines dates à venir';
+        var e2 = document.createElement('div'); e2.className = 's-status'; e2.textContent = "Remplis le formulaire ci-dessous : nous te prévenons dès l'ouverture des inscriptions.";
+        empty.appendChild(e1); empty.appendChild(e2); grid.appendChild(empty);
+      }
+      list.forEach(function(s, i){
+        var full = /complet/i.test(s.s || '');
+        var card = document.createElement('div'); card.className = 'session-card' + (full ? ' is-full' : '');
+        var l = document.createElement('div'); l.className = 's-label'; l.textContent = 'Session ' + (i + 1);
+        var d = document.createElement('div'); d.className = 's-dates'; d.textContent = s.d.trim();
+        var st = document.createElement('div'); st.className = 's-status'; st.textContent = s.s || 'Places disponibles';
+        card.appendChild(l); card.appendChild(d); card.appendChild(st); grid.appendChild(card);
+      });
+    }
+    var sel = document.getElementById('session');
+    if(sel){
+      var anchor = null;
+      Array.prototype.slice.call(sel.options).forEach(function(o){
+        if(o.value === 'liste-attente' || o.value === 'indifferent'){ if(!anchor) anchor = o; }
+        else if(o.value){ sel.removeChild(o); }
+      });
+      list.forEach(function(s, i){
+        var full = /complet/i.test(s.s || '');
+        var o = document.createElement('option');
+        o.value = s.d.trim();
+        o.textContent = 'Session ' + (i + 1) + ' — ' + s.d.trim() + (full ? ' (complet)' : '');
+        if(full) o.disabled = true;
+        sel.insertBefore(o, anchor);
+      });
+      sel.value = '';
+    }
+  }
+
   _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'formation-collective').then(function(res){
     if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(row.block_key === 'sessions_list' && row.content){ try{ applySessions(JSON.parse(row.content)); }catch(err){} }
+    });
     res.data.forEach(function(row){
       if(!row.content) return;
       if(row.block_type === 'video'){
