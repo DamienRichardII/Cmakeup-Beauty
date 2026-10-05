@@ -145,8 +145,8 @@
     max-width:640px; margin:0 auto 40px; padding:14px 20px;
   }
   .sessions-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
-    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line);
+    max-width:720px; margin:0 auto;
     border:1px solid var(--line);
   }
   .session-card{background:var(--white); padding:38px 30px; text-align:center;}
@@ -407,27 +407,17 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="auto-makeup-class.section3_eyebrow">SESSIONS</div>
     <h2 class="section-title" data-editable="auto-makeup-class.section3_title">Prochaines dates</h2>
-    <p class="section-lede" data-editable="auto-makeup-class.section3_lede">Places limitées pour garantir un accompagnement personnalisé — les sessions ont lieu le dimanche. Choisis ta session préférée dans le formulaire plus bas sur cette page.</p>
+    <p class="section-lede" data-editable="auto-makeup-class.section3_lede">Places limitées pour garantir un accompagnement personnalisé — les sessions ont lieu le week-end. Choisis ta session préférée dans le formulaire plus bas sur cette page.</p>
     <div class="sessions-grid">
       <div class="session-card">
         <div class="s-label">Session 1</div>
-        <div class="s-dates" data-editable="auto-makeup-class.session1_dates">Dimanche 8 novembre</div>
+        <div class="s-dates" data-editable="auto-makeup-class.session1_dates">Samedi 28 novembre</div>
         <div class="s-status" data-editable="auto-makeup-class.session1_places">Places disponibles</div>
       </div>
       <div class="session-card">
         <div class="s-label">Session 2</div>
-        <div class="s-dates" data-editable="auto-makeup-class.session2_dates">Dimanche 29 novembre</div>
+        <div class="s-dates" data-editable="auto-makeup-class.session2_dates">Dimanche 6 décembre</div>
         <div class="s-status" data-editable="auto-makeup-class.session2_places">Places disponibles</div>
-      </div>
-      <div class="session-card">
-        <div class="s-label">Session 3</div>
-        <div class="s-dates" data-editable="auto-makeup-class.session3_dates">Dimanche 6 décembre</div>
-        <div class="s-status" data-editable="auto-makeup-class.session3_places">Places disponibles</div>
-      </div>
-      <div class="session-card">
-        <div class="s-label">Session 4</div>
-        <div class="s-dates" data-editable="auto-makeup-class.session4_dates">Dimanche 13 décembre</div>
-        <div class="s-status" data-editable="auto-makeup-class.session4_places">Places disponibles</div>
       </div>
     </div>
   </div>
@@ -579,10 +569,8 @@
           <label for="session">Session qui t'intéresse</label>
           <select id="session" name="session" required>
             <option value="">Sélectionnez</option>
-            <option value="sessionA">Session 1 — Dimanche 8 novembre</option>
-            <option value="sessionB">Session 2 — Dimanche 29 novembre</option>
-            <option value="sessionC">Session 3 — Dimanche 6 décembre</option>
-            <option value="sessionD">Session 4 — Dimanche 13 décembre</option>
+            <option value="sessionA">Session 1 — Samedi 28 novembre</option>
+            <option value="sessionB">Session 2 — Dimanche 6 décembre</option>
             <option value="indifferent">Peu importe, je suis flexible</option>
           </select>
         </div>
