@@ -196,42 +196,42 @@
 
 <div class="wrap intro">
   <a class="back-link" href="coaching-business-mua.html">← Retour au Coaching Business MUA</a>
-  <div class="section-label">PACK AUDIT — QUESTIONNAIRE PRÉPARATOIRE</div>
-  <h1>Prépare ton coaching</h1>
-  <p>Merci pour ta confiance ! Ce questionnaire permet à Colleen de préparer ton analyse avant votre séance de 1h30. Prends le temps d'y répondre avec précision — plus tes réponses sont complètes, plus votre échange sera efficace.</p>
+  <div class="section-label" data-editable="questionnaire-audit.intro_eyebrow">PACK AUDIT — QUESTIONNAIRE PRÉPARATOIRE</div>
+  <h1 data-editable="questionnaire-audit.intro_title">Prépare ton coaching</h1>
+  <p data-editable="questionnaire-audit.intro_text">Merci pour ta confiance ! Ce questionnaire permet à Colleen de préparer ton analyse avant votre séance de 1h30. Prends le temps d'y répondre avec précision — plus tes réponses sont complètes, plus votre échange sera efficace.</p>
 </div>
 
 <!-- Champs requis marqués d'un astérisque. -->
 <form class="wrap" id="auditForm" action="#" method="post">
 
   <fieldset>
-    <legend>Tes informations</legend>
+    <legend data-editable="questionnaire-audit.sec1_title">Tes informations</legend>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="nom">Nom &amp; prénom <span class="req">*</span></label>
+        <label class="field-label" for="nom"><span data-editable="questionnaire-audit.sec1_q1">Nom &amp; prénom</span> <span class="req">*</span></label>
         <input type="text" id="nom" name="nom_prenom" required>
       </div>
       <div class="field">
-        <label class="field-label" for="email">Email <span class="req">*</span></label>
+        <label class="field-label" for="email"><span data-editable="questionnaire-audit.sec1_q2">Email</span> <span class="req">*</span></label>
         <input type="email" id="email" name="email" required>
       </div>
     </div>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="tel">Téléphone</label>
+        <label class="field-label" for="tel" data-editable="questionnaire-audit.sec1_q3">Téléphone</label>
         <input type="tel" id="tel" name="telephone">
       </div>
       <div class="field">
-        <label class="field-label" for="ville">Ville / zone d'intervention</label>
+        <label class="field-label" for="ville" data-editable="questionnaire-audit.sec1_q4">Ville / zone d'intervention</label>
         <input type="text" id="ville" name="ville">
       </div>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Ton activité</legend>
+    <legend data-editable="questionnaire-audit.sec2_title">Ton activité</legend>
     <div class="field">
-      <label class="field-label">Depuis combien de temps exerces-tu en tant que Makeup Artist ?</label>
+      <label class="field-label" data-editable="questionnaire-audit.sec2_q1">Depuis combien de temps exerces-tu en tant que Makeup Artist ?</label>
       <div class="radio-group">
         <label><input type="radio" name="anciennete" value="Pas encore lancée">Pas encore lancée</label>
         <label><input type="radio" name="anciennete" value="Moins d'1 an">Moins d'1 an</label>
@@ -240,7 +240,7 @@
       </div>
     </div>
     <div class="field">
-      <label class="field-label">Quel est ton statut actuel ?</label>
+      <label class="field-label" data-editable="questionnaire-audit.sec2_q2">Quel est ton statut actuel ?</label>
       <div class="radio-group">
         <label><input type="radio" name="statut" value="Pas encore de statut">Pas encore de statut</label>
         <label><input type="radio" name="statut" value="Auto-entrepreneur">Auto-entrepreneur</label>
@@ -249,49 +249,49 @@
       </div>
     </div>
     <div class="field">
-      <label class="field-label" for="prestations">Quelles prestations proposes-tu aujourd'hui ?</label>
+      <label class="field-label" for="prestations" data-editable="questionnaire-audit.sec2_q3">Quelles prestations proposes-tu aujourd'hui ?</label>
       <textarea id="prestations" name="prestations" placeholder="Mariage, événementiel, cours particuliers, formation..."></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Tes tarifs</legend>
+    <legend data-editable="questionnaire-audit.sec3_title">Tes tarifs</legend>
     <div class="field">
-      <label class="field-label" for="tarifs">Quels sont tes tarifs actuels, prestation par prestation ?</label>
+      <label class="field-label" for="tarifs" data-editable="questionnaire-audit.sec3_q1">Quels sont tes tarifs actuels, prestation par prestation ?</label>
       <textarea id="tarifs" name="tarifs" style="min-height:120px;"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Instagram</legend>
+    <legend data-editable="questionnaire-audit.sec4_title">Instagram</legend>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="insta-nom">Nom du compte</label>
+        <label class="field-label" for="insta-nom" data-editable="questionnaire-audit.sec4_q1">Nom du compte</label>
         <input type="text" id="insta-nom" name="instagram_nom">
       </div>
       <div class="field">
-        <label class="field-label" for="insta-abo">Nombre d'abonnés (environ)</label>
+        <label class="field-label" for="insta-abo" data-editable="questionnaire-audit.sec4_q2">Nombre d'abonnés (environ)</label>
         <input type="text" id="insta-abo" name="instagram_abonnes">
       </div>
     </div>
     <div class="field">
-      <label class="field-label" for="insta-usage">Comment utilises-tu Instagram aujourd'hui ?</label>
+      <label class="field-label" for="insta-usage" data-editable="questionnaire-audit.sec4_q3">Comment utilises-tu Instagram aujourd'hui ?</label>
       <textarea id="insta-usage" name="instagram_usage" placeholder="Fréquence de publication, type de contenu..."></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Tes objectifs</legend>
+    <legend data-editable="questionnaire-audit.sec5_title">Tes objectifs</legend>
     <div class="field">
-      <label class="field-label" for="objectifs">Qu'aimerais-tu atteindre grâce à ce coaching, dans les 3 à 6 prochains mois ?</label>
+      <label class="field-label" for="objectifs" data-editable="questionnaire-audit.sec5_q1">Qu'aimerais-tu atteindre grâce à ce coaching, dans les 3 à 6 prochains mois ?</label>
       <textarea id="objectifs" name="objectifs" style="min-height:120px;"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Tes difficultés</legend>
+    <legend data-editable="questionnaire-audit.sec6_title">Tes difficultés</legend>
     <div class="field">
-      <label class="field-label" for="difficultes">Quel est le principal frein dans ton activité aujourd'hui ?</label>
+      <label class="field-label" for="difficultes" data-editable="questionnaire-audit.sec6_q1">Quel est le principal frein dans ton activité aujourd'hui ?</label>
       <textarea id="difficultes" name="difficultes" style="min-height:120px;"></textarea>
     </div>
   </fieldset>
@@ -304,7 +304,7 @@
   </fieldset>
 
   <div class="submit-row">
-    <p>Une fois envoyé, Colleen prépare ton analyse à partir de tes réponses avant votre séance. Tu choisis ensuite ton créneau directement dans le planning en ligne, sur la page suivante.</p>
+    <p data-editable="questionnaire-audit.submit_note">Une fois envoyé, Colleen prépare ton analyse à partir de tes réponses avant votre séance. Tu choisis ensuite ton créneau directement dans le planning en ligne, sur la page suivante.</p>
     <button type="submit" class="btn">Envoyer le questionnaire et choisir mon créneau</button>
     <p class="form-status" role="status" aria-live="polite" style="margin-top:20px; font-size:13px;"></p>
   </div>
@@ -395,6 +395,23 @@
     a.addEventListener('click', function(){
       if(isMobileNav() && a.parentElement.classList.contains('nav-drop')) return;
       closeNav();
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  // Contenus modifiables depuis l'espace admin (Contenu coaching) : remplace les textes d'origine par ceux enregistrés.
+  if(!window.supabase) return;
+  var c = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  c.from('page_content').select('block_key,block_type,content').eq('page_slug', 'questionnaire-audit').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      document.querySelectorAll('[data-editable="questionnaire-audit.' + row.block_key + '"]').forEach(function(el){
+        if(row.block_type === 'image'){ el.setAttribute('src', row.content); }
+        else { el.textContent = row.content; }
+      });
     });
   });
 })();

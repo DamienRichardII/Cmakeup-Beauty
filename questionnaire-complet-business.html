@@ -202,9 +202,9 @@
 
 <div class="wrap intro">
   <a class="back-link" href="coaching-business-mua.html">← Retour au Coaching Business MUA</a>
-  <div class="section-label">PACK BUSINESS — QUESTIONNAIRE COMPLET</div>
-  <h1>Préparons le démarrage de ton accompagnement</h1>
-  <p>Ta candidature est validée et ton paiement confirmé — bienvenue dans le Pack Business ! Ce questionnaire permet à Colleen de préparer tes 4 semaines d'accompagnement et de caler le planning de tes séances.</p>
+  <div class="section-label" data-editable="questionnaire-complet-business.intro_eyebrow">PACK BUSINESS — QUESTIONNAIRE COMPLET</div>
+  <h1 data-editable="questionnaire-complet-business.intro_title">Préparons le démarrage de ton accompagnement</h1>
+  <p data-editable="questionnaire-complet-business.intro_text">Ta candidature est validée et ton paiement confirmé — bienvenue dans le Pack Business ! Ce questionnaire permet à Colleen de préparer tes 4 semaines d'accompagnement et de caler le planning de tes séances.</p>
   <div class="confirm-badge">✓ &nbsp;<strong>Candidature validée</strong> &nbsp;—&nbsp; Paiement confirmé</div>
 </div>
 
@@ -212,43 +212,43 @@
 <form class="wrap" action="#" method="post">
 
   <fieldset>
-    <legend>Tes coordonnées</legend>
+    <legend data-editable="questionnaire-complet-business.sec1_title">Tes coordonnées</legend>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="nom">Nom &amp; prénom <span class="req">*</span></label>
+        <label class="field-label" for="nom"><span data-editable="questionnaire-complet-business.sec1_q1">Nom &amp; prénom</span> <span class="req">*</span></label>
         <input type="text" id="nom" name="nom_prenom" required>
       </div>
       <div class="field">
-        <label class="field-label" for="email">Email <span class="req">*</span></label>
+        <label class="field-label" for="email"><span data-editable="questionnaire-complet-business.sec1_q2">Email</span> <span class="req">*</span></label>
         <input type="email" id="email" name="email" required>
       </div>
     </div>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="whatsapp">Numéro WhatsApp <span class="req">*</span></label>
+        <label class="field-label" for="whatsapp"><span data-editable="questionnaire-complet-business.sec1_q3">Numéro WhatsApp</span> <span class="req">*</span></label>
         <input type="tel" id="whatsapp" name="whatsapp" required>
         <div class="hint">Pour t'ajouter au suivi WhatsApp pendant les 4 semaines.</div>
       </div>
       <div class="field">
-        <label class="field-label" for="adresse">Adresse de facturation</label>
+        <label class="field-label" for="adresse" data-editable="questionnaire-complet-business.sec1_q4">Adresse de facturation</label>
         <input type="text" id="adresse" name="adresse_facturation">
       </div>
     </div>
     <div class="field">
-      <label class="field-label" for="siret">N° SIRET (si tu es déjà immatriculée)</label>
+      <label class="field-label" for="siret" data-editable="questionnaire-complet-business.sec1_q5">N° SIRET (si tu es déjà immatriculée)</label>
       <input type="text" id="siret" name="siret">
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Planning des 4 séances</legend>
+    <legend data-editable="questionnaire-complet-business.sec2_title">Planning des 4 séances</legend>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="date-debut">Date de démarrage souhaitée</label>
+        <label class="field-label" for="date-debut" data-editable="questionnaire-complet-business.sec2_q1">Date de démarrage souhaitée</label>
         <input type="date" id="date-debut" name="date_debut">
       </div>
       <div class="field">
-        <label class="field-label">Jour de la semaine que tu préfères</label>
+        <label class="field-label" data-editable="questionnaire-complet-business.sec2_q2">Jour de la semaine que tu préfères</label>
         <div class="radio-group">
           <label><input type="radio" name="jour" value="Lundi">Lun</label>
           <label><input type="radio" name="jour" value="Mardi">Mar</label>
@@ -260,7 +260,7 @@
       </div>
     </div>
     <div class="field">
-      <label class="field-label">Créneau horaire préféré</label>
+      <label class="field-label" data-editable="questionnaire-complet-business.sec2_q3">Créneau horaire préféré</label>
       <div class="radio-group">
         <label><input type="radio" name="creneau" value="Matin">Matin</label>
         <label><input type="radio" name="creneau" value="Après-midi">Après-midi</label>
@@ -272,45 +272,45 @@
   <fieldset>
     <legend>Visite sur place <span style="text-transform:none; letter-spacing:0.02em; color:var(--gray);">(uniquement si tu as choisi le Pack + Visite terrain)</span></legend>
     <div class="field">
-      <label class="field-label" for="adresse-visite">Adresse où Colleen doit se rendre pour la visite</label>
+      <label class="field-label" for="adresse-visite" data-editable="questionnaire-complet-business.sec3_q1">Adresse où Colleen doit se rendre pour la visite</label>
       <input type="text" id="adresse-visite" name="adresse_visite" placeholder="Adresse complète, Île-de-France uniquement">
     </div>
     <div class="field">
-      <label class="field-label" for="visite-contexte">Que veux-tu que Colleen observe pendant sa visite ? (une prestation en cours, ton espace de travail, ton organisation...)</label>
+      <label class="field-label" for="visite-contexte" data-editable="questionnaire-complet-business.sec3_q2">Que veux-tu que Colleen observe pendant sa visite ? (une prestation en cours, ton espace de travail, ton organisation...)</label>
       <textarea id="visite-contexte" name="visite_contexte"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Ta situation actuelle, en détail</legend>
+    <legend data-editable="questionnaire-complet-business.sec4_title">Ta situation actuelle, en détail</legend>
     <div class="field">
-      <label class="field-label" for="prestations">Liste complète de tes prestations et tarifs actuels</label>
+      <label class="field-label" for="prestations" data-editable="questionnaire-complet-business.sec4_q1">Liste complète de tes prestations et tarifs actuels</label>
       <textarea id="prestations" name="prestations_tarifs" style="min-height:120px;"></textarea>
     </div>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="clientes-mois">Nombre de clientes en moyenne par mois</label>
+        <label class="field-label" for="clientes-mois" data-editable="questionnaire-complet-business.sec4_q2">Nombre de clientes en moyenne par mois</label>
         <input type="text" id="clientes-mois" name="clientes_par_mois">
       </div>
       <div class="field">
-        <label class="field-label" for="ca-mensuel">Chiffre d'affaires mensuel moyen (facultatif)</label>
+        <label class="field-label" for="ca-mensuel" data-editable="questionnaire-complet-business.sec4_q3">Chiffre d'affaires mensuel moyen (facultatif)</label>
         <input type="text" id="ca-mensuel" name="ca_mensuel">
       </div>
     </div>
     <div class="field">
-      <label class="field-label" for="canaux">Par quels canaux trouves-tu principalement tes clientes aujourd'hui ?</label>
+      <label class="field-label" for="canaux" data-editable="questionnaire-complet-business.sec4_q4">Par quels canaux trouves-tu principalement tes clientes aujourd'hui ?</label>
       <textarea id="canaux" name="canaux_acquisition" placeholder="Bouche-à-oreille, Instagram, site web, plateformes de réservation..."></textarea>
     </div>
     <div class="field">
-      <label class="field-label" for="outils">Quels outils utilises-tu déjà ? (site web, Calendly, logiciel de facturation, Canva...)</label>
+      <label class="field-label" for="outils" data-editable="questionnaire-complet-business.sec4_q5">Quels outils utilises-tu déjà ? (site web, Calendly, logiciel de facturation, Canva...)</label>
       <textarea id="outils" name="outils_actuels"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Tes priorités pour les 4 semaines</legend>
+    <legend data-editable="questionnaire-complet-business.sec5_title">Tes priorités pour les 4 semaines</legend>
     <div class="field">
-      <label class="field-label">Sur quels sujets veux-tu avancer en priorité ? (plusieurs choix possibles)</label>
+      <label class="field-label" data-editable="questionnaire-complet-business.sec5_q1">Sur quels sujets veux-tu avancer en priorité ? (plusieurs choix possibles)</label>
       <div class="radio-group">
         <label><input type="checkbox" name="priorites" value="Positionnement & tarifs">Positionnement &amp; tarifs</label>
         <label><input type="checkbox" name="priorites" value="Stratégie Instagram & contenu">Stratégie Instagram &amp; contenu</label>
@@ -320,15 +320,15 @@
       </div>
     </div>
     <div class="field">
-      <label class="field-label" for="attentes">Y a-t-il un point précis que tu veux absolument aborder pendant l'accompagnement ?</label>
+      <label class="field-label" for="attentes" data-editable="questionnaire-complet-business.sec5_q2">Y a-t-il un point précis que tu veux absolument aborder pendant l'accompagnement ?</label>
       <textarea id="attentes" name="attentes_precises" style="min-height:120px;"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Un dernier mot</legend>
+    <legend data-editable="questionnaire-complet-business.sec6_title">Un dernier mot</legend>
     <div class="field">
-      <label class="field-label" for="complement">Tout ce que tu souhaites partager avec Colleen avant de démarrer (facultatif).</label>
+      <label class="field-label" for="complement" data-editable="questionnaire-complet-business.sec6_q1">Tout ce que tu souhaites partager avec Colleen avant de démarrer (facultatif).</label>
       <textarea id="complement" name="complement"></textarea>
     </div>
   </fieldset>
@@ -341,7 +341,7 @@
   </fieldset>
 
   <div class="submit-row">
-    <p>Dès réception, Colleen planifie tes 4 séances selon tes disponibilités et te confirme les créneaux par email et WhatsApp.</p>
+    <p data-editable="questionnaire-complet-business.submit_note">Dès réception, Colleen planifie tes 4 séances selon tes disponibilités et te confirme les créneaux par email et WhatsApp.</p>
     <button type="submit" class="btn">Envoyer mes informations</button>
     <p class="form-status" role="status" aria-live="polite" style="margin-top:20px; font-size:13px;"></p>
   </div>
@@ -436,6 +436,23 @@
     a.addEventListener('click', function(){
       if(isMobileNav() && a.parentElement.classList.contains('nav-drop')) return;
       closeNav();
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  // Contenus modifiables depuis l'espace admin (Contenu coaching) : remplace les textes d'origine par ceux enregistrés.
+  if(!window.supabase) return;
+  var c = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  c.from('page_content').select('block_key,block_type,content').eq('page_slug', 'questionnaire-complet-business').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      document.querySelectorAll('[data-editable="questionnaire-complet-business.' + row.block_key + '"]').forEach(function(el){
+        if(row.block_type === 'image'){ el.setAttribute('src', row.content); }
+        else { el.textContent = row.content; }
+      });
     });
   });
 })();

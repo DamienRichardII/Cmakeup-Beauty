@@ -195,38 +195,38 @@
 
 <div class="wrap intro">
   <a class="back-link" href="coaching-business-mua.html">← Retour au Coaching Business MUA</a>
-  <div class="section-label">PACK BUSINESS — FORMULAIRE DE CANDIDATURE</div>
-  <h1>Candidate à l'accompagnement</h1>
-  <p>Le Pack Business est un accompagnement individuel sur 4 semaines. Pour s'assurer qu'il correspond bien à ton profil et à tes besoins, Colleen étudie chaque candidature avant validation. Réponds à ces quelques questions — tu seras recontactée sous quelques jours.</p>
+  <div class="section-label" data-editable="formulaire-candidature-business.intro_eyebrow">PACK BUSINESS — FORMULAIRE DE CANDIDATURE</div>
+  <h1 data-editable="formulaire-candidature-business.intro_title">Candidate à l'accompagnement</h1>
+  <p data-editable="formulaire-candidature-business.intro_text">Le Pack Business est un accompagnement individuel sur 4 semaines. Pour s'assurer qu'il correspond bien à ton profil et à tes besoins, Colleen étudie chaque candidature avant validation. Réponds à ces quelques questions — tu seras recontactée sous quelques jours.</p>
 </div>
 
 <!-- Formulaire à connecter à l'outil d'envoi / CRM utilisé. Après réception, la candidature doit être validée manuellement par Colleen avant l'envoi du lien de paiement (300€ ou 500€ selon le pack). Pour le Pack + Visite terrain, vérifier que la ville renseignée est bien en Île-de-France avant validation. Champs requis marqués d'un astérisque. -->
 <form class="wrap" action="#" method="post">
 
   <fieldset>
-    <legend>Tes informations</legend>
+    <legend data-editable="formulaire-candidature-business.sec1_title">Tes informations</legend>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="nom">Nom &amp; prénom <span class="req">*</span></label>
+        <label class="field-label" for="nom"><span data-editable="formulaire-candidature-business.sec1_q1">Nom &amp; prénom</span> <span class="req">*</span></label>
         <input type="text" id="nom" name="nom_prenom" required>
       </div>
       <div class="field">
-        <label class="field-label" for="email">Email <span class="req">*</span></label>
+        <label class="field-label" for="email"><span data-editable="formulaire-candidature-business.sec1_q2">Email</span> <span class="req">*</span></label>
         <input type="email" id="email" name="email" required>
       </div>
     </div>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="tel">Téléphone</label>
+        <label class="field-label" for="tel" data-editable="formulaire-candidature-business.sec1_q3">Téléphone</label>
         <input type="tel" id="tel" name="telephone">
       </div>
       <div class="field">
-        <label class="field-label" for="ville">Ville / zone d'intervention <span class="req">*</span></label>
+        <label class="field-label" for="ville"><span data-editable="formulaire-candidature-business.sec1_q4">Ville / zone d'intervention</span> <span class="req">*</span></label>
         <input type="text" id="ville" name="ville" required>
       </div>
     </div>
     <div class="field">
-      <label class="field-label">Pour quel pack candidates-tu ? <span class="req">*</span></label>
+      <label class="field-label"><span data-editable="formulaire-candidature-business.sec1_q5">Pour quel pack candidates-tu ?</span> <span class="req">*</span></label>
       <div class="radio-group">
         <label><input type="radio" name="pack" value="Pack Business (300€)" required>Pack Business (300€)</label>
         <label><input type="radio" name="pack" value="Pack Business + Visite terrain (500€)">Pack Business + Visite terrain (500€ — Île-de-France uniquement)</label>
@@ -235,23 +235,23 @@
   </fieldset>
 
   <fieldset>
-    <legend>Instagram</legend>
+    <legend data-editable="formulaire-candidature-business.sec2_title">Instagram</legend>
     <div class="field-row">
       <div class="field">
-        <label class="field-label" for="insta-lien">Lien du compte</label>
+        <label class="field-label" for="insta-lien" data-editable="formulaire-candidature-business.sec2_q1">Lien du compte</label>
         <input type="url" id="insta-lien" name="instagram_lien" placeholder="https://instagram.com/...">
       </div>
       <div class="field">
-        <label class="field-label" for="insta-abo">Nombre d'abonnés (environ)</label>
+        <label class="field-label" for="insta-abo" data-editable="formulaire-candidature-business.sec2_q2">Nombre d'abonnés (environ)</label>
         <input type="text" id="insta-abo" name="instagram_abonnes">
       </div>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Ton niveau d'activité</legend>
+    <legend data-editable="formulaire-candidature-business.sec3_title">Ton niveau d'activité</legend>
     <div class="field">
-      <label class="field-label">Depuis combien de temps exerces-tu en tant que Makeup Artist ?</label>
+      <label class="field-label" data-editable="formulaire-candidature-business.sec3_q1">Depuis combien de temps exerces-tu en tant que Makeup Artist ?</label>
       <div class="radio-group">
         <label><input type="radio" name="anciennete" value="Pas encore lancée">Pas encore lancée</label>
         <label><input type="radio" name="anciennete" value="Moins d'1 an">Moins d'1 an</label>
@@ -260,7 +260,7 @@
       </div>
     </div>
     <div class="field">
-      <label class="field-label">Le maquillage est-il ton activité principale ou secondaire ?</label>
+      <label class="field-label" data-editable="formulaire-candidature-business.sec3_q2">Le maquillage est-il ton activité principale ou secondaire ?</label>
       <div class="radio-group">
         <label><input type="radio" name="type_activite" value="Activité principale">Activité principale</label>
         <label><input type="radio" name="type_activite" value="Activité secondaire">Activité secondaire</label>
@@ -268,39 +268,39 @@
       </div>
     </div>
     <div class="field">
-      <label class="field-label" for="clientes">As-tu déjà des clientes régulières ? Si oui, combien environ par mois ?</label>
+      <label class="field-label" for="clientes" data-editable="formulaire-candidature-business.sec3_q3">As-tu déjà des clientes régulières ? Si oui, combien environ par mois ?</label>
       <textarea id="clientes" name="clientes_regulieres"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Tes tarifs</legend>
+    <legend data-editable="formulaire-candidature-business.sec4_title">Tes tarifs</legend>
     <div class="field">
-      <label class="field-label" for="tarifs">Quels sont tes tarifs actuels, prestation par prestation ?</label>
+      <label class="field-label" for="tarifs" data-editable="formulaire-candidature-business.sec4_q1">Quels sont tes tarifs actuels, prestation par prestation ?</label>
       <textarea id="tarifs" name="tarifs" style="min-height:120px;"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Tes objectifs</legend>
+    <legend data-editable="formulaire-candidature-business.sec5_title">Tes objectifs</legend>
     <div class="field">
-      <label class="field-label" for="objectifs">Qu'aimerais-tu avoir accompli à l'issue des 4 semaines d'accompagnement ?</label>
+      <label class="field-label" for="objectifs" data-editable="formulaire-candidature-business.sec5_q1">Qu'aimerais-tu avoir accompli à l'issue des 4 semaines d'accompagnement ?</label>
       <textarea id="objectifs" name="objectifs" style="min-height:120px;"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Ta problématique principale</legend>
+    <legend data-editable="formulaire-candidature-business.sec6_title">Ta problématique principale</legend>
     <div class="field">
-      <label class="field-label" for="probleme">Quel est aujourd'hui le frein numéro un dans le développement de ton activité ?</label>
+      <label class="field-label" for="probleme" data-editable="formulaire-candidature-business.sec6_q1">Quel est aujourd'hui le frein numéro un dans le développement de ton activité ?</label>
       <textarea id="probleme" name="problematique" style="min-height:120px;"></textarea>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Informations complémentaires</legend>
+    <legend data-editable="formulaire-candidature-business.sec7_title">Informations complémentaires</legend>
     <div class="field">
-      <label class="field-label" for="complement">Tout ce qui pourrait aider Colleen à mieux préparer ton accompagnement (facultatif).</label>
+      <label class="field-label" for="complement" data-editable="formulaire-candidature-business.sec7_q1">Tout ce qui pourrait aider Colleen à mieux préparer ton accompagnement (facultatif).</label>
       <textarea id="complement" name="complement"></textarea>
     </div>
   </fieldset>
@@ -313,7 +313,7 @@
   </fieldset>
 
   <div class="submit-row">
-    <p>Après réception, Colleen vérifie que l'accompagnement correspond à ton profil et à tes besoins, puis revient vers toi sous quelques jours. En cas de validation, tu recevras le lien de paiement du Pack Business (300€).</p>
+    <p data-editable="formulaire-candidature-business.submit_note">Après réception, Colleen vérifie que l'accompagnement correspond à ton profil et à tes besoins, puis revient vers toi sous quelques jours. En cas de validation, tu recevras le lien de paiement du Pack Business (300€).</p>
     <button type="submit" class="btn">Envoyer ma candidature</button>
     <p class="form-status" role="status" aria-live="polite" style="margin-top:20px; font-size:13px;"></p>
   </div>
@@ -404,6 +404,23 @@
     a.addEventListener('click', function(){
       if(isMobileNav() && a.parentElement.classList.contains('nav-drop')) return;
       closeNav();
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  // Contenus modifiables depuis l'espace admin (Contenu coaching) : remplace les textes d'origine par ceux enregistrés.
+  if(!window.supabase) return;
+  var c = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  c.from('page_content').select('block_key,block_type,content').eq('page_slug', 'formulaire-candidature-business').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      document.querySelectorAll('[data-editable="formulaire-candidature-business.' + row.block_key + '"]').forEach(function(el){
+        if(row.block_type === 'image'){ el.setAttribute('src', row.content); }
+        else { el.textContent = row.content; }
+      });
     });
   });
 })();

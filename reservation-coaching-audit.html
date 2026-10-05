@@ -56,14 +56,14 @@
 
 <div class="intro">
   <div class="wrap">
-    <div class="eyebrow">Pack Audit — 1h30</div>
-    <h1>Réserve ton appel directement</h1>
-    <p class="lead">Choisis le créneau qui t'arrange ci-dessous. L'appel se déroule en visio (Zoom), et tu recevras automatiquement ta confirmation et le lien de connexion. Le Pack Audit se règle comptant (150€), par carte bancaire, au moment de la réservation.</p>
+    <div class="eyebrow" data-editable="reservation-coaching-audit.res_eyebrow">Pack Audit — 1h30</div>
+    <h1 data-editable="reservation-coaching-audit.res_title">Réserve ton appel directement</h1>
+    <p class="lead" data-editable="reservation-coaching-audit.res_text">Choisis le créneau qui t'arrange ci-dessous. L'appel se déroule en visio (Zoom), et tu recevras automatiquement ta confirmation et le lien de connexion. Le Pack Audit se règle comptant (150€), par carte bancaire, au moment de la réservation.</p>
 
     <div class="info-row">
-      <div class="info-item"><div class="i-num">1h30</div><div class="i-label">Durée de<br>l'appel</div></div>
-      <div class="info-item"><div class="i-num">Visio</div><div class="i-label">Zoom,<br>lien envoyé</div></div>
-      <div class="info-item"><div class="i-num">1–2h</div><div class="i-label">Délai du<br>compte rendu</div></div>
+      <div class="info-item"><div class="i-num" data-editable="reservation-coaching-audit.res_info1">1h30</div><div class="i-label">Durée de<br>l'appel</div></div>
+      <div class="info-item"><div class="i-num" data-editable="reservation-coaching-audit.res_info2">Visio</div><div class="i-label">Zoom,<br>lien envoyé</div></div>
+      <div class="info-item"><div class="i-num" data-editable="reservation-coaching-audit.res_info3">1–2h</div><div class="i-label">Délai du<br>compte rendu</div></div>
     </div>
   </div>
 </div>
@@ -95,5 +95,23 @@
   })();
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  // Contenus modifiables depuis l'espace admin (Contenu coaching) : remplace les textes d'origine par ceux enregistrés.
+  if(!window.supabase) return;
+  var c = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  c.from('page_content').select('block_key,block_type,content').eq('page_slug', 'reservation-coaching-audit').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      document.querySelectorAll('[data-editable="reservation-coaching-audit.' + row.block_key + '"]').forEach(function(el){
+        if(row.block_type === 'image'){ el.setAttribute('src', row.content); }
+        else { el.textContent = row.content; }
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
