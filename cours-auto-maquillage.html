@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Cours d'Auto Maquillage</title>
+<meta name="description" content="Deux formules pour apprendre à te maquiller seule avec une méthode professionnelle : l'Auto Makeup Class en petit groupe (1 jour) ou le cours privé en tête-à-tête (3h).">
+<link rel="canonical" href="https://cmakeup-beauty.vercel.app/cours-auto-maquillage.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CMAKEUP BEAUTY — Cours d'Auto Maquillage">
+<meta property="og:description" content="Deux formules pour apprendre à te maquiller seule avec une méthode professionnelle : l'Auto Makeup Class en petit groupe (1 jour) ou le cours privé en tête-à-tête (3h).">
+<meta property="og:url" content="https://cmakeup-beauty.vercel.app/cours-auto-maquillage.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --off:#F4F4F2;
+    --paper:#D6D1C5;
+    --line:#D6D1C5;
+    --ink:#1A1A1A;
+    --ink-soft:#75736D;
+    --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'TT Interphase','Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'The Silver Editorial','Cormorant Garamond', serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
+  nav a:hover::after{width:100%;}
+  nav a.current::after{width:100%;}
+  .btn{
+    border:1px solid var(--ink); padding:12px 26px; font-size:12px; letter-spacing:0.08em;
+    background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;
+  }
+  .btn:hover{background:var(--white); color:var(--ink);}
+
+  /* PAGE HERO */
+  .page-hero{
+    padding:100px 0 70px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .page-hero .eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:18px;}
+  .page-hero h1{font-size:clamp(38px,5vw,60px); line-height:1.05;}
+  .page-hero p{max-width:560px; margin:24px auto 0; font-size:16px; line-height:1.8; color:var(--ink-soft);}
+
+  section{padding:90px 0; border-bottom:1px solid var(--line);}
+  .section-eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:16px; text-align:center;}
+  .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
+  .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
+
+  /* OBJECTIFS */
+  .objectifs-list{max-width:640px; margin:0 auto; list-style:none;}
+  .objectifs-list li{
+    display:flex; gap:16px; align-items:flex-start;
+    padding:18px 0; border-bottom:1px solid var(--line); font-size:16px; color:var(--ink);
+  }
+  .objectifs-list li:last-child{border-bottom:none;}
+  .objectifs-list .check{color:var(--ink-soft); font-size:16px; margin-top:2px;}
+
+  /* FORMATION CARDS */
+  .formations-grid{display:flex; flex-direction:column; gap:1px; background:var(--line); max-width:820px; margin:0 auto;}
+  .formation-card{background:var(--white); padding:50px 56px;}
+  .f-text{display:flex; flex-direction:column;}
+  .f-text .f-badge{font-size:11px; letter-spacing:0.16em; color:var(--gray); margin-bottom:14px; text-transform:uppercase;}
+  .f-text h3{font-size:clamp(22px,2.4vw,28px); margin-bottom:26px; line-height:1.3;}
+  .f-module{padding:20px 0; border-top:1px solid var(--line);}
+  .f-module:last-of-type{border-bottom:1px solid var(--line); margin-bottom:26px;}
+  .f-module .m-name{font-size:14px; letter-spacing:0.04em; margin-bottom:6px; font-weight:500;}
+  .f-module .m-price{font-size:13px; color:var(--ink-soft);}
+  .f-cta{align-self:flex-start;}
+
+  /* WARM SECTION (grey wash) */
+  .section-warm{background:rgba(184,182,169,0.16);}
+
+  /* FORM */
+  .form-note{max-width:560px; margin:0 auto 50px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+  form.inscription-form{max-width:640px; margin:0 auto;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase;}
+  .field input, .field select, .field textarea{
+    border:none; border-bottom:1px solid var(--line);
+    padding:12px 4px; font-family:'TT Interphase','Jost',sans-serif; font-size:15px; color:var(--ink);
+    background:transparent;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-bottom-color:var(--ink);}
+  .field textarea{resize:vertical; min-height:90px;}
+  .form-submit{width:100%; text-align:center; margin-top:16px; padding:16px; font-size:13px; letter-spacing:0.1em; border:none;}
+  .form-disclaimer{font-size:11px; color:var(--gray); text-align:center; margin-top:18px; line-height:1.6;}
+
+  footer{padding:40px 0; background:var(--white);}
+  .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
+
+  @media(max-width:900px){
+    nav{display:none;}
+    .wrap{padding:0 24px;}
+    section{padding:60px 0;}
+    .formation-card{padding:36px 28px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  /* Menu mobile (hamburger) */
+  .nav-toggle{display:none;}
+  @media(max-width:900px){
+    header{position:relative;}
+    .nav-toggle{
+      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
+      width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; flex-shrink:0;
+    }
+    .nav-toggle span{display:block; width:18px; height:1px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
+    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+    .nav-toggle.is-open span:nth-child(2){opacity:0;}
+    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+    nav.nav-open{
+      display:flex; flex-direction:column; gap:0; width:100%;
+      position:absolute; top:100%; left:0; background:var(--white); border-top:1px solid var(--line);
+      box-shadow:0 14px 28px rgba(0,0,0,0.08); z-index:80; padding:6px 0;
+    }
+    nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
+    nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop > a{position:relative; padding-right:44px;}
+    nav.nav-open .nav-drop > a::before, nav.nav-open .nav-drop > a::after{content:""; position:absolute; left:auto; right:24px; top:50%; bottom:auto; width:10px; height:2px; background:var(--gray); transition:transform .2s ease;}
+    nav.nav-open .nav-drop > a::before{transform:translateY(-50%) rotate(90deg);}
+    nav.nav-open .nav-drop > a::after{transform:translateY(-50%);}
+    nav.nav-open .nav-drop.open > a::before{transform:translateY(-50%) rotate(0deg);}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:hidden; pointer-events:none; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off); max-height:0; overflow:hidden; transition:max-height .25s ease;}
+    nav.nav-open .nav-drop.open .nav-drop-menu{visibility:visible; pointer-events:auto; max-height:600px;}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
+    nav.nav-open .nav-drop-label{padding-left:24px;}
+    header .btn{display:none;}
+  }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  @media(min-width:861px){
+    .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  }
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-label{display:block; padding:12px 22px 4px; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); white-space:nowrap;}
+  .nav-drop-label:not(:first-child){margin-top:4px; padding-top:14px; border-top:1px solid var(--line);}
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
+  /* Menu : "Coaching Business" reste sur une seule ligne, espacement resserré sur écrans moyens */
+  header nav a{white-space:nowrap;}
+  @media(min-width:861px) and (max-width:1100px){ header nav{gap:20px;} }
+
+  /* INTRO */
+  .section-eyebrow{font-size:12px; letter-spacing:0.2em; color:var(--gray); text-transform:uppercase; margin-bottom:16px;}
+  .section-title{font-size:clamp(28px,3.4vw,40px); margin-bottom:22px;}
+  .section-lede{max-width:680px; margin:0 auto; font-size:15px; line-height:1.85; color:var(--ink-soft);}
+  .intro-wrap{padding:70px 0 20px; text-align:center;}
+  /* CARDS */
+  .choice-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin:60px 0 90px;}
+  .choice-card{background:var(--white); display:flex; flex-direction:column;}
+  .choice-card .c-body{padding:50px 42px 50px; display:flex; flex-direction:column; flex:1;}
+  .choice-card .c-tag{font-size:10.5px; letter-spacing:0.14em; color:var(--gray); text-transform:uppercase; margin-bottom:14px;}
+  .choice-card h2{font-size:26px; margin-bottom:14px;}
+  .choice-card p{font-size:14px; line-height:1.8; color:var(--ink-soft); margin-bottom:22px; flex:1;}
+  .choice-card .c-meta{display:flex; gap:22px; margin-bottom:26px; flex-wrap:wrap;}
+  .choice-card .c-meta div{font-size:11px; letter-spacing:0.04em; color:var(--ink-soft);}
+  .choice-card .c-meta strong{display:block; font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:19px; color:var(--ink); font-weight:400;}
+  .choice-card .btn{align-self:flex-start;}
+  @media(max-width:860px){ .choice-grid{grid-template-columns:1fr; margin:40px 0 60px;} .choice-card .c-body{padding:36px 26px;} }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <div class="nav-drop"><a href="prestations.html">Prestations</a><div class="nav-drop-menu"><a href="prestations.html">Prestations Invitées</a><a href="prestations-mariee.html">Prestations Mariée</a></div></div>
+    <a href="equipe.html">Équipe</a>
+    <div class="nav-drop"><a href="academie.html" class="current">Académie</a><div class="nav-drop-menu"><span class="nav-drop-label">Formations Maquilleuses</span><a href="formation-collective.html">Formation Débutante Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a><span class="nav-drop-label">Cours d'auto-maquillage</span><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
+    
+    <a href="coaching-business-mua.html">Coaching Business</a>
+    <a href="ebook.html">Ebook</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn" href="prestations.html#reserver">Réserver</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<section style="padding:80px 0 60px; text-align:center; border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-eyebrow">APPRENDS À TE MAQUILLER SEULE</div>
+    <h1 style="font-size:clamp(34px,5vw,54px); margin-bottom:22px;">Cours d'Auto Maquillage</h1>
+    <p class="section-lede">Deux formules pour apprendre à sublimer ton propre visage avec une méthode professionnelle, selon ton rythme et ton budget : en petit groupe le temps d'une journée, ou en tête-à-tête pour un accompagnement 100% personnalisé.</p>
+  </div>
+</section>
+
+<section class="intro-wrap">
+  <div class="wrap">
+    <div class="section-eyebrow">DEUX FORMULES</div>
+    <h2 class="section-title">Quelle formule te correspond&nbsp;?</h2>
+    <p class="section-lede">Que tu préfères apprendre dans une ambiance conviviale aux côtés d'autres participantes, ou bénéficier d'une attention entièrement dédiée à ton visage et tes envies, chaque formule t'enseigne une méthode professionnelle avec du matériel offert.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="choice-grid">
+
+      <div class="choice-card">
+        <div class="c-body">
+          <div class="c-tag">En petit groupe</div>
+          <h2>Auto Makeup Class</h2>
+          <p>Une journée entière, en petit comité, avec Arlyne. Une vraie expérience premium pour apprendre les bases d'un maquillage professionnel dans une ambiance conviviale.</p>
+          <div class="c-meta">
+            <div><strong>300€</strong>Prix (acompte 100€)</div>
+            <div><strong>1 jour</strong>Journée complète</div>
+            <div><strong>CPF</strong>1100€, sous réserve</div>
+          </div>
+          <a class="btn" href="auto-makeup-class.html">Découvrir cette formule</a>
+        </div>
+      </div>
+
+      <div class="choice-card">
+        <div class="c-body">
+          <div class="c-tag">En tête-à-tête</div>
+          <h2>Cours Privé</h2>
+          <p>Une demi-journée (3h) rien que pour toi, avec un accompagnement 100% individuel, pensé pour ton visage et tes objectifs. Méthode professionnelle et matériel offert.</p>
+          <div class="c-meta">
+            <div><strong>500€</strong>Prix (acompte 150€)</div>
+            <div><strong>3h</strong>Demi-journée</div>
+            <div><strong>CPF</strong>1100€, sous réserve</div>
+          </div>
+          <a class="btn" href="cours-auto-maquillage-prive.html">Découvrir cette formule</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top" style="justify-content:flex-start;">
+      <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
+    </div>
+    <div class="footer-note"><a href="mentions-legales.html" style="color:inherit; text-decoration:underline;">Mentions légales &amp; CGV</a></div>
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('header nav');
+  if(!toggle || !nav) return;
+  function isMobileNav(){ return window.matchMedia('(max-width:860px)').matches; }
+  function closeNav(){
+    nav.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.classList.remove('is-open');
+    nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
+  }
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.classList.toggle('is-open', open);
+    if(!open) nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
+  });
+  nav.querySelectorAll('.nav-drop > a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(!isMobileNav()) return;
+      e.preventDefault();
+      var drop = a.parentElement;
+      var wasOpen = drop.classList.contains('open');
+      nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
+      if(!wasOpen) drop.classList.add('open');
+    });
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(isMobileNav() && a.parentElement.classList.contains('nav-drop')) return;
+      closeNav();
+    });
+  });
+})();
+</script>
+
+</html>

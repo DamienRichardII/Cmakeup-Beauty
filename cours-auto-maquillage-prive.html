@@ -285,6 +285,7 @@
   }
   .price-option{background:var(--white); padding:44px 34px; text-align:center;}
   .price-option.featured{background:var(--ink);}
+  .price-option.featured .p-amount{color:var(--white);}
   .price-option.featured .p-note{color:#D8D6D0;}
   .price-option .p-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:16px;}
   .price-option .p-amount{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:36px; margin-bottom:14px;}
@@ -359,7 +360,7 @@
   <div class="wrap" style="text-align:center;">
     <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section3_eyebrow">RÉSERVATION</div>
     <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section3_title">Remplis le formulaire ci-dessous</h2>
-    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section3_lede">Indique tes disponibilités dans le formulaire plus bas sur cette page. Kit de pinceaux et guide makeup inclus. Je te réponds par email sous 1 à 3 jours pour confirmer ta date.</p>
+    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section3_lede">Remplis le formulaire plus bas sur cette page, puis choisis ton créneau directement dans le planning en ligne. Kit de pinceaux et guide makeup inclus.</p>
   </div>
 </section>
 
@@ -375,7 +376,7 @@
       <div>— Kit de pinceaux + guide PDF offerts</div>
       <div>— Matériel professionnel à disposition sur place</div>
       <div>— Éligible CPF : 1100€, sous validation du dossier</div>
-      <div>— Dates flexibles, selon tes disponibilités</div>
+      <div>— Date au choix, selon le planning en ligne</div>
     </div>
   </div>
 </section>
@@ -455,7 +456,7 @@
       </details>
       <details class="faq-item">
         <summary data-editable="cours-auto-maquillage-prive.faq5_question">Comment se passe la réservation ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq5_text">Indique ta date et ton créneau préféré (matin ou après-midi) dans le formulaire ci-dessous. Une fois les dates confirmées, un acompte de 150€ (non remboursable) te sera demandé pour valider définitivement ta place.</p>
+        <p data-editable="cours-auto-maquillage-prive.faq5_text">Remplis le formulaire ci-dessous et indique ton créneau préféré (matin ou après-midi). En cas de paiement personnel, tu choisis ensuite ta date directement dans le planning en ligne et règles l'acompte de 150€ (non remboursable) pour valider ta place.</p>
       </details>
     </div>
   </div>
@@ -465,7 +466,7 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section7_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section7_title">Réserver ma place</h2>
-    <p class="form-note">Les dates n'étant pas encore confirmées, indique ta session et ton créneau préférés (matin ou après-midi) : nous te recontacterons dès leur validation pour finaliser ta réservation.</p>
+    <p class="form-note">Indique ton créneau préféré (matin ou après-midi). En cas de paiement personnel, tu choisis ensuite ta date dans le planning en ligne ; en cas de financement CPF, nous te recontactons pour finaliser ta réservation.</p>
 
     <form class="inscription-form">
       <div class="form-row">
@@ -498,10 +499,6 @@
       </div>
 
       <div class="form-row">
-        <div class="field">
-          <label for="disponibilites">Tes disponibilités</label>
-          <input type="text" id="disponibilites" name="disponibilites" placeholder="Ex : le 17 octobre, ou toute autre date qui t'arrange" required>
-        </div>
         <div class="field">
           <label for="creneau">Créneau</label>
           <select id="creneau" name="creneau" required>
@@ -696,7 +693,6 @@
         email: document.getElementById('email').value,
         telephone: document.getElementById('telephone').value,
         ville: document.getElementById('ville').value,
-        dates_souhaitees: document.getElementById('disponibilites').value,
         creneau: document.getElementById('creneau').value,
         niveau: document.getElementById('niveau').value,
         trousse: document.getElementById('trousse').value,
@@ -734,7 +730,6 @@
         email: document.getElementById('email').value,
         telephone: document.getElementById('telephone').value,
         ville: document.getElementById('ville').value,
-        dates_souhaitees: document.getElementById('disponibilites').value,
         creneau: document.getElementById('creneau').value,
         niveau: document.getElementById('niveau').value,
         trousse: document.getElementById('trousse').value,

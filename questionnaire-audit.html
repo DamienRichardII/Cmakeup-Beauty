@@ -256,14 +256,6 @@
   </fieldset>
 
   <fieldset>
-    <legend>Tes disponibilités</legend>
-    <div class="field">
-      <label class="field-label" for="dispo">Quels jours et créneaux te conviennent pour la visioconférence de 1h30 ?</label>
-      <textarea id="dispo" name="disponibilites"></textarea>
-    </div>
-  </fieldset>
-
-  <fieldset>
     <div class="field" style="margin-bottom:0; display:flex; align-items:flex-start; gap:10px;">
       <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:3px; width:auto;">
       <label class="field-label" for="rgpd" style="margin-bottom:0; font-size:13px;">J'accepte que mes informations soient utilisées pour préparer mon coaching, conformément à la politique de confidentialité.</label>
@@ -271,8 +263,8 @@
   </fieldset>
 
   <div class="submit-row">
-    <p>Une fois envoyé, Colleen prépare ton analyse à partir de tes réponses avant votre séance. Tu recevras un lien de calendrier pour choisir ton créneau.</p>
-    <button type="submit" class="btn">Envoyer mon questionnaire</button>
+    <p>Une fois envoyé, Colleen prépare ton analyse à partir de tes réponses avant votre séance. Tu choisis ensuite ton créneau directement dans le planning en ligne, sur la page suivante.</p>
+    <button type="submit" class="btn">Envoyer le questionnaire et choisir mon créneau</button>
     <p class="form-status" role="status" aria-live="polite" style="margin-top:20px; font-size:13px;"></p>
   </div>
 </form>
@@ -313,11 +305,10 @@
       instagram_usage: document.getElementById('insta-usage').value,
       objectifs: document.getElementById('objectifs').value,
       difficultes: document.getElementById('difficultes').value,
-      disponibilites: document.getElementById('dispo').value,
       rgpd_consent: document.getElementById('rgpd').checked
     }).then(function(res){
       btn.disabled = false;
-      btn.textContent = 'Envoyer mon questionnaire';
+      btn.textContent = 'Envoyer le questionnaire et choisir mon créneau';
       if(res.error){
         status.style.color = '#B33A3A';
         status.innerHTML = "Un problème est survenu lors de l'envoi. Envoie tes réponses directement à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:var(--ink);\">academy@cmakeupbeauty.fr</a>.";
