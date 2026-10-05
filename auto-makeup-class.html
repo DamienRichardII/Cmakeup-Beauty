@@ -799,6 +799,14 @@
     document.getElementById('amcConfirmText').innerHTML = "Merci ! Comme tu as choisi le financement CPF, nous allons te recontacter pour récupérer les informations nécessaires à ton dossier. Ta place ne sera définitivement validée qu'une fois le financement accepté par notre organisme partenaire.";
   }
 
+  // Libellé du bouton selon le mode de financement : paiement personnel -> paiement, CPF -> simple demande
+  var finSelect = document.getElementById('financement');
+  var submitBtnEl = form.querySelector('.form-submit');
+  function submitLabel(v){ return v === 'cpf' ? 'Envoyer ma demande' : 'Continuer vers le paiement'; }
+  function syncSubmitLabel(){ if(submitBtnEl && !submitBtnEl.disabled) submitBtnEl.textContent = submitLabel(finSelect.value); }
+  finSelect.addEventListener('change', syncSubmitLabel);
+  syncSubmitLabel();
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
@@ -834,7 +842,7 @@
         rgpd_consent: document.getElementById('rgpd').checked
       }).then(function(res){
         btn.disabled = false;
-        btn.textContent = 'Continuer vers le paiement';
+        btn.textContent = submitLabel(financement);
         if(res.error){
           status.style.color = '#B33A3A';
           status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
@@ -842,7 +850,7 @@
         }
         recordId = newId;
         if(financement === 'cpf'){
-          showCpfConfirmation();
+          window.location.href = 'merci-formation.html';
         } else {
           showPaiementScreen();
         }

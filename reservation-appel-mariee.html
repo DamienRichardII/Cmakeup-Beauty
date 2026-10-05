@@ -152,7 +152,7 @@
     _sb.from('appels_decouverte_mariee').insert(values).then(function(res){
       try{ sessionStorage.removeItem('cmk_appel_mariee_pending'); } catch(err){}
       if(res.error){
-        showConfirm("Ton rendez-vous est bien confirmé dans l'agenda, mais tes informations complémentaires n'ont pas pu être enregistrées. Écris-nous directement à <a href=\"mailto:Cmakeupbeauty95@gmail.com\">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href=\"tel:+33754033266\">07 54 03 32 66</a> pour nous les transmettre.");
+        showConfirm("Ton rendez-vous est bien confirmé dans l'agenda, mais tes informations complémentaires n'ont pas pu être enregistrées. Écris-nous directement à <a href=\"mailto:Cmakeupbeauty95@gmail.com\">Cmakeupbeauty95@gmail.com</a> ou appelle le <a href=\"tel:+33754033266\">07&nbsp;54&nbsp;03&nbsp;32&nbsp;66</a> pour nous les transmettre.");
       } else {
         showConfirm('Merci ! Ton rendez-vous est confirmé, on se parle très vite 🤍');
       }

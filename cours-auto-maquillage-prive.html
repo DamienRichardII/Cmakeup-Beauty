@@ -614,8 +614,8 @@
         </div>
       </div>
 
-      <button type="submit" class="btn form-submit">Envoyer ma demande de réservation</button>
-      <p class="form-disclaimer">Réponse par email sous 1 à 3 jours pour confirmer ta date. Un acompte de 150€ (non remboursable) sera demandé pour bloquer définitivement ta place — uniquement en cas de financement personnel. En cas de financement CPF, aucun acompte n'est demandé.</p>
+      <button type="submit" class="btn form-submit">Continuer vers le paiement</button>
+      <p class="form-disclaimer">En cas de paiement personnel, tu seras redirigée vers Calendly pour choisir ton créneau et régler l'acompte de 150€ (non remboursable) directement en ligne. En cas de financement CPF, aucun acompte n'est demandé : ta demande est d'abord étudiée et nous te répondons par email sous 1 à 3 jours.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
   </div>
@@ -670,10 +670,49 @@
       return res.error ? null : path;
     });
   }
+  // Libellé du bouton selon le mode de financement : paiement personnel -> paiement, CPF -> simple demande
+  var finSelect = document.getElementById('financement');
+  var submitBtnEl = form.querySelector('.form-submit');
+  function submitLabel(v){ return v === 'cpf' ? 'Envoyer ma demande' : 'Continuer vers le paiement'; }
+  function syncSubmitLabel(){ if(submitBtnEl && !submitBtnEl.disabled) submitBtnEl.textContent = submitLabel(finSelect.value); }
+  finSelect.addEventListener('change', syncSubmitLabel);
+  syncSubmitLabel();
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
     var financementVal = document.getElementById('financement').value;
+
+    if(financementVal === 'classique'){
+      // Paiement personnel : redirection vers la réservation Calendly (créneau + acompte). Aucun
+      // enregistrement en base tant que le créneau n'est pas réellement confirmé.
+      var pendingValues = {
+        source_page: 'cours-auto-maquillage-prive',
+        prenom: document.getElementById('prenom').value,
+        nom: document.getElementById('nom').value,
+        email: document.getElementById('email').value,
+        telephone: document.getElementById('telephone').value,
+        ville: document.getElementById('ville').value,
+        dates_souhaitees: document.getElementById('disponibilites').value,
+        creneau: document.getElementById('creneau').value,
+        niveau: document.getElementById('niveau').value,
+        trousse: document.getElementById('trousse').value,
+        pourquoi: document.getElementById('pourquoi').value,
+        style: document.getElementById('style').value,
+        deja_cliente: document.getElementById('deja-cliente').value,
+        financement: financementVal,
+        message: document.getElementById('message').value,
+        rgpd_consent: document.getElementById('rgpd').checked
+      };
+      try{ sessionStorage.setItem('cmk_cours_prive_pending', JSON.stringify(pendingValues)); } catch(err){}
+      var redirectParams = new URLSearchParams({
+        prenom: pendingValues.prenom,
+        nom: pendingValues.nom,
+        email: pendingValues.email
+      });
+      window.location.href = 'reservation-cours-prive.html?' + redirectParams.toString();
+      return;
+    }
 
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
@@ -708,10 +747,10 @@
         rgpd_consent: document.getElementById('rgpd').checked
       }).then(function(res){
         btn.disabled = false;
-        btn.textContent = 'Envoyer ma demande de réservation';
+        btn.textContent = submitLabel(financementVal);
         if(res.error){
           status.style.color = '#B33A3A';
-          status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07 54 03 32 66</a>.";
+          status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07&nbsp;54&nbsp;03&nbsp;32&nbsp;66</a>.";
         } else {
           window.location.href = 'merci-formation.html';
         }
