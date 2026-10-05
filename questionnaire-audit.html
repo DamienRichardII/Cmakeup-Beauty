@@ -135,6 +135,9 @@
     nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
     nav.nav-open a:last-child{border-bottom:none;}
   }
+  /* Menu : "Coaching Business" reste sur une seule ligne, espacement resserré sur écrans moyens */
+  header nav a{white-space:nowrap;}
+  @media(min-width:861px) and (max-width:1100px){ header nav{gap:20px;} }
 </style>
 </head>
 <body>
@@ -144,7 +147,7 @@
   <nav>
     <a href="index.html">Accueil</a>
     <a href="formation-en-ligne.html">Formations</a>
-    <a href="coaching-business-mua.html" class="active">Coaching</a>
+    <a href="coaching-business-mua.html" class="active">Coaching Business</a>
     <a href="contact.html">Contact</a>
   </nav>
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
