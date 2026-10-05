@@ -440,7 +440,7 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="formation-collective.section6_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="formation-collective.section6_title">Réserver ma place</h2>
-    <p class="form-note">Choisis ta session préférée ci-dessous : nous te recontacterons rapidement pour finaliser ton inscription.</p>
+    <p class="form-note">Choisis ta session préférée ci-dessous. En paiement personnel, tu règles ensuite directement l'acompte de 200€ en ligne pour bloquer ta place (pas de calendrier à remplir) ; en financement CPF, nous te recontactons pour étudier ta demande.</p>
     <p class="form-note" style="margin-top:-30px;">Déjà intermédiaire ou confirmée et envie de te spécialiser mariée ? La <a href="formation-intensive-collective-3-jours.html" style="text-decoration:underline; color:var(--ink);">Formation Intensive Mariée (3 jours)</a> est faite pour toi.</p>
 
     <form class="inscription-form">
@@ -576,8 +576,8 @@
         <label for="rgpd" style="text-transform:none; letter-spacing:normal; font-size:12px; color:var(--ink-soft);">J'accepte que mes informations soient utilisées pour traiter ma demande d'inscription, conformément à la politique de confidentialité.</label>
       </div>
 
-      <button type="submit" class="btn form-submit">Envoyer ma demande d'inscription</button>
-      <p class="form-disclaimer">Un acompte de 200€ (non remboursable) sera demandé pour bloquer définitivement ta place. Pas d'acompte à régler en cas de financement CPF.</p>
+      <button type="submit" class="btn form-submit">Continuer vers le paiement</button>
+      <p class="form-disclaimer">En paiement personnel, tu es redirigée vers le paiement sécurisé de l'acompte de 200€ (non remboursable) pour bloquer définitivement ta place. Pas d'acompte à régler en cas de financement CPF : ta demande est d'abord étudiée et nous te répondons par email sous 1 à 3 jours.</p>
       <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
     </form>
   </div>
@@ -632,9 +632,27 @@
       return res.error ? null : path;
     });
   }
+  var CONTACT_ERROR_HTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07&nbsp;54&nbsp;03&nbsp;32&nbsp;66</a>.";
+  // Paiement de l'acompte en ligne uniquement en paiement personnel, et si une session est choisie (pas de liste d'attente)
+  function needsPayment(fin, sess){ return fin !== 'cpf' && sess !== 'liste-attente'; }
+  function submitLabel(fin, sess){
+    if(fin === 'cpf') return 'Envoyer ma demande CPF';
+    if(sess === 'liste-attente') return "Envoyer ma demande d'inscription";
+    return 'Continuer vers le paiement';
+  }
+  var finSelect = document.getElementById('financement');
+  var sessSelect = document.getElementById('session');
+  var submitBtnEl = form.querySelector('.form-submit');
+  function syncSubmitLabel(){ if(submitBtnEl && !submitBtnEl.disabled) submitBtnEl.textContent = submitLabel(finSelect.value, sessSelect.value); }
+  finSelect.addEventListener('change', syncSubmitLabel);
+  sessSelect.addEventListener('change', syncSubmitLabel);
+  syncSubmitLabel();
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var btn = form.querySelector('.form-submit');
+    var financementVal = document.getElementById('financement').value;
+    var sessionVal = document.getElementById('session').value;
     btn.disabled = true;
     btn.textContent = 'Envoi en cours...';
     var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
@@ -665,13 +683,40 @@
         rgpd_consent: document.getElementById('rgpd').checked
       }).then(function(res){
         btn.disabled = false;
-        btn.textContent = "Envoyer ma demande d'inscription";
+        btn.textContent = submitLabel(financementVal, sessionVal);
         if(res.error){
           status.style.color = '#B33A3A';
-          status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07&nbsp;54&nbsp;03&nbsp;32&nbsp;66</a>.";
-        } else {
-          window.location.href = 'merci-formation.html';
+          status.innerHTML = CONTACT_ERROR_HTML;
+          return;
         }
+        if(!needsPayment(financementVal, sessionVal)){
+          window.location.href = 'merci-formation.html';
+          return;
+        }
+        // Paiement personnel : redirection directe vers le paiement Stripe de l'acompte (pas de calendrier)
+        btn.disabled = true;
+        btn.textContent = 'Redirection vers le paiement sécurisé...';
+        status.style.color = 'var(--ink-soft)';
+        status.textContent = '';
+        var base = window.location.origin + window.location.pathname.replace(/[^\/]*$/, '');
+        _sb.functions.invoke('create-checkout-session', {
+          body: {
+            table: 'formation_inscriptions_acompte',
+            record_id: newId,
+            description: 'Acompte Formation Débutante Collective',
+            success_url: base + 'merci-acompte.html?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: window.location.origin + window.location.pathname
+          }
+        }).then(function(pay){
+          if(pay.error || !pay.data || !pay.data.url){
+            btn.disabled = false;
+            btn.textContent = submitLabel(financementVal, sessionVal);
+            status.style.color = '#B33A3A';
+            status.innerHTML = "Ton inscription est bien enregistrée, mais le paiement en ligne n'a pas pu démarrer. " + CONTACT_ERROR_HTML.replace(/^Un problème est survenu lors de l'envoi\. /, '');
+            return;
+          }
+          window.location.href = pay.data.url;
+        });
       });
     });
   });

@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --white:#FFFFFF;
@@ -75,21 +75,21 @@
   /* INTRO */
   .intro{padding:80px 0 20px;}
   .back-link{font-size:12px; letter-spacing:0.06em; color:var(--gray); border-bottom:1px solid var(--gray); padding-bottom:2px; display:inline-block; margin-bottom:34px;}
-  .section-label{font-size:12px; letter-spacing:0.2em; color:var(--gray); margin-bottom:18px;}
-  .intro h1{font-size:clamp(30px,4vw,44px); line-height:1.15; margin-bottom:22px; max-width:640px;}
+  .section-label{font-size:12px; letter-spacing:0.2em; color:var(--gray); margin-bottom:18px; font-weight:600;}
+  .intro h1{font-size:clamp(30px,4vw,44px); line-height:1.15; margin-bottom:22px; max-width:640px; font-weight:700;}
   .intro p{font-size:16px; line-height:1.8; color:var(--ink-soft); max-width:600px;}
 
   /* FORM */
   form{padding:50px 0 120px;}
   fieldset{border:none; margin-bottom:60px;}
   legend{
-    font-size:12px; letter-spacing:0.2em; color:var(--ink); text-transform:uppercase;
+    font-size:12px; letter-spacing:0.2em; color:var(--ink); text-transform:uppercase; font-weight:700;
     padding-bottom:16px; margin-bottom:34px; border-bottom:1px solid var(--line); width:100%;
   }
   .field{margin-bottom:32px;}
   .field-row{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
-  label.field-label{display:block; font-size:14px; color:var(--ink); margin-bottom:10px; line-height:1.5;}
-  label.field-label .req{color:var(--gray);}
+  label.field-label{display:block; font-size:14px; color:var(--ink); margin-bottom:10px; line-height:1.5; font-weight:600;}
+  label.field-label .req{color:var(--gray); font-weight:400;}
   .hint{font-size:12px; color:var(--gray); margin-top:8px;}
   input[type=text], input[type=email], input[type=tel], input[type=number], textarea{
     width:100%; border:none; border-bottom:1px solid var(--line); background:transparent;
@@ -258,7 +258,7 @@
   <fieldset>
     <div class="field" style="margin-bottom:0; display:flex; align-items:flex-start; gap:10px;">
       <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:3px; width:auto;">
-      <label class="field-label" for="rgpd" style="margin-bottom:0; font-size:13px;">J'accepte que mes informations soient utilisées pour préparer mon coaching, conformément à la politique de confidentialité.</label>
+      <label class="field-label" for="rgpd" style="margin-bottom:0; font-size:13px; font-weight:300;">J'accepte que mes informations soient utilisées pour préparer mon coaching, conformément à la politique de confidentialité.</label>
     </div>
   </fieldset>
 
