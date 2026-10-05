@@ -303,7 +303,7 @@
     <a href="index.html">Accueil</a>
     <div class="nav-drop"><a href="prestations.html">Prestations</a><div class="nav-drop-menu"><a href="prestations.html">Prestations Invitées</a><a href="prestations-mariee.html">Prestations Mariée</a></div></div>
     <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="academie.html" class="current">Académie</a><div class="nav-drop-menu"><span class="nav-drop-label">Formations Maquilleuses</span><a href="formation-collective.html">Formation Débutante Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a><span class="nav-drop-label">Cours d'auto-maquillage</span><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html" class="current">Cours Privé (demi-journée)</a></div></div>
+    <div class="nav-drop"><a href="academie.html" class="current">Académie</a><div class="nav-drop-menu"><span class="nav-drop-label">Formations Maquilleuses</span><a href="formation-collective.html">Formation Débutante Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a><span class="nav-drop-label"><a href="cours-auto-maquillage.html" style="display:inline; padding:0; background:none; font-size:inherit; letter-spacing:inherit; text-transform:inherit; color:inherit; text-decoration:underline; text-underline-offset:3px;">Cours d'auto-maquillage</a></span><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html" class="current">Cours Privé (demi-journée)</a></div></div>
     
     <a href="coaching-business-mua.html">Coaching Business</a>
     <a href="ebook.html">Ebook</a>
@@ -456,7 +456,7 @@
       </details>
       <details class="faq-item">
         <summary data-editable="cours-auto-maquillage-prive.faq5_question">Comment se passe la réservation ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq5_text">Remplis le formulaire ci-dessous et indique ton créneau préféré (matin ou après-midi). En cas de paiement personnel, tu choisis ensuite ta date directement dans le planning en ligne et règles l'acompte de 150€ (non remboursable) pour valider ta place.</p>
+        <p data-editable="cours-auto-maquillage-prive.faq5_text">Remplis le formulaire ci-dessous. En cas de paiement personnel, tu choisis ensuite ta date et ton horaire (matin ou après-midi) directement dans le planning en ligne et règles l'acompte de 150€ (non remboursable) pour valider ta place.</p>
       </details>
     </div>
   </div>
@@ -466,7 +466,7 @@
   <div class="wrap">
     <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section7_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section7_title">Réserver ma place</h2>
-    <p class="form-note">Indique ton créneau préféré (matin ou après-midi). En cas de paiement personnel, tu choisis ensuite ta date dans le planning en ligne ; en cas de financement CPF, nous te recontactons pour finaliser ta réservation.</p>
+    <p class="form-note">En cas de paiement personnel, tu choisis ensuite ta date et ton horaire dans le planning en ligne ; en cas de financement CPF, nous te recontactons pour finaliser ta réservation.</p>
 
     <form class="inscription-form">
       <div class="form-row">
@@ -495,17 +495,6 @@
         <div class="field full">
           <label for="ville">Ville</label>
           <input type="text" id="ville" name="ville" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="creneau">Créneau</label>
-          <select id="creneau" name="creneau" required>
-            <option value="">Sélectionnez</option>
-            <option value="matin">Matin — 9h à 12h</option>
-            <option value="apres-midi">Après-midi — 13h à 16h</option>
-          </select>
         </div>
       </div>
 
@@ -693,7 +682,6 @@
         email: document.getElementById('email').value,
         telephone: document.getElementById('telephone').value,
         ville: document.getElementById('ville').value,
-        creneau: document.getElementById('creneau').value,
         niveau: document.getElementById('niveau').value,
         trousse: document.getElementById('trousse').value,
         pourquoi: document.getElementById('pourquoi').value,
@@ -730,7 +718,6 @@
         email: document.getElementById('email').value,
         telephone: document.getElementById('telephone').value,
         ville: document.getElementById('ville').value,
-        creneau: document.getElementById('creneau').value,
         niveau: document.getElementById('niveau').value,
         trousse: document.getElementById('trousse').value,
         pourquoi: document.getElementById('pourquoi').value,
