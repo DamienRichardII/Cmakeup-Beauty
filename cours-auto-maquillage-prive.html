@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --white:#FFFFFF;
@@ -294,6 +294,12 @@
   /* Menu : "Coaching Business" reste sur une seule ligne, espacement resserré sur écrans moyens */
   header nav a{white-space:nowrap;}
   @media(min-width:861px) and (max-width:1100px){ header nav{gap:20px;} }
+
+  /* Formulaires : titres, sous-titres et libellés de champs en gras */
+  .fs-bold .section-eyebrow, .fs-bold .section-label{font-weight:600;}
+  .fs-bold .section-title, .fs-bold h2, .fs-bold h3, .fs-bold h2.step-title{font-weight:700;}
+  .fs-bold .field label, .fs-bold label.field-label{font-weight:600;}
+  .fs-bold .field label[for="rgpd"], .fs-bold .field-checkbox label{font-weight:300;}
 </style>
 </head>
 <body>
@@ -462,7 +468,7 @@
   </div>
 </section>
 
-<section id="formulaire">
+<section id="formulaire" class="fs-bold">
   <div class="wrap">
     <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section7_eyebrow">INSCRIPTIONS</div>
     <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section7_title">Réserver ma place</h2>
