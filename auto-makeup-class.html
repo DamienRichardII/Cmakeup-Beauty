@@ -805,7 +805,7 @@
   // Libellé du bouton selon le mode de financement : paiement personnel -> paiement, CPF -> simple demande
   var finSelect = document.getElementById('financement');
   var submitBtnEl = form.querySelector('.form-submit');
-  function submitLabel(v){ return v === 'cpf' ? 'Envoyer ma demande' : 'Continuer vers le paiement'; }
+  function submitLabel(v){ return v === 'cpf' ? 'Envoyer ma demande CPF' : 'Continuer vers le paiement'; }
   function syncSubmitLabel(){ if(submitBtnEl && !submitBtnEl.disabled) submitBtnEl.textContent = submitLabel(finSelect.value); }
   finSelect.addEventListener('change', syncSubmitLabel);
   syncSubmitLabel();
