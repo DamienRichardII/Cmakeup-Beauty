@@ -1,3 +1,5 @@
+-- (v2) Ne modifie plus la colonne statut : sa contrainte n'autorise que
+-- nouveau / appel_fait / devis_envoye / confirme / annule ('rdv_confirme' était refusé).
 -- Rattache le créneau Calendly confirmé à la demande "appel découverte mariée"
 -- déjà enregistrée à l'envoi du formulaire (la table n'autorise que l'insertion
 -- publique ; cette fonction est la seule écriture permise au public, limitée
@@ -11,8 +13,7 @@ as $$
   update public.appels_decouverte_mariee
      set calendly_event_uri   = p_event,
          calendly_invitee_uri = p_invitee,
-         rdv_statut           = 'confirme',
-         statut               = 'rdv_confirme'
+         rdv_statut           = 'confirme'
    where id = p_id
      and calendly_invitee_uri is null
      and created_at > now() - interval '24 hours';

@@ -657,13 +657,19 @@
   var status = form ? form.querySelector('.form-status') : null;
   if(!form || !status) return;
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  // Dépôt de la pièce d'identité (bucket privé). Renvoie le chemin, null si aucun
+  // fichier choisi, ou false si le dépôt a échoué (fichier trop lourd, format refusé,
+  // réseau) : l'envoi du formulaire est alors interrompu avec un message clair,
+  // au lieu de perdre le fichier en silence. Pas d'upsert : le chemin est unique par demande.
+  var _CPF_MAX_BYTES = 10 * 1024 * 1024;
   function _uploadCpfDoc(file, folder, label){
     if(!file) return Promise.resolve(null);
+    if(file.size > _CPF_MAX_BYTES) return Promise.resolve(false);
     var ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g,'') || 'bin';
     var path = folder + '/' + label + '.' + ext;
-    return _sb.storage.from('documents-cpf').upload(path, file, { upsert: true }).then(function(res){
-      return res.error ? null : path;
-    });
+    return _sb.storage.from('documents-cpf').upload(path, file, { upsert: false, contentType: file.type || undefined }).then(function(res){
+      return res.error ? false : path;
+    }).catch(function(){ return false; });
   }
   // Libellé du bouton selon le mode de financement : paiement personnel -> paiement, CPF -> simple demande
   var finSelect = document.getElementById('financement');
@@ -708,6 +714,7 @@
     }
 
     btn.disabled = true;
+    var _btnLabelBeforeSend = btn.textContent;
     btn.textContent = 'Envoi en cours...';
     var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
     var rectoFile = document.getElementById('piece_identite_recto') ? document.getElementById('piece_identite_recto').files[0] : null;
@@ -716,6 +723,13 @@
       _uploadCpfDoc(rectoFile, newId, 'recto'),
       _uploadCpfDoc(versoFile, newId, 'verso')
     ]).then(function(paths){
+      if(paths[0] === false || paths[1] === false){
+        btn.disabled = false;
+        btn.textContent = _btnLabelBeforeSend;
+        status.style.color = '#B33A3A';
+        status.innerHTML = "Ta pièce d'identité n'a pas pu être envoyée (10 Mo maximum, formats JPG, PNG, WEBP, HEIC ou PDF). Vérifie le fichier et réessaie, ou envoie-la à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
+        return;
+      }
       _sb.from('formation_inscriptions').insert({
         id: newId,
         source_page: 'cours-auto-maquillage-prive',

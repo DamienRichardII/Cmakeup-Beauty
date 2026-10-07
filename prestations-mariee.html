@@ -659,25 +659,31 @@
   var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
   var btn = form.querySelector('.form-submit');
 
-  // Upload les photos d'inspiration choisies vers le storage public dédié
-  // et renvoie la liste de leurs URLs publiques (tableau vide si aucun
-  // fichier, ou si l'upload échoue pour une raison quelconque — on ne
-  // bloque jamais l'envoi de la demande à cause d'une photo).
+  // Upload les photos d'inspiration choisies vers le storage dédié et renvoie
+  // la liste de leurs URLs publiques (tableau vide si aucun fichier choisi).
+  // Si une photo ne peut pas être envoyée (trop lourde, format refusé, réseau),
+  // la promesse est rejetée : l'envoi du formulaire s'arrête avec un message
+  // clair au lieu de perdre les photos en silence.
+  var PHOTO_MAX_BYTES = 10 * 1024 * 1024;
   function uploadInspirationPhotos(){
     var input = document.getElementById('photos-inspiration');
     var files = input && input.files ? Array.prototype.slice.call(input.files) : [];
     if(!files.length) return Promise.resolve([]);
+    for(var i = 0; i < files.length; i++){
+      if(files[i].size > PHOTO_MAX_BYTES){
+        var tooBig = new Error('photo_trop_lourde'); tooBig.code = 'size'; tooBig.fileName = files[i].name;
+        return Promise.reject(tooBig);
+      }
+    }
     var folder = 'appel-mariee/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-    return Promise.all(files.map(function(file){
+    return Promise.all(files.map(function(file, idx){
       var safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-      var path = folder + '/' + safeName;
-      return _sb.storage.from('uploads-appel-mariee').upload(path, file).then(function(res){
-        if(res.error) return null;
+      var path = folder + '/' + (idx + 1) + '-' + safeName;
+      return _sb.storage.from('uploads-appel-mariee').upload(path, file, { upsert: false, contentType: file.type || undefined }).then(function(res){
+        if(res.error) throw res.error;
         return _sb.storage.from('uploads-appel-mariee').getPublicUrl(path).data.publicUrl;
-      }).catch(function(){ return null; });
-    })).then(function(urls){
-      return urls.filter(Boolean);
-    });
+      });
+    }));
   }
 
   // La demande est enregistrée en base (et la notification e-mail envoyée à
@@ -749,11 +755,13 @@
         } catch(err){}
         window.location.href = nextUrl;
       });
-    }).catch(function(){
+    }).catch(function(err){
       btn.disabled = false;
       btn.textContent = 'Choisir mon créneau & envoyer ma demande';
       status.style.color = '#A8563F';
-      status.textContent = "Une erreur est survenue lors de l'envoi de tes photos. Réessaie, ou écris-nous directement à Cmakeupbeauty95@gmail.com.";
+      status.textContent = (err && err.code === 'size')
+        ? "Une de tes photos dépasse 10 Mo (" + err.fileName + "). Réduis-la ou retire-la, puis réessaie."
+        : "Tes photos n'ont pas pu être envoyées (formats acceptés : JPG, PNG, WEBP, HEIC, 10 Mo maximum par photo). Réessaie ou retire-les ; tu peux aussi nous les envoyer directement à Cmakeupbeauty95@gmail.com.";
     });
   });
 })();

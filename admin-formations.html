@@ -63,6 +63,7 @@
   select.statut-select:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px rgba(26,26,26,0.08);}
   .note-toggle{font-size:11px; text-decoration:underline; cursor:pointer; color:var(--ink-soft); display:inline-block; margin-top:6px; transition:color .2s ease;}
   .note-toggle:hover{color:var(--ink);}
+  .pj-link{text-decoration:underline; color:var(--ink);}
   .note-row{display:none;}
   .note-row.open{display:table-row;}
   .note-row td{background:var(--off);}
@@ -103,6 +104,7 @@
       <button data-panel="p-formations" class="active">Formations & formation collective</button>
       <button data-panel="p-waitlist">Liste d'attente — formation en ligne</button>
       <button data-panel="p-automakeup">Auto Makeup Class</button>
+      <button data-panel="p-mariee">Appels découverte mariée</button>
     </div>
 
     <div class="panel active" id="p-formations">
@@ -111,6 +113,7 @@
           <option value="tous">Toutes les pages</option>
           <option value="formations">formations.html</option>
           <option value="formation-collective">formation-collective.html</option>
+          <option value="formation-debutante-privee">formation-debutante-privee.html</option>
           <option value="formation-intensive-collective-3-jours">formation-intensive-collective-3-jours.html</option>
           <option value="formation-perfectionnement-1-jour">formation-perfectionnement-1-jour.html</option>
           <option value="formation-perfectionnement-2-jours">formation-perfectionnement-2-jours.html</option>
@@ -152,6 +155,13 @@
         <tbody id="autoBody"><tr><td colspan="4" class="empty-row">Chargement…</td></tr></tbody>
       </table>
     </div>
+
+    <div class="panel" id="p-mariee">
+      <table class="admin-table">
+        <thead><tr><th>Date</th><th>Nom</th><th>Mariage</th><th>Prestation / infos</th><th>Photos d'inspiration</th><th>Statut / RDV</th></tr></thead>
+        <tbody id="marieeBody"><tr><td colspan="6" class="empty-row">Chargement…</td></tr></tbody>
+      </table>
+    </div>
   </div>
 </main>
 
@@ -168,7 +178,7 @@
   // continueront d'échouer sans session admin valide, car les règles de sécurité (RLS) côté base
   // de données exigent un vrai compte admin connecté — ce contournement ne concerne que l'écran.
   var TEMP_DISABLE_LOGIN = false;
-  var formations = [], waitlist = [], autoDemandes = [];
+  var formations = [], waitlist = [], autoDemandes = [], mariees = [];
 
   function fmtDate(iso){
     if(!iso) return '';
@@ -176,6 +186,30 @@
     return d.toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit', year:'numeric'});
   }
   function esc(s){ return (s||'').toString().replace(/</g,'&lt;'); }
+  function escAttr(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+  // Pièces d'identité (bucket privé) : lien qui génère une adresse temporaire à l'ouverture.
+  function idLinks(row){
+    var out = [];
+    if(row.piece_identite_recto_path) out.push('<a href="#" class="pj-link" data-path="'+escAttr(row.piece_identite_recto_path)+'">Pièce d\'identité (recto)</a>');
+    if(row.piece_identite_verso_path) out.push('<a href="#" class="pj-link" data-path="'+escAttr(row.piece_identite_verso_path)+'">Pièce d\'identité (verso)</a>');
+    return out.join('<br>');
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('.pj-link') : null;
+    if(!a) return;
+    e.preventDefault();
+    var w = window.open('', '_blank');
+    _sb.storage.from('documents-cpf').createSignedUrl(a.getAttribute('data-path'), 300).then(function(res){
+      if(res.error || !res.data){
+        if(w) w.close();
+        a.textContent = 'Fichier introuvable ou accès refusé';
+        a.style.color = 'var(--danger)';
+        return;
+      }
+      if(w) w.location.href = res.data.signedUrl; else window.location.href = res.data.signedUrl;
+    });
+  });
 
   function statutOptions(current, options){
     return options.map(function(o){
@@ -212,7 +246,8 @@
         f.modele ? 'Modèle : '+esc(f.modele) : '',
         f.instagram ? 'Instagram : '+esc(f.instagram) : '',
         f.experience ? 'Expérience : '+esc(f.experience) : '',
-        f.pourquoi ? 'Pourquoi : '+esc(f.pourquoi) : ''
+        f.pourquoi ? 'Pourquoi : '+esc(f.pourquoi) : '',
+        idLinks(f)
       ].filter(Boolean).join('<br>');
       return '<tr>'
         + '<td>'+fmtDate(f.created_at)+'</td>'
@@ -250,11 +285,63 @@
     if(autoDemandes.length === 0){ body.innerHTML = '<tr><td colspan="4" class="empty-row">Aucune demande.</td></tr>'; return; }
     body.innerHTML = autoDemandes.map(function(a){
       var creneau = (a.creneau_souhaite_date ? fmtDate(a.creneau_souhaite_date) : '—') + (a.creneau_souhaite_heure ? ' à ' + esc(a.creneau_souhaite_heure) : '');
-      return '<tr><td>'+fmtDate(a.created_at)+'</td><td>'+esc(a.prenom)+' '+esc(a.nom)+'<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(a.email)+'</span></td>'
+      var amcInfos = [
+        a.session ? 'Session : '+esc(a.session) : '',
+        a.financement ? 'Financement : '+esc(a.financement) : '',
+        a.ville ? 'Ville : '+esc(a.ville) : '',
+        idLinks(a)
+      ].filter(Boolean).join('<br>');
+      return '<tr><td>'+fmtDate(a.created_at)+'</td><td>'+esc(a.prenom)+' '+esc(a.nom)+'<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(a.email)+'</span>'+(amcInfos ? '<br><span style="font-size:12px;">'+amcInfos+'</span>' : '')+'</td>'
         + '<td>'+creneau+'</td>'
         + '<td><select class="statut-select" data-id="'+a.id+'" data-table="auto_makeup_class_demandes">'+statutOptions(a.statut,['nouveau','confirme','annule'])+'</select></td></tr>';
     }).join('');
     wireRowEvents(body, autoDemandes);
+  }
+
+  function fmtDateTime(iso){
+    if(!iso) return '';
+    return new Date(iso).toLocaleString('fr-FR', {day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'});
+  }
+
+  function renderMariee(){
+    var body = document.getElementById('marieeBody');
+    if(mariees.length === 0){ body.innerHTML = '<tr><td colspan="6" class="empty-row">Aucune demande.</td></tr>'; return; }
+    body.innerHTML = mariees.map(function(m){
+      var noteId = 'note-'+m.id;
+      var mariage = [
+        m.date_mariage ? 'Date : '+fmtDate(m.date_mariage) : '',
+        m.ville ? 'Ville : '+esc(m.ville) : '',
+        m.lieu_preparation ? 'Préparation : '+esc(m.lieu_preparation)+(m.type_lieu_preparation ? ' ('+esc(m.type_lieu_preparation)+')' : '') : '',
+        m.lieu_ceremonie ? 'Cérémonie : '+esc(m.lieu_ceremonie) : '',
+        m.heure_ceremonie ? 'Heure cérémonie : '+esc(m.heure_ceremonie).slice(0,5) : '',
+        m.heure_prete ? 'Prête à : '+esc(m.heure_prete).slice(0,5) : ''
+      ].filter(Boolean).join('<br>');
+      var presta = [
+        m.pack_interesse ? 'Pack : '+esc(m.pack_interesse) : '',
+        m.essai_prevu ? 'Essai : '+esc(m.essai_prevu) : '',
+        m.type_ceremonie ? 'Type : '+esc(m.type_ceremonie)+(m.precision_ceremonie ? ' ('+esc(m.precision_ceremonie)+')' : '') : '',
+        m.autres_personnes ? 'Autres personnes : '+esc(m.nombre_personnes || 'oui') : ''
+      ].filter(Boolean).join('<br>');
+      var photos = (m.photos_inspiration_urls || []).map(function(u, i){
+        return '<a href="'+escAttr(u)+'" target="_blank" rel="noopener" title="Photo '+(i+1)+'"><img src="'+escAttr(u)+'" alt="Photo '+(i+1)+'" style="height:56px; width:56px; object-fit:cover; margin:0 6px 6px 0; border:1px solid var(--line);"></a>';
+      }).join('') || '—';
+      var rdv = m.rdv_confirme_debut ? '<br><span style="font-size:12px; color:var(--ok);">RDV : '+fmtDateTime(m.rdv_confirme_debut)+(m.rdv_statut === 'annule' ? ' (annulé)' : '')+'</span>' : '<br><span style="font-size:12px; color:var(--ink-soft);">Créneau Calendly non rattaché</span>';
+      return '<tr>'
+        + '<td>'+fmtDate(m.created_at)+'</td>'
+        + '<td>'+esc(m.prenom)+' '+esc(m.nom)+'<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(m.email)+(m.telephone ? '<br>'+esc(m.telephone) : '')+'</span>'
+          + '<div class="note-toggle" data-toggle="'+noteId+'">Note interne</div></td>'
+        + '<td class="msg-cell">'+(mariage || '—')+'</td>'
+        + '<td class="msg-cell">'+(presta || '—')+'</td>'
+        + '<td>'+photos+'</td>'
+        + '<td><select class="statut-select" data-id="'+m.id+'" data-table="appels_decouverte_mariee">'+statutOptions(m.statut,['nouveau','appel_fait','devis_envoye','confirme','annule'])+'</select>'+rdv+'</td>'
+        + '</tr>'
+        + '<tr class="note-row" id="'+noteId+'"><td colspan="6">'
+          + (m.autres_infos ? '<p style="font-size:12px; color:var(--ink-soft); margin-bottom:10px;"><strong style="color:var(--ink);">Autres infos :</strong> '+esc(m.autres_infos)+'</p>' : '')
+          + '<textarea class="admin-note" data-id="'+m.id+'" data-table="appels_decouverte_mariee">'+esc(m.admin_note)+'</textarea>'
+          + '<button type="button" class="btn btn-small save-note" data-id="'+m.id+'" data-table="appels_decouverte_mariee">Enregistrer la note</button>'
+          + '</td></tr>';
+    }).join('');
+    wireRowEvents(body, mariees);
   }
 
   function wireRowEvents(container, arr){
@@ -285,12 +372,14 @@
     Promise.all([
       _sb.from('formation_inscriptions').select('*').order('created_at',{ascending:false}),
       _sb.from('waitlist_formation_en_ligne').select('*').order('created_at',{ascending:false}),
-      _sb.from('auto_makeup_class_demandes').select('*').order('created_at',{ascending:false})
+      _sb.from('auto_makeup_class_demandes').select('*').order('created_at',{ascending:false}),
+      _sb.from('appels_decouverte_mariee').select('*').order('created_at',{ascending:false})
     ]).then(function(res){
       formations = res[0].data || [];
       waitlist = res[1].data || [];
       autoDemandes = res[2].data || [];
-      renderFormations(); renderWaitlist(); renderAuto();
+      mariees = res[3].data || [];
+      renderFormations(); renderWaitlist(); renderAuto(); renderMariee();
     });
   }
 
