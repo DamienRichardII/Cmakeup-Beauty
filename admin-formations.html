@@ -144,8 +144,8 @@
         <span id="copyMsg" style="font-size:12px; color:var(--ok);"></span>
       </div>
       <table class="admin-table">
-        <thead><tr><th>Date</th><th>Email</th><th>Statut</th></tr></thead>
-        <tbody id="waitlistBody"><tr><td colspan="3" class="empty-row">Chargement…</td></tr></tbody>
+        <thead><tr><th>Date</th><th>Email</th><th>Origine</th><th>Statut</th></tr></thead>
+        <tbody id="waitlistBody"><tr><td colspan="4" class="empty-row">Chargement…</td></tr></tbody>
       </table>
     </div>
 
@@ -272,10 +272,12 @@
     var statutF = document.getElementById('wFilterStatut').value;
     var rows = waitlist.filter(function(w){ return statutF === 'tous' || w.statut === statutF; });
     var body = document.getElementById('waitlistBody');
-    if(rows.length === 0){ body.innerHTML = '<tr><td colspan="3" class="empty-row">Aucune inscription en liste d\'attente.</td></tr>'; return; }
+    if(rows.length === 0){ body.innerHTML = '<tr><td colspan="4" class="empty-row">Aucune inscription en liste d\'attente.</td></tr>'; return; }
     body.innerHTML = rows.map(function(w){
-      return '<tr><td>'+fmtDate(w.created_at)+'</td><td>'+esc(w.email)+'</td>'
-        + '<td><select class="statut-select" data-id="'+w.id+'" data-table="waitlist_formation_en_ligne">'+statutOptions(w.statut,['nouveau','contacte'])+'</select></td></tr>';
+      var tbl = w._t || 'waitlist_formation_en_ligne';
+      var origine = tbl === 'waitlist_formations' ? 'Formation en présentiel' + (w.source_page ? ' ('+esc(w.source_page)+')' : '') + (w.prenom ? '<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(w.prenom)+'</span>' : '') : 'Formation en ligne';
+      return '<tr><td>'+fmtDate(w.created_at)+'</td><td>'+esc(w.email)+'</td><td>'+origine+'</td>'
+        + '<td><select class="statut-select" data-id="'+w.id+'" data-table="'+tbl+'">'+statutOptions(w.statut,['nouveau','contacte'].concat(tbl === 'waitlist_formations' ? ['archive'] : []))+'</select></td></tr>';
     }).join('');
     wireRowEvents(body, waitlist);
   }
@@ -373,10 +375,13 @@
       _sb.from('formation_inscriptions').select('*').order('created_at',{ascending:false}),
       _sb.from('waitlist_formation_en_ligne').select('*').order('created_at',{ascending:false}),
       _sb.from('auto_makeup_class_demandes').select('*').order('created_at',{ascending:false}),
-      _sb.from('appels_decouverte_mariee').select('*').order('created_at',{ascending:false})
+      _sb.from('appels_decouverte_mariee').select('*').order('created_at',{ascending:false}),
+      _sb.from('waitlist_formations').select('*').order('created_at',{ascending:false})
     ]).then(function(res){
       formations = res[0].data || [];
-      waitlist = res[1].data || [];
+      waitlist = (res[1].data || []).map(function(w){ w._t = 'waitlist_formation_en_ligne'; return w; })
+        .concat((res[4].data || []).map(function(w){ w._t = 'waitlist_formations'; return w; }))
+        .sort(function(a,b){ return new Date(b.created_at) - new Date(a.created_at); });
       autoDemandes = res[2].data || [];
       mariees = res[3].data || [];
       renderFormations(); renderWaitlist(); renderAuto(); renderMariee();
@@ -404,6 +409,15 @@
       document.getElementById(btn.getAttribute('data-panel')).classList.add('active');
     });
   });
+
+  // Ancres : admin-formations.html#mariee ouvre directement le bon onglet (liens du tableau de bord)
+  (function(){
+    var map = {formations:'p-formations', waitlist:'p-waitlist', auto:'p-automakeup', mariee:'p-mariee'};
+    var target = map[(window.location.hash || '').replace('#','')];
+    if(!target) return;
+    var b = document.querySelector('.subtabs button[data-panel="'+target+'"]');
+    if(b) b.click();
+  })();
 
   if(TEMP_DISABLE_LOGIN){
     document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = 'Mode test (login désactivé)'; });

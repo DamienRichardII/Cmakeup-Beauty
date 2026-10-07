@@ -344,6 +344,15 @@
     });
   });
 
+  // Ancres : admin-coaching.html#audit / #business / #candidatures (liens du tableau de bord)
+  (function(){
+    var map = {candidatures:'p-candidatures', audit:'p-audit', business:'p-business'};
+    var target = map[(window.location.hash || '').replace('#','')];
+    if(!target) return;
+    var b = document.querySelector('.subtabs button[data-panel="'+target+'"]');
+    if(b) b.click();
+  })();
+
   if(TEMP_DISABLE_LOGIN){
     document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = 'Mode test (login désactivé)'; });
     loadAll();

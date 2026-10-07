@@ -44,6 +44,18 @@
   .kpi-value{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:32px;}
   .kpi-label{font-size:12px; color:var(--ink-soft); margin-top:8px; line-height:1.4;}
 
+  .kpi-card.kpi-click{cursor:pointer; text-align:left; font:inherit; color:inherit; width:100%; transition:border-color .2s ease, box-shadow .25s ease, transform .2s ease;}
+  .kpi-card.kpi-click:hover{border-color:var(--ink); box-shadow:0 8px 22px rgba(26,26,26,0.08); transform:translateY(-2px);}
+  .kpi-card.kpi-click.active{border-color:var(--ink); box-shadow:inset 0 -3px 0 var(--ink);}
+  .kpi-card .kpi-hint{font-size:11px; color:var(--gray); margin-top:10px; letter-spacing:0.04em;}
+  .kpi-bar{display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin:-6px 0 18px; font-size:12px; color:var(--ink-soft);}
+  .kpi-bar .msg{color:var(--ok);}
+  .kpi-detail{background:var(--white); border:1px solid var(--ink); padding:24px; margin:-36px 0 56px;}
+  .kpi-detail-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:14px;}
+  .kpi-detail-head h3{font-size:20px;}
+  .kpi-detail-head .links{display:flex; gap:18px; font-size:12px;}
+  .kpi-detail-head .links a, .kpi-detail-head .links button{text-decoration:underline; background:none; border:none; cursor:pointer; font:inherit; color:var(--ink); padding:0;}
+  .kpi-detail .sub{font-size:11px; color:var(--ink-soft);}
   .quick-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-bottom:56px;}
   .quick-card{background:var(--white); border:1px solid var(--line); padding:24px; display:flex; flex-direction:column; gap:10px;}
   .quick-card h3{font-size:18px;}
@@ -89,9 +101,17 @@
 <main>
   <div class="wrap">
         <p class="section-title">Vue d'ensemble</p>
+    <div class="kpi-bar" id="kpiBar">
+      <span id="kpiSince">…</span>
+      <button type="button" class="btn btn-outline btn-small" id="kpiReset">Remettre les compteurs à zéro</button>
+      <button type="button" class="btn btn-outline btn-small" id="kpiUnreset" style="display:none;">Tout recompter</button>
+      <span class="msg" id="kpiMsg"></span>
+    </div>
     <div class="kpi-grid" id="kpiGrid">
       <div class="kpi-card"><div class="kpi-value">…</div><div class="kpi-label">Chargement…</div></div>
     </div>
+
+    <div class="kpi-detail" id="kpiDetail" style="display:none;"></div>
 
     <p class="section-title">Accès rapide</p>
     <div class="quick-grid">
@@ -148,36 +168,159 @@
     return (Math.round((cents||0)) / 100).toLocaleString('fr-FR', {minimumFractionDigits:0, maximumFractionDigits:2}) + ' €';
   }
 
-  function kpiCard(value, label){
-    return '<div class="kpi-card"><div class="kpi-value">' + value + '</div><div class="kpi-label">' + label + '</div></div>';
+  function esc(t){ return (t==null?'':String(t)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+  // ---- Remise à zéro des compteurs : non destructive ----
+  // On enregistre une date de référence (page_content : admin / kpi_reset_at). Les compteurs et les listes
+  // ne comptent que les demandes reçues après cette date ; rien n'est supprimé (les pages Messagerie,
+  // Formations, Coaching montrent toujours tout l'historique).
+  var resetAt = null;
+  var kpiState = {};
+  var currentUserId = null;
+
+  function loadResetAt(){
+    return _sb.from('page_content').select('content').eq('page_slug','admin').eq('block_key','kpi_reset_at').maybeSingle()
+      .then(function(r){ resetAt = (r && r.data && r.data.content) ? r.data.content : null; })
+      .catch(function(){ resetAt = null; });
+  }
+  function drawSince(){
+    var el = document.getElementById('kpiSince');
+    if(resetAt){
+      el.textContent = 'Compteurs calculés depuis le ' + fmtDate(resetAt) + ' (rien n’est supprimé).';
+      document.getElementById('kpiUnreset').style.display = '';
+    } else {
+      el.textContent = 'Compteurs calculés sur toutes les demandes reçues.';
+      document.getElementById('kpiUnreset').style.display = 'none';
+    }
+  }
+
+  // ---- Sources de données ----
+  function getRows(table, filter){
+    var q = _sb.from(table).select('*');
+    if(filter) q = filter(q);
+    if(resetAt) q = q.gte('created_at', resetAt);
+    return q.order('created_at',{ascending:false}).limit(200).then(function(r){ return (r && r.data) || []; }).catch(function(){ return []; });
+  }
+  function person(r){ return ((r.prenom||'')+' '+(r.nom||'')).trim() || r.nom_prenom || ''; }
+  function contactOf(r){ return [r.email, r.telephone || r.whatsapp].filter(Boolean).join(' · '); }
+  function src(table, filter, map){
+    return getRows(table, filter).then(function(rows){ return rows.map(map); });
+  }
+  function item(r, origin, detail, href, extra){
+    var o = {date:r.created_at, nom:person(r) || '—', contact:contactOf(r), origin:origin, detail:detail || '', href:href};
+    if(extra) for(var k in extra) o[k] = extra[k];
+    return o;
+  }
+
+  var KPIS = [
+    {id:'ca', label:'CA encaissé (acomptes payés)', title:'Paiements encaissés', page:'admin-formations.html', money:true,
+     load:function(){ return Promise.all([
+       src('reservations', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Réservation', r.prestation, 'admin-formations.html', {cents:r.montant_acompte_centimes}); }),
+       src('formation_inscriptions', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Formation', r.formation || r.source_page, 'admin-formations.html#formations', {cents:r.montant_acompte_centimes}); }),
+       src('auto_makeup_class_demandes', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Auto Makeup Class', r.session, 'admin-formations.html#auto', {cents:r.montant_acompte_centimes}); }),
+       src('candidatures_coaching', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Coaching', r.pack, 'admin-coaching.html#candidatures', {cents:r.montant_acompte_centimes}); }),
+       src('pack_audit_paiements', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Pack Audit', 'Paiement Pack Audit', 'admin-coaching.html#audit', {cents:r.montant_acompte_centimes}); })
+     ]); }},
+    {id:'attente', label:'Réservations en attente de paiement', title:'Réservations en attente de paiement', page:'admin-formations.html',
+     load:function(){ return Promise.all([ src('reservations', function(q){ return q.eq('statut_paiement','en_attente'); }, function(r){ return item(r,'Réservation', r.prestation, 'admin-formations.html'); }) ]); }},
+    {id:'messages', label:'Messages non traités', title:'Messages à traiter', page:'admin-messagerie.html',
+     load:function(){ return Promise.all([ src('contacts', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Contact', r.sujet, 'admin-messagerie.html'); }) ]); }},
+    {id:'formations', label:'Nouvelles demandes formation', title:'Demandes de formation à traiter', page:'admin-formations.html',
+     load:function(){ return Promise.all([
+       src('formation_inscriptions', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Formation', [r.formation || r.source_page, r.session].filter(Boolean).join(' — '), 'admin-formations.html#formations'); }),
+       src('auto_makeup_class_demandes', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Auto Makeup Class', r.session, 'admin-formations.html#auto'); }),
+       src('waitlist_formation_en_ligne', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Liste d’attente', 'Formation en ligne', 'admin-formations.html#waitlist'); }),
+       src('waitlist_formations', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Liste d’attente', r.source_page || 'Formation', 'admin-formations.html#waitlist'); })
+     ]); }},
+    {id:'coaching', label:'Demandes coaching à traiter', title:'Coaching : candidatures et questionnaires à traiter', page:'admin-coaching.html',
+     load:function(){ return Promise.all([
+       src('candidatures_coaching', function(q){ return q.in('statut',['nouvelle','en_etude']); }, function(r){ return item(r,'Candidature', r.pack, 'admin-coaching.html#candidatures'); }),
+       src('questionnaires_audit', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Questionnaire audit', 'Pack Audit', 'admin-coaching.html#audit'); }),
+       src('questionnaires_business', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Questionnaire business', 'Pack Business', 'admin-coaching.html#business'); })
+     ]); }},
+    {id:'mariee', label:'Appels découverte mariée à traiter', title:'Appels découverte mariée à traiter', page:'admin-formations.html#mariee',
+     load:function(){ return Promise.all([ src('appels_decouverte_mariee', function(q){ return q.eq('statut','nouveau'); }, function(r){ return item(r,'Mariée', ['Appel découverte', r.date_mariage ? 'mariage le ' + fmtDate(r.date_mariage).slice(0,10) : ''].filter(Boolean).join(' — '), 'admin-formations.html#mariee'); }) ]); }}
+  ];
+
+  function flat(lists){ var out = []; lists.forEach(function(l){ out = out.concat(l); }); out.sort(function(a,b){ return new Date(b.date) - new Date(a.date); }); return out; }
+  function kpiValue(k, rows){
+    if(k.money) return euros(rows.reduce(function(sum, r){ return sum + (r.cents || 0); }, 0));
+    return rows.length;
   }
 
   function loadKpis(){
-    Promise.all([
-      _sb.from('reservations').select('montant_acompte_centimes').eq('statut_paiement','paye'),
-      _sb.from('reservations').select('id', {count:'exact', head:true}).eq('statut_paiement','en_attente'),
-      _sb.from('contacts').select('id', {count:'exact', head:true}).eq('statut','nouveau'),
-      _sb.from('formation_inscriptions').select('id', {count:'exact', head:true}).eq('statut','nouveau'),
-      _sb.from('waitlist_formation_en_ligne').select('id', {count:'exact', head:true}).eq('statut','nouveau'),
-      _sb.from('candidatures_coaching').select('id', {count:'exact', head:true}).in('statut',['nouvelle','en_etude']),
-      _sb.from('appels_decouverte_mariee').select('id', {count:'exact', head:true}).eq('statut','nouveau')
-    ]).then(function(res){
-      var caPaid = (res[0].data || []).reduce(function(sum, r){ return sum + (r.montant_acompte_centimes || 0); }, 0);
-      var attentePaiement = res[1].count || 0;
-      var msgNouveaux = res[2].count || 0;
-      var formationsNouv = (res[3].count || 0) + (res[4].count || 0);
-      var coachingATraiter = res[5].count || 0;
-      var mariageATraiter = res[6].count || 0;
-
-      var html = '';
-      html += kpiCard(euros(caPaid), 'CA encaissé (acomptes payés)');
-      html += kpiCard(attentePaiement, 'Réservations en attente de paiement');
-      html += kpiCard(msgNouveaux, 'Messages non traités');
-      html += kpiCard(formationsNouv, 'Nouvelles demandes formation');
-      html += kpiCard(coachingATraiter, 'Candidatures coaching à traiter');
-      html += kpiCard(mariageATraiter, 'Appels découverte mariée à traiter');
+    drawSince();
+    return Promise.all(KPIS.map(function(k){ return k.load().then(function(lists){ kpiState[k.id] = flat(lists); }); })).then(function(){
+      var html = KPIS.map(function(k){
+        var rows = kpiState[k.id] || [];
+        return '<button type="button" class="kpi-card kpi-click" data-kpi="'+k.id+'"><div class="kpi-value">'+kpiValue(k, rows)+'</div><div class="kpi-label">'+esc(k.label)+'</div><div class="kpi-hint">Voir le détail →</div></button>';
+      }).join('');
       document.getElementById('kpiGrid').innerHTML = html;
+      Array.prototype.forEach.call(document.querySelectorAll('.kpi-click'), function(btn){
+        btn.addEventListener('click', function(){ openDetail(btn.getAttribute('data-kpi')); });
+      });
+      if(openedKpi) openDetail(openedKpi, true);
     });
+  }
+
+  var openedKpi = null;
+  function openDetail(id, keepOpen){
+    var k = KPIS.filter(function(x){ return x.id === id; })[0];
+    var box = document.getElementById('kpiDetail');
+    if(!k) return;
+    if(!keepOpen && openedKpi === id){ closeDetail(); return; }
+    openedKpi = id;
+    Array.prototype.forEach.call(document.querySelectorAll('.kpi-click'), function(b){ b.classList.toggle('active', b.getAttribute('data-kpi') === id); });
+    var rows = kpiState[id] || [];
+    var html = '<div class="kpi-detail-head"><h3>'+esc(k.title)+' <span class="sub">('+rows.length+')</span></h3><div class="links"><a href="'+k.page+'">Ouvrir la page complète →</a><button type="button" id="kpiClose">Fermer</button></div></div>';
+    if(!rows.length){
+      html += '<p class="empty-row" style="padding:10px 0;">Aucune demande à traiter'+(resetAt ? ' depuis la remise à zéro' : '')+'.</p>';
+    } else {
+      html += '<table class="admin-table"><thead><tr><th>Date</th><th>Nom</th><th>Contact</th><th>Type</th><th>Détail</th>'+(k.money ? '<th>Montant</th>' : '')+'<th></th></tr></thead><tbody>'
+        + rows.map(function(r){
+            return '<tr><td>'+fmtDate(r.date)+'</td><td>'+esc(r.nom)+'</td><td>'+esc(r.contact)+'</td><td><span class="tag">'+esc(r.origin)+'</span></td><td>'+esc(r.detail)+'</td>'
+              + (k.money ? '<td>'+euros(r.cents)+'</td>' : '') + '<td><a class="go" style="text-decoration:underline; white-space:nowrap;" href="'+r.href+'">Ouvrir →</a></td></tr>';
+          }).join('') + '</tbody></table>';
+    }
+    box.innerHTML = html; box.style.display = '';
+    document.getElementById('kpiClose').addEventListener('click', closeDetail);
+    if(!keepOpen) box.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  function closeDetail(){
+    openedKpi = null;
+    document.getElementById('kpiDetail').style.display = 'none';
+    Array.prototype.forEach.call(document.querySelectorAll('.kpi-click'), function(b){ b.classList.remove('active'); });
+  }
+
+  function flash(msg){ var el = document.getElementById('kpiMsg'); el.textContent = msg; setTimeout(function(){ el.textContent = ''; }, 4000); }
+  var resetArmed = null;
+  function initResetButtons(){
+    var btn = document.getElementById('kpiReset');
+    btn.addEventListener('click', function(){
+      if(!resetArmed){
+        btn.textContent = 'Confirmer : remettre à zéro';
+        resetArmed = setTimeout(function(){ resetArmed = null; btn.textContent = 'Remettre les compteurs à zéro'; }, 6000);
+        return;
+      }
+      clearTimeout(resetArmed); resetArmed = null; btn.textContent = 'Remettre les compteurs à zéro'; btn.disabled = true;
+      var now = new Date().toISOString();
+      _sb.from('page_content').upsert([{page_slug:'admin', block_key:'kpi_reset_at', block_type:'text', content:now, updated_at:now, updated_by:currentUserId}], {onConflict:'page_slug,block_key'}).then(function(res){
+        btn.disabled = false;
+        if(res.error){ flash('Impossible de remettre à zéro (erreur d’enregistrement).'); return; }
+        resetAt = now; closeDetail(); loadKpis(); flash('Compteurs remis à zéro ✓');
+      });
+    });
+    document.getElementById('kpiUnreset').addEventListener('click', function(){
+      _sb.from('page_content').delete().eq('page_slug','admin').eq('block_key','kpi_reset_at').then(function(res){
+        if(res.error){ flash('Impossible de recompter (erreur).'); return; }
+        resetAt = null; closeDetail(); loadKpis(); flash('Toutes les demandes sont de nouveau comptées ✓');
+      });
+    });
+  }
+
+  function startDashboard(){
+    initResetButtons();
+    loadResetAt().then(function(){ loadKpis(); loadRecent(); });
   }
 
   function loadRecent(){
@@ -211,8 +354,7 @@
 
   if(TEMP_DISABLE_LOGIN){
     document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = 'Mode test (login désactivé)'; });
-    loadKpis();
-    loadRecent();
+    startDashboard();
   } else {
   _sb.auth.getSession().then(function(res){
     var session = res.data && res.data.session;
@@ -223,8 +365,8 @@
         return;
       }
       document.querySelectorAll('.admin-name').forEach(function(el){ el.textContent = r.data.prenom; });
-      loadKpis();
-      loadRecent();
+      currentUserId = session.user.id;
+      startDashboard();
     });
   });
   }
