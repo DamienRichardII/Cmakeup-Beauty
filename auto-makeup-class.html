@@ -436,7 +436,7 @@
     <h2 class="section-title" data-editable="auto-makeup-class.section4_title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
     <div class="infos-grid">
       <div>— Durée : 8h (9h → 17h)</div>
-      <div>— Lieu : Cergy</div>
+      <div>— Lieu : <span data-city>Cergy</span></div>
       <div>— Cours privé, en petit comité</div>
       <div>— Places très limitées</div>
       <div>— Petit déjeuner d'accueil inclus</div>
@@ -1014,6 +1014,21 @@
       });
     });
   });
+})();
+</script>
+<script>
+/* Ville des formations : modifiable depuis l'admin (Gestion des médias > Réglages du site). Sans réglage, « Cergy » reste affiché. */
+(function(){
+  var els = document.querySelectorAll('[data-city]');
+  if(!els.length || !window.fetch) return;
+  fetch('https://haymfuvlbogtiempezto.supabase.co/rest/v1/page_content?select=content&page_slug=eq.site&block_key=eq.ville', {
+    headers: { apikey: 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K' }
+  }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
+    var v = rows && rows[0] && typeof rows[0].content === 'string' ? rows[0].content.trim() : '';
+    if(!v) return;
+    Array.prototype.forEach.call(els, function(e){ e.textContent = v; });
+    document.title = document.title.replace(/Cergy/g, v);
+  }).catch(function(){});
 })();
 </script>
 </body>

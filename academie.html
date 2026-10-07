@@ -573,7 +573,7 @@
   <div class="wrap">
     <div class="section-label" data-editable="academie.section1_eyebrow">FORMATIONS MAQUILLEUSES</div>
     <h2 data-editable="academie.section1_title">Deviens makeup artist</h2>
-    <div class="sub2">En présentiel à Cergy · matériel professionnel inclus · certificat de participation</div>
+    <div class="sub2">En présentiel à <span data-city>Cergy</span> · matériel professionnel inclus · certificat de participation</div>
     <div class="acards"><div class="acard"><div class="a-top"><div><h3>Formation Débutante</h3><div class="a-meta">Collective · 5 jours · 40h · Soft Glam &amp; Full Glam</div></div></div>
 <div class="a-dates" data-editable="academie.dates_debutante_collective" data-sessions-summary="formation-collective">26 → 30 octobre · 30 nov. → 4 déc. · 4 → 8 janvier</div>
 <div class="a-actions"><a class="btn" href="formation-collective.html">Plus d'informations</a></div></div><div class="acard"><div class="a-top"><div><h3>Formation Débutante Privée</h3><div class="a-meta">En individuel · 4 jours · 32h · Soft Glam &amp; Full Glam</div></div></div>
@@ -687,6 +687,21 @@
       });
     });
   });
+})();
+</script>
+<script>
+/* Ville des formations : modifiable depuis l'admin (Gestion des médias > Réglages du site). Sans réglage, « Cergy » reste affiché. */
+(function(){
+  var els = document.querySelectorAll('[data-city]');
+  if(!els.length || !window.fetch) return;
+  fetch('https://haymfuvlbogtiempezto.supabase.co/rest/v1/page_content?select=content&page_slug=eq.site&block_key=eq.ville', {
+    headers: { apikey: 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K' }
+  }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
+    var v = rows && rows[0] && typeof rows[0].content === 'string' ? rows[0].content.trim() : '';
+    if(!v) return;
+    Array.prototype.forEach.call(els, function(e){ e.textContent = v; });
+    document.title = document.title.replace(/Cergy/g, v);
+  }).catch(function(){});
 })();
 </script>
 </body>

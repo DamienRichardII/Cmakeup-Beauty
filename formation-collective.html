@@ -317,7 +317,7 @@
         <li><span class="check">✓</span> Module Full Glam — sublimer et intensifier le regard</li>
         <li><span class="check">✓</span> Adaptation à chaque type et carnation de peau</li>
         <li><span class="check">✓</span> Matériel professionnel inclus</li>
-        <li><span class="check">✓</span> Formation collective à Cergy</li>
+        <li><span class="check">✓</span> Formation collective à <span data-city>Cergy</span></li>
       </ul>
     </div>
 
@@ -400,7 +400,7 @@
     <div class="section-eyebrow" data-editable="formation-collective.section4_eyebrow" style="color:var(--gray);">INFORMATIONS</div>
     <h2 class="section-title" data-editable="formation-collective.section4_title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
     <div class="infos-grid">
-      <div>— Formation collective – Cergy</div>
+      <div>— Formation collective – <span data-city>Cergy</span></div>
       <div>— Horaires : 9h – 17h chaque jour</div>
       <div>— 32h de formation au total</div>
       <div>— Formation éligible CPF, sous validation du dossier</div>
@@ -868,6 +868,21 @@
       });
     });
   });
+})();
+</script>
+<script>
+/* Ville des formations : modifiable depuis l'admin (Gestion des médias > Réglages du site). Sans réglage, « Cergy » reste affiché. */
+(function(){
+  var els = document.querySelectorAll('[data-city]');
+  if(!els.length || !window.fetch) return;
+  fetch('https://haymfuvlbogtiempezto.supabase.co/rest/v1/page_content?select=content&page_slug=eq.site&block_key=eq.ville', {
+    headers: { apikey: 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K' }
+  }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
+    var v = rows && rows[0] && typeof rows[0].content === 'string' ? rows[0].content.trim() : '';
+    if(!v) return;
+    Array.prototype.forEach.call(els, function(e){ e.textContent = v; });
+    document.title = document.title.replace(/Cergy/g, v);
+  }).catch(function(){});
 })();
 </script>
 </body>
