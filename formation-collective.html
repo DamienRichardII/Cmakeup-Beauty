@@ -298,7 +298,7 @@
     <h1 data-editable="formation-collective.hero_title">Formation Débutante</h1>
     <p data-editable="formation-collective.hero_text">Modules Soft Glam & Full Glam. Une formation complète en groupe, en présentiel, pour partir de zéro et repartir avec une vraie base solide, de A à Z.</p>
 <div class="cms-video-slot" data-editable-video="formation-collective" style="display:none; margin:32px auto; max-width:900px;"></div>
-    <div class="price-tag">À partir de 800 € — également finançable via ton CPF</div>
+    <div class="price-tag">À partir de 800 € — également finançable via ton CPF<span data-cpf-show="prix_cpf" hidden> (prix CPF : <span data-cpf-price="prix_cpf"></span>)</span></div>
     <div class="price-tag" data-editable="formation-collective.hero_hours" style="margin-top:8px; color:var(--ink-soft); font-size:13px;">9h – 17h chaque jour · 40h de formation au total</div>
     </div>
 </section>
@@ -348,7 +348,7 @@
       </div>
       <div class="price-option featured">
         <div class="p-label">Financement CPF</div>
-        <div class="p-amount" style="font-size:22px; color:var(--white);">Finançable</div>
+        <div class="p-amount" data-cpf-price="prix_cpf" style="font-size:22px; color:var(--white);">Finançable</div>
         <div style="font-size:11px; letter-spacing:0.04em; color:rgba(255,255,255,0.6); text-transform:uppercase; margin-top:-8px; margin-bottom:10px;">Sous réserve de validation du dossier</div>
         <div class="p-note">Aucune avance de frais à prévoir, pas d'acompte à régler.<br>Précise ton solde CPF disponible dans le formulaire ci-dessous — nous te recontacterons pour étudier ta demande.</div>
       </div>
@@ -499,7 +499,7 @@
           <label for="financement">Mode de financement souhaité</label>
           <select id="financement" name="financement">
             <option value="classique">Paiement classique — 800€ (1x ou 4x PayPal)</option>
-            <option value="cpf">Financement CPF</option>
+            <option value="cpf" data-cpf-option="prix_cpf" data-cpf-label="Financement CPF">Financement CPF</option>
           </select>
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, ton dossier sera transmis à notre organisme partenaire, qui te contactera directement sur WhatsApp pour t'accompagner dans ta démarche d'inscription. Ta place ne sera définitivement validée qu'une fois ton dossier accepté.</p>
         </div>

@@ -382,7 +382,7 @@
       <div>— Places très limitées</div>
       <div>— Kit de pinceaux + guide PDF offerts</div>
       <div>— Matériel professionnel à disposition sur place</div>
-      <div>— Éligible CPF : 1100€, sous validation du dossier</div>
+      <div>— Éligible CPF : <span data-cpf-price="prix_cpf">1100€</span>, sous validation du dossier</div>
     </div>
   </div>
 </section>
@@ -399,7 +399,7 @@
       </div>
       <div class="price-option featured">
         <div class="p-label">Financement CPF</div>
-        <div class="p-amount">1100 €</div>
+        <div class="p-amount" data-cpf-price="prix_cpf">1100 €</div>
         <div class="p-note">Cours finançable via ton Compte Personnel de Formation.<br>Sous réserve de validation du dossier.</div>
       </div>
     </div>
@@ -557,7 +557,7 @@
           <label for="financement">Mode de financement souhaité</label>
           <select id="financement" name="financement">
             <option value="classique">Paiement classique — 500€ (acompte de 150€)</option>
-            <option value="cpf">Financement CPF — 1100€</option>
+            <option value="cpf" data-cpf-option="prix_cpf" data-cpf-label="Financement CPF">Financement CPF — 1100€</option>
           </select>
           <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, nous te recontacterons pour récupérer les informations nécessaires à ton dossier. Ta place ne sera définitivement validée qu'une fois la demande de financement acceptée par notre organisme partenaire.</p>
         </div>
