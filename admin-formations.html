@@ -327,7 +327,7 @@
       var photos = (m.photos_inspiration_urls || []).map(function(u, i){
         return '<a href="'+escAttr(u)+'" target="_blank" rel="noopener" title="Photo '+(i+1)+'"><img src="'+escAttr(u)+'" alt="Photo '+(i+1)+'" style="height:56px; width:56px; object-fit:cover; margin:0 6px 6px 0; border:1px solid var(--line);"></a>';
       }).join('') || '—';
-      var rdv = m.rdv_confirme_debut ? '<br><span style="font-size:12px; color:var(--ok);">RDV : '+fmtDateTime(m.rdv_confirme_debut)+(m.rdv_statut === 'annule' ? ' (annulé)' : '')+'</span>' : '<br><span style="font-size:12px; color:var(--ink-soft);">Créneau Calendly non rattaché</span>';
+      var rdv = m.rdv_confirme_debut ? '<br><span style="font-size:12px; color:var(--ok);">RDV : '+fmtDateTime(m.rdv_confirme_debut)+(m.rdv_statut === 'annule' ? ' (annulé)' : '')+'</span>' : (m.rdv_statut === 'confirme' ? '<br><span style="font-size:12px; color:var(--ok);">RDV réservé sur Calendly (horaire à venir)</span>' : '<br><span style="font-size:12px; color:var(--ink-soft);">Créneau Calendly non rattaché</span>');
       return '<tr>'
         + '<td>'+fmtDate(m.created_at)+'</td>'
         + '<td>'+esc(m.prenom)+' '+esc(m.nom)+'<br><span style="color:var(--ink-soft); font-size:12px;">'+esc(m.email)+(m.telephone ? '<br>'+esc(m.telephone) : '')+'</span>'
