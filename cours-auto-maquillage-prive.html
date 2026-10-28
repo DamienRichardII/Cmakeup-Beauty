@@ -1,819 +1,150 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr"><head><meta charset="UTF-8">
 <title>CMAKEUP BEAUTY — Cours d'Auto Maquillage Privé</title>
 <meta name="description" content="Cours d'Auto Maquillage Privé CMAKEUP BEAUTY : 3h en tête-à-tête pour apprendre à te maquiller seule, à ton rythme.">
-<link rel="canonical" href="https://cmakeup-beauty.vercel.app/cours-auto-maquillage-prive.html">
+<link rel="canonical" href="https://www.cmakeupbeauty.fr/cours-auto-maquillage-prive.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMAKEUP BEAUTY — Cours d'Auto Maquillage Privé">
 <meta property="og:description" content="Cours d'Auto Maquillage Privé CMAKEUP BEAUTY : 3h en tête-à-tête pour apprendre à te maquiller seule, à ton rythme.">
-<meta property="og:url" content="https://cmakeup-beauty.vercel.app/cours-auto-maquillage-prive.html">
+<meta property="og:url" content="https://www.cmakeupbeauty.fr/cours-auto-maquillage-prive.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --white:#FFFFFF;
-    --off:#F4F4F2;
-    --paper:#D6D1C5;
-    --line:#D6D1C5;
-    --ink:#1A1A1A;
-    --ink-soft:#75736D;
-    --gray:#B8B6A9;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--white);
-    color:var(--ink);
-    font-family:'TT Interphase','Jost', sans-serif;
-    font-weight:300;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.serif{
-    font-family:'The Silver Editorial','Cormorant Garamond', serif;
-    font-weight:400;
-    letter-spacing:0.01em;
-  }
-  a{color:inherit; text-decoration:none;}
-  img{display:block; max-width:100%;}
-  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+:root{--ink:#121110;--ink2:#1d1a17;--sand:#D8CCB6;--cream:#F4EEE3;--caramel:#B3926F;--muted:#8d8579}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--cream)}body{font-family:'Poppins',sans-serif;font-weight:300;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:400}
+header{position:relative;background:#0d0c0b;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 56px;color:#fff}
+.logo{display:block;font-family:"Lora",serif;font-size:24px;letter-spacing:.24em}
+.logo span{display:block;font-family:'Poppins';font-size:8.5px;letter-spacing:.5em;color:#cdbfa8;margin-top:5px}
+nav{display:flex;gap:28px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+nav a.on{border-bottom:1px solid var(--sand);padding-bottom:4px}
+.pill{border:1px solid rgba(255,255,255,.7);padding:11px 24px;border-radius:40px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+.burger{display:none;width:26px;height:16px;flex-direction:column;justify-content:space-between}.burger i{display:block;height:1.5px;background:#fff}
+.eyebrow{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:#d8ccb6}
+.pg{display:grid;grid-template-columns:1fr 1fr;background:#0d0c0b;color:#fff;min-height:640px}
+.pg .in{padding:70px 56px 70px 56px;align-self:center;max-width:680px}
+.pg h1{font-size:68px;line-height:1;text-transform:uppercase;margin:22px 0 12px}
+.pg .sub{font-family:'Lora';font-style:italic;font-size:26px;color:#e6d3b6;line-height:1.4;margin-bottom:34px}
+.pg .im{background-size:cover;background-position:center top;min-height:560px;order:2}
+.pg.noim{grid-template-columns:1fr;min-height:380px}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-block;white-space:nowrap;padding:16px 30px;border-radius:40px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;border:1px solid #fff;color:#fff}
+.btn.fill{background:var(--sand);border-color:var(--sand);color:var(--ink)}
+.btn.dkfill{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.dk{border-color:var(--ink);color:var(--ink)}
+.band{background:var(--sand);display:flex;justify-content:space-around;padding:30px 56px;text-align:center;gap:20px}
+.band div{font-family:'Lora',serif;font-size:30px}
+.band small{display:block;font-family:'Poppins';font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:#6d6455;margin-top:6px}
+.sec{padding:100px 56px;text-align:center}
+.sec.sand{background:var(--sand)}.sec.dk{background:var(--ink);color:#fff}.sec.dk2{background:var(--ink2);color:#fff}
+.sec .eyebrow{color:var(--caramel)}.sec.dk .eyebrow,.sec.dk2 .eyebrow{color:#d8ccb6}.sec.sand .eyebrow{color:#6d6455}
+.sec h2{font-size:52px;text-transform:uppercase;line-height:1.05;margin:16px 0 10px}
+.sec .sb{font-family:'Lora';font-style:italic;font-size:23px;color:var(--caramel);margin-bottom:50px}
+.sec.dk .sb,.sec.dk2 .sb{color:#e6d3b6}
+.grid{display:grid;gap:22px;text-align:left;max-width:1180px;margin:0 auto}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.box{background:#fff;padding:36px 30px 34px;position:relative}
+.dk .box,.dk2 .box{background:#1d1a17;border:1px solid #3a342d}
+.box .k{font-family:'Lora';font-style:italic;color:var(--caramel);font-size:15px}
+.box h3{font-size:27px;line-height:1.15;margin:8px 0 10px}
+.box p{font-size:13.5px;line-height:1.75;color:#6d6558}
+.dk .box p,.dk2 .box p{color:#cfc8bb}
+.price{font-family:'Lora';font-size:46px;margin:14px 0 4px}
+.price small{font-family:'Poppins';font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-left:6px}
+.tag{position:absolute;top:-12px;left:30px;background:var(--caramel);color:#fff;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;padding:6px 14px;border-radius:20px}
+.box ul{list-style:none;margin:16px 0 22px}.box li{font-size:13.5px;line-height:1.5;padding:7px 0 7px 22px;position:relative;color:#4b4439;border-top:1px solid #eee6d8}
+.dk .box li,.dk2 .box li{color:#cfc8bb;border-color:#332e28}.box li:before{content:"✦";position:absolute;left:0;color:var(--caramel);font-size:10px;top:10px}
+.lnk{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:640px;text-align:left}
+.split .ph{background-size:cover;background-position:center top}.split .txt{padding:90px 56px;display:flex;flex-direction:column;justify-content:center}
+.split.dk{background:var(--ink);color:#fff}.split h2{font-size:52px;text-transform:uppercase;line-height:1.05;margin:16px 0 14px}
+.split p{font-size:14.5px;line-height:1.9;color:#6d6558;max-width:480px;margin-bottom:16px}.split.dk p{color:#cfc8bb}
+.q{border-left:1px solid var(--caramel);padding-left:22px;margin:14px 0 30px;font-family:'Lora';font-style:italic;font-size:20px;line-height:1.6;max-width:460px}
+.mem .ph{min-height:520px;background-size:cover;background-position:center top}
+.mem .role{font-family:'Lora';font-style:italic;font-size:21px;color:var(--caramel);margin-bottom:18px}
+.note{max-width:780px;margin:44px auto 0;padding:22px 28px;border:1px solid var(--caramel);font-size:13.5px;line-height:1.8;text-align:left;color:#4b4439}
+.dk .note,.dk2 .note{color:#cfc8bb}
+.row{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid #cdbfa8;text-align:left}
+.row h3{font-size:26px}.row .d{font-size:12.5px;color:#6d6558;margin-top:4px}.row .p{font-family:'Lora';font-size:26px;white-space:nowrap}
+.form{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
+.form .f{grid-column:1/-1}.form label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6d6455;margin-bottom:6px}
+.form div>span{display:block;border-bottom:1px solid #b9ab92;height:34px}.form .f.t span{height:90px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto 70px;text-align:center}
+.info h3{font-size:22px;margin:8px 0 6px}.info p{font-size:13.5px;line-height:1.7;color:#6d6558}
+.cta{background:var(--ink);color:#fff;text-align:center;padding:90px 56px}.cta h2{font-size:48px;text-transform:uppercase;margin:14px 0 26px}
+footer{background:var(--ink);color:#bdb4a6;text-align:center;padding:50px 20px;font-size:11px;letter-spacing:.2em;border-top:1px solid #2a2622}
+footer .logo{color:#fff;margin-bottom:14px}
+@media(max-width:820px){
+header{padding:22px 20px}.logo{font-size:19px}nav,.pill{display:none}.burger{display:flex}
+.pg{grid-template-columns:1fr;min-height:0}.pg .im{order:-1;height:560px;min-height:0;background-position:center top}.pg .in{padding:34px 22px 48px;max-width:none}.pg h1{font-size:38px}.pg .sub{font-size:20px;margin-bottom:24px}
+.pg.noim{min-height:0}.pg.noim .im{display:none}
+.band{flex-wrap:wrap;padding:26px 20px}.band div{font-size:24px;width:45%}
+.sec{padding:62px 22px}.sec h2{font-size:32px}.sec .sb{font-size:19px;margin-bottom:34px}
+.g2,.g3,.g4,.info{grid-template-columns:1fr}.box{padding:30px 24px}
+.split{grid-template-columns:1fr}.split .ph,.mem .ph{min-height:440px}.split .txt{padding:52px 24px}.split h2{font-size:32px}
+.split.rev .ph{order:-1}
+.row{flex-direction:column;align-items:flex-start;gap:8px}.form{grid-template-columns:1fr}.cta{padding:60px 24px}.cta h2{font-size:32px}.info{margin-bottom:44px}
+.btn{padding:15px 24px}
+}</style><style>nav a{white-space:nowrap}@media(max-width:1180px) and (min-width:821px){nav{gap:18px!important;font-size:9.5px!important;letter-spacing:.16em!important}header{padding-left:32px!important;padding-right:32px!important}header .pill{display:none!important}}</style><style>nav .dd{position:relative;display:inline-block}
+nav .dd .sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:18px;z-index:30}
+nav .dd .sub>div{background:#0d0c0b;border:1px solid #2a2622;padding:8px 26px;display:flex;flex-direction:column;min-width:150px}
+nav .dd .sub a{padding:12px 0;white-space:nowrap}nav .dd .sub a+a{border-top:1px solid #2a2622}
+nav .dd:hover .sub,nav .dd:focus-within .sub{display:block}
+@media(max-width:820px){header.open nav .dd{display:block}header.open nav .dd .sub{display:block;position:static;transform:none;padding:0}header.open nav .dd .sub>div{border:0;padding:0 0 0 18px;min-width:0}header.open nav .dd .sub a{font-size:10px;color:#cfc8bb}header.open nav .dd>a{display:block;border-bottom:1px solid #2a2622}}</style><style>
+.pg.noim{min-height:0}.pg.noim .in{padding:90px 56px 80px 56px;max-width:900px}
+.pg h1{font-size:60px}.pg .sub{font-size:24px}
+.band{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));background:#D8CCB6;padding:0 56px}.band>div{padding:34px 20px;font-family:Lora,serif;font-size:30px;text-align:center;border-left:1px solid #b9ab92}.band>div:first-child{border-left:0}
+.band small{display:block;font-family:Poppins,sans-serif;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:#6d6455;margin-top:8px}
+.sec .lead{max-width:640px;margin:0 auto 46px;font-size:15px;line-height:1.85;color:#6d6558}
+.box.pr h3{font-size:25px}.box .price{font-size:42px;margin:14px 0 4px}.box .price small{font-size:10.5px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
+.chips span{border:1px solid #121110;border-radius:40px;padding:14px 26px;font-size:13px;letter-spacing:.06em}
+.chips span b{font-family:Lora,serif;font-weight:400;font-size:17px;margin-right:6px}
+.faq{max-width:760px;margin:0 auto;text-align:left}.faq details{border-top:1px solid #d9ccb5;padding:20px 0}.faq details:last-child{border-bottom:1px solid #d9ccb5}
+.faq summary{cursor:pointer;font-family:Lora,serif;font-size:21px;list-style:none;display:flex;justify-content:space-between;gap:20px}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:#B3926F}.faq details[open] summary:after{content:"–"}
+.faq p{margin-top:12px;font-size:14px;line-height:1.8;color:#6d6558}
+.note{max-width:760px;margin:36px auto 0;font-size:13.5px;line-height:1.8;color:#4b4439;border:1px solid #B3926F;padding:20px 26px;text-align:left}
+.cf{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px 22px;text-align:left}.cf .f{grid-column:1/-1}.cf h3{grid-column:1/-1;font-size:24px;margin-top:14px}
+.cf label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6d6455;margin-bottom:6px}
+.cf input:not([type=checkbox]),.cf select,.cf textarea{width:100%;background:transparent;border:0;border-bottom:1px solid #b9ab92;padding:8px 0;font:inherit;font-size:15px;color:#121110;border-radius:0;outline:0;min-width:0}
+.cf textarea{min-height:90px;resize:vertical}.cf input:focus,.cf select:focus,.cf textarea:focus{border-bottom-color:#121110}.cf button.btn{font-family:inherit;cursor:pointer}
+.cf .ck{display:flex;gap:10px;align-items:flex-start;font-size:12px;line-height:1.6;color:#6d6455}.cf .ck input{width:auto;margin-top:4px}
+.cal{max-width:900px;margin:0 auto}.cal .calendly-inline-widget{min-width:320px;height:720px}
+.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto;text-align:left}
+.legal{max-width:780px;margin:0 auto;text-align:left}.legal h2{font-size:34px;margin:56px 0 18px;text-transform:none}.legal h3{font-size:21px;margin:26px 0 8px}.legal p{font-size:14px;line-height:1.85;color:#4b4439;margin-bottom:10px}
+.legal table{width:100%;border-collapse:collapse}.legal td{padding:12px 0;border-top:1px solid #d9ccb5;font-size:14px}.legal td:first-child{color:#8d8579;width:38%}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto;text-align:left}
+ul.ok{list-style:none;margin:14px 0 0}ul.ok li{font-size:13.5px;line-height:1.55;padding:8px 0 8px 22px;position:relative;color:#4b4439;border-top:1px solid #eee6d8}ul.ok li:before{content:"✦";position:absolute;left:0;color:#B3926F;font-size:10px;top:11px}
+@media(max-width:820px){.grid{grid-template-columns:minmax(0,1fr)!important}.btn{white-space:normal;text-align:center}.chips span{padding:12px 18px}.pg h1{font-size:34px;overflow-wrap:anywhere}.pg.noim .in{padding:44px 20px 48px}.band{grid-template-columns:1fr;padding:6px 20px}.band>div{border-left:0;border-top:1px solid #b9ab92;padding:20px 10px;font-size:24px}.band>div:first-child{border-top:0}
+.sec{padding:60px 20px}.sec h2{font-size:32px}.cf,.pick,.steps{grid-template-columns:1fr}.cf .f{grid-column:auto}.faq summary{font-size:18px}}
+</style><style>.burger{cursor:pointer}@media(max-width:820px){header.open nav{display:flex!important;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#0d0c0b;padding:6px 24px 26px;z-index:20;border-top:1px solid #2a2622}header.open nav a{padding:15px 0;border-bottom:1px solid #2a2622;font-size:11px;letter-spacing:.24em}}</style><style>.cf{max-width:760px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:24px 22px;text-align:left}.cf .f{grid-column:1/-1}
+.cf label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6d6455;margin-bottom:6px}
+.cf input:not([type=checkbox]),.cf select,.cf textarea{width:100%;background:transparent;border:0;border-bottom:1px solid #b9ab92;padding:8px 0;font:inherit;font-size:15px;color:#121110;border-radius:0;outline:0;min-width:0}
+.cf textarea{min-height:110px;resize:vertical}.cf button.btn{font-family:inherit;cursor:pointer}
+@media(max-width:820px){.cf{grid-template-columns:1fr}.cf .f{grid-column:auto}}</style>
 
-  header{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:28px 40px;
-    border-bottom:1px solid var(--line);
-  }
-  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em;}
-  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
-  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
-  nav a{position:relative; padding-bottom:4px;}
-  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
-  nav a:hover::after{width:100%;}
-  nav a.current::after{width:100%;}
-  .btn{
-    border:1px solid var(--ink); padding:12px 26px; font-size:12px; letter-spacing:0.08em;
-    background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;
-  }
-  .btn:hover{background:var(--white); color:var(--ink);}
-  .back-link{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft);}
-  .back-link:hover{color:var(--ink);}
-
-  .page-hero{position:relative; height:92vh; min-height:760px; max-height:920px; overflow:hidden; border-bottom:1px solid var(--line);}
-  .page-hero .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
-  .page-hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.22) 38%, rgba(8,7,5,0.97) 100%);}
-  .hero-caption{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:60px; max-width:760px;}
-  .hero-caption .eyebrow{color:var(--ink) !important; opacity:1;}
-  .hero-caption h1{color:#fff !important;}
-  .hero-caption p{color:rgba(255,255,255,0.9) !important;}
-  .hero-caption .price-tag{color:#fff !important;}
-  .hero-caption .tagline{color:rgba(255,255,255,0.88) !important;}
-  @media(max-width:860px){ .hero-caption{padding:36px 24px;} .page-hero{height:auto; min-height:520px;} }
-  .hero-topbar{position:absolute; top:36px; left:0; right:0; z-index:2; padding:0 60px;}
-  .hero-topbar .eyebrow{color:#fff !important; opacity:0.95; text-shadow:0 1px 6px rgba(0,0,0,0.35);}
-  @media(max-width:860px){ .hero-topbar{top:20px; padding:0 24px;} }
-  .page-hero .eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--ink); margin-bottom:18px;}
-  .page-hero h1{font-size:clamp(36px,5vw,58px); line-height:1.08;}
-  .page-hero .tagline{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--ink-soft); margin-top:18px;}
-  .page-hero p{max-width:560px; margin:24px 0 0; font-size:16px; line-height:1.8; color:var(--ink-soft);}
-
-  /* INVESTISSEMENT — bloc premium */
-  .invest-wrap{background:var(--ink); color:var(--white); text-align:center;}
-  .invest-badge{
-    display:inline-block; font-size:11px; letter-spacing:0.2em; color:var(--gray);
-    border:1px solid #3A3A38; padding:8px 20px; margin-bottom:28px; text-transform:uppercase;
-  }
-  .invest-price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:clamp(56px,7vw,86px); line-height:1; color:var(--white); margin-bottom:10px;}
-  .invest-price span{font-size:20px; font-family:'TT Interphase','Jost',sans-serif; color:var(--gray); letter-spacing:0.06em; vertical-align:middle;}
-  .invest-sub{font-size:14px; letter-spacing:0.04em; color:#C9C7BE; margin-bottom:40px;}
-  .invest-note{max-width:520px; margin:0 auto; font-size:15px; line-height:1.9; color:#C9C7BE;}
-
-  /* LIVRET PREMIUM */
-  .livret-block{
-    display:grid; grid-template-columns:0.75fr 1.25fr; gap:70px; align-items:center;
-  }
-  .livret-cover{
-    max-width:280px; width:100%; height:auto; margin:0 auto; border:1px solid var(--line);
-  }
-  .livret-text .badge-premium{
-    display:inline-block; font-size:11px; letter-spacing:0.18em; color:var(--white);
-    background:var(--ink); padding:8px 18px; margin-bottom:22px; text-transform:uppercase;
-  }
-  .livret-text h2{font-size:clamp(26px,3vw,36px); margin-bottom:10px; text-align:left;}
-  .livret-text .l-tagline{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--ink-soft); margin-bottom:22px;}
-  .livret-text p.l-desc{font-size:15px; line-height:1.85; color:var(--ink-soft); max-width:460px; margin-bottom:30px;}
-  .livret-programme{list-style:none; max-width:460px;}
-  .livret-programme li{
-    font-size:14px; color:var(--ink); padding:11px 0; border-bottom:1px solid var(--line);
-    display:flex; gap:12px; align-items:baseline;
-  }
-  .livret-programme li:first-child{border-top:1px solid var(--line);}
-  .livret-programme li .l-num{font-size:11px; color:var(--gray); letter-spacing:0.08em; flex-shrink:0;}
-  .livret-bonus-note{margin-top:24px; font-size:13px; color:var(--ink-soft); font-style:italic; max-width:460px;}
-
-  section{padding:90px 0; border-bottom:1px solid var(--line);}
-  .section-eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:16px; text-align:center;}
-  .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
-  .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
-
-  /* POUR QUI / CRITERES */
-  .criteria-list{max-width:640px; margin:0 auto; list-style:none;}
-  .criteria-list li{
-    display:flex; gap:16px; align-items:flex-start;
-    padding:18px 0; border-bottom:1px solid var(--line); font-size:16px; color:var(--ink);
-  }
-  .criteria-list li:last-child{border-bottom:none;}
-  .criteria-list .check{color:var(--ink-soft); font-size:16px; margin-top:2px;}
-
-  /* PROGRAMME */
-  .programme-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
-    max-width:1000px; margin:0 auto;
-    border:1px solid var(--line);
-  }
-  .prog-card{background:var(--white); padding:34px 26px;}
-  .prog-card .p-num{font-size:12px; letter-spacing:0.18em; color:var(--gray); margin-bottom:16px;}
-  .prog-card p{font-size:14px; line-height:1.7; color:var(--ink);}
-
-  /* SESSIONS */
-  .provisional-badge{
-    display:block; text-align:center; font-size:12px; letter-spacing:0.06em;
-    color:#A8621F; background:#F7EDE3; border:1px solid #E7D3BC;
-    max-width:640px; margin:0 auto 40px; padding:14px 20px;
-  }
-  .sessions-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
-    max-width:920px; margin:0 auto;
-    border:1px solid var(--line);
-  }
-  .session-card{background:var(--white); padding:38px 30px; text-align:center;}
-  .session-card .s-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); margin-bottom:14px; text-transform:uppercase;}
-  .session-card .s-dates{font-size:20px; font-family:'The Silver Editorial','Cormorant Garamond',serif; margin-bottom:10px;}
-  .session-card .s-status{font-size:12px; color:var(--ink-soft);}
-
-  /* INFOS */
-  .infos-wrap{background:var(--ink); color:var(--white);}
-  .infos-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:16px 60px;
-    max-width:720px; margin:0 auto;
-    padding:44px 50px;
-  }
-  .infos-grid div{font-size:14px; letter-spacing:0.02em; line-height:1.8; color:#D8D6D0;}
-
-  /* FORM */
-  .form-note{max-width:560px; margin:0 auto 50px; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft);}
-  form.inscription-form{max-width:640px; margin:0 auto;}
-  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;}
-  .field{display:flex; flex-direction:column; gap:8px;}
-  .field.full{grid-column:1/-1;}
-  .field label{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase;}
-  .field input, .field select, .field textarea{
-    border:none; border-bottom:1px solid var(--line);
-    padding:12px 4px; font-family:'TT Interphase','Jost',sans-serif; font-size:15px; color:var(--ink);
-    background:transparent;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-bottom-color:var(--ink);}
-  .field textarea{resize:vertical; min-height:90px;}
-  .field-checkbox{display:flex; align-items:flex-start; gap:12px; font-size:13px; color:var(--ink-soft); line-height:1.6;}
-  .field-checkbox input{margin-top:3px; flex-shrink:0;}
-  .form-submit{width:100%; text-align:center; margin-top:16px; padding:16px; font-size:13px; letter-spacing:0.1em; border:none;}
-  .form-disclaimer{font-size:11px; color:var(--gray); text-align:center; margin-top:18px; line-height:1.6;}
-
-  .price-final{
-    text-align:center; max-width:400px; margin:0 auto 50px;
-    padding:36px 30px; border:1px solid var(--line);
-  }
-  .price-final .p-label{font-size:12px; letter-spacing:0.16em; color:var(--gray); margin-bottom:14px; text-transform:uppercase;}
-  .price-final .p-amount{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:44px; margin-bottom:10px; color:var(--ink);}
-  .price-final .p-sub{font-size:13px; color:var(--ink-soft);}
-
-  footer{padding:40px 0; background:var(--white); border-bottom:none;}
-  .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
-  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
-
-  /* FAQ */
-  .faq-list{border-top:1px solid var(--line); max-width:780px; margin:0 auto;}
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{
-    cursor:pointer;
-    list-style:none;
-    padding:26px 0;
-    font-size:17px;
-    font-family:'The Silver Editorial','Cormorant Garamond', serif;
-    display:flex; justify-content:space-between; align-items:center; gap:20px;
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
-  .faq-item[open] summary::after{transform:rotate(45deg);}
-  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
-
-  @media(max-width:900px){
-    nav{display:none;}
-    .wrap{padding:0 24px;}
-    section{padding:60px 0;}
-    .programme-grid{grid-template-columns:1fr 1fr;}
-    .sessions-grid{grid-template-columns:1fr;}
-    .infos-grid{grid-template-columns:1fr; padding:34px 28px;}
-    .form-row{grid-template-columns:1fr;}
-    .livret-block{grid-template-columns:1fr; text-align:center;}
-    .livret-text h2, .livret-text .l-tagline{text-align:center;}
-    .livret-programme{margin:0 auto;}
-    .livret-programme li{text-align:left;}
-    .livret-bonus-note{margin-left:auto; margin-right:auto;}
-  }
-
-  /* Menu mobile (hamburger) */
-  .nav-toggle{display:none;}
-  @media(max-width:900px){
-    header{position:relative;}
-    .nav-toggle{
-      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
-      width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; flex-shrink:0;
-    }
-    .nav-toggle span{display:block; width:18px; height:1px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
-    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-    .nav-toggle.is-open span:nth-child(2){opacity:0;}
-    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-    nav.nav-open{
-      display:flex; flex-direction:column; gap:0; width:100%;
-      position:absolute; top:100%; left:0; background:var(--white); border-top:1px solid var(--line);
-      box-shadow:0 14px 28px rgba(0,0,0,0.08); z-index:80; padding:6px 0;
-    }
-    nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
-    nav.nav-open a:last-child{border-bottom:none;}
-    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
-    nav.nav-open .nav-drop > a{position:relative; padding-right:44px;}
-    nav.nav-open .nav-drop > a::before, nav.nav-open .nav-drop > a::after{content:""; position:absolute; left:auto; right:24px; top:50%; bottom:auto; width:10px; height:2px; background:var(--gray); transition:transform .2s ease;}
-    nav.nav-open .nav-drop > a::before{transform:translateY(-50%) rotate(90deg);}
-    nav.nav-open .nav-drop > a::after{transform:translateY(-50%);}
-    nav.nav-open .nav-drop.open > a::before{transform:translateY(-50%) rotate(0deg);}
-    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:hidden; pointer-events:none; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off); max-height:0; overflow:hidden; transition:max-height .25s ease;}
-    nav.nav-open .nav-drop.open .nav-drop-menu{visibility:visible; pointer-events:auto; max-height:600px;}
-    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
-    nav.nav-open .nav-drop-label{padding-left:24px;}
-  }
-
-  /* NAV DROPDOWN */
-  .nav-drop{position:relative;}
-  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
-  .nav-drop-menu{
-    position:absolute; top:100%; left:50%; transform:translateX(-50%);
-    background:var(--white); border:1px solid var(--line);
-    min-width:230px; padding:6px 0; margin-top:18px;
-    opacity:0; visibility:hidden; pointer-events:none;
-    transition:opacity .2s ease;
-    box-shadow:0 12px 24px rgba(0,0,0,0.08);
-    z-index:30;
-  }
-  @media(min-width:861px){
-    .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
-  }
-  .nav-drop-menu a{
-    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
-    color:var(--ink); white-space:nowrap;
-  }
-  .nav-drop-label{display:block; padding:12px 22px 4px; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); white-space:nowrap;}
-  .nav-drop-label:not(:first-child){margin-top:4px; padding-top:14px; border-top:1px solid var(--line);}
-  .nav-drop-menu a::after{display:none;}
-  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
-  .pricing-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line);
-    max-width:820px; margin:0 auto; border:1px solid var(--line);
-  }
-  .price-option{background:var(--white); padding:44px 34px; text-align:center;}
-  .price-option.featured{background:var(--ink);}
-  .price-option.featured .p-label{color:var(--gray);}
-  .price-option.featured .p-amount{color:var(--white);}
-  .price-option.featured .p-note{color:rgba(255,255,255,0.75);}
-  .price-option .p-label{font-size:11px; letter-spacing:0.16em; color:var(--gray); text-transform:uppercase; margin-bottom:16px;}
-  .price-option .p-amount{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:36px; margin-bottom:14px;}
-  .price-option .p-note{font-size:13px; color:var(--ink-soft); line-height:1.75;}
-  /* Menu : "Coaching Business" reste sur une seule ligne, espacement resserré sur écrans moyens */
-  header nav a{white-space:nowrap;}
-  @media(min-width:861px) and (max-width:1100px){ header nav{gap:20px;} }
-
-  /* Formulaires : titres, sous-titres et libellés de champs en gras */
-  .fs-bold .section-eyebrow, .fs-bold .section-label{font-weight:600;}
-  .fs-bold .section-title, .fs-bold h2, .fs-bold h3, .fs-bold h2.step-title{font-weight:700;}
-  .fs-bold .field label, .fs-bold label.field-label{font-weight:600;}
-  .fs-bold .field label[for="rgpd"], .fs-bold .field-checkbox label{font-weight:300;}
+<style>
+[hidden]{display:none!important}
+.cpfb{display:grid;grid-template-columns:1fr 1fr;gap:24px 22px}.cpfb .f{grid-column:1/-1}
+.cf small.hl{display:block;font-size:12px;color:#8d8579;line-height:1.6}
+.cal{max-width:900px;margin:0 auto}.cal .cal-slot{min-width:320px;height:720px}
+form.fm select,form.fm textarea{width:100%;background:transparent;border:0;border-bottom:1px solid #b9ab92;padding:8px 0;font:inherit;font-size:15px;color:var(--ink);border-radius:0;outline:0;min-width:0}
+form.fm textarea{min-height:90px;resize:vertical}form.fm .ck{display:flex;gap:10px;align-items:flex-start;font-size:12px;line-height:1.6;color:#6d6455;text-transform:none;letter-spacing:normal}form.fm .ck input{width:auto;margin-top:4px}
+form.fm button.btn{font-family:inherit;cursor:pointer}
+@media(max-width:820px){.cpfb{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-
-<header>
-  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <div class="nav-drop"><a href="prestations.html">Prestations</a><div class="nav-drop-menu"><a href="prestations.html">Prestations Invitées</a><a href="prestations-mariee.html">Prestations Mariée</a></div></div>
-    <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="academie.html" class="current">Académie</a><div class="nav-drop-menu"><span class="nav-drop-label">Formations Maquilleuses</span><a href="formation-collective.html">Formation Débutante Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a><span class="nav-drop-label"><a href="cours-auto-maquillage.html" style="display:inline; padding:0; background:none; font-size:inherit; letter-spacing:inherit; text-transform:inherit; color:inherit; text-decoration:underline; text-underline-offset:3px;">Cours d'auto-maquillage</a></span><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html" class="current">Cours Privé (demi-journée)</a></div></div>
-    
-    <a href="coaching-business-mua.html">Coaching Business</a>
-    <a href="ebook.html">Ebook</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <a class="back-link" href="academie.html#formations">← Retour aux formations</a>
-  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</header>
-
-<section class="page-hero">
-  <img class="hero-bg" data-editable="cours-auto-maquillage-prive.hero_photo" src="assets/hero-cours-auto-maquillage-prive.jpg" alt="Cours d'auto maquillage privé CMAKEUP BEAUTY" style="object-position:50% 45%">
-  <div class="hero-topbar"><div class="eyebrow" data-editable="cours-auto-maquillage-prive.hero_eyebrow">COURS PRIVÉ — DEMI-JOURNÉE</div></div>
-  <div class="hero-caption">
-
-    <h1 data-editable="cours-auto-maquillage-prive.hero_title">Cours d'Auto Maquillage Privé</h1>
-    <div class="tagline" data-editable="cours-auto-maquillage-prive.hero_tagline">Un accompagnement 100% individuel, en tête-à-tête</div>
-    <p data-editable="cours-auto-maquillage-prive.hero_text">3 heures rien que pour toi, en tête-à-tête avec Colleen ou Arlyne (selon les disponibilités) : créneau du matin ou de l'après-midi, pour apprendre à te maquiller seule avec une méthode professionnelle, à ton rythme.</p>
-<div class="cms-video-slot" data-editable-video="cours-auto-maquillage-prive" style="display:none; margin:32px auto; max-width:900px;"></div>
-    </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section1_eyebrow">POUR QUI ?</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section1_title">Ce cours<br>est fait pour toi si...</h2>
-    <ul class="criteria-list">
-      <li><span class="check">✓</span> Tu veux un accompagnement 100% individuel, sans partager le cours avec d'autres</li>
-      <li><span class="check">✓</span> Tu veux maîtriser ton maquillage au quotidien</li>
-      <li><span class="check">✓</span> Tu veux enfin savoir quoi utiliser, comment l'appliquer et dans quel ordre</li>
-      <li><span class="check">✓</span> Tu veux un résultat propre, harmonieux et adapté à ton visage</li>
-      <li><span class="check">✓</span> Tu veux gagner en confiance et devenir autonome dans ta routine beauté</li>
-    </ul>
-    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section1_lede" style="margin-top:50px; margin-bottom:0;">Débutantes, intermédiaires, femmes qui veulent se sentir plus confiantes, apprendre à se mettre en valeur ou devenir autonomes dans leur routine beauté — ce cours est pour toi.</p>
-  </div>
-</section>
-
-<section style="padding-bottom:0;">
-  <div class="wrap" style="padding-bottom:70px;">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section2_eyebrow">LE PROGRAMME</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section2_title">3 heures complètes,<br>rien que pour toi</h2>
-    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section2_lede">Je t'accompagne du début à la fin pour te transmettre la méthode professionnelle que j'utilise sur mes clientes : simple, efficace et réalisable seule à la maison.</p>
-  </div>
-  <div class="programme-grid">
-    <div class="prog-card"><div class="p-num">01</div><p>Accueil et diagnostic de ton visage</p></div>
-    <div class="prog-card"><div class="p-num">02</div><p>Démonstration complète d'un maquillage personnalisé</p></div>
-    <div class="prog-card"><div class="p-num">03</div><p>Pratique guidée sur toi-même, étape par étape</p></div>
-    <div class="prog-card"><div class="p-num">04</div><p>Conseils personnalisés selon ton type de peau</p></div>
-    <div class="prog-card"><div class="p-num">05</div><p>Un guide Makeup PDF exclusif</p></div>
-    <div class="prog-card"><div class="p-num">06</div><p>Un kit de pinceaux offert pour continuer chez toi</p></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap" style="text-align:center;">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section3_eyebrow">RÉSERVATION</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section3_title">Remplis le formulaire ci-dessous</h2>
-    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section3_lede">Remplis le formulaire plus bas sur cette page, puis choisis ton créneau directement dans le planning en ligne. Kit de pinceaux et guide makeup inclus.</p>
-  </div>
-</section>
-
-<section class="infos-wrap">
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section4_eyebrow" style="color:var(--gray);">INFORMATIONS PRATIQUES</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section4_title" style="color:var(--white); margin-bottom:44px;">Bon à savoir</h2>
-    <div class="infos-grid">
-      <div>— Durée : 3h (créneau matin 9h-12h ou après-midi 13h-16h)</div>
-      <div>— Lieu : <span data-city>Cergy</span></div>
-      <div>— Cours 100% privé, en tête-à-tête</div>
-      <div>— Places très limitées</div>
-      <div>— Kit de pinceaux + guide PDF offerts</div>
-      <div>— Matériel professionnel à disposition sur place</div>
-      <div>— Éligible CPF : <span data-cpf-price="prix_cpf">1100€</span>, sous validation du dossier</div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-eyebrow" style="text-align:center;">L'INVESTISSEMENT</div>
-    <h2 class="section-title" style="margin-bottom:40px;">Deux façons de financer ton cours</h2>
-    <div class="pricing-grid">
-      <div class="price-option">
-        <div class="p-label">Paiement classique</div>
-        <div class="p-amount"><span data-editable="cours-auto-maquillage-prive.prix_classique">500</span> €</div>
-        <div class="p-note">La demi-journée (3h), créneau matin ou après-midi.<br>Acompte de 150€ pour valider ta place.</div>
-      </div>
-      <div class="price-option featured">
-        <div class="p-label">Financement CPF</div>
-        <div class="p-amount" data-cpf-price="prix_cpf">1100 €</div>
-        <div class="p-note">Cours finançable via ton Compte Personnel de Formation.<br>Sous réserve de validation du dossier.</div>
-      </div>
-    </div>
-    <p style="max-width:640px; margin:34px auto 0; text-align:center; font-size:13px; color:var(--ink-soft); line-height:1.8;">Ce tarif reflète un accompagnement 100% individuel, pensé pour toi seule : méthode professionnelle et matériel offert. Places très limitées pour garantir cette qualité d'accompagnement.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap" style="text-align:center;">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section5_eyebrow">LE MATÉRIEL À PRÉVOIR</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section5_title">Un kit personnel, sur-mesure</h2>
-    <p class="section-lede" data-editable="cours-auto-maquillage-prive.section5_lede" style="margin-bottom:0;">📩 La liste complète du matériel recommandé (avec les liens directs vers chaque produit) te sera envoyée par PDF juste après l'achat de ta place — pour un accompagnement pensé selon ta carnation et tes besoins. Pour rappel, les pinceaux sont inclus dans la formation 💕</p>
-  </div>
-</section>
-
-<section style="background:var(--off);">
-  <div class="wrap livret-block">
-    <img class="livret-cover" src="assets/img-9014d123379e.webp" alt="Le Master Guide d'Auto-Maquillage — livret premium CMAKEUP BEAUTY" width="662" height="936" loading="lazy" decoding="async">
-    <div class="livret-text">
-      <div class="badge-premium">Bonus offert</div>
-      <h2>Le Master Guide<br>d'Auto-Maquillage</h2>
-      <div class="l-tagline">Confiance · Maîtrise · Éclat</div>
-      <p class="l-desc">En plus de ta journée en présentiel, tu repars avec un livret complet pour continuer à t'entraîner chez toi — pensé comme un vrai guide de référence, étape par étape.</p>
-      <ul class="livret-programme">
-        <li><span class="l-num">01</span> Introduction au maquillage Soft Glam</li>
-        <li><span class="l-num">02</span> Les pinceaux</li>
-        <li><span class="l-num">03</span> Les types de peaux</li>
-        <li><span class="l-num">04</span> Les étapes d'un maquillage complet</li>
-        <li><span class="l-num">05</span> Savoir tracer des sourcils parfaits</li>
-        <li><span class="l-num">06</span> Savoir travailler le fard à paupières</li>
-        <li><span class="l-num">07</span> Préparer sa peau avant de faire son teint</li>
-        <li><span class="l-num">08</span> Savoir faire un teint parfait</li>
-        <li><span class="l-num">09</span> Face chart + illustrations</li>
-      </ul>
-      <p class="livret-bonus-note">+ en bonus : une sélection de produits recommandés selon ton type de peau, le matériel à avoir dans sa trousse et un guide produits complet.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section6_eyebrow">FOIRE AUX QUESTIONS</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section6_title" style="margin-bottom:50px;">Avant de réserver</h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary data-editable="cours-auto-maquillage-prive.faq1_question">Quelle est la différence avec l'Auto Makeup Class ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq1_text">L'<a href="auto-makeup-class.html" style="text-decoration:underline; color:var(--ink);">Auto Makeup Class</a> est une journée complète (8h, 300€), en petit comité. Ce cours privé est un format plus court et 100% individuel : 3h, en tête-à-tête avec Colleen ou Arlyne selon les disponibilités, pour un accompagnement encore plus personnalisé.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="cours-auto-maquillage-prive.faq2_question">Faut-il un niveau particulier pour participer ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq2_text">Non, ce cours est accessible à toutes : débutantes totales comme celles qui ont déjà quelques bases et veulent progresser. Le programme s'adapte à ton niveau.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="cours-auto-maquillage-prive.faq3_question">Le matériel est-il fourni ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq3_text">Les pinceaux sont offerts et inclus dans le cours. Du matériel professionnel est aussi à disposition sur place le jour J. La liste complète du reste du matériel recommandé pour chez toi (avec les liens directs) te sera envoyée par PDF juste après ta réservation, pour un choix adapté à ta carnation et tes besoins.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="cours-auto-maquillage-prive.faq4_question">Ce cours est-il finançable via mon CPF ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq4_text">Oui, à 1100€. Précise-le lors de ta prise de contact : nous te recontacterons pour récupérer les informations nécessaires à ton dossier. Ta place n'est définitivement validée qu'une fois le financement accepté par notre organisme partenaire.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="cours-auto-maquillage-prive.faq5_question">Comment se passe la réservation ?</summary>
-        <p data-editable="cours-auto-maquillage-prive.faq5_text">Remplis le formulaire ci-dessous. En cas de paiement personnel, tu choisis ensuite ta date et ton horaire (matin ou après-midi) directement dans le planning en ligne et règles l'acompte de 150€ (non remboursable) pour valider ta place.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section id="formulaire" class="fs-bold">
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="cours-auto-maquillage-prive.section7_eyebrow">INSCRIPTIONS</div>
-    <h2 class="section-title" data-editable="cours-auto-maquillage-prive.section7_title">Réserver ma place</h2>
-    <p class="form-note">Choisis ton mode de financement ci-dessous. En paiement personnel, tu choisiras ensuite directement ton créneau sur notre calendrier en ligne. En financement CPF, ta demande sera d'abord étudiée.</p>
-
-    <form class="inscription-form">
-      <div class="form-row">
-        <div class="field">
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" required>
-        </div>
-        <div class="field">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="field">
-          <label for="telephone">Téléphone</label>
-          <input type="tel" id="telephone" name="telephone" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="ville">Ville</label>
-          <input type="text" id="ville" name="ville" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="niveau">Ton niveau actuel</label>
-          <select id="niveau" name="niveau">
-            <option value="">Sélectionnez</option>
-            <option value="debutante">Débutante totale</option>
-            <option value="quelques-bases">Quelques bases</option>
-            <option value="intermediaire">Intermédiaire</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="trousse">As-tu déjà une trousse de maquillage ?</label>
-          <select id="trousse" name="trousse">
-            <option value="">Sélectionnez</option>
-            <option value="oui-complete">Oui, complète</option>
-            <option value="oui-incomplete">Oui, mais incomplète</option>
-            <option value="non">Non, pas encore</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="pourquoi">Pourquoi veux-tu apprendre à te maquiller ?</label>
-          <input type="text" id="pourquoi" name="pourquoi" placeholder="Ex : gagner en confiance, être autonome au quotidien...">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="style">Quel style veux-tu apprendre en priorité ?</label>
-          <select id="style" name="style">
-            <option value="">Sélectionnez</option>
-            <option value="quotidien">Pour tous les jours</option>
-            <option value="evenement">Pour les événements / soirées</option>
-            <option value="les-deux">Les deux</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="deja-cliente">As-tu déjà été cliente chez nous ?</label>
-          <select id="deja-cliente" name="deja-cliente">
-            <option value="">Sélectionnez</option>
-            <option value="oui">Oui</option>
-            <option value="non">Non, première fois</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="financement">Mode de financement souhaité</label>
-          <select id="financement" name="financement">
-            <option value="classique">Paiement classique — 500€ (acompte de 150€)</option>
-            <option value="cpf" data-cpf-option="prix_cpf" data-cpf-label="Financement CPF">Financement CPF — 1100€</option>
-          </select>
-          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.7;">Si tu choisis le financement CPF, nous te recontacterons pour récupérer les informations nécessaires à ton dossier. Ta place ne sera définitivement validée qu'une fois la demande de financement acceptée par notre organisme partenaire.</p>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="solde_cpf">Solde disponible sur ton compte CPF</label>
-          <input type="text" id="solde_cpf" name="solde_cpf" placeholder="Ex : 1200€, ou je ne sais pas encore">
-          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : indique le montant dont tu disposes, nous reviendrons vers toi pour échanger sur ta demande.</p>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="adresse_postale">Adresse postale complète</label>
-          <input type="text" id="adresse_postale" name="adresse_postale" placeholder="Numéro, rue, code postal, ville">
-          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Uniquement si tu choisis le financement CPF : ton adresse est nécessaire pour constituer ton dossier auprès de notre organisme partenaire.</p>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="piece_identite_recto">Pièce d'identité (recto)</label>
-          <input type="file" id="piece_identite_recto" name="piece_identite_recto" accept="image/*,.pdf">
-        </div>
-        <div class="field">
-          <label for="piece_identite_verso">Pièce d'identité (verso)</label>
-          <input type="file" id="piece_identite_verso" name="piece_identite_verso" accept="image/*,.pdf">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field full">
-          <p style="font-size:12px; color:var(--ink-soft); margin-top:-6px;">Uniquement si tu choisis le financement CPF : joins une photo ou un scan recto et verso de ta carte d'identité ou passeport en cours de validité.</p>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="message">Votre motivation / message</label>
-          <textarea id="message" name="message" placeholder="Parlez-nous un peu de vous et de ce qui vous amène à ce cours..."></textarea>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full field-checkbox">
-          <input type="checkbox" id="rgpd" name="rgpd" required>
-          <label for="rgpd" style="text-transform:none; letter-spacing:normal;">J'accepte que mes données soient utilisées par CMAKEUP BEAUTY pour traiter ma demande d'inscription, conformément à la politique de confidentialité.</label>
-        </div>
-      </div>
-
-      <button type="submit" class="btn form-submit">Continuer vers le paiement</button>
-      <p class="form-disclaimer">En cas de paiement personnel, tu seras redirigée vers Calendly pour choisir ton créneau et régler l'acompte de 150€ (non remboursable) directement en ligne. En cas de financement CPF, aucun acompte n'est demandé : ta demande est d'abord étudiée et nous te répondons par email sous 1 à 3 jours.</p>
-      <p class="form-status" role="status" aria-live="polite" style="margin-top:16px; font-size:12px; text-align:center; color:var(--ink-soft);"></p>
-    </form>
-  </div>
-</section>
-
+<body data-page="cours-auto-maquillage-prive">
+<header><a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a><nav><a class="" href="index.html">Accueil</a><div class="dd"><a class="" href="prestations.html">Prestations</a><div class="sub"><div><a href="prestations.html">Invitée</a><a href="prestations-mariee.html">Mariée</a></div></div></div><a class="" href="equipe.html">Équipe</a><a class="on" href="academie.html">Académie CMAKEUP BEAUTY</a><a class="" href="coaching-business-mua.html">Coaching</a><a class="" href="ebook.html">Ebook</a><a class="" href="contact.html">Contact</a></nav><a class="pill" href="prestations.html">Réserver</a><div class="burger"><i></i><i></i><i></i></div></header>
+<section class="pg"><div class="im" data-editable="cours-auto-maquillage-prive.hero_photo" style="background-image:url(assets/refonte/b34ff46743.jpg)"></div><div class="in"><div class="eyebrow" data-city-replace="" data-editable="cours-auto-maquillage-prive.t253b76">Cours privé · Cergy</div><h1 data-editable="cours-auto-maquillage-prive.tfc36c5" data-editable-nl="1">Auto-maquillage<br/>privé</h1><div class="sub" data-editable="cours-auto-maquillage-prive.ta3dd31">Trois heures en tête-à-tête avec Colleen ou Arlyne.</div><div class="btns"><a class="btn fill" data-editable="cours-auto-maquillage-prive.tad2756" href="reservation-cours-prive.html">Réserver mon cours</a></div></div></section><div class="band" style="--n:3"><div><span data-editable="cours-auto-maquillage-prive.te2ec53">3 heures</span><small data-editable="cours-auto-maquillage-prive.tad1fab">matin ou après-midi</small></div><div><span data-editable="cours-auto-maquillage-prive.prix_classique">500</span>€<small data-editable="cours-auto-maquillage-prive.tbbe96a">acompte 150€</small></div><div><span data-city-replace="" data-editable="cours-auto-maquillage-prive.tb95519">Cergy</span><small data-editable="cours-auto-maquillage-prive.tdfaec1">100% individuel</small></div></div><section class="sec"><div class="eyebrow" data-editable="cours-auto-maquillage-prive.t23f345">Au programme</div><h2 data-editable="cours-auto-maquillage-prive.t29f78c">Ton cours</h2><div style="height:36px"></div><div class="grid g3"><div class="box"><h3 data-editable="cours-auto-maquillage-prive.te9c349">Découvrir</h3><ul class="ok"><li data-editable="cours-auto-maquillage-prive.tda97db">Diagnostic de ton visage</li><li data-editable="cours-auto-maquillage-prive.t63fdea">Démonstration personnalisée</li></ul></div><div class="box"><h3 data-editable="cours-auto-maquillage-prive.t2820cd">Pratiquer</h3><ul class="ok"><li data-editable="cours-auto-maquillage-prive.t670882">Pratique guidée sur toi-même</li><li data-editable="cours-auto-maquillage-prive.tb6d805">Conseils selon ton type de peau</li></ul></div><div class="box"><h3 data-editable="cours-auto-maquillage-prive.t2170b9">Repartir avec</h3><ul class="ok"><li data-editable="cours-auto-maquillage-prive.t8e4387">Un kit de pinceaux offert</li><li data-editable="cours-auto-maquillage-prive.tf037da">Le guide Makeup PDF</li></ul></div></div></section><section class="sec sand"><div class="eyebrow" data-editable="cours-auto-maquillage-prive.t326e05">Infos</div><h2 data-editable="cours-auto-maquillage-prive.t08ab4a">Bon à savoir</h2><div style="height:36px"></div><div class="grid g3" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px"><div class="box"><h3 data-editable="cours-auto-maquillage-prive.t2f8f2d">Paiement personnel</h3><div class="price"><span data-editable="cours-auto-maquillage-prive.prix_classique">500</span>€</div><ul class="ok"><li data-editable="cours-auto-maquillage-prive.t12cc96">Créneau 9h – 12h ou 13h – 16h</li><li data-editable="cours-auto-maquillage-prive.tadcfcd">Acompte de 150€ pour valider</li></ul></div><div class="box"><h3 data-editable="cours-auto-maquillage-prive.t337298">Financement CPF</h3><ul class="ok"><li data-editable="cours-auto-maquillage-prive.t1dfa6d">Sur demande, dossier étudié d'abord</li><li data-editable="cours-auto-maquillage-prive.t2e44c5">Écris-nous avec ton solde CPF</li></ul></div></div></section><section class="cta"><div class="eyebrow" data-editable="cours-auto-maquillage-prive.t65a201">Prête ?</div><h2 data-editable="cours-auto-maquillage-prive.t0b74e2">Choisis ton créneau</h2><a class="btn fill" data-editable="cours-auto-maquillage-prive.tad2756_2" href="reservation-cours-prive.html">Réserver mon cours</a></section><footer><div class="logo">CMAKEUP</div><div style="display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:6px 0 20px;letter-spacing:.18em;font-size:10.5px;text-transform:uppercase"><a href="https://www.instagram.com/cmakeupbeautyacademy_" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">Académie · @cmakeupbeautyacademy_</a><a href="https://www.instagram.com/c_makeup_" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">Instagram · @c_makeup_</a><a href="https://www.tiktok.com/@cmakeupbeauty" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">TikTok · @cmakeupbeauty</a></div>© 2026 CMAKEUP BEAUTY · <a href="mentions-legales.html" style="border-bottom:1px solid #5b5348">Mentions légales &amp; CGV</a></footer><script>(function(){var b=document.querySelector(".burger"),h=document.querySelector("header");if(b&&h)b.addEventListener("click",function(){h.classList.toggle("open")})})();</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script>
-(function(){
-  var toggle = document.querySelector('.nav-toggle');
-  var nav = document.querySelector('header nav');
-  if(toggle && nav){
-    var isMobileNav = function(){ return window.matchMedia('(max-width:860px)').matches; };
-    var closeNav = function(){
-      nav.classList.remove('nav-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.classList.remove('is-open');
-      nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-    };
-    toggle.addEventListener('click', function(){
-      var open = nav.classList.toggle('nav-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.classList.toggle('is-open', open);
-      if(!open) nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-    });
-    nav.querySelectorAll('.nav-drop > a').forEach(function(a){
-      a.addEventListener('click', function(e){
-        if(!isMobileNav()) return;
-        e.preventDefault();
-        var drop = a.parentElement;
-        var wasOpen = drop.classList.contains('open');
-        nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-        if(!wasOpen) drop.classList.add('open');
-      });
-    });
-    nav.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        if(isMobileNav() && a.parentElement.classList.contains('nav-drop')) return;
-        closeNav();
-      });
-    });
-  }
-
-  var form = document.querySelector('.inscription-form');
-  var status = form ? form.querySelector('.form-status') : null;
-  if(!form || !status) return;
-  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
-  // Dépôt de la pièce d'identité (bucket privé). Renvoie le chemin, null si aucun
-  // fichier choisi, ou false si le dépôt a échoué (fichier trop lourd, format refusé,
-  // réseau) : l'envoi du formulaire est alors interrompu avec un message clair,
-  // au lieu de perdre le fichier en silence. Pas d'upsert : le chemin est unique par demande.
-  var _CPF_MAX_BYTES = 10 * 1024 * 1024;
-  function _uploadCpfDoc(file, folder, label){
-    if(!file) return Promise.resolve(null);
-    if(file.size > _CPF_MAX_BYTES) return Promise.resolve(false);
-    var ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g,'') || 'bin';
-    var path = folder + '/' + label + '.' + ext;
-    return _sb.storage.from('documents-cpf').upload(path, file, { upsert: false, contentType: file.type || undefined }).then(function(res){
-      return res.error ? false : path;
-    }).catch(function(){ return false; });
-  }
-  // Libellé du bouton selon le mode de financement : paiement personnel -> paiement, CPF -> simple demande
-  var finSelect = document.getElementById('financement');
-  var submitBtnEl = form.querySelector('.form-submit');
-  function submitLabel(v){ return v === 'cpf' ? 'Envoyer ma demande CPF' : 'Continuer vers le paiement'; }
-  function syncSubmitLabel(){ if(submitBtnEl && !submitBtnEl.disabled) submitBtnEl.textContent = submitLabel(finSelect.value); }
-  finSelect.addEventListener('change', syncSubmitLabel);
-  syncSubmitLabel();
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var btn = form.querySelector('.form-submit');
-    var financementVal = document.getElementById('financement').value;
-
-    if(financementVal === 'classique'){
-      // Paiement personnel : redirection vers la réservation Calendly (créneau + acompte). Aucun
-      // enregistrement en base tant que le créneau n'est pas réellement confirmé.
-      var pendingValues = {
-        source_page: 'cours-auto-maquillage-prive',
-        prenom: document.getElementById('prenom').value,
-        nom: document.getElementById('nom').value,
-        email: document.getElementById('email').value,
-        telephone: document.getElementById('telephone').value,
-        ville: document.getElementById('ville').value,
-        niveau: document.getElementById('niveau').value,
-        trousse: document.getElementById('trousse').value,
-        pourquoi: document.getElementById('pourquoi').value,
-        style: document.getElementById('style').value,
-        deja_cliente: document.getElementById('deja-cliente').value,
-        financement: financementVal,
-        message: document.getElementById('message').value,
-        rgpd_consent: document.getElementById('rgpd').checked
-      };
-      try{ sessionStorage.setItem('cmk_cours_prive_pending', JSON.stringify(pendingValues)); } catch(err){}
-      var redirectParams = new URLSearchParams({
-        prenom: pendingValues.prenom,
-        nom: pendingValues.nom,
-        email: pendingValues.email
-      });
-      window.location.href = 'reservation-cours-prive.html?' + redirectParams.toString();
-      return;
-    }
-
-    btn.disabled = true;
-    var _btnLabelBeforeSend = btn.textContent;
-    btn.textContent = 'Envoi en cours...';
-    var newId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2);
-    var rectoFile = document.getElementById('piece_identite_recto') ? document.getElementById('piece_identite_recto').files[0] : null;
-    var versoFile = document.getElementById('piece_identite_verso') ? document.getElementById('piece_identite_verso').files[0] : null;
-    Promise.all([
-      _uploadCpfDoc(rectoFile, newId, 'recto'),
-      _uploadCpfDoc(versoFile, newId, 'verso')
-    ]).then(function(paths){
-      if(paths[0] === false || paths[1] === false){
-        btn.disabled = false;
-        btn.textContent = _btnLabelBeforeSend;
-        status.style.color = '#B33A3A';
-        status.innerHTML = "Ta pièce d'identité n'a pas pu être envoyée (10 Mo maximum, formats JPG, PNG, WEBP, HEIC ou PDF). Vérifie le fichier et réessaie, ou envoie-la à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a>.";
-        return;
-      }
-      _sb.from('formation_inscriptions').insert({
-        id: newId,
-        source_page: 'cours-auto-maquillage-prive',
-        prenom: document.getElementById('prenom').value,
-        nom: document.getElementById('nom').value,
-        email: document.getElementById('email').value,
-        telephone: document.getElementById('telephone').value,
-        ville: document.getElementById('ville').value,
-        niveau: document.getElementById('niveau').value,
-        trousse: document.getElementById('trousse').value,
-        pourquoi: document.getElementById('pourquoi').value,
-        style: document.getElementById('style').value,
-        deja_cliente: document.getElementById('deja-cliente').value,
-        financement: financementVal,
-        solde_cpf: document.getElementById('solde_cpf').value,
-        adresse_postale: document.getElementById('adresse_postale').value,
-        piece_identite_recto_path: paths[0],
-        piece_identite_verso_path: paths[1],
-        message: document.getElementById('message').value,
-        rgpd_consent: document.getElementById('rgpd').checked
-      }).then(function(res){
-        btn.disabled = false;
-        btn.textContent = submitLabel(financementVal);
-        if(res.error){
-          status.style.color = '#B33A3A';
-          status.innerHTML = "Un problème est survenu lors de l'envoi. Écris-nous à <a href=\"mailto:academy@cmakeupbeauty.fr\" style=\"text-decoration:underline; color:inherit;\">academy@cmakeupbeauty.fr</a> ou appelle le <a href=\"tel:+33754033266\" style=\"text-decoration:underline; color:inherit;\">07&nbsp;54&nbsp;03&nbsp;32&nbsp;66</a>.";
-        } else {
-          window.location.href = 'merci-formation.html';
-        }
-      });
-    });
-  });
-})();
-</script>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-top" style="justify-content:flex-start;">
-      <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-    </div>
-    <div class="footer-note"><a href="mentions-legales.html" style="color:inherit; text-decoration:underline;">Mentions légales &amp; CGV</a></div>
-    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
-  </div>
-</footer>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script>
-(function(){
-  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
-  function embedVideo(container, url){
-    if(!url) return;
-    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
-    var vim = url.match(/vimeo\.com\/(\d+)/);
-    if(yt){
-      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
-    } else if(vim){
-      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
-    } else {
-      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
-    }
-    container.style.display = 'block';
-  }
-  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'cours-auto-maquillage-prive').then(function(res){
-    if(res.error || !res.data) return;
-    res.data.forEach(function(row){
-      if(!row.content) return;
-      if(row.block_type === 'video'){
-        var vc = document.querySelector('[data-editable-video="cours-auto-maquillage-prive"]');
-        if(vc) embedVideo(vc, row.content);
-        return;
-      }
-      var els = document.querySelectorAll('[data-editable="cours-auto-maquillage-prive.' + row.block_key + '"]');
-      els.forEach(function(el){
-        if(row.block_type === 'image'){
-          el.setAttribute('src', row.content);
-        } else {
-          el.textContent = row.content;
-        }
-      });
-    });
-  });
-})();
-</script>
+<script src="cmk-backend.js"></script>
 <script src="site-settings.js" defer></script>
+<script>try{history.scrollRestoration="manual"}catch(e){}(function(){function t(){if(!location.hash){window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0}}t();addEventListener("load",t);addEventListener("pageshow",t)})();</script>
 </body>
 </html>

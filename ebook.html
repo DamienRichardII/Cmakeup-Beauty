@@ -1,475 +1,125 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr"><head><meta charset="UTF-8">
 <title>CMAKEUP BEAUTY — Ebook Business</title>
 <meta name="description" content="Vivre du Maquillage — Business : l'ebook CMAKEUP BEAUTY pour structurer votre activité de Makeup Artist, par Colleen.">
-<link rel="canonical" href="https://cmakeup-beauty.vercel.app/ebook.html">
+<link rel="canonical" href="https://www.cmakeupbeauty.fr/ebook.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMAKEUP BEAUTY — Ebook Business">
 <meta property="og:description" content="Vivre du Maquillage — Business : l'ebook CMAKEUP BEAUTY pour structurer votre activité de Makeup Artist, par Colleen.">
-<meta property="og:url" content="https://cmakeup-beauty.vercel.app/ebook.html">
+<meta property="og:url" content="https://www.cmakeupbeauty.fr/ebook.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --white:#FFFFFF;
-    --off:#F4F4F2;
-    --paper:#D6D1C5;
-    --line:#D6D1C5;
-    --ink:#1A1A1A;
-    --ink-soft:#75736D;
-    --gray:#B8B6A9;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--white);
-    color:var(--ink);
-    font-family:'TT Interphase','Jost', sans-serif;
-    font-weight:300;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.serif{
-    font-family:'The Silver Editorial','Cormorant Garamond', serif;
-    font-weight:400;
-    letter-spacing:0.01em;
-  }
-  a{color:inherit; text-decoration:none;}
-  img{display:block; max-width:100%;}
-  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+:root{--ink:#121110;--ink2:#1d1a17;--sand:#D8CCB6;--cream:#F4EEE3;--caramel:#B3926F;--muted:#8d8579}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--cream)}body{font-family:'Poppins',sans-serif;font-weight:300;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:400}
+header{position:relative;background:#0d0c0b;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 56px;color:#fff}
+.logo{display:block;font-family:"Lora",serif;font-size:24px;letter-spacing:.24em}
+.logo span{display:block;font-family:'Poppins';font-size:8.5px;letter-spacing:.5em;color:#cdbfa8;margin-top:5px}
+nav{display:flex;gap:28px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+nav a.on{border-bottom:1px solid var(--sand);padding-bottom:4px}
+.pill{border:1px solid rgba(255,255,255,.7);padding:11px 24px;border-radius:40px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+.burger{display:none;width:26px;height:16px;flex-direction:column;justify-content:space-between}.burger i{display:block;height:1.5px;background:#fff}
+.eyebrow{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:#d8ccb6}
+.pg{display:grid;grid-template-columns:1fr 1fr;background:#0d0c0b;color:#fff;min-height:640px}
+.pg .in{padding:70px 56px 70px 56px;align-self:center;max-width:680px}
+.pg h1{font-size:68px;line-height:1;text-transform:uppercase;margin:22px 0 12px}
+.pg .sub{font-family:'Lora';font-style:italic;font-size:26px;color:#e6d3b6;line-height:1.4;margin-bottom:34px}
+.pg .im{background-size:cover;background-position:center top;min-height:560px;order:2}
+.pg.noim{grid-template-columns:1fr;min-height:380px}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-block;white-space:nowrap;padding:16px 30px;border-radius:40px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;border:1px solid #fff;color:#fff}
+.btn.fill{background:var(--sand);border-color:var(--sand);color:var(--ink)}
+.btn.dkfill{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.dk{border-color:var(--ink);color:var(--ink)}
+.band{background:var(--sand);display:flex;justify-content:space-around;padding:30px 56px;text-align:center;gap:20px}
+.band div{font-family:'Lora',serif;font-size:30px}
+.band small{display:block;font-family:'Poppins';font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:#6d6455;margin-top:6px}
+.sec{padding:100px 56px;text-align:center}
+.sec.sand{background:var(--sand)}.sec.dk{background:var(--ink);color:#fff}.sec.dk2{background:var(--ink2);color:#fff}
+.sec .eyebrow{color:var(--caramel)}.sec.dk .eyebrow,.sec.dk2 .eyebrow{color:#d8ccb6}.sec.sand .eyebrow{color:#6d6455}
+.sec h2{font-size:52px;text-transform:uppercase;line-height:1.05;margin:16px 0 10px}
+.sec .sb{font-family:'Lora';font-style:italic;font-size:23px;color:var(--caramel);margin-bottom:50px}
+.sec.dk .sb,.sec.dk2 .sb{color:#e6d3b6}
+.grid{display:grid;gap:22px;text-align:left;max-width:1180px;margin:0 auto}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.box{background:#fff;padding:36px 30px 34px;position:relative}
+.dk .box,.dk2 .box{background:#1d1a17;border:1px solid #3a342d}
+.box .k{font-family:'Lora';font-style:italic;color:var(--caramel);font-size:15px}
+.box h3{font-size:27px;line-height:1.15;margin:8px 0 10px}
+.box p{font-size:13.5px;line-height:1.75;color:#6d6558}
+.dk .box p,.dk2 .box p{color:#cfc8bb}
+.price{font-family:'Lora';font-size:46px;margin:14px 0 4px}
+.price small{font-family:'Poppins';font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-left:6px}
+.tag{position:absolute;top:-12px;left:30px;background:var(--caramel);color:#fff;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;padding:6px 14px;border-radius:20px}
+.box ul{list-style:none;margin:16px 0 22px}.box li{font-size:13.5px;line-height:1.5;padding:7px 0 7px 22px;position:relative;color:#4b4439;border-top:1px solid #eee6d8}
+.dk .box li,.dk2 .box li{color:#cfc8bb;border-color:#332e28}.box li:before{content:"✦";position:absolute;left:0;color:var(--caramel);font-size:10px;top:10px}
+.lnk{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:640px;text-align:left}
+.split .ph{background-size:cover;background-position:center top}.split .txt{padding:90px 56px;display:flex;flex-direction:column;justify-content:center}
+.split.dk{background:var(--ink);color:#fff}.split h2{font-size:52px;text-transform:uppercase;line-height:1.05;margin:16px 0 14px}
+.split p{font-size:14.5px;line-height:1.9;color:#6d6558;max-width:480px;margin-bottom:16px}.split.dk p{color:#cfc8bb}
+.q{border-left:1px solid var(--caramel);padding-left:22px;margin:14px 0 30px;font-family:'Lora';font-style:italic;font-size:20px;line-height:1.6;max-width:460px}
+.mem .ph{min-height:520px;background-size:cover;background-position:center top}
+.mem .role{font-family:'Lora';font-style:italic;font-size:21px;color:var(--caramel);margin-bottom:18px}
+.note{max-width:780px;margin:44px auto 0;padding:22px 28px;border:1px solid var(--caramel);font-size:13.5px;line-height:1.8;text-align:left;color:#4b4439}
+.dk .note,.dk2 .note{color:#cfc8bb}
+.row{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid #cdbfa8;text-align:left}
+.row h3{font-size:26px}.row .d{font-size:12.5px;color:#6d6558;margin-top:4px}.row .p{font-family:'Lora';font-size:26px;white-space:nowrap}
+.form{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
+.form .f{grid-column:1/-1}.form label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6d6455;margin-bottom:6px}
+.form div>span{display:block;border-bottom:1px solid #b9ab92;height:34px}.form .f.t span{height:90px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto 70px;text-align:center}
+.info h3{font-size:22px;margin:8px 0 6px}.info p{font-size:13.5px;line-height:1.7;color:#6d6558}
+.cta{background:var(--ink);color:#fff;text-align:center;padding:90px 56px}.cta h2{font-size:48px;text-transform:uppercase;margin:14px 0 26px}
+footer{background:var(--ink);color:#bdb4a6;text-align:center;padding:50px 20px;font-size:11px;letter-spacing:.2em;border-top:1px solid #2a2622}
+footer .logo{color:#fff;margin-bottom:14px}
+@media(max-width:820px){
+header{padding:22px 20px}.logo{font-size:19px}nav,.pill{display:none}.burger{display:flex}
+.pg{grid-template-columns:1fr;min-height:0}.pg .im{order:-1;height:560px;min-height:0;background-position:center top}.pg .in{padding:34px 22px 48px;max-width:none}.pg h1{font-size:38px}.pg .sub{font-size:20px;margin-bottom:24px}
+.pg.noim{min-height:0}.pg.noim .im{display:none}
+.band{flex-wrap:wrap;padding:26px 20px}.band div{font-size:24px;width:45%}
+.sec{padding:62px 22px}.sec h2{font-size:32px}.sec .sb{font-size:19px;margin-bottom:34px}
+.g2,.g3,.g4,.info{grid-template-columns:1fr}.box{padding:30px 24px}
+.split{grid-template-columns:1fr}.split .ph,.mem .ph{min-height:440px}.split .txt{padding:52px 24px}.split h2{font-size:32px}
+.split.rev .ph{order:-1}
+.row{flex-direction:column;align-items:flex-start;gap:8px}.form{grid-template-columns:1fr}.cta{padding:60px 24px}.cta h2{font-size:32px}.info{margin-bottom:44px}
+.btn{padding:15px 24px}
+}</style><style>nav a{white-space:nowrap}@media(max-width:1180px) and (min-width:821px){nav{gap:18px!important;font-size:9.5px!important;letter-spacing:.16em!important}header{padding-left:32px!important;padding-right:32px!important}header .pill{display:none!important}}</style><style>nav .dd{position:relative;display:inline-block}
+nav .dd .sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:18px;z-index:30}
+nav .dd .sub>div{background:#0d0c0b;border:1px solid #2a2622;padding:8px 26px;display:flex;flex-direction:column;min-width:150px}
+nav .dd .sub a{padding:12px 0;white-space:nowrap}nav .dd .sub a+a{border-top:1px solid #2a2622}
+nav .dd:hover .sub,nav .dd:focus-within .sub{display:block}
+@media(max-width:820px){header.open nav .dd{display:block}header.open nav .dd .sub{display:block;position:static;transform:none;padding:0}header.open nav .dd .sub>div{border:0;padding:0 0 0 18px;min-width:0}header.open nav .dd .sub a{font-size:10px;color:#cfc8bb}header.open nav .dd>a{display:block;border-bottom:1px solid #2a2622}}</style><style>.burger{cursor:pointer}@media(max-width:820px){header.open nav{display:flex!important;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#0d0c0b;padding:6px 24px 26px;z-index:20;border-top:1px solid #2a2622}header.open nav a{padding:15px 0;border-bottom:1px solid #2a2622;font-size:11px;letter-spacing:.24em}}</style>
 
-  header{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:28px 40px;
-    border-bottom:1px solid var(--line);
-  }
-  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em;}
-  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
-  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
-  nav a{position:relative; padding-bottom:4px;}
-  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
-  nav a:hover::after{width:100%;}
-  nav a.current::after{width:100%;}
-  .btn{
-    border:1px solid var(--ink); padding:12px 26px; font-size:12px; letter-spacing:0.08em;
-    background:var(--ink); color:var(--white); display:inline-block;
-  }
-  .btn:hover{background:var(--white); color:var(--ink);}
-  .btn-outline{
-    border:1px solid var(--ink); padding:16px 40px; font-size:13px; letter-spacing:0.1em;
-    background:transparent; color:var(--ink); display:inline-block;
-  }
-  .btn-outline:hover{background:var(--ink); color:var(--white);}
-
-  /* HERO */
-  .hero{
-    display:grid; grid-template-columns:0.95fr 1.05fr;
-    min-height:640px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-img{position:relative; overflow:hidden; background:var(--ink);}
-  .hero-img img{width:100%; height:100%; object-fit:cover; object-position:50% 20%; opacity:0.88;}
-  .hero-badge{
-    position:absolute; top:36px; left:36px;
-    background:var(--white); color:var(--ink);
-    font-size:10px; letter-spacing:0.14em; padding:8px 16px;
-  }
-  .hero-copy{
-    background:var(--ink); color:var(--white);
-    display:flex; flex-direction:column; justify-content:center;
-    padding:80px 70px;
-  }
-  .hero-copy .eyebrow{font-size:12px; letter-spacing:0.24em; color:var(--gray); margin-bottom:22px;}
-  .hero-copy h1{font-size:clamp(34px,4vw,50px); line-height:1.08; color:var(--white); margin-bottom:20px;}
-  .hero-copy .tagline{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--gray); margin-bottom:28px;}
-  .hero-copy p.sub{font-size:15px; line-height:1.8; color:#C9C7BE; max-width:460px; margin-bottom:36px;}
-
-  /* SECTIONS */
-  section{padding:90px 0; border-bottom:1px solid var(--line);}
-  .section-eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:16px; text-align:center;}
-  .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
-  .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
-
-  /* INTRO QUOTE */
-  .intro-block{max-width:760px; margin:0 auto; text-align:center;}
-  .intro-block p{font-size:17px; line-height:1.95; color:var(--ink-soft); margin-bottom:22px;}
-  .intro-block p strong{color:var(--ink); font-weight:500;}
-
-  /* BENEFITS */
-  .benefits{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
-    background:var(--line);
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-  }
-  .benefit{background:var(--white); padding:48px 36px;}
-  .benefit .num{font-size:12px; letter-spacing:0.18em; color:var(--gray); margin-bottom:18px;}
-  .benefit h3{font-size:22px; margin-bottom:14px;}
-  .benefit p{font-size:14px; line-height:1.75; color:var(--ink-soft);}
-
-  /* SOMMAIRE */
-  .sommaire-list{max-width:820px; margin:0 auto;}
-  .chap{
-    display:grid; grid-template-columns:70px 1fr; gap:26px;
-    padding:26px 0; border-bottom:1px solid var(--line);
-    align-items:baseline;
-  }
-  .chap .chap-num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:30px; color:var(--gray);}
-  .chap h4{font-size:18px; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.02em;}
-  .chap p{font-size:14px; color:var(--ink-soft); line-height:1.7;}
-
-  /* BONUS */
-  .bonus-wrap{background:var(--ink); color:var(--white);}
-  .bonus-grid{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
-    max-width:900px; margin:0 auto;
-  }
-  .bonus-item{
-    border:1px solid #3A3A38; padding:22px 26px;
-    font-size:14px; letter-spacing:0.02em; line-height:1.6;
-    display:flex; align-items:flex-start; gap:14px;
-  }
-  .bonus-item .check{color:var(--gray); font-size:16px; flex-shrink:0;}
-
-  /* AUTHOR */
-  .author-block{
-    display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px; align-items:center;
-  }
-  .author-photo{aspect-ratio:4/5; overflow:hidden; background:var(--paper);}
-  .author-photo img{width:100%; height:100%; object-fit:cover; object-position:50% 15%;}
-  .author-text .num{font-size:12px; letter-spacing:0.2em; color:var(--gray); margin-bottom:18px;}
-  .author-text h2{font-size:clamp(30px,3.5vw,42px); margin-bottom:20px;}
-  .author-text p{font-size:16px; line-height:1.9; color:var(--ink-soft); max-width:480px; margin-bottom:18px;}
-  .author-text .signoff{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--ink); margin-top:24px;}
-
-  /* CTA FINAL */
-  .cta-final{
-    text-align:center; background:var(--off); border-bottom:none;
-  }
-  .cta-final h2{font-size:clamp(30px,4vw,46px); margin-bottom:22px;}
-  .cta-final p{max-width:520px; margin:0 auto 40px; font-size:16px; line-height:1.85; color:var(--ink-soft);}
-
-  footer{padding:40px 0; background:var(--white);}
-  .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
-  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
-
-  @media(max-width:900px){
-    .hero{grid-template-columns:1fr;}
-    .hero-img{min-height:340px;}
-    .hero-copy{padding:56px 32px;}
-    .benefits{grid-template-columns:1fr;}
-    .author-block{grid-template-columns:1fr;}
-    .bonus-grid{grid-template-columns:1fr;}
-    nav{display:none;}
-    .wrap{padding:0 24px;}
-    section{padding:60px 0;}
-  }
-
-  /* Menu mobile (hamburger) */
-  .nav-toggle{display:none;}
-  @media(max-width:900px){
-    header{position:relative;}
-    .nav-toggle{
-      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
-      width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; flex-shrink:0;
-    }
-    .nav-toggle span{display:block; width:18px; height:1px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
-    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-    .nav-toggle.is-open span:nth-child(2){opacity:0;}
-    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-    nav.nav-open{
-      display:flex; flex-direction:column; gap:0; width:100%;
-      position:absolute; top:100%; left:0; background:var(--white); border-top:1px solid var(--line);
-      box-shadow:0 14px 28px rgba(0,0,0,0.08); z-index:80; padding:6px 0;
-    }
-    nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
-    nav.nav-open a:last-child{border-bottom:none;}
-    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
-    nav.nav-open .nav-drop > a{position:relative; padding-right:44px;}
-    nav.nav-open .nav-drop > a::before, nav.nav-open .nav-drop > a::after{content:""; position:absolute; left:auto; right:24px; top:50%; bottom:auto; width:10px; height:2px; background:var(--gray); transition:transform .2s ease;}
-    nav.nav-open .nav-drop > a::before{transform:translateY(-50%) rotate(90deg);}
-    nav.nav-open .nav-drop > a::after{transform:translateY(-50%);}
-    nav.nav-open .nav-drop.open > a::before{transform:translateY(-50%) rotate(0deg);}
-    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:hidden; pointer-events:none; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off); max-height:0; overflow:hidden; transition:max-height .25s ease;}
-    nav.nav-open .nav-drop.open .nav-drop-menu{visibility:visible; pointer-events:auto; max-height:600px;}
-    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
-    nav.nav-open .nav-drop-label{padding-left:24px;}
-    header .btn{display:none;}
-  }
-
-  /* NAV DROPDOWN */
-  .nav-drop{position:relative;}
-  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
-  .nav-drop-menu{
-    position:absolute; top:100%; left:50%; transform:translateX(-50%);
-    background:var(--white); border:1px solid var(--line);
-    min-width:230px; padding:6px 0; margin-top:18px;
-    opacity:0; visibility:hidden; pointer-events:none;
-    transition:opacity .2s ease;
-    box-shadow:0 12px 24px rgba(0,0,0,0.08);
-    z-index:30;
-  }
-  @media(min-width:861px){
-    .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
-  }
-  .nav-drop-menu a{
-    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
-    color:var(--ink); white-space:nowrap;
-  }
-  .nav-drop-label{display:block; padding:12px 22px 4px; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); white-space:nowrap;}
-  .nav-drop-label:not(:first-child){margin-top:4px; padding-top:14px; border-top:1px solid var(--line);}
-  .nav-drop-menu a::after{display:none;}
-  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
-  /* Menu : "Coaching Business" reste sur une seule ligne, espacement resserré sur écrans moyens */
-  header nav a{white-space:nowrap;}
-  @media(min-width:861px) and (max-width:1100px){ header nav{gap:20px;} }
+<style>
+[hidden]{display:none!important}
+.cpfb{display:grid;grid-template-columns:1fr 1fr;gap:24px 22px}.cpfb .f{grid-column:1/-1}
+.cf small.hl{display:block;font-size:12px;color:#8d8579;line-height:1.6}
+.cal{max-width:900px;margin:0 auto}.cal .cal-slot{min-width:320px;height:720px}
+form.fm select,form.fm textarea{width:100%;background:transparent;border:0;border-bottom:1px solid #b9ab92;padding:8px 0;font:inherit;font-size:15px;color:var(--ink);border-radius:0;outline:0;min-width:0}
+form.fm textarea{min-height:90px;resize:vertical}form.fm .ck{display:flex;gap:10px;align-items:flex-start;font-size:12px;line-height:1.6;color:#6d6455;text-transform:none;letter-spacing:normal}form.fm .ck input{width:auto;margin-top:4px}
+form.fm button.btn{font-family:inherit;cursor:pointer}
+@media(max-width:820px){.cpfb{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-
-<header>
-  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <div class="nav-drop"><a href="prestations.html">Prestations</a><div class="nav-drop-menu"><a href="prestations.html">Prestations Invitées</a><a href="prestations-mariee.html">Prestations Mariée</a></div></div>
-    <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="academie.html">Académie</a><div class="nav-drop-menu"><span class="nav-drop-label">Formations Maquilleuses</span><a href="formation-collective.html">Formation Débutante Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a><span class="nav-drop-label"><a href="cours-auto-maquillage.html" style="display:inline; padding:0; background:none; font-size:inherit; letter-spacing:inherit; text-transform:inherit; color:inherit; text-decoration:underline; text-underline-offset:3px;">Cours d'auto-maquillage</a></span><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
-    
-    <a href="coaching-business-mua.html">Coaching Business</a>
-    <a href="ebook.html" class="current">Ebook</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <a class="btn" href="prestations.html#reserver">Réserver</a>
-  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</header>
-
-<section class="hero" style="padding:0;">
-  <div class="hero-img">
-    <img data-editable="ebook.photo1" src="assets/img-bedf3f324690.webp" alt="Colleen, fondatrice de CMAKEUP BEAUTY" width="900" height="1350" loading="eager">
-    <div class="hero-badge">EBOOK BUSINESS EXCLUSIF</div>
-  </div>
-  <div class="hero-copy">
-    <div class="eyebrow" data-editable="ebook.hero_eyebrow">ÉCRIT ET PENSÉ PAR CMAKEUP BEAUTY</div>
-    <h1 data-editable="ebook.hero_title">Vivre du<br>Maquillage — Business</h1>
-    <div class="tagline" data-editable="ebook.hero_tagline">"De la passion au business rentable"</div>
-    <p class="sub">Mon histoire, mes stratégies, mes leçons. Le guide complet pour poser les bonnes bases, trouver tes premières clientes et structurer ton activité de maquilleuse comme un vrai business.</p>
-    <a class="btn-outline" style="border-color:#fff; color:#fff;" href="https://cmakeupbeauty95.systeme.io/2d5ff7e7" target="_blank">Je commande l'ebook</a>
-  </div>
-</section>
-<section>
-  <div class="wrap intro-block">
-    <div class="section-eyebrow" data-editable="ebook.section1_eyebrow">L'INTRODUCTION</div>
-    <p data-editable="ebook.hero_text">Je m'appelle <strong>Colleen</strong>, plus connue sous le nom de CMAKEUP BEAUTY. Maquilleuse autodidacte depuis près de huit ans, j'ai eu le courage de croire en moi — même dans les moments où je repartais de zéro.</p>
-<div class="cms-video-slot" data-editable-video="ebook" style="display:none; margin:32px auto; max-width:900px;"></div>
-    <p>Cet ebook, c'est <strong>mon parcours et un guide à la fois</strong>. Parce que si moi j'y suis arrivée, toi aussi tu peux construire ton chemin.</p>
-  </div>
-</section>
-
-<section style="padding-bottom:0;">
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="ebook.section2_eyebrow">CE QUE TU VAS Y TROUVER</div>
-    <h2 class="section-title" data-editable="ebook.section2_title">Ce ebook est conçu<br>pour t'aider à</h2>
-  </div>
-  <div class="benefits">
-    <div class="benefit">
-      <div class="num">01</div>
-      <h3>Poser les bonnes bases</h3>
-      <p>Construire un mindset de professionnelle et vivre pleinement de ta passion pour le maquillage.</p>
-    </div>
-    <div class="benefit">
-      <div class="num">02</div>
-      <h3>Attirer tes premières clientes</h3>
-      <p>Développer ta marque, fidéliser et créer une expérience client qui donne envie de te recommander.</p>
-    </div>
-    <div class="benefit">
-      <div class="num">03</div>
-      <h3>Éviter les erreurs qui freinent</h3>
-      <p>Structurer ton activité comme un vrai business : tarifs, contrats, image de marque et Instagram.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="ebook.section3_eyebrow">SOMMAIRE</div>
-    <h2 class="section-title" data-editable="ebook.section3_title">10 chapitres pour<br>construire ton business</h2>
-    <div class="sommaire-list">
-
-      <div class="chap">
-        <div class="chap-num">01</div>
-        <div><h4>Mon histoire</h4><p>Qui je suis & mes débuts, l'évolution et la prise de décision, de la vision à la réalité.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">02</div>
-        <div><h4>Le déclic</h4><p>Et si, justement, ça marchait ? Le moment où j'ai su que c'était possible.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">03</div>
-        <div><h4>Construire un mindset de pro</h4><p>Se comporter comme une professionnelle, avoir confiance en sa valeur, travailler son image et savoir dire non.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">04</div>
-        <div><h4>Trouver ses premières clientes</h4><p>Le bouche-à-oreille, soigner chaque détail pour fidéliser et se démarquer par son attitude.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">05</div>
-        <div><h4>Gérer ses tarifs</h4><p>Augmenter ses revenus et assumer pleinement la valeur de son travail.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">06</div>
-        <div><h4>Instagram, levier de croissance</h4><p>Les piliers de ma stratégie et des idées de contenus à créer.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">07</div>
-        <div><h4>Structurer son activité</h4><p>Organisation, outils, conditions & contrats, se présenter comme une marque.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">08</div>
-        <div><h4>Les étapes qui ont tout changé</h4><p>Ce que j'ai vraiment fait, les erreurs arrêtées et comment j'ai construit une image solide.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">09</div>
-        <div><h4>Ce que je veux te transmettre</h4><p>Le succès ne se fait pas en un jour : il se construit pas à pas.</p></div>
-      </div>
-      <div class="chap">
-        <div class="chap-num">10</div>
-        <div><h4>Remerciement</h4><p>Merci pour ta confiance — ce guide n'est qu'un point de départ, le tien.</p></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="bonus-wrap">
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="ebook.section4_eyebrow" style="color:var(--gray);">EN BONUS</div>
-    <h2 class="section-title" data-editable="ebook.section4_title" style="color:var(--white);">8 outils prêts à l'emploi</h2>
-    <p class="section-lede" data-editable="ebook.section4_lede" style="color:#C9C7BE;">Des ressources concrètes à utiliser dès aujourd'hui dans ton activité.</p>
-    <div class="bonus-grid">
-      <div class="bonus-item"><span class="check">✓</span> Check-list expérience cliente premium</div>
-      <div class="bonus-item"><span class="check">✓</span> Structurer sa communication (messages types)</div>
-      <div class="bonus-item"><span class="check">✓</span> Conseils rapides pour ne rien lâcher</div>
-      <div class="bonus-item"><span class="check">✓</span> 30 idées de contenu makeup</div>
-      <div class="bonus-item"><span class="check">✓</span> Modèle de devis mariée</div>
-      <div class="bonus-item"><span class="check">✓</span> Modèle de face chart cliente</div>
-      <div class="bonus-item"><span class="check">✓</span> Check-list matériel & applications</div>
-      <div class="bonus-item"><span class="check">✓</span> Planning création de contenu hebdomadaire</div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap author-block">
-    <div class="author-photo">
-      <img data-editable="ebook.photo2" src="assets/img-17c46e006e48.webp" alt="Colleen, fondatrice de CMAKEUP BEAUTY" width="1000" height="1499" loading="lazy" decoding="async">
-    </div>
-    <div class="author-text">
-      <div class="num">L'AUTEURE</div>
-      <h2>Colleen — CMAKEUP BEAUTY</h2>
-      <p>Maquilleuse professionnelle autodidacte depuis près de huit ans, Colleen a fondé CMAKEUP BEAUTY pour transmettre son savoir-faire à travers les prestations, mais aussi les formations et cet ebook.</p>
-      <p>Aujourd'hui, elle vit pleinement de son art et souhaite montrer qu'il est possible de vivre du maquillage — avec ses hauts, ses bas et ses réalités.</p>
-      <div class="signoff">"Ton talent peut t'ouvrir des portes, mais c'est ta discipline et ta foi qui te permettront de les franchir."</div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-final">
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="ebook.section5_eyebrow">PRÊTE À TE LANCER ?</div>
-    <h2>Ce n'est que le début</h2>
-    <p>Si tu lis ces lignes, c'est que tu as décidé de croire en toi et en ta vision. Télécharge l'ebook et commence à construire l'activité qui te ressemble.</p>
-    <a class="btn-outline" href="https://cmakeupbeauty95.systeme.io/2d5ff7e7" target="_blank">Je commande l'ebook</a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-top" style="justify-content:flex-start;">
-      <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-    </div>
-    <div class="footer-note"><a href="mentions-legales.html" style="color:inherit; text-decoration:underline;">Mentions légales &amp; CGV</a></div>
-    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
-  </div>
-</footer>
-
-
-<script>
-(function(){
-  var toggle = document.querySelector('.nav-toggle');
-  var nav = document.querySelector('header nav');
-  if(!toggle || !nav) return;
-  function isMobileNav(){ return window.matchMedia('(max-width:860px)').matches; }
-  function closeNav(){
-    nav.classList.remove('nav-open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.classList.remove('is-open');
-    nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-  }
-  toggle.addEventListener('click', function(){
-    var open = nav.classList.toggle('nav-open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.classList.toggle('is-open', open);
-    if(!open) nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-  });
-  nav.querySelectorAll('.nav-drop > a').forEach(function(a){
-    a.addEventListener('click', function(e){
-      if(!isMobileNav()) return;
-      e.preventDefault();
-      var drop = a.parentElement;
-      var wasOpen = drop.classList.contains('open');
-      nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-      if(!wasOpen) drop.classList.add('open');
-    });
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      if(isMobileNav() && a.parentElement.classList.contains('nav-drop')) return;
-      closeNav();
-    });
-  });
-})();
-</script>
-
+<body data-page="ebook">
+<header><a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a><nav><a class="" href="index.html">Accueil</a><div class="dd"><a class="" href="prestations.html">Prestations</a><div class="sub"><div><a href="prestations.html">Invitée</a><a href="prestations-mariee.html">Mariée</a></div></div></div><a class="" href="equipe.html">Équipe</a><a class="" href="academie.html">Académie CMAKEUP BEAUTY</a><a class="" href="coaching-business-mua.html">Coaching</a><a class="on" href="ebook.html">Ebook</a><a class="" href="contact.html">Contact</a></nav><a class="pill" href="prestations.html">Réserver</a><div class="burger"><i></i><i></i><i></i></div></header>
+<section class="pg"><div class="im" data-editable="ebook.hero_photo" style="background-image:url(assets/refonte/e863bf910f.jpg)"></div><div class="in"><div class="eyebrow" data-editable="ebook.t8346b1">Ebook business exclusif</div><h1 data-editable="ebook.td43428" data-editable-nl="1">Vivre du<br/>maquillage</h1><div class="sub" data-editable="ebook.t711cb2">« De la passion au business rentable »</div><div class="btns"><a class="btn fill" data-editable="ebook.t7869db" href="https://cmakeupbeauty95.systeme.io/2d5ff7e7" rel="noopener" target="_blank">Je commande l'ebook · 30€</a></div></div></section>
+<section class="sec"><div class="eyebrow" data-editable="ebook.t627b5d">Ce que tu vas y trouver</div><h2 data-editable="ebook.ta7a4fc">Trois objectifs</h2><div class="sb" data-editable="ebook.t29a407">Mon histoire, mes stratégies, mes leçons</div>
+<div class="grid g3"><div class="box"><div class="k">01</div><h3 data-editable="ebook.tc822cf">Poser les bases</h3><p data-editable="ebook.t4ed586">Un mindset de professionnelle.</p></div><div class="box"><div class="k">02</div><h3 data-editable="ebook.t1efe5c">Premières clientes</h3><p data-editable="ebook.te8a889">Développer ta marque et fidéliser.</p></div><div class="box"><div class="k">03</div><h3 data-editable="ebook.td27eed">Éviter les erreurs</h3><p data-editable="ebook.t0fcf31">Tarifs, contrats, image, Instagram.</p></div></div></section>
+<section class="split dk"><div class="ph" data-editable="ebook.photo2" style="background-image:url(assets/refonte/2e6cc98594.jpg);background-size:contain;background-repeat:no-repeat;background-position:center top;background-color:#1d1a17;margin:60px"></div><div class="txt"><div class="eyebrow" data-editable="ebook.t37b717">Sommaire</div><h2 data-editable="ebook.t81f62a">10 chapitres</h2><p data-editable="ebook.te2355a">Mon histoire · Le déclic · Mindset de pro · Premières clientes · Tarifs · Instagram · Structurer son activité…</p><div class="q" data-editable="ebook.t58dea0">« Ton talent peut t'ouvrir des portes, mais c'est ta discipline et ta foi qui te permettront de les franchir. »</div><div class="btns"><a class="btn fill" data-editable="ebook.tb05e5e" href="https://cmakeupbeauty95.systeme.io/2d5ff7e7" rel="noopener" target="_blank">L'ebook — 30€</a></div></div></section>
+<section class="sec sand"><div class="eyebrow" data-editable="ebook.t7e1b57">Bonus inclus</div><h2 data-editable="ebook.tb7c41f">Tes outils</h2><div class="sb" data-editable="ebook.t0c60c4">Prêts à utiliser</div>
+<div class="grid g3"><div class="box"><h3 data-editable="ebook.t9ad165">30 idées de contenu</h3></div><div class="box"><h3 data-editable="ebook.ta1dfc6">Modèle de devis mariée</h3></div><div class="box"><h3 data-editable="ebook.t686ba7">Face chart cliente</h3></div><div class="box"><h3 data-editable="ebook.tf8d532">Check-list matériel</h3></div><div class="box"><h3 data-editable="ebook.t392774">Messages types</h3></div><div class="box"><h3 data-editable="ebook.t62c44a">Planning contenu hebdo</h3></div></div></section>
+<footer><div class="logo">CMAKEUP</div><div style="display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:6px 0 20px;letter-spacing:.18em;font-size:10.5px;text-transform:uppercase"><a href="https://www.instagram.com/cmakeupbeautyacademy_" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">Académie · @cmakeupbeautyacademy_</a><a href="https://www.instagram.com/c_makeup_" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">Instagram · @c_makeup_</a><a href="https://www.tiktok.com/@cmakeupbeauty" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">TikTok · @cmakeupbeauty</a></div>© 2026 CMAKEUP BEAUTY · <a href="mentions-legales.html" style="border-bottom:1px solid #5b5348">Mentions légales &amp; CGV</a></footer><script>(function(){var b=document.querySelector(".burger"),h=document.querySelector("header");if(b&&h)b.addEventListener("click",function(){h.classList.toggle("open")})})();</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script>
-(function(){
-  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
-  function embedVideo(container, url){
-    if(!url) return;
-    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
-    var vim = url.match(/vimeo\.com\/(\d+)/);
-    if(yt){
-      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
-    } else if(vim){
-      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
-    } else {
-      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
-    }
-    container.style.display = 'block';
-  }
-  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'ebook').then(function(res){
-    if(res.error || !res.data) return;
-    res.data.forEach(function(row){
-      if(!row.content) return;
-      if(row.block_type === 'video'){
-        var vc = document.querySelector('[data-editable-video="ebook"]');
-        if(vc) embedVideo(vc, row.content);
-        return;
-      }
-      var els = document.querySelectorAll('[data-editable="ebook.' + row.block_key + '"]');
-      els.forEach(function(el){
-        if(row.block_type === 'image'){
-          el.setAttribute('src', row.content);
-        } else {
-          el.textContent = row.content;
-        }
-      });
-    });
-  });
-})();
-</script>
+<script src="cmk-backend.js"></script>
+<script src="site-settings.js" defer></script>
+<script>try{history.scrollRestoration="manual"}catch(e){}(function(){function t(){if(!location.hash){window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0}}t();addEventListener("load",t);addEventListener("pageshow",t)})();</script>
 </body>
 </html>

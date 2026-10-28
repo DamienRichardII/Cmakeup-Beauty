@@ -1,858 +1,152 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr"><head><meta charset="UTF-8">
 <title>CMAKEUP BEAUTY — Prestation Mariée</title>
 <meta name="description" content="Maquillage mariée sur-mesure avec CMAKEUP BEAUTY : appel découverte, essai maquillage et accompagnement personnalisé pour le jour J.">
-<link rel="canonical" href="https://cmakeup-beauty.vercel.app/prestations-mariee.html">
+<link rel="canonical" href="https://www.cmakeupbeauty.fr/prestations-mariee.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMAKEUP BEAUTY — Prestation Mariée">
 <meta property="og:description" content="Maquillage mariée sur-mesure avec CMAKEUP BEAUTY : appel découverte, essai maquillage et accompagnement personnalisé pour le jour J.">
-<meta property="og:url" content="https://cmakeup-beauty.vercel.app/prestations-mariee.html">
+<meta property="og:url" content="https://www.cmakeupbeauty.fr/prestations-mariee.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --white:#FFFFFF;
-    --off:#F4F4F2;
-    --paper:#D6D1C5;
-    --line:#D6D1C5;
-    --ink:#1A1A1A;
-    --ink-soft:#75736D;
-    --gray:#B8B6A9;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--white);
-    color:var(--ink);
-    font-family:'TT Interphase','Jost', sans-serif;
-    font-weight:300;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.serif{
-    font-family:'The Silver Editorial','Cormorant Garamond', serif;
-    font-weight:400;
-    letter-spacing:0.01em;
-  }
-  a{color:inherit; text-decoration:none;}
-  img{display:block; max-width:100%;}
-  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+:root{--ink:#121110;--ink2:#1d1a17;--sand:#D8CCB6;--cream:#F4EEE3;--caramel:#B3926F;--muted:#8d8579}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--cream)}body{font-family:'Poppins',sans-serif;font-weight:300;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:400}
+header{position:relative;background:#0d0c0b;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 56px;color:#fff}
+.logo{display:block;font-family:"Lora",serif;font-size:24px;letter-spacing:.24em}
+.logo span{display:block;font-family:'Poppins';font-size:8.5px;letter-spacing:.5em;color:#cdbfa8;margin-top:5px}
+nav{display:flex;gap:28px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+nav a.on{border-bottom:1px solid var(--sand);padding-bottom:4px}
+.pill{border:1px solid rgba(255,255,255,.7);padding:11px 24px;border-radius:40px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+.burger{display:none;width:26px;height:16px;flex-direction:column;justify-content:space-between}.burger i{display:block;height:1.5px;background:#fff}
+.eyebrow{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:#d8ccb6}
+.pg{display:grid;grid-template-columns:1fr 1fr;background:#0d0c0b;color:#fff;min-height:640px}
+.pg .in{padding:70px 56px 70px 56px;align-self:center;max-width:680px}
+.pg h1{font-size:68px;line-height:1;text-transform:uppercase;margin:22px 0 12px}
+.pg .sub{font-family:'Lora';font-style:italic;font-size:26px;color:#e6d3b6;line-height:1.4;margin-bottom:34px}
+.pg .im{background-size:cover;background-position:center top;min-height:560px;order:2}
+.pg.noim{grid-template-columns:1fr;min-height:380px}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-block;white-space:nowrap;padding:16px 30px;border-radius:40px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;border:1px solid #fff;color:#fff}
+.btn.fill{background:var(--sand);border-color:var(--sand);color:var(--ink)}
+.btn.dkfill{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.dk{border-color:var(--ink);color:var(--ink)}
+.band{background:var(--sand);display:flex;justify-content:space-around;padding:30px 56px;text-align:center;gap:20px}
+.band div{font-family:'Lora',serif;font-size:30px}
+.band small{display:block;font-family:'Poppins';font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:#6d6455;margin-top:6px}
+.sec{padding:100px 56px;text-align:center}
+.sec.sand{background:var(--sand)}.sec.dk{background:var(--ink);color:#fff}.sec.dk2{background:var(--ink2);color:#fff}
+.sec .eyebrow{color:var(--caramel)}.sec.dk .eyebrow,.sec.dk2 .eyebrow{color:#d8ccb6}.sec.sand .eyebrow{color:#6d6455}
+.sec h2{font-size:52px;text-transform:uppercase;line-height:1.05;margin:16px 0 10px}
+.sec .sb{font-family:'Lora';font-style:italic;font-size:23px;color:var(--caramel);margin-bottom:50px}
+.sec.dk .sb,.sec.dk2 .sb{color:#e6d3b6}
+.grid{display:grid;gap:22px;text-align:left;max-width:1180px;margin:0 auto}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.box{background:#fff;padding:36px 30px 34px;position:relative}
+.dk .box,.dk2 .box{background:#1d1a17;border:1px solid #3a342d}
+.box .k{font-family:'Lora';font-style:italic;color:var(--caramel);font-size:15px}
+.box h3{font-size:27px;line-height:1.15;margin:8px 0 10px}
+.box p{font-size:13.5px;line-height:1.75;color:#6d6558}
+.dk .box p,.dk2 .box p{color:#cfc8bb}
+.price{font-family:'Lora';font-size:46px;margin:14px 0 4px}
+.price small{font-family:'Poppins';font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-left:6px}
+.tag{position:absolute;top:-12px;left:30px;background:var(--caramel);color:#fff;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;padding:6px 14px;border-radius:20px}
+.box ul{list-style:none;margin:16px 0 22px}.box li{font-size:13.5px;line-height:1.5;padding:7px 0 7px 22px;position:relative;color:#4b4439;border-top:1px solid #eee6d8}
+.dk .box li,.dk2 .box li{color:#cfc8bb;border-color:#332e28}.box li:before{content:"✦";position:absolute;left:0;color:var(--caramel);font-size:10px;top:10px}
+.lnk{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:640px;text-align:left}
+.split .ph{background-size:cover;background-position:center top}.split .txt{padding:90px 56px;display:flex;flex-direction:column;justify-content:center}
+.split.dk{background:var(--ink);color:#fff}.split h2{font-size:52px;text-transform:uppercase;line-height:1.05;margin:16px 0 14px}
+.split p{font-size:14.5px;line-height:1.9;color:#6d6558;max-width:480px;margin-bottom:16px}.split.dk p{color:#cfc8bb}
+.q{border-left:1px solid var(--caramel);padding-left:22px;margin:14px 0 30px;font-family:'Lora';font-style:italic;font-size:20px;line-height:1.6;max-width:460px}
+.mem .ph{min-height:520px;background-size:cover;background-position:center top}
+.mem .role{font-family:'Lora';font-style:italic;font-size:21px;color:var(--caramel);margin-bottom:18px}
+.note{max-width:780px;margin:44px auto 0;padding:22px 28px;border:1px solid var(--caramel);font-size:13.5px;line-height:1.8;text-align:left;color:#4b4439}
+.dk .note,.dk2 .note{color:#cfc8bb}
+.row{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid #cdbfa8;text-align:left}
+.row h3{font-size:26px}.row .d{font-size:12.5px;color:#6d6558;margin-top:4px}.row .p{font-family:'Lora';font-size:26px;white-space:nowrap}
+.form{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
+.form .f{grid-column:1/-1}.form label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6d6455;margin-bottom:6px}
+.form div>span{display:block;border-bottom:1px solid #b9ab92;height:34px}.form .f.t span{height:90px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto 70px;text-align:center}
+.info h3{font-size:22px;margin:8px 0 6px}.info p{font-size:13.5px;line-height:1.7;color:#6d6558}
+.cta{background:var(--ink);color:#fff;text-align:center;padding:90px 56px}.cta h2{font-size:48px;text-transform:uppercase;margin:14px 0 26px}
+footer{background:var(--ink);color:#bdb4a6;text-align:center;padding:50px 20px;font-size:11px;letter-spacing:.2em;border-top:1px solid #2a2622}
+footer .logo{color:#fff;margin-bottom:14px}
+@media(max-width:820px){
+header{padding:22px 20px}.logo{font-size:19px}nav,.pill{display:none}.burger{display:flex}
+.pg{grid-template-columns:1fr;min-height:0}.pg .im{order:-1;height:560px;min-height:0;background-position:center top}.pg .in{padding:34px 22px 48px;max-width:none}.pg h1{font-size:38px}.pg .sub{font-size:20px;margin-bottom:24px}
+.pg.noim{min-height:0}.pg.noim .im{display:none}
+.band{flex-wrap:wrap;padding:26px 20px}.band div{font-size:24px;width:45%}
+.sec{padding:62px 22px}.sec h2{font-size:32px}.sec .sb{font-size:19px;margin-bottom:34px}
+.g2,.g3,.g4,.info{grid-template-columns:1fr}.box{padding:30px 24px}
+.split{grid-template-columns:1fr}.split .ph,.mem .ph{min-height:440px}.split .txt{padding:52px 24px}.split h2{font-size:32px}
+.split.rev .ph{order:-1}
+.row{flex-direction:column;align-items:flex-start;gap:8px}.form{grid-template-columns:1fr}.cta{padding:60px 24px}.cta h2{font-size:32px}.info{margin-bottom:44px}
+.btn{padding:15px 24px}
+}</style><style>nav a{white-space:nowrap}@media(max-width:1180px) and (min-width:821px){nav{gap:18px!important;font-size:9.5px!important;letter-spacing:.16em!important}header{padding-left:32px!important;padding-right:32px!important}header .pill{display:none!important}}</style><style>nav .dd{position:relative;display:inline-block}
+nav .dd .sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:18px;z-index:30}
+nav .dd .sub>div{background:#0d0c0b;border:1px solid #2a2622;padding:8px 26px;display:flex;flex-direction:column;min-width:150px}
+nav .dd .sub a{padding:12px 0;white-space:nowrap}nav .dd .sub a+a{border-top:1px solid #2a2622}
+nav .dd:hover .sub,nav .dd:focus-within .sub{display:block}
+@media(max-width:820px){header.open nav .dd{display:block}header.open nav .dd .sub{display:block;position:static;transform:none;padding:0}header.open nav .dd .sub>div{border:0;padding:0 0 0 18px;min-width:0}header.open nav .dd .sub a{font-size:10px;color:#cfc8bb}header.open nav .dd>a{display:block;border-bottom:1px solid #2a2622}}</style><style>.burger{cursor:pointer}@media(max-width:820px){header.open nav{display:flex!important;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#0d0c0b;padding:6px 24px 26px;z-index:20;border-top:1px solid #2a2622}header.open nav a{padding:15px 0;border-bottom:1px solid #2a2622;font-size:11px;letter-spacing:.24em}}</style><style>.band{display:grid!important;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:0!important;padding:0 56px!important;background:var(--sand)}
+.band>div{width:auto!important;padding:34px 20px;font-size:30px!important;border-left:1px solid #b9ab92;text-align:center}.band>div:first-child{border-left:0}
+.band small{margin-top:8px!important}
+@media(max-width:820px){.band{grid-template-columns:1fr;padding:6px 20px!important}.band>div{border-left:0;border-top:1px solid #b9ab92;padding:20px 10px;font-size:24px!important}.band>div:first-child{border-top:0}}
+</style><style>.fm{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:#F4EEE3}
+.fm .ph{background-size:cover;background-position:center top;min-height:640px}
+.fm .tx{padding:80px 72px;display:flex;flex-direction:column;justify-content:center;text-align:left}
+.fm h2{font-size:44px;text-transform:uppercase;line-height:1.05;margin:14px 0 8px}
+.fm .sb{font-family:Lora,serif;font-style:italic;font-size:21px;color:#B3926F;margin-bottom:30px}
+.fm .r{display:flex;justify-content:space-between;gap:24px;align-items:baseline;padding:20px 0;border-top:1px solid #d9ccb5}
+.fm .r h3{font-size:24px;line-height:1.2}.fm .r p{font-size:13.5px;line-height:1.7;color:#6d6558;margin-top:6px}
+.fm .r .pr{font-family:Lora,serif;font-size:26px;white-space:nowrap}.fm .r .pr small{font-family:Poppins;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8d8579;margin-right:6px}
+.fm .nt{font-size:13px;line-height:1.7;color:#4b4439;border-top:1px solid #d9ccb5;padding-top:18px}
+@media(max-width:820px){.fm{grid-template-columns:1fr}.fm .ph{min-height:0;aspect-ratio:4/5}.fm .tx{padding:44px 20px 56px}.fm h2{font-size:34px}.fm .r{flex-direction:column;gap:6px}}
+</style><style>.i-smoky{background-image:url(assets/refonte/18b27324ab.jpg)}.i-soft{background-image:url(assets/refonte/66b9cd1b77.jpg)}.i-full{background-image:url(assets/refonte/d9d338a369.jpg)}.i-bouquet{background-image:url(assets/refonte/26a73f8ee3.jpg)}.i-bride{background-image:url(assets/refonte/863da1bbb8.jpg)}
+.tabs{display:flex;width:max-content;max-width:100%;margin:0 auto 46px;border:1px solid #121110;border-radius:40px;overflow:hidden}
+.tabs a{padding:13px 32px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#121110}.tabs a.on{background:#121110;color:#fff}
+.pc{background:#fff;text-align:left;position:relative;display:flex;flex-direction:column;border:1px solid #e6dccb}
+.pc .ph{aspect-ratio:4/5;background-size:cover;background-position:center top}
+.pc .b{padding:26px 28px 32px;display:flex;flex-direction:column;flex:1}
+.pc .k{font-family:Lora,serif;font-style:italic;color:#B3926F;font-size:15px}.pc h3{font-size:27px;line-height:1.15;margin:6px 0 10px}
+.pc p{font-size:13.5px;line-height:1.75;color:#6d6558}.pc .price{font-size:40px;margin:auto 0 0;padding-top:14px}
+.pc ul{list-style:none;margin:12px 0 0}.pc li{font-size:13.5px;line-height:1.5;padding:7px 0 7px 22px;position:relative;color:#4b4439;border-top:1px solid #eee6d8}.pc li:before{content:"✦";position:absolute;left:0;color:#B3926F;font-size:10px;top:10px}
+.pc .tag{position:absolute;top:14px;left:14px;background:#B3926F;color:#fff;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;padding:6px 14px;border-radius:20px}
+@media(max-width:820px){.tabs a{padding:12px 22px}}
+</style>
 
-  header{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:28px 40px;
-    border-bottom:1px solid var(--line);
-  }
-  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em;}
-  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
-  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
-  nav a{position:relative; padding-bottom:4px;}
-  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
-  nav a:hover::after{width:100%;}
-  nav a.current::after{width:100%;}
-  .btn{
-    border:1px solid var(--ink); padding:12px 26px; font-size:12px; letter-spacing:0.08em;
-    background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;
-  }
-  .btn:hover{background:var(--white); color:var(--ink);}
-  .btn-outline{
-    border:1px solid var(--ink); padding:16px 40px; font-size:13px; letter-spacing:0.1em;
-    background:transparent; color:var(--ink); display:inline-block;
-  }
-  .btn-outline:hover{background:var(--ink); color:var(--white);}
-  .btn-outline.light{border-color:var(--white); color:var(--white);}
-  .btn-outline.light:hover{background:var(--white); color:var(--ink);}
-  .back-link{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft);}
-  .back-link:hover{color:var(--ink);}
-
-  /* HERO */
-  .page-hero{position:relative; height:92vh; min-height:760px; max-height:920px; overflow:hidden; border-bottom:1px solid var(--line); padding:0;}
-  .page-hero .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
-  .page-hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.15) 38%, rgba(8,7,5,0.95) 100%);}
-  .hero-caption{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:60px; max-width:760px;}
-  .hero-caption h1{color:#fff !important;}
-  .hero-caption .sub{color:rgba(255,255,255,0.9) !important;}
-  .hero-caption .tagline{color:rgba(255,255,255,0.88) !important;}
-  .hero-topbar{position:absolute; top:36px; left:0; right:0; z-index:2; padding:0 60px;}
-  .hero-topbar .eyebrow{color:#fff !important; opacity:0.95; text-shadow:0 1px 6px rgba(0,0,0,0.35);}
-  @media(max-width:860px){ .hero-caption{padding:36px 24px;} .hero-topbar{top:20px; padding:0 24px;} .page-hero{height:auto; min-height:560px;} }
-  .hero{
-    display:grid; grid-template-columns:1fr 1fr;
-    min-height:620px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-img{position:relative; overflow:hidden; background:var(--ink);}
-  .hero-img img{width:100%; height:100%; object-fit:cover; object-position:50% 12%;}
-  .hero-copy{
-    background:var(--ink); color:var(--white);
-    display:flex; flex-direction:column; justify-content:center;
-    padding:80px 70px;
-  }
-  .hero-copy .eyebrow{font-size:12px; letter-spacing:0.24em; color:var(--gray); margin-bottom:22px;}
-  .hero-copy h1{font-size:clamp(34px,4vw,50px); line-height:1.1; color:var(--white); margin-bottom:20px;}
-  .hero-copy .tagline{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--gray); margin-bottom:28px;}
-  .hero-copy p.sub{font-size:15px; line-height:1.85; color:#C9C7BE; max-width:440px; margin-bottom:36px;}
-
-  section{padding:90px 0; border-bottom:1px solid var(--line);}
-  .section-eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:16px; text-align:center;}
-  .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
-  .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
-
-  /* PROMESSE */
-  .promesse-list{max-width:640px; margin:0 auto; list-style:none;}
-  .promesse-list li{
-    display:flex; gap:16px; align-items:flex-start;
-    padding:18px 0; border-bottom:1px solid var(--line); font-size:16px; color:var(--ink);
-  }
-  .promesse-list li:last-child{border-bottom:none;}
-  .promesse-list .check{color:var(--ink-soft); font-size:16px; margin-top:2px;}
-
-  /* PARCOURS */
-  .parcours-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
-    max-width:1000px; margin:0 auto; border:1px solid var(--line);
-  }
-  .parcours-card{background:var(--white); padding:44px 34px;}
-  .parcours-card .p-num{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:38px; color:var(--gray); margin-bottom:20px;}
-  .parcours-card h3{font-size:19px; margin-bottom:14px;}
-  .parcours-card p{font-size:14px; line-height:1.75; color:var(--ink-soft);}
-
-  /* FORMULES */
-  .formules-wrap{background:var(--ink); color:var(--white);}
-  .formules-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#3A3A38;
-    max-width:1000px; margin:0 auto; border:1px solid #3A3A38;
-  }
-  .formule-card{background:#212120; padding:44px 34px;}
-  .formule-card.featured{background:var(--white); color:var(--ink);}
-  .formule-card .f-badge{font-size:11px; letter-spacing:0.16em; color:var(--gray); margin-bottom:16px; text-transform:uppercase;}
-  .formule-card.featured .f-badge{color:var(--ink-soft);}
-  .formule-card h3{font-size:21px; margin-bottom:14px;}
-  .formule-card .f-price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:32px; margin-bottom:20px;}
-  .formule-card .f-price span{font-size:13px; font-family:'TT Interphase','Jost',sans-serif; color:var(--gray);}
-  .formule-card .f-price .f-old{font-size:15px; color:var(--gray); text-decoration:line-through; margin-right:8px; font-family:'TT Interphase','Jost',sans-serif;}
-  .formule-list{list-style:none; margin-bottom:0;}
-  .formule-list li{font-size:13px; line-height:1.9; color:#C9C7BE; padding-left:16px; position:relative;}
-  .formule-card.featured .formule-list li{color:var(--ink-soft);}
-  .formule-list li::before{content:"—"; position:absolute; left:0; color:var(--gray);}
-
-  .invitees-block{
-    background:#212120; max-width:1000px; margin:40px auto 0; padding:36px 44px;
-    text-align:left;
-  }
-  .invitees-block h3{font-size:19px; color:var(--white); margin-bottom:12px;}
-  .invitees-block p{font-size:14px; line-height:1.85; color:#C9C7BE;}
-
-  /* CTA APPEL */
-  .call-wrap{text-align:center;}
-  .call-wrap .call-icon{font-size:34px; margin-bottom:24px;}
-  .call-wrap h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:20px;}
-  .call-wrap p{max-width:520px; margin:0 auto 40px; font-size:16px; line-height:1.85; color:var(--ink-soft);}
-
-  /* FAQ */
-  .faq-list{border-top:1px solid var(--line); max-width:780px; margin:0 auto;}
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{
-    cursor:pointer;
-    list-style:none;
-    padding:26px 0;
-    font-size:17px;
-    font-family:'The Silver Editorial','Cormorant Garamond', serif;
-    display:flex; justify-content:space-between; align-items:center; gap:20px;
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary::after{content:"+"; font-size:20px; color:var(--gray); transition:transform .25s ease;}
-  .faq-item[open] summary::after{transform:rotate(45deg);}
-  .faq-item p{font-size:14px; line-height:1.8; color:var(--ink-soft); padding-bottom:26px; max-width:640px;}
-  .sms-note{
-    max-width:560px; margin:0 auto 50px; text-align:center; font-size:13px; line-height:1.9;
-    color:var(--ink-soft); background:var(--off); border:1px solid var(--line); padding:18px 24px;
-  }
-  .sms-note strong{color:var(--ink);}
-
-  /* FORM */
-  form.call-form{max-width:640px; margin:0 auto; text-align:left;}
-  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;}
-  .field{display:flex; flex-direction:column; gap:8px;}
-  .field.full{grid-column:1/-1;}
-  .field label{font-size:12px; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase;}
-  .field input, .field select, .field textarea{
-    border:none; border-bottom:1px solid var(--line);
-    padding:12px 4px; font-family:'TT Interphase','Jost',sans-serif; font-size:15px; color:var(--ink);
-    background:transparent;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-bottom-color:var(--ink);}
-  .field textarea{resize:vertical; min-height:80px;}
-  .form-submit{width:100%; text-align:center; margin-top:16px; padding:16px; font-size:13px; letter-spacing:0.1em; border:none;}
-  .form-disclaimer{font-size:11px; color:var(--gray); text-align:center; margin-top:18px; line-height:1.6;}
-
-  /* CALENDRIER PERSONNALISÉ */
-  .cal-widget{
-    display:grid; grid-template-columns:1fr 1fr; gap:0;
-    max-width:640px; margin:0 auto; border:1px solid var(--line);
-  }
-  .cal-month{padding:34px 30px; border-right:1px solid var(--line);}
-  .cal-month-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
-  .cal-month-head .cal-month-name{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:19px;}
-  .cal-nav-btn{
-    width:28px; height:28px; border:1px solid var(--line); background:transparent; color:var(--ink);
-    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:13px;
-  }
-  .cal-nav-btn:hover{background:var(--ink); color:var(--white); border-color:var(--ink);}
-  .cal-nav-btn:disabled{opacity:0.25; cursor:default;}
-  .cal-nav-btn:disabled:hover{background:transparent; color:var(--ink);}
-  .cal-weekdays{display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:8px;}
-  .cal-weekdays span{font-size:10px; letter-spacing:0.04em; color:var(--gray); text-align:center;}
-  .cal-days{display:grid; grid-template-columns:repeat(7,1fr); gap:2px;}
-  .cal-day{
-    aspect-ratio:1; display:flex; align-items:center; justify-content:center;
-    font-size:12px; color:var(--ink); cursor:default; background:transparent; border:none;
-    font-family:'TT Interphase','Jost',sans-serif;
-  }
-  .cal-day.empty{visibility:hidden;}
-  .cal-day.available{cursor:pointer; color:var(--ink); position:relative;}
-  .cal-day.available::after{content:""; position:absolute; bottom:3px; width:3px; height:3px; border-radius:50%; background:var(--ink-soft);}
-  .cal-day.available:hover{background:var(--off);}
-  .cal-day.disabled{color:var(--gray); opacity:0.4;}
-  .cal-day.selected{background:var(--ink); color:var(--white);}
-  .cal-day.selected::after{background:var(--white);}
-
-  .cal-slots{padding:34px 30px; display:flex; flex-direction:column;}
-  .cal-slots-title{font-size:12px; letter-spacing:0.08em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:18px;}
-  .cal-slots-empty{font-size:13px; color:var(--ink-soft); font-style:italic;}
-  .cal-slot-list{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-  .cal-slot{
-    border:1px solid var(--line); background:transparent; padding:11px 6px;
-    font-size:13px; color:var(--ink); cursor:pointer; font-family:'TT Interphase','Jost',sans-serif;
-  }
-  .cal-slot:hover{border-color:var(--ink);}
-  .cal-slot.selected{background:var(--ink); color:var(--white); border-color:var(--ink);}
-
-  .cal-summary{
-    max-width:640px; margin:24px auto 0; padding:20px 28px;
-    background:var(--off); border:1px solid var(--line);
-    font-size:14px; color:var(--ink-soft); text-align:center;
-  }
-  .cal-summary strong{color:var(--ink); font-weight:500;}
-  .cal-confirm-btn{width:100%; max-width:640px; margin:20px auto 0; display:block; text-align:center; padding:17px; font-size:13px; letter-spacing:0.1em; border:none;}
-  .dev-note{
-    max-width:640px; margin:26px auto 0; padding:14px 20px; text-align:center;
-    font-size:11px; letter-spacing:0.03em; color:#9C9A93; background:#212120; border:1px dashed #3A3A38;
-  }
-
-  /* CALENDRIER PERSONNALISÉ */
-  .cal-step-label{
-    font-size:12px; letter-spacing:0.14em; color:var(--ink-soft); text-transform:uppercase;
-    margin:60px 0 26px; padding-top:40px; border-top:1px solid var(--line);
-    text-align:center;
-  }
-
-  footer{padding:40px 0; background:var(--white); border-bottom:none;}
-  .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
-  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
-
-  @media(max-width:900px){
-    nav{display:none;}
-    .wrap{padding:0 24px;}
-    section{padding:60px 0;}
-    .hero{grid-template-columns:1fr;}
-    .hero-img{min-height:340px;}
-    .hero-copy{padding:56px 32px;}
-    .parcours-grid{grid-template-columns:1fr;}
-    .tarif-row{flex-direction:column; gap:4px;}
-    .pack-block, .invitees-block{padding:30px 26px;}
-    .formules-grid{grid-template-columns:1fr;}
-    .form-row{grid-template-columns:1fr;}
-    .cal-widget{grid-template-columns:1fr;}
-    .cal-month{border-right:none; border-bottom:1px solid var(--line);}
-  }
-
-  /* Menu mobile (hamburger) */
-  .nav-toggle{display:none;}
-  @media(max-width:900px){
-    header{position:relative;}
-    .nav-toggle{
-      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
-      width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; flex-shrink:0;
-    }
-    .nav-toggle span{display:block; width:18px; height:1px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
-    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-    .nav-toggle.is-open span:nth-child(2){opacity:0;}
-    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-    nav.nav-open{
-      display:flex; flex-direction:column; gap:0; width:100%;
-      position:absolute; top:100%; left:0; background:var(--white); border-top:1px solid var(--line);
-      box-shadow:0 14px 28px rgba(0,0,0,0.08); z-index:80; padding:6px 0;
-    }
-    nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
-    nav.nav-open a:last-child{border-bottom:none;}
-    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
-    nav.nav-open .nav-drop > a{position:relative; padding-right:44px;}
-    nav.nav-open .nav-drop > a::before, nav.nav-open .nav-drop > a::after{content:""; position:absolute; left:auto; right:24px; top:50%; bottom:auto; width:10px; height:2px; background:var(--gray); transition:transform .2s ease;}
-    nav.nav-open .nav-drop > a::before{transform:translateY(-50%) rotate(90deg);}
-    nav.nav-open .nav-drop > a::after{transform:translateY(-50%);}
-    nav.nav-open .nav-drop.open > a::before{transform:translateY(-50%) rotate(0deg);}
-    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:hidden; pointer-events:none; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off); max-height:0; overflow:hidden; transition:max-height .25s ease;}
-    nav.nav-open .nav-drop.open .nav-drop-menu{visibility:visible; pointer-events:auto; max-height:600px;}
-    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
-    nav.nav-open .nav-drop-label{padding-left:24px;}
-  }
-
-  /* NAV DROPDOWN */
-  .nav-drop{position:relative;}
-  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
-  .nav-drop-menu{
-    position:absolute; top:100%; left:50%; transform:translateX(-50%);
-    background:var(--white); border:1px solid var(--line);
-    min-width:230px; padding:6px 0; margin-top:18px;
-    opacity:0; visibility:hidden; pointer-events:none;
-    transition:opacity .2s ease;
-    box-shadow:0 12px 24px rgba(0,0,0,0.08);
-    z-index:30;
-  }
-  @media(min-width:861px){
-    .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
-  }
-  .nav-drop-menu a{
-    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
-    color:var(--ink); white-space:nowrap;
-  }
-  .nav-drop-label{display:block; padding:12px 22px 4px; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); white-space:nowrap;}
-  .nav-drop-label:not(:first-child){margin-top:4px; padding-top:14px; border-top:1px solid var(--line);}
-  .nav-drop-menu a::after{display:none;}
-  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
-  /* Menu : "Coaching Business" reste sur une seule ligne, espacement resserré sur écrans moyens */
-  header nav a{white-space:nowrap;}
-  @media(min-width:861px) and (max-width:1100px){ header nav{gap:20px;} }
-
-  /* Formulaires : titres, sous-titres et libellés de champs en gras */
-  .fs-bold .section-eyebrow, .fs-bold .section-label{font-weight:600;}
-  .fs-bold .section-title, .fs-bold h2, .fs-bold h3, .fs-bold h2.step-title{font-weight:700;}
-  .fs-bold .field label, .fs-bold label.field-label{font-weight:600;}
-  .fs-bold .field label[for="rgpd"], .fs-bold .field-checkbox label{font-weight:300;}
+<style>
+[hidden]{display:none!important}
+.cpfb{display:grid;grid-template-columns:1fr 1fr;gap:24px 22px}.cpfb .f{grid-column:1/-1}
+.cf small.hl{display:block;font-size:12px;color:#8d8579;line-height:1.6}
+.cal{max-width:900px;margin:0 auto}.cal .cal-slot{min-width:320px;height:720px}
+form.fm select,form.fm textarea{width:100%;background:transparent;border:0;border-bottom:1px solid #b9ab92;padding:8px 0;font:inherit;font-size:15px;color:var(--ink);border-radius:0;outline:0;min-width:0}
+form.fm textarea{min-height:90px;resize:vertical}form.fm .ck{display:flex;gap:10px;align-items:flex-start;font-size:12px;line-height:1.6;color:#6d6455;text-transform:none;letter-spacing:normal}form.fm .ck input{width:auto;margin-top:4px}
+form.fm button.btn{font-family:inherit;cursor:pointer}
+@media(max-width:820px){.cpfb{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-
-<header>
-  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <div class="nav-drop"><a href="prestations.html" class="current">Prestations</a><div class="nav-drop-menu"><a href="prestations.html">Prestations Invitées</a><a href="prestations-mariee.html" class="current">Prestations Mariée</a></div></div>
-    <a href="equipe.html">Équipe</a>
-    <div class="nav-drop"><a href="academie.html">Académie</a><div class="nav-drop-menu"><span class="nav-drop-label">Formations Maquilleuses</span><a href="formation-collective.html">Formation Débutante Collective</a><a href="formation-debutante-privee.html">Formation Débutante Privée</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a><span class="nav-drop-label"><a href="cours-auto-maquillage.html" style="display:inline; padding:0; background:none; font-size:inherit; letter-spacing:inherit; text-transform:inherit; color:inherit; text-decoration:underline; text-underline-offset:3px;">Cours d'auto-maquillage</a></span><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
-    
-    <a href="coaching-business-mua.html">Coaching Business</a>
-    <a href="ebook.html">Ebook</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <a class="back-link" href="index.html">← Retour à l'accueil</a>
-  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</header>
-
-<section class="page-hero">
-  <img class="hero-bg" data-editable="prestations-mariee.photo1" src="assets/hero-prestations-mariee.jpg" alt="Maquillage mariée CMAKEUP BEAUTY" style="object-position:50% 12%">
-  <div class="hero-topbar"><div class="eyebrow" data-editable="prestations-mariee.hero_eyebrow">PRESTATION MARIÉE — SUR-MESURE</div></div>
-  <div class="hero-caption">
-    <h1 data-editable="prestations-mariee.hero_title" style="margin-bottom:18px;">Ton jour J,<br>sublimé avec justesse</h1>
-    <div class="tagline" data-editable="prestations-mariee.hero_tagline" style="margin-bottom:16px;">"Un maquillage qui te ressemble, pensé pour durer jusqu'au bout de la nuit."</div>
-    <p class="sub" style="margin-bottom:26px; max-width:460px;">Chaque mariage est unique. Ta prestation l'est tout autant : un accompagnement personnalisé, de la première consultation jusqu'au dernier coup de pinceau le jour J.</p>
-    <a class="btn-outline light" href="#appel">Réserver mon appel découverte — gratuit</a>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="prestations-mariee.section1_eyebrow">LA PROMESSE</div>
-    <h2 class="section-title" data-editable="prestations-mariee.section1_title">Une expérience pensée<br>pour ton jour J</h2>
-    <ul class="promesse-list">
-      <li><span class="check">✓</span> Un rendu impeccable, longue tenue, quel que soit ton type de peau</li>
-      <li><span class="check">✓</span> Une écoute réelle de tes envies, pour un maquillage qui te ressemble vraiment</li>
-      <li><span class="check">✓</span> Des produits professionnels haut de gamme, sans compromis</li>
-      <li><span class="check">✓</span> Mon expertise et mes conseils en mise en beauté, bien au-delà du maquillage</li>
-      <li><span class="check">✓</span> Un vrai soutien le jour J : je t'aide avec la robe, je tiens le bouquet, je veille sur ta mise en beauté</li>
-      <li><span class="check">✓</span> Une prestation sur mesure, pensée pour que tout soit parfait</li>
-      <li><span class="check">✓</span> Maquillage <strong>et</strong> coiffure : une prestation beauté complète, tout-en-un</li>
-    </ul>
-    <p style="max-width:640px; margin:34px auto 0; text-align:center; font-size:14px; line-height:1.8; color:var(--ink-soft); border:1px solid var(--line); padding:20px 24px;">
-      <strong style="color:var(--ink);">Bon à savoir :</strong> beaucoup de mariées ne le savent pas, mais je ne fais pas que le maquillage — je propose aussi la coiffure. Pas besoin de chercher une coiffeuse en plus, je peux m'occuper des deux le jour J.
-    </p>
-  </div>
-</section>
-
-<section style="padding-bottom:0;">
-  <div class="wrap" style="padding-bottom:70px;">
-    <div class="section-eyebrow" data-editable="prestations-mariee.section2_eyebrow">LE PARCOURS</div>
-    <h2 class="section-title" data-editable="prestations-mariee.section2_title">De l'appel découverte<br>au grand jour</h2>
-    <p class="section-lede" data-editable="prestations-mariee.section2_lede">Un accompagnement en trois temps, pour avancer en toute confiance jusqu'au jour J.</p>
-  </div>
-  <div class="parcours-grid">
-    <div class="parcours-card">
-      <div class="p-num">01</div>
-      <h3>Appel découverte</h3>
-      <p data-editable="prestations-mariee.hero_text">Un échange téléphonique gratuit pour parler de ton mariage, de tes envies et répondre à toutes tes questions — sans engagement.</p>
-<div class="cms-video-slot" data-editable-video="prestations-mariee" style="display:none; margin:32px auto; max-width:900px;"></div>
-    </div>
-    <div class="parcours-card">
-      <div class="p-num">02</div>
-      <h3>Essai maquillage</h3>
-      <p>Un rendez-vous dédié pour définir ensemble le maquillage qui te correspond, avant le jour J, en toute sérénité.</p>
-    </div>
-    <div class="parcours-card">
-      <div class="p-num">03</div>
-      <h3>Le jour J</h3>
-      <p>Bien plus qu'une présence ponctuelle : je suis à tes côtés comme un vrai bras en plus — pour t'aider avec la robe, tenir ton bouquet, et veiller sur ta mise en beauté jusqu'au bout de la soirée.</p>
-    </div>
-  </div>
-</section>
-
-<section class="formules-wrap">
-  <div class="wrap">
-    <div class="section-eyebrow" data-editable="prestations-mariee.section3_eyebrow" style="color:var(--gray);">LES FORMULES</div>
-    <h2 class="section-title" data-editable="prestations-mariee.section3_title" style="color:var(--white);">Un aperçu de nos prestations</h2>
-    <p class="section-lede" data-editable="prestations-mariee.section3_lede" style="color:#C9C7BE;">Chaque mariage est unique : le détail de nos formules et ton devis personnalisé te seront présentés lors de notre appel découverte.</p>
-
-    <div class="formules-grid">
-      <div class="formule-card">
-        <div class="f-badge">Mariée — sans essai</div>
-        <h3>L'essentiel</h3>
-        <div class="f-price">À partir de 300<span>€</span></div>
-        <ul class="formule-list">
-          <li>Maquillage jour J</li>
-          <li>Produits longue tenue haut de gamme</li>
-          <li>Retouches avant les photos</li>
-        </ul>
-      </div>
-      <div class="formule-card featured">
-        <div class="f-badge">Journée complète</div>
-        <h3>Le forfait journée</h3>
-        <div class="f-price">À partir de 1000<span>€</span></div>
-        <ul class="formule-list">
-          <li>Essai maquillage avant le mariage</li>
-          <li>Maquillage jour J</li>
-          <li>Présence à tes côtés toute la journée</li>
-          <li>Soutien mise en beauté : robe, bouquet, retouches</li>
-        </ul>
-      </div>
-      <div class="formule-card">
-        <div class="f-badge">Le bon plan</div>
-        <h3>Pack Makeup & Coiffure</h3>
-        <div class="f-price">500<span>€</span></div>
-        <ul class="formule-list">
-          <li>Makeup Soft Glam</li>
-          <li>Coiffure Hollywood Wave</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="invitees-block">
-      <h3>👯 Pour tes demoiselles d'honneur, invitées & famille</h3>
-      <p>Une équipe de <strong style="color:var(--white);">3 maquilleuses</strong> est disponible le jour J pour maquiller tes proches en simultané, afin que tout le monde soit prête à temps.</p>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-eyebrow">FOIRE AUX QUESTIONS</div>
-    <h2 class="section-title" style="text-align:center; margin-bottom:50px;">Avant de réserver</h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary data-editable="prestations-mariee.faq1_question">Avez-vous déjà une coiffeuse ?</summary>
-        <p data-editable="prestations-mariee.faq1_text">Pas besoin d'en chercher une : je propose aussi la coiffure, en plus du maquillage. Beaucoup de mariées ne le savent pas, mais je peux m'occuper des deux le jour J — demande-moi le Pack Makeup & Coiffure.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="prestations-mariee.faq2_question">Faites-vous un essai avant le mariage ?</summary>
-        <p data-editable="prestations-mariee.faq2_text">Oui, l'essai maquillage est inclus dans le forfait journée complète. Il est fortement recommandé pour arriver sereine le jour J.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="prestations-mariee.faq3_question">Vous déplacez-vous le jour du mariage ?</summary>
-        <p data-editable="prestations-mariee.faq3_text">Oui, je me déplace sur le lieu de préparation. Les frais de déplacement sont précisés lors de ton devis personnalisé, selon la distance.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="prestations-mariee.faq4_question">Pouvez-vous maquiller mes demoiselles d'honneur et ma famille ?</summary>
-        <p data-editable="prestations-mariee.faq4_text">Oui, une équipe de 3 maquilleuses peut intervenir en simultané le jour J pour que tout le monde soit prête à temps.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-editable="prestations-mariee.faq5_question">Comment se passe la réservation ?</summary>
-        <p data-editable="prestations-mariee.faq5_text">Tout commence par un appel découverte gratuit pour parler de ton projet. Le détail des formules et ton devis personnalisé te seront présentés à cette occasion.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section id="appel" class="fs-bold call-wrap">
-  <div class="wrap">
-    <div class="call-icon">📞</div>
-    <div class="section-eyebrow" data-editable="prestations-mariee.section4_eyebrow">ÉTAPE 1</div>
-    <h2>Réserve ton appel découverte</h2>
-    <p>Un échange de 30 minutes maximum, 100% gratuit et sans engagement, pour faire connaissance, parler de ton mariage et voir ensemble si nous sommes faites pour travailler ensemble.</p>
-
-    <div class="sms-note">📲 À la fin de notre appel, tu recevras <strong>par SMS</strong> la grille tarifaire complète ainsi que toutes les instructions pour réserver ta date — un récapitulatif clair pour n'avoir plus qu'à confirmer.</div>
-
-    <form class="call-form">
-      <div class="form-row">
-        <div class="field">
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" required>
-        </div>
-        <div class="field">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="field">
-          <label for="telephone">Numéro de téléphone</label>
-          <input type="tel" id="telephone" name="telephone" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="ville">Ville</label>
-          <input type="text" id="ville" name="ville" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="date-mariage">Date du mariage</label>
-          <input type="date" id="date-mariage" name="date-mariage" required>
-        </div>
-        <div class="field">
-          <label for="lieu-prepa">Lieu de préparation — ville exacte</label>
-          <input type="text" id="lieu-prepa" name="lieu-prepa" placeholder="Ville / adresse">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="type-prepa">Type de lieu de préparation</label>
-          <select id="type-prepa" name="type-prepa">
-            <option value="">Sélectionnez</option>
-            <option value="hotel">Hôtel</option>
-            <option value="ceremonie">Sur le lieu de cérémonie (salle ou domaine)</option>
-            <option value="domicile">À domicile</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="lieu-ceremonie">Lieu de cérémonie</label>
-          <input type="text" id="lieu-ceremonie" name="lieu-ceremonie" placeholder="Nom de la salle, du domaine, ou autre">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="heure-ceremonie">Heure de la cérémonie</label>
-          <input type="time" id="heure-ceremonie" name="heure-ceremonie">
-        </div>
-        <div class="field">
-          <label for="heure-prete">Heure à laquelle tu dois être prête</label>
-          <input type="time" id="heure-prete" name="heure-prete">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="type-ceremonie">Type de cérémonie</label>
-          <select id="type-ceremonie" name="type-ceremonie">
-            <option value="">Sélectionnez</option>
-            <option value="civile">Civile</option>
-            <option value="religieuse">Religieuse</option>
-            <option value="plusieurs">Plusieurs cérémonies le même jour</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="precision-ceremonie">Si "autre", précise ici</label>
-          <input type="text" id="precision-ceremonie" name="precision-ceremonie">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="autres-personnes">D'autres personnes à maquiller ?</label>
-          <select id="autres-personnes" name="autres-personnes">
-            <option value="non">Non</option>
-            <option value="oui">Oui</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="nombre-personnes">Si oui, combien ?</label>
-          <input type="text" id="nombre-personnes" name="nombre-personnes">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="essai">Un essai maquillage à prévoir ?</label>
-          <select id="essai" name="essai">
-            <option value="">Sélectionnez</option>
-            <option value="oui">Oui</option>
-            <option value="non">Non</option>
-            <option value="indecise">Je ne sais pas encore</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="pack">Quel pack t'intéresse ?</label>
-          <select id="pack" name="pack" required>
-            <option value="">Sélectionnez</option>
-            <option value="essentiel">L'essentiel — à partir de 300€</option>
-            <option value="journee">Le forfait journée — à partir de 1000€</option>
-            <option value="pack-coiffure">Pack Makeup & Coiffure — 500€</option>
-            <option value="indecise">Pas encore décidée</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="photos-inspiration">Photos d'inspiration (maquillage et coiffure)</label>
-          <input type="file" id="photos-inspiration" name="photos-inspiration" accept="image/*" multiple>
-          <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">Envoie-moi une ou plusieurs photos du rendu maquillage et coiffure que tu aimerais pour ton jour J — ça m'aide énormément à cerner tes envies avant notre appel.</p>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field full">
-          <label for="autres-infos">Autres infos à me communiquer avant l'appel</label>
-          <textarea id="autres-infos" name="autres-infos" placeholder="Toute information utile, ou les questions que tu aimerais me poser"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field full" style="flex-direction:row; align-items:flex-start; gap:10px;">
-          <input type="checkbox" id="rgpd" name="rgpd" style="margin-top:3px; width:auto;">
-          <label for="rgpd" style="text-transform:none; letter-spacing:normal; font-size:12px;">J'accepte que mes informations soient utilisées pour préparer notre appel découverte, conformément à la politique de confidentialité.</label>
-        </div>
-      </div>
-      <button type="submit" class="btn form-submit" style="margin-top:10px;">Choisir mon créneau &amp; envoyer ma demande</button>
-      <p class="form-status" role="status" aria-live="polite" style="margin-top:14px; font-size:12px; text-align:center;"></p>
-    </form>
-  </div>
-</section>
-
+<body data-page="prestations-mariee">
+<header><a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a><nav><a class="" href="index.html">Accueil</a><div class="dd"><a class="on" href="prestations.html">Prestations</a><div class="sub"><div><a href="prestations.html">Invitée</a><a href="prestations-mariee.html">Mariée</a></div></div></div><a class="" href="equipe.html">Équipe</a><a class="" href="academie.html">Académie CMAKEUP BEAUTY</a><a class="" href="coaching-business-mua.html">Coaching</a><a class="" href="ebook.html">Ebook</a><a class="" href="contact.html">Contact</a></nav><a class="pill" href="prestations.html">Réserver</a><div class="burger"><i></i><i></i><i></i></div></header>
+<section class="pg"><div class="im" data-editable="prestations-mariee.hero_photo" style="background-image:url(assets/refonte/863da1bbb8.jpg);background-position:center top"></div><div class="in"><div class="eyebrow" data-editable="prestations-mariee.tbf4662">Prestation mariée · sur-mesure</div><h1 data-editable="prestations-mariee.t512b16" data-editable-nl="1">Votre jour J,<br/>sublimé</h1><div class="sub" data-editable="prestations-mariee.tdad4cf">« Un maquillage qui vous ressemble, jusqu'au bout de la nuit. »</div><div class="btns"><a class="btn fill" data-editable="prestations-mariee.tae3846" href="reservation-appel-mariee.html">Appel découverte gratuit</a></div></div></section>
+<div class="band"><div><span data-editable="prestations-mariee.t3e980c">+300</span><small data-editable="prestations-mariee.ta44091">mariées sublimées</small></div><div><span data-editable="prestations-mariee.t4aa05f">Maquillage</span><small data-editable="prestations-mariee.t343a0c">&amp; coiffure</small></div><div><span data-editable="prestations-mariee.tebff9d">Essai</span><small data-editable="prestations-mariee.t5048df">avant le jour J</small></div></div>
+<section class="sec"><div class="tabs"><a class="" href="prestations.html">Invitée</a><a class="on" href="prestations-mariee.html">Mariée</a></div><div class="eyebrow" data-editable="prestations-mariee.te43ba5">La promesse</div><h2 data-editable="prestations-mariee.t319c14">Ce que vous obtenez</h2><div class="sb" data-editable="prestations-mariee.t4276bc">Une expérience pensée pour vous</div>
+<div class="grid g3"><div class="box"><div class="k">✦</div><h3 data-editable="prestations-mariee.t441288">Longue tenue</h3><p data-editable="prestations-mariee.t4d3740">Un rendu impeccable, quel que soit votre type de peau.</p></div><div class="box"><div class="k">✦</div><h3 data-editable="prestations-mariee.t854d6c">Sur mesure</h3><p data-editable="prestations-mariee.t1b061f">Une vraie écoute de vos envies, pour un maquillage qui vous ressemble.</p></div><div class="box"><div class="k">✦</div><h3 data-editable="prestations-mariee.t79ede3">Tout-en-un</h3><p data-editable="prestations-mariee.t2f1638">Maquillage et coiffure (mise en forme uniquement : chignon, wavy), sur tissage, perruque ou cheveux naturels.</p></div></div></section>
+<section class="sec sand"><div class="eyebrow" data-editable="prestations-mariee.td589f8">Le parcours</div><h2 data-editable="prestations-mariee.ta2dae0">De l'appel au grand jour</h2><div class="sb" data-editable="prestations-mariee.tceecba">Trois temps, en toute confiance</div>
+<div class="grid g3"><div class="box"><div class="k">01</div><h3 data-editable="prestations-mariee.t3b648d">Appel découverte</h3><p data-editable="prestations-mariee.t5e0359">Échange gratuit, sans engagement.</p></div><div class="box"><div class="k">02</div><h3 data-editable="prestations-mariee.t8c1f28">Essai maquillage</h3><p data-editable="prestations-mariee.t35fbe1">On définit ensemble votre rendu avant le jour J.</p></div><div class="box"><div class="k">03</div><h3 data-editable="prestations-mariee.t6d5a09">Le jour J</h3><p data-editable="prestations-mariee.t199ba0">Je vous aide avec la robe, je tiens votre bouquet, je veille sur votre mise en beauté.</p></div></div></section>
+<section class="fm"><div class="ph i-bouquet"></div><div class="tx"><div class="eyebrow" data-editable="prestations-mariee.tc8e7d5" style="color:#B3926F">Les formules</div><h2 data-editable="prestations-mariee.t1bd5c2">Votre formule</h2><div class="sb" data-editable="prestations-mariee.tddffeb">Devis personnalisé lors de l'appel découverte</div><div class="r"><div><h3 data-editable="prestations-mariee.tf60ddd">L'essentiel</h3><p data-editable="prestations-mariee.t2c1b61">Maquillage jour J, produits longue tenue, retouches avant les photos. Sans essai.</p></div><div class="pr"><small data-editable="prestations-mariee.tb6f524">dès</small>300€</div></div><div class="r"><div><h3 data-editable="prestations-mariee.t756d57">Le forfait journée</h3><p data-editable="prestations-mariee.t13454f">Essai maquillage, maquillage jour J et présence à vos côtés toute la journée.</p></div><div class="pr"><small data-editable="prestations-mariee.tb6f524_2">dès</small>1000€</div></div><div class="r"><div><h3 data-editable="prestations-mariee.tad3496">Pack Makeup &amp; Coiffure</h3><p data-editable="prestations-mariee.tdb22c3">Makeup Soft Glam et coiffure Hollywood Wave (mise en forme uniquement : chignon, wavy), sur tissage, perruque ou cheveux naturels.</p></div><div class="pr"><small data-editable="prestations-mariee.tb6f524_3">dès</small>500€</div></div><div class="nt"><b>Demoiselles d'honneur, invitées &amp; famille :</b> une équipe de 3 maquilleuses peut intervenir en simultané le jour J.</div></div></section>
+<section class="cta"><div class="eyebrow" data-editable="prestations-mariee.t65a201">Prête ?</div><h2 data-editable="prestations-mariee.t855bb7">Parlons de votre mariage</h2><a class="btn fill" data-editable="prestations-mariee.tda68e5" href="reservation-appel-mariee.html">Réserver mon appel gratuit</a></section>
+<footer><div class="logo">CMAKEUP</div><div style="display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:6px 0 20px;letter-spacing:.18em;font-size:10.5px;text-transform:uppercase"><a href="https://www.instagram.com/c_makeup_" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">Instagram · @c_makeup_</a><a href="https://www.instagram.com/cmakeupbeautyacademy_" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">Académie · @cmakeupbeautyacademy_</a><a href="https://www.tiktok.com/@cmakeupbeauty" target="_blank" rel="noopener" style="color:#d8ccb6;border-bottom:1px solid #5b5348;padding-bottom:4px">TikTok · @cmakeupbeauty</a></div>© 2026 CMAKEUP BEAUTY · <a href="mentions-legales.html" style="border-bottom:1px solid #5b5348">Mentions légales &amp; CGV</a></footer><script>(function(){var b=document.querySelector(".burger"),h=document.querySelector("header");if(b&&h)b.addEventListener("click",function(){h.classList.toggle("open")})})();</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script>
-(function(){
-  var form = document.querySelector('.call-form');
-  var status = form ? form.querySelector('.form-status') : null;
-  if(!form || !status) return;
-  var _sb = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
-  var btn = form.querySelector('.form-submit');
-
-  // Upload les photos d'inspiration choisies vers le storage dédié et renvoie
-  // la liste de leurs URLs publiques (tableau vide si aucun fichier choisi).
-  // Si une photo ne peut pas être envoyée (trop lourde, format refusé, réseau),
-  // la promesse est rejetée : l'envoi du formulaire s'arrête avec un message
-  // clair au lieu de perdre les photos en silence.
-  var PHOTO_MAX_BYTES = 10 * 1024 * 1024;
-  function uploadInspirationPhotos(){
-    var input = document.getElementById('photos-inspiration');
-    var files = input && input.files ? Array.prototype.slice.call(input.files) : [];
-    if(!files.length) return Promise.resolve([]);
-    for(var i = 0; i < files.length; i++){
-      if(files[i].size > PHOTO_MAX_BYTES){
-        var tooBig = new Error('photo_trop_lourde'); tooBig.code = 'size'; tooBig.fileName = files[i].name;
-        return Promise.reject(tooBig);
-      }
-    }
-    var folder = 'appel-mariee/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-    return Promise.all(files.map(function(file, idx){
-      var safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-      var path = folder + '/' + (idx + 1) + '-' + safeName;
-      return _sb.storage.from('uploads-appel-mariee').upload(path, file, { upsert: false, contentType: file.type || undefined }).then(function(res){
-        if(res.error) throw res.error;
-        return _sb.storage.from('uploads-appel-mariee').getPublicUrl(path).data.publicUrl;
-      });
-    }));
-  }
-
-  // La demande est enregistrée en base (et la notification e-mail envoyée à
-  // l'équipe) dès l'envoi du formulaire, AVANT le choix du créneau : une
-  // visiteuse qui s'arrête au calendrier n'est ainsi plus perdue. Le créneau
-  // Calendly est rattaché ensuite à cette même fiche (reservation-appel-mariee.html).
-  // Si l'enregistrement échoue, on garde l'ancien comportement de secours :
-  // les infos restent en sessionStorage et sont enregistrées à la confirmation du RDV.
-  function newLeadId(){
-    try{ if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch(err){}
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){
-      var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!form.reportValidity()) return;
-
-    var prenomVal = document.getElementById('prenom').value;
-    var nomVal = document.getElementById('nom').value;
-    var emailVal = document.getElementById('email').value;
-
-    btn.disabled = true;
-    btn.textContent = 'Envoi en cours...';
-    status.style.color = 'var(--ink-soft)';
-    status.textContent = 'Envoi de tes informations et de tes photos...';
-
-    uploadInspirationPhotos().then(function(photoUrls){
-      var leadId = newLeadId();
-      var pendingValues = {
-        id: leadId,
-        prenom: prenomVal,
-        nom: nomVal,
-        email: emailVal,
-        telephone: document.getElementById('telephone').value,
-        ville: document.getElementById('ville').value,
-        date_mariage: document.getElementById('date-mariage').value || null,
-        lieu_preparation: document.getElementById('lieu-prepa').value,
-        type_lieu_preparation: document.getElementById('type-prepa').value,
-        lieu_ceremonie: document.getElementById('lieu-ceremonie').value,
-        heure_ceremonie: document.getElementById('heure-ceremonie').value || null,
-        heure_prete: document.getElementById('heure-prete').value || null,
-        type_ceremonie: document.getElementById('type-ceremonie').value,
-        precision_ceremonie: document.getElementById('precision-ceremonie').value,
-        autres_personnes: document.getElementById('autres-personnes').value === 'oui',
-        nombre_personnes: document.getElementById('nombre-personnes').value,
-        essai_prevu: document.getElementById('essai').value,
-        pack_interesse: document.getElementById('pack').value,
-        photos_inspiration_urls: photoUrls,
-        autres_infos: document.getElementById('autres-infos').value,
-        rgpd_consent: document.getElementById('rgpd').checked
-      };
-
-      var params = new URLSearchParams({ prenom: prenomVal, nom: nomVal, email: emailVal });
-      var nextUrl = 'reservation-appel-mariee.html?' + params.toString();
-
-      status.textContent = 'Enregistrement de ta demande...';
-      return _sb.from('appels_decouverte_mariee').insert(pendingValues).then(function(res){
-        try{
-          if(res.error){
-            // Secours : enregistrement différé à la confirmation du RDV.
-            sessionStorage.setItem('cmk_appel_mariee_pending', JSON.stringify(pendingValues));
-            sessionStorage.removeItem('cmk_appel_mariee_saved');
-          } else {
-            sessionStorage.setItem('cmk_appel_mariee_saved', leadId);
-            sessionStorage.removeItem('cmk_appel_mariee_pending');
-          }
-        } catch(err){}
-        window.location.href = nextUrl;
-      });
-    }).catch(function(err){
-      btn.disabled = false;
-      btn.textContent = 'Choisir mon créneau & envoyer ma demande';
-      status.style.color = '#A8563F';
-      status.textContent = (err && err.code === 'size')
-        ? "Une de tes photos dépasse 10 Mo (" + err.fileName + "). Réduis-la ou retire-la, puis réessaie."
-        : "Tes photos n'ont pas pu être envoyées (formats acceptés : JPG, PNG, WEBP, HEIC, 10 Mo maximum par photo). Réessaie ou retire-les ; tu peux aussi nous les envoyer directement à Cmakeupbeauty95@gmail.com.";
-    });
-  });
-})();
-</script>
-
-
-<footer>
-  <div class="wrap">
-    <div class="footer-top" style="justify-content:flex-start;">
-      <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
-    </div>
-    <div class="footer-note"><a href="mentions-legales.html" style="color:inherit; text-decoration:underline;">Mentions légales &amp; CGV</a></div>
-    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
-  </div>
-</footer>
-
-
-<script>
-(function(){
-  var toggle = document.querySelector('.nav-toggle');
-  var nav = document.querySelector('header nav');
-  if(!toggle || !nav) return;
-  function isMobileNav(){ return window.matchMedia('(max-width:860px)').matches; }
-  function closeNav(){
-    nav.classList.remove('nav-open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.classList.remove('is-open');
-    nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-  }
-  toggle.addEventListener('click', function(){
-    var open = nav.classList.toggle('nav-open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.classList.toggle('is-open', open);
-    if(!open) nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-  });
-  nav.querySelectorAll('.nav-drop > a').forEach(function(a){
-    a.addEventListener('click', function(e){
-      if(!isMobileNav()) return;
-      e.preventDefault();
-      var drop = a.parentElement;
-      var wasOpen = drop.classList.contains('open');
-      nav.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
-      if(!wasOpen) drop.classList.add('open');
-    });
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      if(isMobileNav() && a.parentElement.classList.contains('nav-drop')) return;
-      closeNav();
-    });
-  });
-})();
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script>
-(function(){
-  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
-  function embedVideo(container, url){
-    if(!url) return;
-    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
-    var vim = url.match(/vimeo\.com\/(\d+)/);
-    if(yt){
-      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
-    } else if(vim){
-      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
-    } else {
-      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
-    }
-    container.style.display = 'block';
-  }
-  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'prestations-mariee').then(function(res){
-    if(res.error || !res.data) return;
-    res.data.forEach(function(row){
-      if(!row.content) return;
-      if(row.block_type === 'video'){
-        var vc = document.querySelector('[data-editable-video="prestations-mariee"]');
-        if(vc) embedVideo(vc, row.content);
-        return;
-      }
-      var els = document.querySelectorAll('[data-editable="prestations-mariee.' + row.block_key + '"]');
-      els.forEach(function(el){
-        if(row.block_type === 'image'){
-          el.setAttribute('src', row.content);
-        } else {
-          el.textContent = row.content;
-        }
-      });
-    });
-  });
-})();
-</script>
+<script src="cmk-backend.js"></script>
+<script src="site-settings.js" defer></script>
+<script>try{history.scrollRestoration="manual"}catch(e){}(function(){function t(){if(!location.hash){window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0}}t();addEventListener("load",t);addEventListener("pageshow",t)})();</script>
 </body>
 </html>

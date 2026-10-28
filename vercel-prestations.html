@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMAKEUP BEAUTY — Prestations</title>
+<meta name="description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Cergy (95).">
+<link rel="canonical" href="https://cmakeup-beauty.vercel.app/prestations.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CMAKEUP BEAUTY — Prestations">
+<meta property="og:description" content="Découvrez les prestations makeup CMAKEUP BEAUTY : Smoky Eyes, Soft Glam, Full Glam. Réservez votre mise en beauté à Cergy (95).">
+<meta property="og:url" content="https://cmakeup-beauty.vercel.app/prestations.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --off:#F4F4F2;
+    --paper:#D6D1C5;
+    --line:#D6D1C5;
+    --ink:#1A1A1A;
+    --ink-soft:#75736D;
+    --gray:#B8B6A9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white); color:var(--ink); font-family:'TT Interphase','Jost', sans-serif; font-weight:300; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.serif{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-weight:400; letter-spacing:0.01em;}
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  header{display:flex; align-items:center; justify-content:space-between; padding:28px 40px; border-bottom:1px solid var(--line);}
+  .logo{font-family:'The Silver Editorial','Cormorant Garamond', serif; font-size:22px; letter-spacing:0.14em;}
+  .logo span{display:block; font-family:'TT Interphase','Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:var(--gray); margin-top:2px;}
+  nav{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{content:"";position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
+  nav a:hover::after{width:100%;}
+  nav a.current::after{width:100%;}
+  .btn{border:1px solid var(--ink); padding:12px 26px; font-size:12px; letter-spacing:0.08em; background:var(--ink); color:var(--white); display:inline-block; cursor:pointer;}
+  .btn:hover{background:var(--white); color:var(--ink);}
+
+  .page-hero{padding:90px 0 46px; text-align:center; border-bottom:1px solid var(--line);}
+  .page-hero .eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:18px;}
+  .page-hero h1{font-size:clamp(38px,5vw,60px); line-height:1.05;}
+  .info-box{
+    max-width:760px; margin:36px auto 0; padding:26px 34px; text-align:left;
+    border:1px solid var(--line); background:var(--off);
+  }
+  .info-box .info-title{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); font-weight:500; margin-bottom:10px;}
+  .info-box .b-icon{margin-right:8px;}
+  .info-box p{font-size:14px; line-height:1.8; color:var(--ink-soft); margin:0;}
+
+  section{padding:0; border-bottom:1px solid var(--line);}
+  .section-eyebrow{font-size:12px; letter-spacing:0.22em; color:var(--gray); margin-bottom:16px; text-align:center;}
+  .section-title{font-size:clamp(30px,3.4vw,44px); text-align:center; margin-bottom:20px;}
+  .section-lede{max-width:640px; margin:0 auto 60px; text-align:center; font-size:16px; line-height:1.85; color:var(--ink-soft);}
+
+  .presta-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); border-left:1px solid var(--line);}
+  .presta-card{border-right:1px solid var(--line); display:flex; flex-direction:column;}
+  .p-photo{aspect-ratio:4/5; overflow:hidden; background:var(--paper);}
+  .p-photo img{width:100%; height:100%; object-fit:cover;}
+  .p-text{padding:36px 32px; display:flex; flex-direction:column; flex:1;}
+  .p-text .p-badge{font-size:11px; letter-spacing:0.18em; color:var(--gray); text-transform:uppercase; margin-bottom:14px;}
+  .p-text h2{font-size:clamp(22px,2.2vw,26px); margin-bottom:14px;}
+  .p-text p{font-size:14px; line-height:1.75; color:var(--ink-soft); margin-bottom:10px;}
+  .p-text .p-price{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:26px; margin:10px 0 20px;}
+  .p-text .p-cta{align-self:flex-start; margin-top:auto;}
+  .presta-note{text-align:center; font-size:13px; color:var(--ink-soft); padding:26px 0;}
+
+  /* CALENDRIER */
+  .cal-intro{padding:90px 0 40px; text-align:center;}
+  .cal-widget{display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:640px; margin:0 auto; border:1px solid var(--line);}
+  .artist-picker{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:0 auto 44px; max-width:640px;}
+.artist-btn{display:flex; flex-direction:column; align-items:center; gap:10px; width:80px;}
+  .artist-avatar-link{display:block;}
+  .artist-avatar-link img{width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid transparent; display:block; transition:border-color .2s ease;}
+  .artist-avatar-link:hover img{border-color:var(--gray);}
+  .artist-select-btn{
+    background:none; border:none; padding:0; cursor:pointer;
+    font-size:11px; letter-spacing:0.04em; color:var(--ink-soft); font-family:'TT Interphase','Jost',sans-serif;
+  }
+  .artist-btn.selected .artist-avatar-link img{border-color:var(--ink);}
+  .artist-btn.selected .artist-select-btn{color:var(--ink); font-weight:500;}
+  .artist-location{font-size:10px; color:var(--gray); letter-spacing:0.02em; text-align:center; margin-top:-4px;}
+
+  .cal-month{padding:34px 30px; border-right:1px solid var(--line);}
+  .cal-month-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
+  .cal-month-head .cal-month-name{font-family:'The Silver Editorial','Cormorant Garamond',serif; font-size:19px;}
+  .cal-nav-btn{width:28px; height:28px; border:1px solid var(--line); background:transparent; color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:13px;}
+  .cal-nav-btn:hover{background:var(--ink); color:var(--white); border-color:var(--ink);}
+  .cal-nav-btn:disabled{opacity:0.25; cursor:default;}
+  .cal-nav-btn:disabled:hover{background:transparent; color:var(--ink);}
+  .cal-weekdays{display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:8px;}
+  .cal-weekdays span{font-size:10px; letter-spacing:0.04em; color:var(--gray); text-align:center;}
+  .cal-days{display:grid; grid-template-columns:repeat(7,1fr); gap:2px;}
+  .cal-day{aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--ink); cursor:default; background:transparent; border:none; font-family:'TT Interphase','Jost',sans-serif;}
+  .cal-day.empty{visibility:hidden;}
+  .cal-day.available{cursor:pointer; color:var(--ink); position:relative;}
+  .cal-day.available::after{content:""; position:absolute; bottom:3px; width:3px; height:3px; border-radius:50%; background:var(--ink-soft);}
+  .cal-day.available:hover{background:var(--off);}
+  .cal-day.disabled{color:var(--gray); opacity:0.4;}
+  .cal-day.selected{background:var(--ink); color:var(--white);}
+  .cal-day.selected::after{background:var(--white);}
+  .cal-slots{padding:34px 30px; display:flex; flex-direction:column;}
+  .cal-slots-title{font-size:12px; letter-spacing:0.08em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:18px;}
+  .cal-slots-empty{font-size:13px; color:var(--ink-soft); font-style:italic;}
+  .cal-slot-list{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .cal-slot{border:1px solid var(--line); background:transparent; padding:11px 6px; font-size:13px; color:var(--ink); cursor:pointer; font-family:'TT Interphase','Jost',sans-serif;}
+  .cal-slot:hover{border-color:var(--ink);}
+  .cal-slot.selected{background:var(--ink); color:var(--white); border-color:var(--ink);}
+  .cal-summary{max-width:640px; margin:24px auto 0; padding:20px 28px; background:var(--off); border:1px solid var(--line); font-size:14px; color:var(--ink-soft); text-align:center;}
+  .cal-summary strong{color:var(--ink); font-weight:500;}
+  .cal-confirm-btn{width:100%; max-width:640px; margin:20px auto 0; display:block; text-align:center; padding:17px; font-size:13px; letter-spacing:0.1em; border:none;}
+  .dev-note{max-width:640px; margin:26px auto 60px; padding:14px 20px; text-align:center; font-size:11px; letter-spacing:0.03em; color:var(--ink-soft); background:var(--off); border:1px dashed var(--line);}
+
+  footer{padding:40px 0; background:var(--white); border-bottom:none;}
+  .footer-top{display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:20px;}
+  .footer-note{font-size:12px; color:var(--gray); letter-spacing:0.04em;}
+
+  @media(max-width:900px){
+    nav{display:none;}
+    .wrap{padding:0 24px;}
+    .presta-grid{grid-template-columns:1fr; border-left:none;}
+    .presta-card{border-right:none; border-bottom:1px solid var(--line);}
+    .presta-card:last-child{border-bottom:none;}
+    .p-text{padding:36px 28px;}
+    .cal-widget{grid-template-columns:1fr;}
+    .cal-month{border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  /* Menu mobile (hamburger) */
+  .nav-toggle{display:none;}
+  @media(max-width:900px){
+    header{position:relative;}
+    .nav-toggle{
+      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
+      width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; flex-shrink:0;
+    }
+    .nav-toggle span{display:block; width:18px; height:1px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
+    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+    .nav-toggle.is-open span:nth-child(2){opacity:0;}
+    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+    nav.nav-open{
+      display:flex; flex-direction:column; gap:0; width:100%;
+      position:absolute; top:100%; left:0; background:var(--white); border-top:1px solid var(--line);
+      box-shadow:0 14px 28px rgba(0,0,0,0.08); z-index:80; padding:6px 0;
+    }
+    nav.nav-open a{padding:14px 24px; border-bottom:1px solid var(--line); font-size:14px;}
+    nav.nav-open a:last-child{border-bottom:none;}
+    nav.nav-open .nav-drop{display:flex; flex-direction:column;}
+    nav.nav-open .nav-drop-menu{position:static; opacity:1; visibility:visible; pointer-events:auto; box-shadow:none; border:none; margin:0; padding:0; min-width:0; transform:none; background:var(--off);}
+    nav.nav-open .nav-drop-menu a{padding-left:44px; font-size:13px;}
+    header .btn{background:transparent; border:none; color:var(--ink); padding:8px 2px; font-size:12px;}
+  }
+
+  /* NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop::after{content:""; position:absolute; left:0; right:0; top:100%; height:18px; z-index:30;}
+  .nav-drop-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    background:var(--white); border:1px solid var(--line);
+    min-width:230px; padding:6px 0; margin-top:18px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    z-index:30;
+  }
+  .nav-drop:hover .nav-drop-menu{opacity:1; visibility:visible; pointer-events:auto;}
+  .nav-drop-menu a{
+    display:block; padding:12px 22px; font-size:13px; letter-spacing:0.02em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .nav-drop-menu a::after{display:none;}
+  .nav-drop-menu a:hover, .nav-drop-menu a.current{background:var(--off);}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">CMAKEUP<span>BEAUTY PROFESSIONAL</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="prestations.html" class="current">Prestations</a>
+    <a href="equipe.html">Équipe</a>
+    <div class="nav-drop"><a href="formations.html">Formations Maquilleuses</a><div class="nav-drop-menu"><a href="formation-collective.html">Formation Collective</a><a href="formation-intensive-collective-3-jours.html">Formation Intensive Mariée</a><a href="formation-perfectionnement-1-jour.html">Perfectionnement 1 Jour</a><a href="formation-perfectionnement-2-jours.html">Perfectionnement 2 Jours</a><a href="formation-en-ligne.html">Formation en ligne</a></div></div>
+    <div class="nav-drop"><a href="auto-makeup-class.html">Cours d'Auto Maquillage</a><div class="nav-drop-menu"><a href="auto-makeup-class.html">Auto Makeup Class (journée)</a><a href="cours-auto-maquillage-prive.html">Cours Privé (demi-journée)</a></div></div>
+    <a href="coaching-business-mua.html">Coaching</a>
+    <a href="ebook.html">Ebook</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn" href="#reserver">Réserver</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" data-editable="prestations.hero_eyebrow">NOS PRESTATIONS</div>
+    <h1 data-editable="prestations.hero_title">Les Prestations</h1>
+    <p style="max-width:560px; margin:24px auto 0; font-size:16px; line-height:1.8; color:var(--ink-soft);">Un maquillage professionnel, pensé pour durer toute la journée, avec des produits haut de gamme adaptés à chaque type de peau.</p>
+    <div class="info-box">
+      <div class="info-title"><span class="b-icon">📅</span>Bon à savoir</div>
+      <p>Le planning invitées ouvre chaque 15 du mois, un mois à l'avance.</p>
+    </div>
+  </div>
+  <div class="page-hero-space"></div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="presta-grid">
+      <div class="presta-card">
+        <div class="p-photo"><img data-editable="prestations.photo1" src="assets/img-2b500a41bba0.webp" alt="Makeup Smoky Eyes" width="700" height="1050" loading="eager"></div>
+        <div class="p-text">
+          <div class="p-badge">Invitée</div>
+          <h2>Smoky Eyes</h2>
+          <p data-editable="prestations.hero_text">Le maquillage smoky eyes est simple avec une couleur noir ou marron sur les yeux et le teint est bien travaillé.</p>
+          <div class="p-price">90€</div>
+          <a class="btn p-cta" href="reservation.html?prestation=smoky-eyes">Je réserve</a>
+        </div>
+      </div>
+
+      <div class="presta-card">
+        <div class="p-photo"><img data-editable="prestations.photo2" src="assets/img-720c8113beea.webp" alt="Makeup Soft Glam" width="700" height="775" loading="lazy" decoding="async"></div>
+        <div class="p-text">
+          <div class="p-badge">Invitée</div>
+          <h2>Soft Glam</h2>
+          <p>Le soft glam est un maquillage avec un effet bien maquillée mais non surchargé. Restez subtile avec un regard dans les tons dorés irisés ou nude matte.</p>
+          <div class="p-price">100€</div>
+          <a class="btn p-cta" href="reservation.html?prestation=soft-glam">Je réserve</a>
+        </div>
+      </div>
+
+      <div class="presta-card">
+        <div class="p-photo"><img data-editable="prestations.photo3" src="assets/img-85732eeb980a.webp" alt="Makeup Full Glam" width="700" height="1050" loading="lazy" decoding="async"></div>
+        <div class="p-text">
+          <div class="p-badge">Invitée</div>
+          <h2>Full Glam</h2>
+          <p>Le maquillage Full Glam est plus sophistiqué. Ce sont les cut crease, maquillages pailletés ou colorés.</p>
+          <div class="p-price">150€</div>
+          <a class="btn p-cta" href="reservation.html?prestation=full-glam">Je réserve</a>
+        </div>
+      </div>
+    </div>
+    <div class="cms-video-slot" data-editable-video="prestations" style="display:none; margin:32px auto; max-width:900px;"></div>
+    <p class="presta-note">Les faux cils sont inclus dans toutes les prestations.</p>
+  </div>
+</section>
+
+<section id="reserver">
+  <div class="cal-intro wrap">
+    <div class="section-eyebrow" data-editable="prestations.section1_eyebrow">RÉSERVATION</div>
+    <h2 class="section-title" data-editable="prestations.section1_title">Choisis ta maquilleuse<br>et ton créneau</h2>
+    <p class="section-lede" data-editable="prestations.section1_lede">Chacune de nos 4 maquilleuses a ses propres disponibilités et son lieu de résidence (Cergy, Garges, Sarcelles) — sélectionne d'abord ta préférence (ou reste flexible), puis choisis ton créneau.</p>
+  </div>
+
+  <div class="wrap">
+    <p style="text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:22px;">Clique sur une photo pour découvrir son travail, ou sur son prénom pour choisir ta maquilleuse.</p>
+    <div class="artist-picker" id="artistPicker">
+      <button type="button" class="artist-btn selected" data-artist="peu-importe" style="cursor:pointer; border:none; background:none;"><img src="assets/img-ce900d398b2f.webp" alt="Peu importe" style="width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(100%);opacity:0.5;" width="240" height="240" loading="lazy" decoding="async"><span style="font-size:11px;color:var(--ink-soft);">Peu importe</span></button>
+      <div class="artist-btn" data-artist="colleen"><a class="artist-avatar-link" href="equipe.html#colleen" target="_blank"><img src="assets/img-ce900d398b2f.webp" alt="Colleen" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Colleen</button><div class="artist-location">Cergy (95)</div></div>
+      <div class="artist-btn" data-artist="arlyne"><a class="artist-avatar-link" href="equipe.html#arlyne" target="_blank"><img src="assets/img-6dc803a40704.webp" alt="Arlyne" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Arlyne</button><div class="artist-location">Cergy (95)</div></div>
+      <div class="artist-btn" data-artist="fatou"><a class="artist-avatar-link" href="equipe.html#fatou" target="_blank"><img src="assets/img-92b461d93c48.webp" alt="Fatou" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Fatou</button><div class="artist-location">Garges (95)</div></div>
+      <div class="artist-btn" data-artist="lady"><a class="artist-avatar-link" href="equipe.html#lady" target="_blank"><img src="assets/img-0f5abbef5983.webp" alt="Lady" width="240" height="240" loading="lazy" decoding="async"></a><button type="button" class="artist-select-btn">Lady</button><div class="artist-location">Sarcelles (95)</div></div>
+    </div>
+
+    <div class="cal-widget">
+      <div class="cal-month">
+        <div class="cal-month-head">
+          <button type="button" class="cal-nav-btn" id="calPrev">‹</button>
+          <div class="cal-month-name" id="calMonthName">Septembre 2026</div>
+          <button type="button" class="cal-nav-btn" id="calNext">›</button>
+        </div>
+        <div class="cal-weekdays"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        <div class="cal-days" id="calDays"></div>
+      </div>
+      <div class="cal-slots">
+        <div class="cal-slots-title" id="calSlotsTitle">Sélectionne une date</div>
+        <div id="calSlotsWrap"><p class="cal-slots-empty">Choisis un jour disponible pour voir les créneaux.</p></div>
+      </div>
+    </div>
+
+    <div class="cal-summary" id="calSummary">Sélectionne une maquilleuse, une date et un créneau pour continuer.</div>
+    <a class="btn cal-confirm-btn" id="calConfirmBtn" style="pointer-events:none; opacity:0.4;" href="reservation.html">Continuer ma réservation</a>
+    <p style="max-width:640px; margin:20px auto 60px; padding:14px 20px; text-align:center; font-size:11px; letter-spacing:0.03em; color:var(--ink-soft); background:var(--off); border:1px dashed var(--line);">Les créneaux affichés sont donnés à titre indicatif. Les disponibilités réelles de chaque maquilleuse seront synchronisées ici prochainement — en attendant, votre créneau vous sera confirmé personnellement après votre demande.</p>
+    <!-- DEV TODO : planning à connecter à un vrai outil de réservation gérant les disponibilités
+         individuelles des 4 maquilleuses (ex : Cal.com en mode "collectif/round robin", ou système
+         sur-mesure), avec paiement d'acompte intégré (Stripe) et synchronisation des agendas Apple
+         Calendar de chacune. Les créneaux ci-dessus (const availability / slotsByDay) sont des
+         données d'exemple et ne reflètent aucune disponibilité réelle. -->
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="logo">CMAKEUP<span>BEAUTY PROFESSIONAL</span></div>
+      <div class="footer-note">18 boulevard de la Paix, 95000 Cergy Saint-Christophe — 07 54 03 32 66</div>
+    </div>
+    <div class="footer-note">© 2026 CMAKEUP BEAUTY — Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const monthNames = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+  const today = new Date(2026, 8, 13);
+  let viewYear = 2026, viewMonth = 8;
+  let selectedDate = null, selectedSlot = null;
+  let selectedArtist = 'peu-importe';
+
+  // Disponibilités fictives par maquilleuse (jours de la semaine, 0=dimanche)
+  const availability = {
+    'peu-importe': [1,2,3,4,5,6],
+    'colleen': [1,2,3,4,5],
+    'arlyne': [3,4,5,6],
+    'fatou': [2,3,5,6],
+    'lady': [4,5,6,0]
+  };
+  const slotsByDay = ["10:00","11:30","14:00","15:30","17:00"];
+
+  const calDays = document.getElementById('calDays');
+  const calMonthName = document.getElementById('calMonthName');
+  const calSlotsTitle = document.getElementById('calSlotsTitle');
+  const calSlotsWrap = document.getElementById('calSlotsWrap');
+  const calSummary = document.getElementById('calSummary');
+  const calConfirmBtn = document.getElementById('calConfirmBtn');
+  const calPrev = document.getElementById('calPrev');
+  const calNext = document.getElementById('calNext');
+  const artistPicker = document.getElementById('artistPicker');
+
+  function isPast(y,m,d){
+    const dt = new Date(y,m,d);
+    return dt < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  }
+  function isAvailable(y,m,d){
+    if(isPast(y,m,d)) return false;
+    const day = new Date(y,m,d).getDay();
+    return availability[selectedArtist].indexOf(day) !== -1;
+  }
+
+  function render(){
+    calMonthName.textContent = monthNames[viewMonth] + " " + viewYear;
+    calDays.innerHTML = "";
+    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+    const offset = firstDay === 0 ? 6 : firstDay - 1;
+    const daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
+
+    for(let i=0;i<offset;i++){
+      const empty = document.createElement('div');
+      empty.className = 'cal-day empty';
+      calDays.appendChild(empty);
+    }
+    for(let d=1; d<=daysInMonth; d++){
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = d;
+      const available = isAvailable(viewYear, viewMonth, d);
+      btn.className = 'cal-day ' + (available ? 'available' : 'disabled');
+      if(selectedDate && selectedDate.y===viewYear && selectedDate.m===viewMonth && selectedDate.d===d){
+        btn.classList.add('selected');
+      }
+      if(available){
+        btn.addEventListener('click', function(){
+          selectedDate = {y:viewYear, m:viewMonth, d:d};
+          selectedSlot = null;
+          render();
+          renderSlots();
+          updateSummary();
+        });
+      }
+      calDays.appendChild(btn);
+    }
+    const prevDisabled = (viewYear === today.getFullYear() && viewMonth <= today.getMonth());
+    calPrev.disabled = prevDisabled;
+  }
+
+  function renderSlots(){
+    if(!selectedDate){
+      calSlotsTitle.textContent = "Sélectionne une date";
+      calSlotsWrap.innerHTML = '<p class="cal-slots-empty">Choisis un jour disponible pour voir les créneaux.</p>';
+      return;
+    }
+    const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
+    calSlotsTitle.textContent = "Créneaux du " + dateLabel;
+    const list = document.createElement('div');
+    list.className = 'cal-slot-list';
+    slotsByDay.forEach(function(slot){
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'cal-slot' + (selectedSlot===slot ? ' selected' : '');
+      b.textContent = slot;
+      b.addEventListener('click', function(){
+        selectedSlot = slot;
+        renderSlots();
+        updateSummary();
+      });
+      list.appendChild(b);
+    });
+    calSlotsWrap.innerHTML = '';
+    calSlotsWrap.appendChild(list);
+  }
+
+  function artistLabel(){
+    const selEl = artistPicker.querySelector('.artist-btn.selected');
+    if(!selEl) return '';
+    const span = selEl.querySelector('span');
+    if(span) return span.textContent;
+    const selBtn = selEl.querySelector('.artist-select-btn');
+    return selBtn ? selBtn.textContent : '';
+  }
+
+  function updateSummary(){
+    if(selectedDate && selectedSlot){
+      const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
+      calSummary.innerHTML = 'Rendez-vous avec <strong>' + artistLabel() + '</strong> le <strong>' + dateLabel + ' à ' + selectedSlot + '</strong>';
+      calConfirmBtn.style.pointerEvents = 'auto';
+      calConfirmBtn.style.opacity = '1';
+    } else if(selectedDate){
+      const dateLabel = selectedDate.d + " " + monthNames[selectedDate.m].toLowerCase() + " " + selectedDate.y;
+      calSummary.innerHTML = 'Date choisie : <strong>' + dateLabel + '</strong> — sélectionne un créneau.';
+      calConfirmBtn.style.pointerEvents = 'none';
+      calConfirmBtn.style.opacity = '0.4';
+    } else {
+      calSummary.textContent = "Sélectionne une maquilleuse, une date et un créneau pour continuer.";
+      calConfirmBtn.style.pointerEvents = 'none';
+      calConfirmBtn.style.opacity = '0.4';
+    }
+  }
+
+  function selectArtist(el){
+    artistPicker.querySelectorAll('.artist-btn').forEach(b=>b.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedArtist = el.getAttribute('data-artist');
+    selectedDate = null;
+    selectedSlot = null;
+    render();
+    renderSlots();
+    updateSummary();
+  }
+
+  // "Peu importe" — bouton simple, clic = sélection
+  const peuImporteBtn = artistPicker.querySelector('button.artist-btn[data-artist="peu-importe"]');
+  if(peuImporteBtn){
+    peuImporteBtn.addEventListener('click', function(){ selectArtist(peuImporteBtn); });
+  }
+
+  // Maquilleuses nommées — la photo ouvre son travail (équipe), le nom sélectionne pour le calendrier
+  artistPicker.querySelectorAll('div.artist-btn').forEach(function(wrap){
+    const nameBtn = wrap.querySelector('.artist-select-btn');
+    if(nameBtn){
+      nameBtn.addEventListener('click', function(){ selectArtist(wrap); });
+    }
+  });
+
+  calPrev.addEventListener('click', function(){
+    viewMonth--;
+    if(viewMonth<0){ viewMonth=11; viewYear--; }
+    render();
+  });
+  calNext.addEventListener('click', function(){
+    viewMonth++;
+    if(viewMonth>11){ viewMonth=0; viewYear++; }
+    render();
+  });
+
+  render();
+  renderSlots();
+})();
+</script>
+
+
+<script>
+(function(){
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('header nav');
+  if(!toggle || !nav) return;
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.classList.toggle('is-open', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.classList.remove('is-open');
+    });
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var _sbContent = window.supabase.createClient('https://haymfuvlbogtiempezto.supabase.co', 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K');
+  function embedVideo(container, url){
+    if(!url) return;
+    var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{6,})/);
+    var vim = url.match(/vimeo\.com\/(\d+)/);
+    if(yt){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(vim){
+      container.innerHTML = '<div style="position:relative;padding-top:56.25%;"><iframe src="https://player.vimeo.com/video/'+vim[1]+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
+    } else {
+      container.innerHTML = '<video src="'+url+'" controls style="width:100%;height:auto;display:block;"></video>';
+    }
+    container.style.display = 'block';
+  }
+  _sbContent.from('page_content').select('block_key,block_type,content').eq('page_slug', 'prestations').then(function(res){
+    if(res.error || !res.data) return;
+    res.data.forEach(function(row){
+      if(!row.content) return;
+      if(row.block_type === 'video'){
+        var vc = document.querySelector('[data-editable-video="prestations"]');
+        if(vc) embedVideo(vc, row.content);
+        return;
+      }
+      var els = document.querySelectorAll('[data-editable="prestations.' + row.block_key + '"]');
+      els.forEach(function(el){
+        if(row.block_type === 'image'){
+          el.setAttribute('src', row.content);
+        } else {
+          el.textContent = row.content;
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

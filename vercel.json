@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/formations.html",
+      "destination": "/academie.html",
+      "permanent": true
+    },
+    {
+      "source": "/cours-auto-maquillage.html",
+      "destination": "/academie.html",
+      "permanent": true
+    }
+  ]
+}
