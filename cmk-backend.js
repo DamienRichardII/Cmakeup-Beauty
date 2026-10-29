@@ -1,7 +1,7 @@
 /* CMAKEUP BEAUTY — branchement du nouveau design sur le backend existant (Supabase, Stripe, Calendly).
    Chargé sur toutes les pages (après la librairie supabase-js).
    - Textes / photos / vidéos / dates de sessions pilotés depuis l'admin (table page_content)
-   - Formulaires : <form data-cmk="formation|amc|contact|waitlist|audit|business|candidature|mariee">
+   - Formulaires : <form data-cmk="formation|amc|qcal|contact|waitlist|audit|business|candidature|mariee">
    - Calendly : <div class="cal-slot" data-cal-url="…"> (préremplissage nom / e-mail)
    Sans réponse du serveur, le texte d'origine de la page reste affiché. */
 (function(){
@@ -442,7 +442,7 @@
     if(!sb) return;
     var btn = submitBtn(form), photos = $('photos'), n = $('n');
     var PHOTO_MAX = 10 * 1024 * 1024;
-    var slot = $('cal-mariee'), hint = $('cal-hint'), wrap = $('cal-wrap');
+    var slot = $('calw'), hint = $('intro'), wrap = $('calbox');
     var savedId = null, pending = null;
     if(photos) photos.addEventListener('change', function(){
       var c = photos.files.length;
@@ -464,14 +464,21 @@
         });
       }));
     }
-    function showCal(prefill){
-      if(hint) hint.hidden = true;
-      if(wrap) wrap.hidden = false;
-      if(slot){ slot.setAttribute('data-cal-url', slot.getAttribute('data-cal-base')); mountCalendly(slot, prefill); }
+    function showCal(prefill, errHtml){
+      if(hint) hint.style.display = 'none';
+      form.style.display = 'none';
+      if(wrap){
+        if(errHtml){
+          var er = document.createElement('p'); er.className = 'note2'; er.style.cssText = 'margin-bottom:26px;color:' + ERR; er.innerHTML = errHtml;
+          wrap.insertBefore(er, wrap.firstChild);
+        }
+        wrap.style.display = 'block';
+      }
+      if(slot){ mountCalendly(slot, prefill); }
       if(wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     function confirmBox(html){
-      if(wrap) wrap.innerHTML = '<p class="note2" style="margin:0 auto">' + html + '</p>';
+      if(wrap) wrap.innerHTML = '<p class="note2" style="margin:0 auto;text-align:center">' + html + '</p>';
     }
 
     form.addEventListener('submit', function(e){
@@ -487,13 +494,14 @@
           date_mariage: v('date') || null, heure_ceremonie: v('heure') || null,
           pack_interesse: v('pack'), photos_inspiration_urls: urls,
           autres_infos: v('infos'),
-          rgpd_consent: !!($('f-ck') && $('f-ck').checked)
+          rgpd_consent: !!(($('ck') || $('f-ck')) && ($('ck') || $('f-ck')).checked)
         };
         return sb.from('appels_decouverte_mariee').insert(row).then(function(res){
           btn.disabled = false; btn.textContent = before;
-          if(res.error){ pending = row; savedId = null; say(form, "Vos informations n'ont pas pu être enregistrées pour le moment. Vous pouvez tout de même choisir votre créneau ci-dessous ; vous pouvez aussi nous écrire en message privé sur Instagram <a href=\"https://instagram.com/c_makeup_\" target=\"_blank\" rel=\"noopener\" style=\"border-bottom:1px solid currentColor\">@c_makeup_</a>.", true); }
-          else { savedId = id; pending = null; say(form, 'Merci ! Vos informations sont bien enregistrées. Choisissez maintenant votre créneau juste en dessous.'); }
-          showCal({ name: (prenom + ' ' + nom).trim(), email: email });
+          var errHtml = null;
+          if(res.error){ pending = row; savedId = null; errHtml = "Vos informations n'ont pas pu être enregistrées pour le moment. Vous pouvez tout de même choisir votre créneau ci-dessous ; vous pouvez aussi nous écrire en message privé sur Instagram <a href=\"https://instagram.com/c_makeup_\" target=\"_blank\" rel=\"noopener\" style=\"border-bottom:1px solid currentColor\">@c_makeup_</a>."; }
+          else { savedId = id; pending = null; }
+          showCal({ name: (prenom + ' ' + nom).trim(), email: email }, errHtml);
         });
       }).catch(function(err){
         btn.disabled = false; btn.textContent = before;
@@ -519,6 +527,46 @@
       } else {
         confirmBox('Merci ! Votre rendez-vous est confirmé, à très vite.');
       }
+    });
+  }
+
+  /* ================= Questionnaire puis calendrier (Auto Makeup Class, cours privé) ================= */
+  function initQcal(form){
+    if(!sb) return;
+    var p = form.getAttribute('data-q');
+    var isAmc = form.getAttribute('data-q-table') === 'amc';
+    var btn = submitBtn(form), box = $(p + '-cal'), slot = $(p + '-widget'), intro = $(p + '-intro');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var before = btn ? btn.textContent : ''; if(btn){ btn.disabled = true; btn.textContent = 'Envoi en cours...'; }
+      say(form, '');
+      var id = uuid(), prenom = v(p + '-prenom'), nom = v(p + '-nom'), email = v(p + '-email');
+      var connu = v(p + '-connu');
+      var row = {
+        id: id, prenom: prenom, nom: nom, email: email, telephone: v(p + '-tel'),
+        niveau: v(p + '-niveau'), trousse: v(p + '-matos'), pourquoi: v(p + '-diff'),
+        message: connu ? 'Connue via : ' + connu : '',
+        financement: 'classique',
+        rgpd_consent: !!($(p + '-ck') && $(p + '-ck').checked)
+      };
+      if(isAmc){ row.statut = 'nouveau'; }
+      else { row.source_page = form.getAttribute('data-source') || PAGE; row.formation = form.getAttribute('data-q-formation') || ''; }
+      sb.from(isAmc ? 'auto_makeup_class_demandes' : 'formation_inscriptions').insert(row).then(function(res){
+        if(btn){ btn.disabled = false; btn.textContent = before; }
+        var errHtml = res.error ? contactErr() : null;
+        if(intro) intro.style.display = 'none';
+        form.style.display = 'none';
+        if(box){
+          if(errHtml){
+            var er = document.createElement('p'); er.className = 'lead'; er.style.cssText = 'margin-bottom:26px;color:' + ERR;
+            er.innerHTML = "Ton questionnaire n'a pas pu être enregistré. Tu peux tout de même choisir ton créneau ci-dessous, puis nous écrire : " + errHtml;
+            box.insertBefore(er, box.firstChild);
+          }
+          box.style.display = 'block';
+        }
+        if(slot) mountCalendly(slot, { name: (prenom + ' ' + nom).trim(), email: email });
+        if(box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }).catch(function(){ if(btn){ btn.disabled = false; btn.textContent = before; } say(form, contactErr(), true); });
     });
   }
 
@@ -558,6 +606,7 @@
       else if(t === 'business') initBusiness(f);
       else if(t === 'candidature') initCandidature(f);
       else if(t === 'mariee') initMariee(f);
+      else if(t === 'qcal') initQcal(f);
     });
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
