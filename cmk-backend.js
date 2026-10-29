@@ -265,10 +265,13 @@
           say(form, "Ta pièce d'identité n'a pas pu être envoyée (10 Mo maximum, formats JPG, PNG, WEBP, HEIC ou PDF). Vérifie le fichier et réessaie, ou envoie-la à <a href=\"mailto:" + MAIL_ACADEMY + "\" style=\"border-bottom:1px solid currentColor\">" + MAIL_ACADEMY + "</a>.", true);
           return;
         }
+        var sessIsText = !!(sess && sess.tagName === 'TEXTAREA');
+        var extras = [];
+        function ex(label, key){ var x = v(key); if(x) extras.push(label + ' : ' + x); }
         var row = {
           id: id,
           prenom: v('prenom'), nom: v('nom'), email: v('email'), telephone: v('tel'),
-          session: sessionVal,
+          session: sessIsText ? '' : sessionVal,
           financement: fin,
           message: v('msg'),
           rgpd_consent: !!($('ins-ck') && $('ins-ck').checked),
@@ -282,6 +285,15 @@
           row.source_page = source;
           if($('module')) row.formation = v('module');
           if($('dates')) row.dates_souhaitees = v('dates');
+          if(sessIsText) row.dates_souhaitees = sessionVal;
+          // nouvelles questions des formulaires
+          if(v('pratique')) row.experience = v('pratique');
+          if(v('duree')) row.experience = v('duree');
+          if(v('matos')) row.trousse = v('matos');
+          if(v('mariees')) row.experience_mariee = v('mariees');
+          if(v('insta')) row.instagram = v('insta');
+          ex('Formation maquillage déjà suivie', 'formationsuivie');
+          if(extras.length) row.message = (row.message ? row.message + '\n\n' : '') + extras.join('\n');
         }
         return sb.from(table).insert(row).then(function(res){
           if(btn){ btn.disabled = false; }
