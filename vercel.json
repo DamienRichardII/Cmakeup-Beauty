@@ -1,8 +1,29 @@
 {
   "redirects": [
-    { "source": "/formations.html", "destination": "/academie.html", "permanent": true },
-    { "source": "/cours-auto-maquillage.html", "destination": "/academie.html", "permanent": true },
-    { "source": "/reservation-cours-prive.html", "destination": "/cours-auto-maquillage-prive.html#inscription", "permanent": false },
-    { "source": "/reservation-auto-makeup-class.html", "destination": "/auto-makeup-class.html#inscription", "permanent": false }
+    {
+      "source": "/formations.html",
+      "destination": "/academie.html",
+      "permanent": true
+    },
+    {
+      "source": "/cours-auto-maquillage.html",
+      "destination": "/academie.html",
+      "permanent": true
+    },
+    {
+      "source": "/reservation-cours-prive.html",
+      "destination": "/cours-auto-maquillage-prive.html#inscription",
+      "permanent": false
+    },
+    {
+      "source": "/reservation-auto-makeup-class.html",
+      "destination": "/auto-makeup-class.html#inscription",
+      "permanent": false
+    },
+    {
+      "source": "/reservation-coaching-audit.html",
+      "destination": "/questionnaire-audit.html#inscription",
+      "permanent": false
+    }
   ]
 }

@@ -542,6 +542,41 @@
     });
   }
 
+  /* ================= Questionnaire Pack Audit puis calendrier (paiement sur Calendly) ================= */
+  function initQaudit(form){
+    if(!sb) return;
+    var btn = submitBtn(form), box = $('qa-cal'), slot = $('qa-widget'), intro = $('qa-intro');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var before = btn ? btn.textContent : ''; if(btn){ btn.disabled = true; btn.textContent = 'Envoi en cours...'; }
+      say(form, '');
+      var prenom = v('qa-prenom'), nom = v('qa-nom'), email = v('qa-email');
+      var row = {
+        id: uuid(), nom_prenom: (prenom + ' ' + nom).trim(), email: email, telephone: v('qa-tel'), ville: v('qa-ville'),
+        anciennete: v('qa-anc'), statut_pro: v('qa-statut'),
+        prestations_actuelles: v('qa-presta'), tarifs: v('qa-tarifs'),
+        instagram_nom: v('qa-insta'), instagram_abonnes: v('qa-abo'),
+        objectifs: v('qa-obj'), difficultes: v('qa-frein'),
+        rgpd_consent: !!($('qa-ck') && $('qa-ck').checked)
+      };
+      sb.from('questionnaires_audit').insert(row).then(function(res){
+        if(btn){ btn.disabled = false; btn.textContent = before; }
+        if(intro) intro.style.display = 'none';
+        form.style.display = 'none';
+        if(box){
+          if(res.error){
+            var er = document.createElement('p'); er.className = 'lead'; er.style.cssText = 'margin-bottom:26px;color:' + ERR;
+            er.innerHTML = "Ton questionnaire n'a pas pu être enregistré. Tu peux tout de même choisir ton créneau ci-dessous, puis nous écrire : " + contactErr();
+            box.insertBefore(er, box.firstChild);
+          }
+          box.style.display = 'block';
+        }
+        if(slot) mountCalendly(slot, { name: row.nom_prenom, email: email });
+        if(box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }).catch(function(){ if(btn){ btn.disabled = false; btn.textContent = before; } say(form, contactErr(), true); });
+    });
+  }
+
   /* ================= Questionnaire puis calendrier (Auto Makeup Class, cours privé) ================= */
   function initQcal(form){
     if(!sb) return;
@@ -619,6 +654,7 @@
       else if(t === 'candidature') initCandidature(f);
       else if(t === 'mariee') initMariee(f);
       else if(t === 'qcal') initQcal(f);
+      else if(t === 'qaudit') initQaudit(f);
     });
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
