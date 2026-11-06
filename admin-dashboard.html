@@ -201,6 +201,21 @@
     if(resetAt) q = q.gte('created_at', resetAt);
     return q.order('created_at',{ascending:false}).limit(200).then(function(r){ return (r && r.data) || []; }).catch(function(){ return []; });
   }
+  // Intitulé lisible d'une inscription formation : formation (ou page), puis session choisie et/ou dates souhaitées.
+  var FORMATION_NOMS = {
+    'formation-collective':'Formation débutante collective',
+    'formation-intensive-collective-3-jours':'Formation intensive mariée (3 jours)',
+    'formation-debutante-privee':'Formation débutante privée',
+    'formation-perfectionnement-1-jour':'Perfectionnement 1 jour',
+    'formation-perfectionnement-2-jours':'Perfectionnement 2 jours'
+  };
+  function formationDetail(r){
+    var nom = FORMATION_NOMS[r.source_page] || r.formation || r.source_page || '';
+    var sess = (r.session && r.session !== 'a-convenir' && r.session !== 'liste-attente') ? r.session : '';
+    var dates = r.dates_souhaitees || '';
+    var quand = sess || dates;
+    return [nom, quand ? 'dates : ' + quand : ''].filter(Boolean).join(' — ');
+  }
   function person(r){ return ((r.prenom||'')+' '+(r.nom||'')).trim() || r.nom_prenom || ''; }
   function contactOf(r){ return [r.email, r.telephone || r.whatsapp].filter(Boolean).join(' · '); }
   function src(table, filter, map){
@@ -216,7 +231,7 @@
     {id:'ca', label:'CA encaissé (acomptes payés)', title:'Paiements encaissés', page:'admin-formations.html', money:true,
      load:function(){ return Promise.all([
        src('reservations', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Réservation', r.prestation, 'admin-formations.html', {cents:r.montant_acompte_centimes}); }),
-       src('formation_inscriptions', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Formation', r.formation || r.source_page, 'admin-formations.html#formations', {cents:r.montant_acompte_centimes}); }),
+       src('formation_inscriptions', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Formation', formationDetail(r), 'admin-formations.html#formations', {cents:r.montant_acompte_centimes}); }),
        src('auto_makeup_class_demandes', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Auto Makeup Class', r.session, 'admin-formations.html#auto', {cents:r.montant_acompte_centimes}); }),
        src('candidatures_coaching', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Coaching', r.pack, 'admin-coaching.html#candidatures', {cents:r.montant_acompte_centimes}); }),
        src('pack_audit_paiements', function(q){ return q.eq('statut_paiement','paye'); }, function(r){ return item(r,'Pack Audit', 'Paiement Pack Audit', 'admin-coaching.html#audit', {cents:r.montant_acompte_centimes}); })
