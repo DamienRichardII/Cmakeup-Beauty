@@ -8,8 +8,8 @@
   function rep(str, v){
     return str.replace(RE, function(m){ return m === m.toUpperCase() && m.length > 1 ? v.toUpperCase() : v; });
   }
-  fetch('https://haymfuvlbogtiempezto.supabase.co/rest/v1/page_content?select=block_key,content&page_slug=eq.site', {
-    headers: { apikey: 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K' }
+  fetch('https://ofodyvqxeuxchisriqvu.supabase.co/rest/v1/page_content?select=block_key,content&page_slug=eq.site', {
+    headers: { apikey: 'sb_publishable_W6bY5WCrdnyA0xaxOGf9uw_An6_m_8S' }
   }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
     var s = {};
     (rows || []).forEach(function(r){ if(r && typeof r.content === 'string' && r.content.trim()) s[r.block_key] = r.content.trim(); });
@@ -58,8 +58,8 @@
   function ref(k){ var i = k.indexOf('.'); return i > 0 ? { slug: k.slice(0, i), key: k.slice(i + 1) } : { slug: here, key: k }; }
   var slugs = {};
   Array.prototype.forEach.call(nodes, function(n){ var k = keyOf(n); if(k) slugs[ref(k).slug] = 1; });
-  fetch('https://haymfuvlbogtiempezto.supabase.co/rest/v1/page_content?select=page_slug,block_key,content&page_slug=in.(' + Object.keys(slugs).join(',') + ')&block_key=like.prix_*', {
-    headers: { apikey: 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K' }
+  fetch('https://ofodyvqxeuxchisriqvu.supabase.co/rest/v1/page_content?select=page_slug,block_key,content&page_slug=in.(' + Object.keys(slugs).join(',') + ')&block_key=like.prix_*', {
+    headers: { apikey: 'sb_publishable_W6bY5WCrdnyA0xaxOGf9uw_An6_m_8S' }
   }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
     var map = {};
     (rows || []).forEach(function(r){ if(r && typeof r.content === 'string' && r.content.trim()) map[r.page_slug + '.' + r.block_key] = r.content.trim(); });

@@ -6,8 +6,8 @@
    Sans réponse du serveur, le texte d'origine de la page reste affiché. */
 (function(){
   'use strict';
-  var SB_URL = 'https://haymfuvlbogtiempezto.supabase.co';
-  var SB_KEY = 'sb_publishable_koY3vqHccqd5gugGwZJm6g__9Jahr1K';
+  var SB_URL = 'https://ofodyvqxeuxchisriqvu.supabase.co';
+  var SB_KEY = 'sb_publishable_W6bY5WCrdnyA0xaxOGf9uw_An6_m_8S';
   var sb = (window.supabase && window.supabase.createClient) ? window.supabase.createClient(SB_URL, SB_KEY) : null;
   var PAGE = document.body.getAttribute('data-page') || '';
   var ERR = '#B33A3A';
